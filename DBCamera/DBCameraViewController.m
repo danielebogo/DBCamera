@@ -106,7 +106,9 @@
 
 - (void) captureImageFailedWithError:(NSError *)error
 {
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+    });
 }
 
 - (void) captureSessionDidStartRunning
