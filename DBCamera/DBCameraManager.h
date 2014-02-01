@@ -34,7 +34,7 @@
 
 - (void) startRunning;
 - (void) stopRunning;
-- (void) captureImage;
+- (void) captureImageForDeviceOrientation:(UIDeviceOrientation)deviceOrientation;
 
 - (void) focusAtPoint:(CGPoint)point;
 - (void) exposureAtPoint:(CGPoint)point;

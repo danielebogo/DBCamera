@@ -9,11 +9,13 @@
 #import "DBCameraViewController.h"
 #import "DBCameraManager.h"
 #import "DBCameraView.h"
+#import "UIImage+DBCamera.h"
 
 #import <AVFoundation/AVFoundation.h>
 
 @interface DBCameraViewController () <DBCameraManagerDelegate, DBCameraViewDelegate> {
     BOOL _processingPhoto;
+    UIDeviceOrientation _deviceOrientation;
 }
 
 @property (nonatomic, strong) DBCameraView *cameraView;
@@ -23,15 +25,23 @@
 
 @implementation DBCameraViewController
 
-- (id) init
+- (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
 {
     self = [super init];
     
     if ( self ) {
         _processingPhoto = NO;
+        _deviceOrientation = UIDeviceOrientationPortrait;
+        if ( delegate )
+            _delegate = delegate;
     }
     
     return self;
+}
+
+- (id) init
+{
+    return [self initWithDelegate:nil];
 }
 
 - (void) viewDidLoad
@@ -55,6 +65,12 @@
 {
     [super viewDidAppear:animated];
     [self.cameraManager performSelector:@selector(startRunning) withObject:nil afterDelay:0.0];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(rotationChanged:)
+                                                 name:@"UIDeviceOrientationDidChangeNotification"
+                                               object:nil];
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -66,6 +82,8 @@
 {
     [super viewDidDisappear:animated];
     [self.cameraManager performSelector:@selector(stopRunning) withObject:nil afterDelay:0.0];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UIDeviceOrientationDidChangeNotification" object:nil];
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,6 +113,15 @@
     return _cameraManager;
 }
 
+- (void) rotationChanged:(NSNotification *)notification
+{
+    if ( [[UIDevice currentDevice] orientation] != UIDeviceOrientationUnknown ||
+         [[UIDevice currentDevice] orientation] != UIDeviceOrientationFaceUp ||
+         [[UIDevice currentDevice] orientation] != UIDeviceOrientationFaceDown ) {
+        _deviceOrientation = [[UIDevice currentDevice] orientation];
+    }
+}
+
 #pragma mark - CameraManagerDelagate
 
 - (void) closeCamera
@@ -118,6 +145,8 @@
 {
     _processingPhoto = NO;
     
+    if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
+        [_delegate captureImageDidFinish:image];
 }
 
 - (void) captureImageFailedWithError:(NSError *)error
@@ -130,7 +159,7 @@
 - (void) captureSessionDidStartRunning
 {
     CGRect bounds = _cameraView.bounds;
-    CGPoint screenCenter = (CGPoint){ bounds.size.width / 2.0f, bounds.size.height / 2.0f };
+    CGPoint screenCenter = (CGPoint){ (bounds.size.width * .5f), (bounds.size.height * .5f) - 65 };
     [_cameraView drawFocusBoxAtPointOfInterest:screenCenter andRemove:NO];
     [_cameraView drawExposeBoxAtPointOfInterest:screenCenter andRemove:NO];
 }
@@ -144,7 +173,7 @@
     
     _processingPhoto = YES;
     
-    [self.cameraManager captureImage];
+    [self.cameraManager captureImageForDeviceOrientation:_deviceOrientation];
 }
 
 - (void) cameraView:(DBCameraView *)camera focusAtPoint:(CGPoint)point

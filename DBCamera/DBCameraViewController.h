@@ -8,5 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol DBCameraViewControllerDelegate;
 @interface DBCameraViewController : UIViewController
+@property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
+
+- (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
+
+@end
+
+@protocol DBCameraViewControllerDelegate <NSObject>
+@optional
+- (void) captureImageDidFinish:(UIImage *)image;
 @end

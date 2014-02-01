@@ -96,12 +96,29 @@
     [_captureSession stopRunning];
 }
 
-- (void) captureImage
+- (void) captureImageForDeviceOrientation:(UIDeviceOrientation)deviceOrientation
 {
     AVCaptureConnection *videoConnection = [DBCameraManager connectionWithMediaType:AVMediaTypeVideo fromConnections:_stillImageOutput.connections];
     
-    if ( [videoConnection isVideoOrientationSupported] )
-        [videoConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
+    if ( [videoConnection isVideoOrientationSupported] ) {
+        switch (deviceOrientation) {
+            case UIDeviceOrientationPortraitUpsideDown:
+                [videoConnection setVideoOrientation:AVCaptureVideoOrientationPortraitUpsideDown];
+                break;
+            
+            case UIDeviceOrientationLandscapeLeft:
+                [videoConnection setVideoOrientation:AVCaptureVideoOrientationLandscapeRight];
+                break;
+                
+            case UIDeviceOrientationLandscapeRight:
+                [videoConnection setVideoOrientation:AVCaptureVideoOrientationLandscapeLeft];
+                break;
+                
+            default:
+                [videoConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
+                break;
+        }
+    }
     
     __weak AVCaptureSession *captureSessionBlock = _captureSession;
     __weak id<DBCameraManagerDelegate>delegateBlock = _delegate;
