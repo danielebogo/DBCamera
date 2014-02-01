@@ -269,7 +269,7 @@ bail:
     AVCaptureVideoPreviewLayer *videoPreviewLayer = layer;
     
     if ( [[videoPreviewLayer videoGravity] isEqualToString:AVLayerVideoGravityResize] )
-        pointOfInterest = CGPointMake(viewCoordinates.y / frameSize.height, 1.0f - (viewCoordinates.x / frameSize.width));
+        pointOfInterest = (CGPoint){ viewCoordinates.y / frameSize.height, 1.0f - (viewCoordinates.x / frameSize.width) };
     else {
         CGRect cleanAperture;
         for (AVCaptureInputPort *port in self.videoInput.ports) {

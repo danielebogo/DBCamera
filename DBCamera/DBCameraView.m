@@ -8,11 +8,16 @@
 
 #import "DBCameraView.h"
 
-#define UIColorFromRGB(rgbValue, alphaValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alphaValue]
+#define RGBColor(rgbValue, alphaValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alphaValue]
+
+#define IS_RETINA_4 ( [[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2 && [[UIScreen mainScreen] bounds].size.height > 480)
+
+#define previewFrameRetina (CGRect){ 0, 65, 320, 350 }
+#define previewFrameRetina_4 (CGRect){ 0, 65, 320, 425 }
 
 @interface DBCameraView ()
-@property (nonatomic, strong) CALayer *focusBox;
-@property (nonatomic, strong) CALayer *exposeBox;
+@property (nonatomic, strong) CALayer *focusBox, *exposeBox;
+@property (nonatomic, strong) UIButton *triggerButton, *cameraButton, *flashButton, *closeButton;
 @end
 
 @implementation DBCameraView
@@ -25,7 +30,7 @@
         [self setBackgroundColor:[UIColor blackColor]];
         
         _previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-        [_previewLayer setFrame:self.bounds];
+        [_previewLayer setFrame: IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina ];
         
         if ( [_previewLayer respondsToSelector:@selector(connection)] ) {
             if ( [_previewLayer.connection isVideoOrientationSupported] )
@@ -38,16 +43,69 @@
         [_previewLayer addSublayer:self.exposeBox];
         [self.layer addSublayer:_previewLayer];
         
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setBackgroundColor:[UIColor redColor]];
-        [button setFrame:(CGRect){ 10, 10, 100, 100 }];
-        [button addTarget:_delegate action:@selector(cameraViewStartRecording) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:button];
+        UIView *stripe = [[UIView alloc] initWithFrame:(CGRect){ 0, CGRectGetMaxY(_previewLayer.frame) - 47, CGRectGetWidth(self.bounds), 47 }];
+        [stripe setBackgroundColor:RGBColor(0x000000, .5)];
+        [self addSubview:stripe];
+        
+        [self addSubview:self.cameraButton];
+        [self addSubview:self.closeButton];
+        [self addSubview:self.flashButton];
+        [self addSubview:self.triggerButton];
         
         [self createGesture];
     }
     
     return self;
+}
+
+#pragma mark - Buttons
+
+- (UIButton *) triggerButton
+{
+    if ( !_triggerButton ) {
+        _triggerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_triggerButton setBackgroundColor:[UIColor whiteColor]];
+        [_triggerButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 53, CGRectGetMaxY(_previewLayer.frame) - 25, 106, 50 }];
+        [_triggerButton addTarget:self action:@selector(triggerAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _triggerButton;
+}
+
+- (UIButton *) closeButton
+{
+    if ( !_closeButton ) {
+        _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_closeButton setBackgroundColor:[UIColor whiteColor]];
+        [_closeButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 15, 17.5f, 30, 30 }];
+        [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _closeButton;
+}
+
+- (UIButton *) cameraButton
+{
+    if ( !_cameraButton ) {
+        _cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_cameraButton setBackgroundColor:[UIColor whiteColor]];
+        [_cameraButton setFrame:(CGRect){ 15, 17.5f, 30, 30 }];
+        [_cameraButton addTarget:self action:@selector(changeCamera:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _cameraButton;
+}
+
+- (UIButton *) flashButton
+{
+    if ( !_flashButton ) {
+        _flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_flashButton setBackgroundColor:[UIColor whiteColor]];
+        [_flashButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 45, 17.5f, 30, 30 }];
+        [_flashButton addTarget:self action:@selector(flashTriggerAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _flashButton;
 }
 
 #pragma mark - Focus / Expose Box
@@ -59,7 +117,7 @@
         [_focusBox setCornerRadius:45.0f];
         [_focusBox setBounds:CGRectMake(0.0f, 0.0f, 90, 90)];
         [_focusBox setBorderWidth:5.f];
-        [_focusBox setBorderColor:[UIColorFromRGB(0xffffff, 1) CGColor]];
+        [_focusBox setBorderColor:[RGBColor(0xffffff, 1) CGColor]];
         [_focusBox setOpacity:0];
     }
     
@@ -73,7 +131,7 @@
         [_exposeBox setCornerRadius:55.0f];
         [_exposeBox setBounds:CGRectMake(0.0f, 0.0f, 110, 110)];
         [_exposeBox setBorderWidth:5.f];
-        [_exposeBox setBorderColor:[UIColorFromRGB(0x00ffff, 1) CGColor]];
+        [_exposeBox setBorderColor:[RGBColor(0x00ffff, 1) CGColor]];
         [_exposeBox setOpacity:0];
     }
     
@@ -137,16 +195,44 @@
 
 #pragma mark - Actions
 
+- (void) flashTriggerAction:(UIButton *)button
+{
+    if ( [_delegate respondsToSelector:@selector(triggerFlashForMode:)] ) {
+        [button setSelected:!button.isSelected];
+        [_delegate triggerFlashForMode: button.isSelected ? AVCaptureFlashModeOn : AVCaptureFlashModeOff ];
+    }
+}
+
+- (void) changeCamera:(UIButton *)button
+{
+    if ( [_delegate respondsToSelector:@selector(switchCamera)] )
+        [_delegate switchCamera];
+}
+
+- (void) close
+{
+    if ( [_delegate respondsToSelector:@selector(closeCamera)] )
+        [_delegate closeCamera];
+}
+
+- (void) triggerAction:(UIButton *)button
+{
+    if ( [_delegate respondsToSelector:@selector(cameraViewStartRecording)] )
+        [_delegate cameraViewStartRecording];
+}
+
 - (void) tapToFocus:(UIGestureRecognizer *)recognizer
 {
-    if ( [_delegate respondsToSelector:@selector(cameraView:focusAtPoint:)] )
-        [_delegate cameraView:self focusAtPoint:(CGPoint)[recognizer locationInView:self]];
+    CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
+    if ( [_delegate respondsToSelector:@selector(cameraView:focusAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) )
+        [_delegate cameraView:self focusAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - 65 }];
 }
 
 - (void) tapToExpose:(UIGestureRecognizer *)recognizer
 {
-    if ( [_delegate respondsToSelector:@selector(cameraView:exposeAtPoint:)] )
-        [_delegate cameraView:self exposeAtPoint:(CGPoint)[recognizer locationInView:self]];
+    CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
+    if ( [_delegate respondsToSelector:@selector(cameraView:exposeAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) )
+        [_delegate cameraView:self exposeAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - 65 }];
 }
 
 @end

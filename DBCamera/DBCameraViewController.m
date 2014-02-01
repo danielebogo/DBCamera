@@ -60,7 +60,6 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    _previewLayer.hidden = YES;
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -98,6 +97,23 @@
 
 #pragma mark - CameraManagerDelagate
 
+- (void) closeCamera
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) switchCamera
+{
+    if ( [self.cameraManager hasMultipleCameras] )
+        [self.cameraManager cameraToggle];
+}
+
+- (void) triggerFlashForMode:(AVCaptureFlashMode)flashMode
+{
+    if ( [self.cameraManager hasFlash] )
+        [self.cameraManager setFlashMode:flashMode];
+}
+
 - (void) captureImageDidFinish:(UIImage *)image
 {
     _processingPhoto = NO;
@@ -134,7 +150,7 @@
 - (void) cameraView:(DBCameraView *)camera focusAtPoint:(CGPoint)point
 {
     if ( self.cameraManager.videoInput.device.isFocusPointOfInterestSupported ) {
-        [self.cameraManager focusAtPoint:[self.cameraManager convertToPointOfInterestFrom:camera.frame
+        [self.cameraManager focusAtPoint:[self.cameraManager convertToPointOfInterestFrom:camera.previewLayer.frame
                                                                               coordinates:point
                                                                                     layer:camera.previewLayer]];
         [camera drawFocusBoxAtPointOfInterest:point andRemove:YES];
@@ -144,7 +160,7 @@
 - (void) cameraView:(DBCameraView *)camera exposeAtPoint:(CGPoint)point
 {
     if ( self.cameraManager.videoInput.device.isExposurePointOfInterestSupported ) {
-        [self.cameraManager exposureAtPoint:[self.cameraManager convertToPointOfInterestFrom:camera.frame
+        [self.cameraManager exposureAtPoint:[self.cameraManager convertToPointOfInterestFrom:camera.previewLayer.frame
                                                                                  coordinates:point
                                                                                        layer:camera.previewLayer]];
         [camera drawExposeBoxAtPointOfInterest:point andRemove:YES];

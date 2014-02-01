@@ -25,4 +25,7 @@
 - (void) cameraView:(DBCameraView *)camera focusAtPoint:(CGPoint)point;
 - (void) cameraView:(DBCameraView *)camera exposeAtPoint:(CGPoint)point;
 - (void) cameraViewStartRecording;
+- (void) closeCamera;
+- (void) switchCamera;
+- (void) triggerFlashForMode:(AVCaptureFlashMode)flashMode;
 @end
