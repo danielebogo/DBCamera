@@ -65,6 +65,7 @@
     if ( !_triggerButton ) {
         _triggerButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_triggerButton setBackgroundColor:[UIColor whiteColor]];
+        [_triggerButton setImage:[UIImage imageNamed:@"trigger"] forState:UIControlStateNormal];
         [_triggerButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 53, CGRectGetMaxY(_previewLayer.frame) - 25, 106, 50 }];
         [_triggerButton addTarget:self action:@selector(triggerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -76,7 +77,8 @@
 {
     if ( !_closeButton ) {
         _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_closeButton setBackgroundColor:[UIColor whiteColor]];
+        [_closeButton setBackgroundColor:[UIColor clearColor]];
+        [_closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
         [_closeButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 15, 17.5f, 30, 30 }];
         [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -88,7 +90,9 @@
 {
     if ( !_cameraButton ) {
         _cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_cameraButton setBackgroundColor:[UIColor whiteColor]];
+        [_cameraButton setBackgroundColor:[UIColor clearColor]];
+        [_cameraButton setImage:[UIImage imageNamed:@"flip"] forState:UIControlStateNormal];
+        [_cameraButton setImage:[UIImage imageNamed:@"flipSelected"] forState:UIControlStateSelected];
         [_cameraButton setFrame:(CGRect){ 15, 17.5f, 30, 30 }];
         [_cameraButton addTarget:self action:@selector(changeCamera:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -100,7 +104,9 @@
 {
     if ( !_flashButton ) {
         _flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_flashButton setBackgroundColor:[UIColor whiteColor]];
+        [_flashButton setBackgroundColor:[UIColor clearColor]];
+        [_flashButton setImage:[UIImage imageNamed:@"flash"] forState:UIControlStateNormal];
+        [_flashButton setImage:[UIImage imageNamed:@"flashSelected"] forState:UIControlStateSelected];
         [_flashButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 45, 17.5f, 30, 30 }];
         [_flashButton addTarget:self action:@selector(flashTriggerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -205,6 +211,7 @@
 
 - (void) changeCamera:(UIButton *)button
 {
+    [button setSelected:!button.isSelected];
     if ( [_delegate respondsToSelector:@selector(switchCamera)] )
         [_delegate switchCamera];
 }
