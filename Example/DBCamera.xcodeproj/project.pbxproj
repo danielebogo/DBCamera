@@ -13,7 +13,7 @@
 		9AB597AE189BAF9A001BCAD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AB597AC189BAF9A001BCAD3 /* InfoPlist.strings */; };
 		9AB597B0189BAF9A001BCAD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597AF189BAF9A001BCAD3 /* main.m */; };
 		9AB597B4189BAF9A001BCAD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */; };
-		9AB597B6189BAF9A001BCAD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB597B5189BAF9A001BCAD3 /* Images.xcassets */; };
+		9AB597B6189BAF9A001BCAD3 /* DBCameraImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB597B5189BAF9A001BCAD3 /* DBCameraImages.xcassets */; };
 		9AB597BD189BAF9A001BCAD3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597BC189BAF9A001BCAD3 /* XCTest.framework */; };
 		9AB597BE189BAF9A001BCAD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A3189BAF9A001BCAD3 /* Foundation.framework */; };
 		9AB597BF189BAF9A001BCAD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A7189BAF9A001BCAD3 /* UIKit.framework */; };
@@ -46,7 +46,7 @@
 		9AB597B1189BAF9A001BCAD3 /* DBCamera-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBCamera-Prefix.pch"; sourceTree = "<group>"; };
 		9AB597B2189BAF9A001BCAD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9AB597B5189BAF9A001BCAD3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9AB597B5189BAF9A001BCAD3 /* DBCameraImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DBCameraImages.xcassets; sourceTree = "<group>"; };
 		9AB597BB189BAF9A001BCAD3 /* DBCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DBCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB597BC189BAF9A001BCAD3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9AB597C4189BAF9A001BCAD3 /* DBCameraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DBCameraTests-Info.plist"; sourceTree = "<group>"; };
@@ -119,11 +119,11 @@
 		9AB597A9189BAF9A001BCAD3 /* DBCamera */ = {
 			isa = PBXGroup;
 			children = (
+				9AB597B5189BAF9A001BCAD3 /* DBCameraImages.xcassets */,
 				9AB597B2189BAF9A001BCAD3 /* AppDelegate.h */,
 				9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */,
 				9AB597D6189BB09D001BCAD3 /* Classes */,
 				9AB597D2189BB04B001BCAD3 /* DBCamera */,
-				9AB597B5189BAF9A001BCAD3 /* Images.xcassets */,
 				9AB597AA189BAF9A001BCAD3 /* Supporting Files */,
 			);
 			path = DBCamera;
@@ -256,7 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AB597AE189BAF9A001BCAD3 /* InfoPlist.strings in Resources */,
-				9AB597B6189BAF9A001BCAD3 /* Images.xcassets in Resources */,
+				9AB597B6189BAF9A001BCAD3 /* DBCameraImages.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,8 +397,6 @@
 		9AB597CD189BAF9A001BCAD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "DBCamera/DBCamera-Info.plist";
@@ -410,8 +408,6 @@
 		9AB597CE189BAF9A001BCAD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "DBCamera/DBCamera-Info.plist";
