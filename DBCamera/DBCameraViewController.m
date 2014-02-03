@@ -9,7 +9,6 @@
 #import "DBCameraViewController.h"
 #import "DBCameraManager.h"
 #import "DBCameraView.h"
-#import "UIImage+DBCamera.h"
 
 #import <AVFoundation/AVFoundation.h>
 
