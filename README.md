@@ -26,8 +26,7 @@ Change to the directory of your Xcode project, and Create and Edit your Podfile 
 $ cd /path/to/MyProject
 $ touch Podfile
 $ edit Podfile
-platform :ios, '6.0' 
-# Or platform :osx, '10.8'
+platform :ios, '7.0' 
 pod 'DBCamera', '~> 0.1'
 ```
 
@@ -75,7 +74,7 @@ DBCamera has a simple integration:
 ```
 
 ###Version
-2.0.3
+0.1
 
 ###Created By
 
