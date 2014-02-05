@@ -13,7 +13,10 @@
 @interface DBCameraViewController : UIViewController
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
 
-- (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
++ (DBCameraViewController *) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
++ (DBCameraViewController *) init;
+
+- (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraView:(id)camera;
 
 @end
 

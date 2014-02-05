@@ -9,23 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-@protocol DBCameraViewDelegate;
+#import "DBCameraViewDelegate.h"
+
 @interface DBCameraView : UIView
 @property (nonatomic, weak) id <DBCameraViewDelegate> delegate;
 @property (nonatomic, strong, readonly) AVCaptureVideoPreviewLayer *previewLayer;
 
-- (id) initWithCaptureSession:(AVCaptureSession *)captureSession;
++ (id) initWithFrame:(CGRect)frame;
++ (DBCameraView *) initWithCaptureSession:(AVCaptureSession *)captureSession;
+
+- (void) defaultInterface;
 - (void) drawFocusBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove;
 - (void) drawExposeBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove;
 
-@end
-
-@protocol DBCameraViewDelegate <NSObject>
-@optional
-- (void) cameraView:(DBCameraView *)camera focusAtPoint:(CGPoint)point;
-- (void) cameraView:(DBCameraView *)camera exposeAtPoint:(CGPoint)point;
-- (void) cameraViewStartRecording;
-- (void) closeCamera;
-- (void) switchCamera;
-- (void) triggerFlashForMode:(AVCaptureFlashMode)flashMode;
 @end
