@@ -72,6 +72,60 @@ DBCamera has a simple integration:
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 ```
+You can also create a custom interface, using a subclass of DBCameraView
+```objective-c
+#import "DBCameraView.h"
+
+@interface CustomCamera : DBCameraView
+- (void) buildIntarface;
+@end
+```
+```objective-c
+#import "CustomCamera.h"
+
+@interface CustomCamera ()
+@property (nonatomic, strong) UIButton *closeButton;
+@end
+
+@implementation CustomCamera
+
+- (void) buildIntarface
+{
+    [self addSubview:self.closeButton];
+}
+
+- (UIButton *) closeButton
+{
+    if ( !_closeButton ) {
+        _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_closeButton setBackgroundColor:[UIColor redColor]];
+        [_closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+        [_closeButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 15, 17.5f, 30, 30 }];
+        [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _closeButton;
+}
+
+- (void) close
+{
+    if ( [self.delegate respondsToSelector:@selector(closeCamera)] )
+        [self.delegate closeCamera];
+}
+
+@end
+```
+```objective-c
+//Present DBCameraViewController with a custom view.
+- (void) openCustomCamera:(id)sender
+{
+    CustomCamera *camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
+    [camera buildIntarface];
+    
+    [self presentViewController:[[DBCameraViewController alloc] initWithDelegate:self cameraView:camera]
+                       animated:YES completion:nil];
+}
+```
 
 ###Version
 0.2
