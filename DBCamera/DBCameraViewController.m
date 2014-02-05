@@ -10,6 +10,7 @@
 #import "DBCameraManager.h"
 #import "DBCameraView.h"
 #import "UIImage+DBCamera.h"
+#import "DBCameraViewDelegate.h"
 
 #import <AVFoundation/AVFoundation.h>
 
@@ -18,14 +19,24 @@
     UIDeviceOrientation _deviceOrientation;
 }
 
-@property (nonatomic, strong) DBCameraView *cameraView;
+@property (nonatomic, strong) DBCameraView *cameraView, *customCamera;
 @property (nonatomic, strong) DBCameraManager *cameraManager;
 
 @end
 
 @implementation DBCameraViewController
 
-- (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
++ (DBCameraViewController *) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
+{
+    return [[self alloc] initWithDelegate:delegate cameraView:nil];
+}
+
++ (DBCameraViewController *) init
+{
+    return [[self alloc] initWithDelegate:nil];
+}
+
+- (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraView:(id)camera
 {
     self = [super init];
     
@@ -34,14 +45,12 @@
         _deviceOrientation = UIDeviceOrientationPortrait;
         if ( delegate )
             _delegate = delegate;
+        
+        if ( camera )
+            [self setCustomCamera:camera];
     }
     
     return self;
-}
-
-- (id) init
-{
-    return [self initWithDelegate:nil];
 }
 
 - (void) viewDidLoad
@@ -55,9 +64,13 @@
     
     NSError *error;
     if ( [self.cameraManager setupSessionWithPreset:AVCaptureSessionPresetPhoto error:&error] ) {
-        _cameraView = [[DBCameraView alloc] initWithCaptureSession:self.cameraManager.captureSession];
-        [_cameraView setDelegate:self];
-        [self.view addSubview:_cameraView];
+        if ( self.customCamera ) {
+            [self.customCamera.previewLayer setSession:self.cameraManager.captureSession];
+            if ( !self.customCamera.delegate )
+                [self.customCamera setDelegate:self];
+            [self.view addSubview:self.customCamera];
+        } else
+            [self.view addSubview:self.cameraView];
     }
 }
 
@@ -101,6 +114,17 @@
 - (BOOL) prefersStatusBarHidden
 {
     return YES;
+}
+
+- (DBCameraView *) cameraView
+{
+    if ( !_cameraView ) {
+        _cameraView = [DBCameraView initWithCaptureSession:self.cameraManager.captureSession];
+        [_cameraView defaultInterface];
+        [_cameraView setDelegate:self];
+    }
+    
+    return _cameraView;
 }
 
 - (DBCameraManager *) cameraManager
@@ -176,23 +200,23 @@
     [self.cameraManager captureImageForDeviceOrientation:_deviceOrientation];
 }
 
-- (void) cameraView:(DBCameraView *)camera focusAtPoint:(CGPoint)point
+- (void) cameraView:(UIView *)camera focusAtPoint:(CGPoint)point
 {
     if ( self.cameraManager.videoInput.device.isFocusPointOfInterestSupported ) {
-        [self.cameraManager focusAtPoint:[self.cameraManager convertToPointOfInterestFrom:camera.previewLayer.frame
+        [self.cameraManager focusAtPoint:[self.cameraManager convertToPointOfInterestFrom:[[(DBCameraView *)camera previewLayer] frame]
                                                                               coordinates:point
-                                                                                    layer:camera.previewLayer]];
-        [camera drawFocusBoxAtPointOfInterest:point andRemove:YES];
+                                                                                    layer:[(DBCameraView *)camera previewLayer]]];
+        [(DBCameraView *)camera drawFocusBoxAtPointOfInterest:point andRemove:YES];
     }
 }
 
-- (void) cameraView:(DBCameraView *)camera exposeAtPoint:(CGPoint)point
+- (void) cameraView:(UIView *)camera exposeAtPoint:(CGPoint)point
 {
     if ( self.cameraManager.videoInput.device.isExposurePointOfInterestSupported ) {
-        [self.cameraManager exposureAtPoint:[self.cameraManager convertToPointOfInterestFrom:camera.previewLayer.frame
+        [self.cameraManager exposureAtPoint:[self.cameraManager convertToPointOfInterestFrom:[[(DBCameraView *)camera previewLayer] frame]
                                                                                  coordinates:point
-                                                                                       layer:camera.previewLayer]];
-        [camera drawExposeBoxAtPointOfInterest:point andRemove:YES];
+                                                                                       layer:[(DBCameraView *)camera previewLayer]]];
+        [(DBCameraView *)camera drawExposeBoxAtPointOfInterest:point andRemove:YES];
     }
 }
 

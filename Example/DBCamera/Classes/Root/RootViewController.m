@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "DBCameraViewController.h"
+#import "CustomCamera.h"
 
 @interface RootViewController () <DBCameraViewControllerDelegate> {
     UIImageView *_imageView;
@@ -23,6 +24,7 @@
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
     [self.navigationItem setTitle:@"Root"];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Custom Camera" style:UIBarButtonItemStylePlain target:self action:@selector(openCustomCamera:)]];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Open Camera" style:UIBarButtonItemStylePlain target:self action:@selector(openCamera:)]];
     
     _imageView = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -39,7 +41,16 @@
 
 - (void) openCamera:(id)sender
 {
-    [self presentViewController:[[DBCameraViewController alloc] initWithDelegate:self] animated:YES completion:nil];
+    [self presentViewController:[DBCameraViewController initWithDelegate:self] animated:YES completion:nil];
+}
+
+- (void) openCustomCamera:(id)sender
+{
+    CustomCamera *camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
+    [camera buildIntarface];
+    
+    [self presentViewController:[[DBCameraViewController alloc] initWithDelegate:self cameraView:camera]
+                       animated:YES completion:nil];
 }
 
 #pragma mrak - DBCameraViewControllerDelegate

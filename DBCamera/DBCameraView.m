@@ -22,15 +22,29 @@
 
 @implementation DBCameraView
 
-- (id) initWithCaptureSession:(AVCaptureSession *)captureSession
++ (id) initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:[[UIScreen mainScreen] bounds]];
+    return [[self alloc] initWithFrame:frame captureSession:nil];
+}
+
++ (DBCameraView *) initWithCaptureSession:(AVCaptureSession *)captureSession
+{
+    return [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds] captureSession:captureSession];
+}
+
+- (id) initWithFrame:(CGRect)frame captureSession:(AVCaptureSession *)captureSession
+{
+    self = [super initWithFrame:frame];
     
     if ( self ) {
         [self setBackgroundColor:[UIColor blackColor]];
         
-        _previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-        [_previewLayer setFrame: IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina ];
+        _previewLayer = [[AVCaptureVideoPreviewLayer alloc] init];
+        if ( captureSession ) {
+            [_previewLayer setSession:captureSession];
+            [_previewLayer setFrame: IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina ];
+        } else
+            [_previewLayer setFrame:self.bounds];
         
         if ( [_previewLayer respondsToSelector:@selector(connection)] ) {
             if ( [_previewLayer.connection isVideoOrientationSupported] )
@@ -39,23 +53,27 @@
         
         [_previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
         
-        [_previewLayer addSublayer:self.focusBox];
-        [_previewLayer addSublayer:self.exposeBox];
         [self.layer addSublayer:_previewLayer];
-        
-        UIView *stripe = [[UIView alloc] initWithFrame:(CGRect){ 0, CGRectGetMaxY(_previewLayer.frame) - 47, CGRectGetWidth(self.bounds), 47 }];
-        [stripe setBackgroundColor:RGBColor(0x000000, .5)];
-        [self addSubview:stripe];
-        
-        [self addSubview:self.cameraButton];
-        [self addSubview:self.closeButton];
-        [self addSubview:self.flashButton];
-        [self addSubview:self.triggerButton];
-        
-        [self createGesture];
     }
     
     return self;
+}
+
+- (void) defaultInterface
+{
+    [_previewLayer addSublayer:self.focusBox];
+    [_previewLayer addSublayer:self.exposeBox];
+    
+    UIView *stripe = [[UIView alloc] initWithFrame:(CGRect){ 0, CGRectGetMaxY(_previewLayer.frame) - 47, CGRectGetWidth(self.bounds), 47 }];
+    [stripe setBackgroundColor:RGBColor(0x000000, .5)];
+    [self addSubview:stripe];
+    
+    [self addSubview:self.cameraButton];
+    [self addSubview:self.closeButton];
+    [self addSubview:self.flashButton];
+    [self addSubview:self.triggerButton];
+    
+    [self createGesture];
 }
 
 #pragma mark - Buttons
@@ -232,14 +250,14 @@
 {
     CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
     if ( [_delegate respondsToSelector:@selector(cameraView:focusAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) )
-        [_delegate cameraView:self focusAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - 65 }];
+        [_delegate cameraView:self focusAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - CGRectGetMinY(_previewLayer.frame) }];
 }
 
 - (void) tapToExpose:(UIGestureRecognizer *)recognizer
 {
     CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
     if ( [_delegate respondsToSelector:@selector(cameraView:exposeAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) )
-        [_delegate cameraView:self exposeAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - 65 }];
+        [_delegate cameraView:self exposeAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - CGRectGetMinY(_previewLayer.frame) }];
 }
 
 @end

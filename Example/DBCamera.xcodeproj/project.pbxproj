@@ -24,6 +24,7 @@
 		9AB597D9189BB0B6001BCAD3 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597D8189BB0B6001BCAD3 /* RootViewController.m */; };
 		9AB597DC189BB501001BCAD3 /* DBCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597DB189BB501001BCAD3 /* DBCameraManager.m */; };
 		9AB597DF189BF7A2001BCAD3 /* DBCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597DE189BF7A2001BCAD3 /* DBCameraView.m */; };
+		9AF961A718A252690068E3C6 /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF961A618A252690068E3C6 /* CustomCamera.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A5134CA18A24811004E72EB /* DBCameraViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraViewDelegate.h; path = ../../DBCamera/DBCameraViewDelegate.h; sourceTree = "<group>"; };
 		9A7F5D14189D7976008A5E85 /* UIImage+DBCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+DBCamera.h"; path = "../../DBCamera/UIImage+DBCamera.h"; sourceTree = "<group>"; };
 		9A7F5D15189D7976008A5E85 /* UIImage+DBCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+DBCamera.m"; path = "../../DBCamera/UIImage+DBCamera.m"; sourceTree = "<group>"; };
 		9AB597A0189BAF9A001BCAD3 /* DBCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +65,8 @@
 		9AB597DB189BB501001BCAD3 /* DBCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraManager.m; path = ../../DBCamera/DBCameraManager.m; sourceTree = "<group>"; };
 		9AB597DD189BF7A2001BCAD3 /* DBCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraView.h; path = ../../DBCamera/DBCameraView.h; sourceTree = "<group>"; };
 		9AB597DE189BF7A2001BCAD3 /* DBCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraView.m; path = ../../DBCamera/DBCameraView.m; sourceTree = "<group>"; };
+		9AF961A518A252690068E3C6 /* CustomCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCamera.h; path = Classes/CustomCamera/CustomCamera.h; sourceTree = "<group>"; };
+		9AF961A618A252690068E3C6 /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCamera.m; path = Classes/CustomCamera/CustomCamera.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,12 +168,13 @@
 		9AB597D2189BB04B001BCAD3 /* DBCamera */ = {
 			isa = PBXGroup;
 			children = (
+				9A5134CA18A24811004E72EB /* DBCameraViewDelegate.h */,
+				9AB597DD189BF7A2001BCAD3 /* DBCameraView.h */,
+				9AB597DE189BF7A2001BCAD3 /* DBCameraView.m */,
 				9AB597D3189BB08A001BCAD3 /* DBCameraViewController.h */,
 				9AB597D4189BB08A001BCAD3 /* DBCameraViewController.m */,
 				9AB597DA189BB501001BCAD3 /* DBCameraManager.h */,
 				9AB597DB189BB501001BCAD3 /* DBCameraManager.m */,
-				9AB597DD189BF7A2001BCAD3 /* DBCameraView.h */,
-				9AB597DE189BF7A2001BCAD3 /* DBCameraView.m */,
 				9A7F5D14189D7976008A5E85 /* UIImage+DBCamera.h */,
 				9A7F5D15189D7976008A5E85 /* UIImage+DBCamera.m */,
 			);
@@ -181,6 +186,8 @@
 			children = (
 				9AB597D7189BB0B6001BCAD3 /* RootViewController.h */,
 				9AB597D8189BB0B6001BCAD3 /* RootViewController.m */,
+				9AF961A518A252690068E3C6 /* CustomCamera.h */,
+				9AF961A618A252690068E3C6 /* CustomCamera.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -285,6 +292,7 @@
 				9AB597B4189BAF9A001BCAD3 /* AppDelegate.m in Sources */,
 				9AB597D5189BB08A001BCAD3 /* DBCameraViewController.m in Sources */,
 				9A7F5D16189D7976008A5E85 /* UIImage+DBCamera.m in Sources */,
+				9AF961A718A252690068E3C6 /* CustomCamera.m in Sources */,
 				9AB597D9189BB0B6001BCAD3 /* RootViewController.m in Sources */,
 				9AB597B0189BAF9A001BCAD3 /* main.m in Sources */,
 			);
@@ -403,10 +411,14 @@
 		9AB597CD189BAF9A001BCAD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "DBCamera/DBCamera-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -414,10 +426,14 @@
 		9AB597CE189BAF9A001BCAD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "DBCamera/DBCamera-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
