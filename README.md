@@ -27,7 +27,7 @@ $ cd /path/to/MyProject
 $ touch Podfile
 $ edit Podfile
 platform :ios, '7.0' 
-pod 'DBCamera', '~> 0.1'
+pod 'DBCamera', '~> 0.2'
 ```
 
 Install into your project:
@@ -74,7 +74,7 @@ DBCamera has a simple integration:
 ```
 
 ###Version
-0.1
+0.2
 
 ###Created By
 
