@@ -32,7 +32,7 @@
 
 + (DBCameraViewController *) init
 {
-    return [[self alloc] initWithDelegate:nil];
+    return [[self alloc] initWithDelegate:nil cameraView:nil];
 }
 
 - (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraView:(id)camera

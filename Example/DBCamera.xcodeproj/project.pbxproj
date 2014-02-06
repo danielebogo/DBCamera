@@ -38,8 +38,6 @@
 
 /* Begin PBXFileReference section */
 		9A5134CA18A24811004E72EB /* DBCameraViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraViewDelegate.h; path = ../../DBCamera/DBCameraViewDelegate.h; sourceTree = "<group>"; };
-		9A7F5D14189D7976008A5E85 /* UIImage+DBCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+DBCamera.h"; path = "../../DBCamera/UIImage+DBCamera.h"; sourceTree = "<group>"; };
-		9A7F5D15189D7976008A5E85 /* UIImage+DBCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+DBCamera.m"; path = "../../DBCamera/UIImage+DBCamera.m"; sourceTree = "<group>"; };
 		9AB597A0189BAF9A001BCAD3 /* DBCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB597A3189BAF9A001BCAD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9AB597A5189BAF9A001BCAD3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -290,7 +288,6 @@
 				9AB597DF189BF7A2001BCAD3 /* DBCameraView.m in Sources */,
 				9AB597B4189BAF9A001BCAD3 /* AppDelegate.m in Sources */,
 				9AB597D5189BB08A001BCAD3 /* DBCameraViewController.m in Sources */,
-				9A7F5D16189D7976008A5E85 /* UIImage+DBCamera.m in Sources */,
 				9AF961A718A252690068E3C6 /* CustomCamera.m in Sources */,
 				9AB597D9189BB0B6001BCAD3 /* RootViewController.m in Sources */,
 				9AB597B0189BAF9A001BCAD3 /* main.m in Sources */,
