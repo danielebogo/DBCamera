@@ -27,7 +27,7 @@ $ cd /path/to/MyProject
 $ touch Podfile
 $ edit Podfile
 platform :ios, '7.0' 
-pod 'DBCamera', '~> 0.2'
+pod 'DBCamera', '~> 0.3'
 ```
 
 Install into your project:
@@ -58,7 +58,7 @@ DBCamera has a simple integration:
 //Present DBCameraViewController
 - (void) openCamera:(id)sender
 {
-    [self presentViewController:[[DBCameraViewController alloc] initWithDelegate:self] animated:YES completion:nil];
+    [self presentViewController:[DBCameraViewController initWithDelegate:self] animated:YES completion:nil];
 }
 ```
 
@@ -128,7 +128,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 ```
 
 ###Version
-0.2
+0.3
 
 ###Created By
 
