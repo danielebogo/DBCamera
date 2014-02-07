@@ -230,8 +230,11 @@
 - (void) changeCamera:(UIButton *)button
 {
     [button setSelected:!button.isSelected];
-    if ( [_delegate respondsToSelector:@selector(switchCamera)] )
-        [_delegate switchCamera];
+    if ( button.isSelected && self.flashButton.isSelected )
+        [self flashTriggerAction:self.flashButton];
+    [self.flashButton setEnabled:!button.isSelected];
+    if ( [self.delegate respondsToSelector:@selector(switchCamera)] )
+        [self.delegate switchCamera];
 }
 
 - (void) close

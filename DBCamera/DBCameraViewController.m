@@ -182,7 +182,7 @@
 - (void) captureSessionDidStartRunning
 {
     CGRect bounds = _cameraView.bounds;
-    CGPoint screenCenter = (CGPoint){ (bounds.size.width * .5f), (bounds.size.height * .5f) - 65 };
+    CGPoint screenCenter = (CGPoint){ (bounds.size.width * .5f), (bounds.size.height * .5f) - CGRectGetMinY(_cameraView.previewLayer.frame) };
     [_cameraView drawFocusBoxAtPointOfInterest:screenCenter andRemove:NO];
     [_cameraView drawExposeBoxAtPointOfInterest:screenCenter andRemove:NO];
 }
