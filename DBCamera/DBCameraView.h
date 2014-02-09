@@ -21,5 +21,6 @@
 - (void) defaultInterface;
 - (void) drawFocusBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove;
 - (void) drawExposeBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove;
+- (void) draw:(CALayer *)layer atPointOfInterest:(CGPoint)point andRemove:(BOOL)remove;
 
 @end

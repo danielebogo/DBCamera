@@ -18,7 +18,8 @@
     UIDeviceOrientation _deviceOrientation;
 }
 
-@property (nonatomic, strong) DBCameraView *cameraView, *customCamera;
+@property (nonatomic, strong) DBCameraView *cameraView;
+@property (nonatomic, strong) id customCamera;
 @property (nonatomic, strong) DBCameraManager *cameraManager;
 
 @end
@@ -64,9 +65,13 @@
     NSError *error;
     if ( [self.cameraManager setupSessionWithPreset:AVCaptureSessionPresetPhoto error:&error] ) {
         if ( self.customCamera ) {
-            [self.customCamera.previewLayer setSession:self.cameraManager.captureSession];
-            if ( !self.customCamera.delegate )
-                [self.customCamera setDelegate:self];
+            if ( [self.customCamera respondsToSelector:@selector(previewLayer)] ) {
+                [(AVCaptureVideoPreviewLayer *)[self.customCamera valueForKey:@"previewLayer"] setSession:self.cameraManager.captureSession];
+                
+                if ( [self.customCamera respondsToSelector:@selector(delegate)] )
+                    [self.customCamera setValue:self forKey:@"delegate"];
+            }
+            
             [self.view addSubview:self.customCamera];
         } else
             [self.view addSubview:self.cameraView];
@@ -181,10 +186,14 @@
 
 - (void) captureSessionDidStartRunning
 {
-    CGRect bounds = _cameraView.bounds;
-    CGPoint screenCenter = (CGPoint){ (bounds.size.width * .5f), (bounds.size.height * .5f) - CGRectGetMinY(_cameraView.previewLayer.frame) };
-    [_cameraView drawFocusBoxAtPointOfInterest:screenCenter andRemove:NO];
-    [_cameraView drawExposeBoxAtPointOfInterest:screenCenter andRemove:NO];
+    id camera = self.customCamera ? self.customCamera : _cameraView;
+    CGRect bounds = [(UIView *)camera bounds];
+    AVCaptureVideoPreviewLayer *previewLayer = self.customCamera ? (AVCaptureVideoPreviewLayer *)[self.customCamera valueForKey:@"previewLayer"] : _cameraView.previewLayer;
+    CGPoint screenCenter = (CGPoint){ (bounds.size.width * .5f), (bounds.size.height * .5f) - CGRectGetMinY(previewLayer.frame) };
+    if ([camera respondsToSelector:@selector(drawFocusBoxAtPointOfInterest:andRemove:)] )
+        [camera drawFocusBoxAtPointOfInterest:screenCenter andRemove:NO];
+    if ( [camera respondsToSelector:@selector(drawExposeBoxAtPointOfInterest:andRemove:)] )
+        [camera drawExposeBoxAtPointOfInterest:screenCenter andRemove:NO];
 }
 
 #pragma mark - CameraViewDelegate

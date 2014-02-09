@@ -27,7 +27,7 @@ $ cd /path/to/MyProject
 $ touch Podfile
 $ edit Podfile
 platform :ios, '7.0' 
-pod 'DBCamera', '~> 0.4'
+pod 'DBCamera', '~> 0.5'
 ```
 
 Install into your project:
@@ -85,6 +85,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 
 @interface CustomCamera ()
 @property (nonatomic, strong) UIButton *closeButton;
+@property (nonatomic, strong) CALayer *focusBox, *exposeBox;
 @end
 
 @implementation CustomCamera
@@ -92,6 +93,11 @@ You can also create a custom interface, using a subclass of DBCameraView
 - (void) buildIntarface
 {
     [self addSubview:self.closeButton];
+    
+    [self.previewLayer addSublayer:self.focusBox];
+    [self.previewLayer addSublayer:self.exposeBox];
+    
+    [self createGesture];
 }
 
 - (UIButton *) closeButton
@@ -113,6 +119,46 @@ You can also create a custom interface, using a subclass of DBCameraView
         [self.delegate closeCamera];
 }
 
+#pragma mark - Focus / Expose Box
+
+- (CALayer *) focusBox
+{
+    if ( !_focusBox ) {
+        _focusBox = [[CALayer alloc] init];
+        [_focusBox setCornerRadius:45.0f];
+        [_focusBox setBounds:CGRectMake(0.0f, 0.0f, 90, 90)];
+        [_focusBox setBorderWidth:5.f];
+        [_focusBox setBorderColor:[[UIColor whiteColor] CGColor]];
+        [_focusBox setOpacity:0];
+    }
+    
+    return _focusBox;
+}
+
+- (CALayer *) exposeBox
+{
+    if ( !_exposeBox ) {
+        _exposeBox = [[CALayer alloc] init];
+        [_exposeBox setCornerRadius:55.0f];
+        [_exposeBox setBounds:CGRectMake(0.0f, 0.0f, 110, 110)];
+        [_exposeBox setBorderWidth:5.f];
+        [_exposeBox setBorderColor:[[UIColor redColor] CGColor]];
+        [_exposeBox setOpacity:0];
+    }
+    
+    return _exposeBox;
+}
+
+- (void) drawFocusBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove
+{
+    [super draw:_focusBox atPointOfInterest:point andRemove:remove];
+}
+
+- (void) drawExposeBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove
+{
+    [super draw:_exposeBox atPointOfInterest:point andRemove:remove];
+}
+
 @end
 ```
 ```objective-c
@@ -128,7 +174,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 ```
 
 ###Version
-0.4
+0.5
 
 ###Created By
 
