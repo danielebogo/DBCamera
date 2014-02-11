@@ -41,7 +41,9 @@
 
 - (void) openCamera:(id)sender
 {
-    [self presentViewController:[DBCameraViewController initWithDelegate:self] animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DBCameraViewController initWithDelegate:self]];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void) openCustomCamera:(id)sender
@@ -49,8 +51,9 @@
     CustomCamera *camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
     [camera buildIntarface];
     
-    [self presentViewController:[[DBCameraViewController alloc] initWithDelegate:self cameraView:camera]
-                       animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[DBCameraViewController alloc] initWithDelegate:self cameraView:camera]];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mrak - DBCameraViewControllerDelegate

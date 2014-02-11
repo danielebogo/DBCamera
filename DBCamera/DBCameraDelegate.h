@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 
 @protocol DBCameraViewDelegate <NSObject>
 @optional
@@ -16,4 +17,9 @@
 - (void) closeCamera;
 - (void) switchCamera;
 - (void) triggerFlashForMode:(AVCaptureFlashMode)flashMode;
+@end
+
+@protocol DBCameraViewControllerDelegate <NSObject>
+@optional
+- (void) captureImageDidFinish:(UIImage *)image;
 @end

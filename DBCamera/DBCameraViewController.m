@@ -9,7 +9,8 @@
 #import "DBCameraViewController.h"
 #import "DBCameraManager.h"
 #import "DBCameraView.h"
-#import "DBCameraViewDelegate.h"
+#import "DBCameraDelegate.h"
+#import "DBCameraUseViewController.h"
 
 #import <AVFoundation/AVFoundation.h>
 
@@ -57,6 +58,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    
     [self.view setBackgroundColor:[UIColor blackColor]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:)
@@ -173,8 +176,10 @@
 {
     _processingPhoto = NO;
     
-    if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
-        [_delegate captureImageDidFinish:image];
+    DBCameraUseViewController *cameraUseViewController = [[DBCameraUseViewController alloc] init];
+    [cameraUseViewController setDelegate:self.delegate];
+    [cameraUseViewController setCapturedImage:image];
+    [self.navigationController pushViewController:cameraUseViewController animated:YES];
 }
 
 - (void) captureImageFailedWithError:(NSError *)error

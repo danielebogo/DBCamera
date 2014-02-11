@@ -64,8 +64,9 @@
     [_previewLayer addSublayer:self.focusBox];
     [_previewLayer addSublayer:self.exposeBox];
     
-    UIView *stripe = [[UIView alloc] initWithFrame:(CGRect){ 0, CGRectGetMaxY(_previewLayer.frame) - 47, CGRectGetWidth(self.bounds), 47 }];
-    [stripe setBackgroundColor:RGBColor(0x000000, .5)];
+    UIView *stripe = [[UIView alloc] initWithFrame:(CGRect){ CGRectGetMidX(self.bounds) - 40, CGRectGetMaxY(_previewLayer.frame) - 40, 80, 80 }];
+    [stripe setBackgroundColor:RGBColor(0x000000, .5f)];
+    [stripe.layer setCornerRadius:40.0f];
     [self addSubview:stripe];
     
     [self addSubview:self.cameraButton];
@@ -84,7 +85,8 @@
         _triggerButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_triggerButton setBackgroundColor:[UIColor whiteColor]];
         [_triggerButton setImage:[UIImage imageNamed:@"trigger"] forState:UIControlStateNormal];
-        [_triggerButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 53, CGRectGetMaxY(_previewLayer.frame) - 25, 106, 50 }];
+        [_triggerButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 35, CGRectGetMaxY(_previewLayer.frame) - 35, 70, 70 }];
+        [_triggerButton.layer setCornerRadius:35.0f];
         [_triggerButton addTarget:self action:@selector(triggerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     

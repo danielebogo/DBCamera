@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-#import "DBCameraViewDelegate.h"
+#import "DBCameraDelegate.h"
 
 @interface DBCameraView : UIView
 @property (nonatomic, weak) id <DBCameraViewDelegate> delegate;
