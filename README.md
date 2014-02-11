@@ -3,7 +3,7 @@ DBCamera
 
 Inspired by [CropImageSample] (https://github.com/kishikawakatsumi/CropImageSample), DBCamera is a simple custom camera with AVFoundation. At the moment it has been tested only on iOS 7.
 
-<p align="left"><img src="http://paperstreetsoapdesign.com/development/dbcamera/github/dbcamera_screen.png" width="320px" height="568px" /></p>
+![Alt text](http://paperstreetsoapdesign.com/development/dbcamera/github/dbcamera_screen_3.png)
 
 ##Getting Started
 
