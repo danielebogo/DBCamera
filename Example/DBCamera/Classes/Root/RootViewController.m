@@ -10,8 +10,47 @@
 #import "DBCameraViewController.h"
 #import "CustomCamera.h"
 
-@interface RootViewController () <DBCameraViewControllerDelegate> {
+#define kCellIdentifier @"CellIdentifier"
+#define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue" ]
+
+@interface DetailViewController : UIViewController {
     UIImageView *_imageView;
+}
+@property (nonatomic, strong) UIImage *detailImage;
+@end
+
+@implementation DetailViewController
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    
+    [self.navigationItem setTitle:@"Detail"];
+    
+    _imageView = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [_imageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+    [_imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [self.view addSubview:_imageView];
+}
+
+- (void) setDetailImage:(UIImage *)detailImage
+{
+    _detailImage = detailImage;
+    [_imageView setImage:_detailImage];
+}
+
+@end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@interface RootViewController () <DBCameraViewControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
+    UITableView *_tableView;
 }
 @end
 
@@ -24,13 +63,12 @@
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
     [self.navigationItem setTitle:@"Root"];
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Custom Camera" style:UIBarButtonItemStylePlain target:self action:@selector(openCustomCamera:)]];
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Open Camera" style:UIBarButtonItemStylePlain target:self action:@selector(openCamera:)]];
     
-    _imageView = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [_imageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
-    [_imageView setContentMode:UIViewContentModeScaleAspectFit];
-    [self.view addSubview:_imageView];
+    _tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStyleGrouped];
+    [_tableView setDelegate:self];
+    [_tableView setDataSource:self];
+    [_tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+    [self.view addSubview:_tableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,14 +77,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) openCamera:(id)sender
+#pragma mark - Camera Actions
+
+- (void) openCamera
 {
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DBCameraViewController initWithDelegate:self]];
     [nav setNavigationBarHidden:YES];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
-- (void) openCustomCamera:(id)sender
+- (void) openCustomCamera
 {
     CustomCamera *camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
     [camera buildIntarface];
@@ -56,11 +96,62 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 
+- (void) openCameraWithoutSegue
+{
+    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
+    [cameraController setUseCameraSegue:NO];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraController];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+#pragma mrak - UITableViewDataSource & UITableViewDelegate
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return kCameraTitles.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+    
+    if ( !cell )
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier];
+    
+    [[cell textLabel] setText:kCameraTitles[indexPath.row]];
+    
+    return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    switch (indexPath.row) {
+        case 0:
+            [self openCamera];
+            break;
+            
+        case 1:
+            [self openCustomCamera];
+            break;
+        
+        case 2:
+            [self openCameraWithoutSegue];
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mrak - DBCameraViewControllerDelegate
 
 - (void) captureImageDidFinish:(UIImage *)image
 {
-    [_imageView setImage:image];
+    DetailViewController *detail = [[DetailViewController alloc] init];
+    [detail setDetailImage:image];
+    [self.navigationController pushViewController:detail animated:NO];
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

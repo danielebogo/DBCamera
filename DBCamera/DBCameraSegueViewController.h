@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
 
-@interface DBCameraUseViewController : UIViewController
+@interface DBCameraSegueViewController : UIViewController
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
 @property (nonatomic, strong) UIImage *capturedImage;
 @end

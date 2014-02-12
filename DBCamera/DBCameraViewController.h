@@ -11,6 +11,7 @@
 
 @interface DBCameraViewController : UIViewController
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
+@property (nonatomic, assign) BOOL useCameraSegue;
 
 + (DBCameraViewController *) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
 + (DBCameraViewController *) init;

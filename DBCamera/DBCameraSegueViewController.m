@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
 //
 
-#import "DBCameraUseViewController.h"
+#import "DBCameraSegueViewController.h"
 
 #ifndef DBCameraLocalizedStrings
 #define DBCameraLocalizedStrings(key) \
@@ -15,13 +15,13 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 #define buttonMargin 20.0f
 
-@interface DBCameraUseViewController () {
+@interface DBCameraSegueViewController () {
     UIImageView *_imageView;
 }
 
 @end
 
-@implementation DBCameraUseViewController
+@implementation DBCameraSegueViewController
 
 - (void)viewDidLoad
 {
@@ -59,6 +59,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [_imageView setImage:self.capturedImage];
 }
 

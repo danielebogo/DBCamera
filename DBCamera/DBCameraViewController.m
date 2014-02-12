@@ -10,7 +10,7 @@
 #import "DBCameraManager.h"
 #import "DBCameraView.h"
 #import "DBCameraDelegate.h"
-#import "DBCameraUseViewController.h"
+#import "DBCameraSegueViewController.h"
 
 #import <AVFoundation/AVFoundation.h>
 
@@ -49,6 +49,8 @@
         
         if ( camera )
             [self setCustomCamera:camera];
+
+        [self setUseCameraSegue:YES];
     }
     
     return self;
@@ -176,10 +178,15 @@
 {
     _processingPhoto = NO;
     
-    DBCameraUseViewController *cameraUseViewController = [[DBCameraUseViewController alloc] init];
-    [cameraUseViewController setDelegate:self.delegate];
-    [cameraUseViewController setCapturedImage:image];
-    [self.navigationController pushViewController:cameraUseViewController animated:YES];
+    if ( !self.useCameraSegue ) {
+        if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
+            [_delegate captureImageDidFinish:image];
+    } else {
+        DBCameraSegueViewController *cameraSegueUseViewController = [[DBCameraSegueViewController alloc] init];
+        [cameraSegueUseViewController setDelegate:self.delegate];
+        [cameraSegueUseViewController setCapturedImage:image];
+        [self.navigationController pushViewController:cameraSegueUseViewController animated:YES];
+    }
 }
 
 - (void) captureImageFailedWithError:(NSError *)error
