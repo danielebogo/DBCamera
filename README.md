@@ -73,7 +73,7 @@ DBCamera has a simple integration:
 }
 ```
 By default, DBCameraViewController has another controller to display the image preview.
-When you create DBCameraViewController instance, you can set ```objective-c useCameraSegue: ``` NO, to avoid it.
+When you create DBCameraViewController instance, you can set ``` useCameraSegue: ``` NO, to avoid it.
 ```objective-c
 - (void) openCameraWithoutSegue
 {
