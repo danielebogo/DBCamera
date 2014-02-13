@@ -27,7 +27,7 @@ $ cd /path/to/MyProject
 $ touch Podfile
 $ edit Podfile
 platform :ios, '7.0' 
-pod 'DBCamera', '~> 0.6'
+pod 'DBCamera', '~> 0.7'
 ```
 
 Install into your project:
@@ -72,6 +72,19 @@ DBCamera has a simple integration:
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 ```
+By default, DBCameraViewController has another controller to display the image preview.
+When you create DBCameraViewController instance, you can set ```objective-c useCameraSegue: ``` NO, to avoid it.
+```objective-c
+- (void) openCameraWithoutSegue
+{
+    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
+    [cameraController setUseCameraSegue:NO];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraController];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+```
+
 You can also create a custom interface, using a subclass of DBCameraView
 ```objective-c
 #import "DBCameraView.h"
@@ -174,7 +187,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 ```
 
 ###Version
-0.6
+0.7
 
 ###Created By
 
