@@ -35,9 +35,9 @@
     [self.view addSubview:_imageView];
 }
 
-- (void) setDetailImage:(UIImage *)detailImage
+- (void) viewWillAppear:(BOOL)animated
 {
-    _detailImage = detailImage;
+    [super viewWillAppear:animated];
     [_imageView setImage:_detailImage];
 }
 
@@ -128,7 +128,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    switch (indexPath.row) {
+    switch ( indexPath.row ) {
         case 0:
             [self openCamera];
             break;
@@ -140,6 +140,7 @@
         case 2:
             [self openCameraWithoutSegue];
             break;
+            
         default:
             break;
     }
