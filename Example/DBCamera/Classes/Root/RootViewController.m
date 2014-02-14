@@ -25,7 +25,9 @@
 {
     [super viewDidLoad];
     
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
+#endif
     
     [self.navigationItem setTitle:@"Detail"];
     
@@ -38,6 +40,7 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
     [_imageView setImage:_detailImage];
 }
 
@@ -60,7 +63,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
+#endif
     
     [self.navigationItem setTitle:@"Root"];
     
@@ -69,6 +74,15 @@
     [_tableView setDataSource:self];
     [_tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     [self.view addSubview:_tableView];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+#endif
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,6 +142,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+#endif
+    
     switch ( indexPath.row ) {
         case 0:
             [self openCamera];
@@ -150,6 +168,9 @@
 
 - (void) captureImageDidFinish:(UIImage *)image
 {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+#endif
     DetailViewController *detail = [[DetailViewController alloc] init];
     [detail setDetailImage:image];
     [self.navigationController pushViewController:detail animated:NO];

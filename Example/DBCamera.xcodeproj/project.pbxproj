@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A369EE518AD62A100EB5D1B /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A369EE418AD62A100EB5D1B /* UIImage+Crop.m */; };
 		9A50C7A118AA3EAF00CD2DF3 /* DBCameraSegueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A50C7A018AA3EAF00CD2DF3 /* DBCameraSegueViewController.m */; };
 		9A50C7B018AA432200CD2DF3 /* DBCamera.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A50C7B218AA432200CD2DF3 /* DBCamera.strings */; };
 		9A50C7F118AA6C9100CD2DF3 /* DBCameraImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A50C7F018AA6C9100CD2DF3 /* DBCameraImages.xcassets */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A369EE318AD62A100EB5D1B /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Crop.h"; path = "../../DBCamera/UIImage+Crop.h"; sourceTree = "<group>"; };
+		9A369EE418AD62A100EB5D1B /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Crop.m"; path = "../../DBCamera/UIImage+Crop.m"; sourceTree = "<group>"; };
 		9A50C79F18AA3EAF00CD2DF3 /* DBCameraSegueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraSegueViewController.h; path = ../../DBCamera/DBCameraSegueViewController.h; sourceTree = "<group>"; };
 		9A50C7A018AA3EAF00CD2DF3 /* DBCameraSegueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraSegueViewController.m; path = ../../DBCamera/DBCameraSegueViewController.m; sourceTree = "<group>"; };
 		9A50C7A918AA42BC00CD2DF3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				9AB597D4189BB08A001BCAD3 /* DBCameraViewController.m */,
 				9A50C79F18AA3EAF00CD2DF3 /* DBCameraSegueViewController.h */,
 				9A50C7A018AA3EAF00CD2DF3 /* DBCameraSegueViewController.m */,
+				9A369EE318AD62A100EB5D1B /* UIImage+Crop.h */,
+				9A369EE418AD62A100EB5D1B /* UIImage+Crop.m */,
 				9AB597DA189BB501001BCAD3 /* DBCameraManager.h */,
 				9AB597DB189BB501001BCAD3 /* DBCameraManager.m */,
 				9AB597DD189BF7A2001BCAD3 /* DBCameraView.h */,
@@ -310,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AB597DC189BB501001BCAD3 /* DBCameraManager.m in Sources */,
+				9A369EE518AD62A100EB5D1B /* UIImage+Crop.m in Sources */,
 				9A50C7A118AA3EAF00CD2DF3 /* DBCameraSegueViewController.m in Sources */,
 				9AB597DF189BF7A2001BCAD3 /* DBCameraView.m in Sources */,
 				9AB597B4189BAF9A001BCAD3 /* AppDelegate.m in Sources */,
@@ -406,7 +412,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -439,7 +445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -453,7 +459,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "DBCamera/DBCamera-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -468,7 +474,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "DBCamera/DBCamera-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

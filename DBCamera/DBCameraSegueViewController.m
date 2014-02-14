@@ -7,6 +7,7 @@
 //
 
 #import "DBCameraSegueViewController.h"
+#import "UIImage+Crop.h"
 
 #ifndef DBCameraLocalizedStrings
 #define DBCameraLocalizedStrings(key) \
@@ -27,11 +28,14 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
+#endif
     
     [self.view setBackgroundColor:[UIColor blackColor]];
     
     _imageView = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [_imageView setBackgroundColor:[UIColor clearColor]];
     [_imageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     [_imageView setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:_imageView];
@@ -98,6 +102,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
         [_delegate captureImageDidFinish:self.capturedImage];
+}
+
+- (void) cropQuadImage
+{
+    [_imageView setImage:[[UIImage screenshotFromView:self.view] croppedImage:(CGRect){ 0, 248, 640, 640 }]];
 }
 
 @end

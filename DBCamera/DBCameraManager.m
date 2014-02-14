@@ -75,6 +75,8 @@
     
     [_captureSession setSessionPreset:sessionPreset];
     
+    [self setFlashMode:AVCaptureFlashModeOff];
+    
     return YES;
 }
 

@@ -60,7 +60,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
+#endif
     
     [self.view setBackgroundColor:[UIColor blackColor]];
     
