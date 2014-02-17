@@ -3,7 +3,7 @@ DBCamera
 
 Inspired by [CropImageSample] (https://github.com/kishikawakatsumi/CropImageSample), DBCamera is a simple custom camera with AVFoundation.
 
-![Alt text](http://paperstreetsoapdesign.com/development/dbcamera/github/dbcamera_screen_4.png)
+![Alt text](http://paperstreetsoapdesign.com/development/dbcamera/github/dbcamera_screen_5.png)
 
 ##Getting Started
 
