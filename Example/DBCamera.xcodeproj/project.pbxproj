@@ -44,6 +44,7 @@
 /* Begin PBXFileReference section */
 		9A11717918B24DC900C4CD82 /* DBCameraImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraImageView.h; path = ../../DBCamera/DBCameraImageView.h; sourceTree = "<group>"; };
 		9A11717A18B24DC900C4CD82 /* DBCameraImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraImageView.m; path = ../../DBCamera/DBCameraImageView.m; sourceTree = "<group>"; };
+		9A11717C18B261C600C4CD82 /* DBCameraMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraMacros.h; path = ../../DBCamera/DBCameraMacros.h; sourceTree = "<group>"; };
 		9A369EE318AD62A100EB5D1B /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Crop.h"; path = "../../DBCamera/UIImage+Crop.h"; sourceTree = "<group>"; };
 		9A369EE418AD62A100EB5D1B /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Crop.m"; path = "../../DBCamera/UIImage+Crop.m"; sourceTree = "<group>"; };
 		9A50C79F18AA3EAF00CD2DF3 /* DBCameraSegueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraSegueViewController.h; path = ../../DBCamera/DBCameraSegueViewController.h; sourceTree = "<group>"; };
@@ -194,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				9A50C7A718AA423C00CD2DF3 /* Localizations */,
+				9A11717C18B261C600C4CD82 /* DBCameraMacros.h */,
 				9A5134CA18A24811004E72EB /* DBCameraDelegate.h */,
 				9AB597DD189BF7A2001BCAD3 /* DBCameraView.h */,
 				9AB597DE189BF7A2001BCAD3 /* DBCameraView.m */,

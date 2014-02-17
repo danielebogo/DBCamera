@@ -7,10 +7,9 @@
 //
 
 #import "DBCameraSegueViewController.h"
+#import "DBCameraMacros.h"
 #import "DBCameraSegueView.h"
 #import "UIImage+Crop.h"
-
-#define IS_RETINA_4 ( [[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2 && [[UIScreen mainScreen] bounds].size.height > 480)
 
 @interface DBCameraSegueViewController () <DBCameraSegueViewDelegate> {
     DBCameraSegueView *_containerView;
@@ -31,7 +30,7 @@
     [self.view setBackgroundColor:[UIColor blackColor]];
     
     _containerView = [[DBCameraSegueView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [_containerView setBackgroundColor:[UIColor colorWithRed:0.13f green:0.13f blue:0.13f alpha:1.0f]];
+    [_containerView setBackgroundColor:RGBColor(0x252525, 1)];
     [_containerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     [_containerView setDelegate:self];
     [_containerView buildButtonInterface];
@@ -46,7 +45,7 @@
     
     CGFloat newHeight = [self getNewHeight];
     CGFloat newY = ((CGRectGetHeight([[UIScreen mainScreen] bounds]) - 60) * .5) - (newHeight * .5);
-    [_containerView.imageView setFrame:(CGRect){ _containerView.imageView.frame.origin.x, newY + ( IS_RETINA_4 ? 60.0f : 0 ),
+    [_containerView.imageView setFrame:(CGRect){ _containerView.imageView.frame.origin.x, newY + 60.0f,
                                                  CGRectGetWidth(_containerView.imageView.frame), newHeight }];
     [_containerView.imageView setDefaultCenter:_containerView.imageView.center];
 }
@@ -83,7 +82,7 @@
 {
     if ( [cameraView isCropModeOn] ) {
         if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
-            [_delegate captureImageDidFinish:[[UIImage screenshotFromView:self.view] croppedImage:(CGRect){ 0, 308, 640, 640 }]];
+            [_delegate captureImageDidFinish:[[UIImage screenshotFromView:self.view] croppedImage:(CGRect){ 0, IS_RETINA_4 ? 308 : 220, 640, 640 }]];
     } else if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
         [_delegate captureImageDidFinish:self.capturedImage];
 }

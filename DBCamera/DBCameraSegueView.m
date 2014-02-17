@@ -8,6 +8,7 @@
 
 #import "DBCameraSegueView.h"
 #import "DBCameraImageView.h"
+#import "DBCameraMacros.h"
 
 #ifndef DBCameraLocalizedStrings
 #define DBCameraLocalizedStrings(key) \
@@ -15,6 +16,12 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 #endif
 
 #define buttonMargin 20.0f
+#define kCropStripeHeight (IS_RETINA_4 ? 154 : 110)
+
+@interface DBCameraSegueView () {
+    UIView *_topStripe, *_bottomStripe;
+}
+@end
 
 @implementation DBCameraSegueView
 
@@ -29,6 +36,16 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         [_imageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
         [_imageView setContentMode:UIViewContentModeScaleAspectFit];
         [self addSubview:_imageView];
+        
+        _topStripe = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth(frame), kCropStripeHeight }];
+        [_topStripe setBackgroundColor:RGBColor(0x00ffff, .30)];
+        [_topStripe setHidden:YES];
+        [self addSubview:_topStripe];
+        
+        _bottomStripe = [[UIView alloc] initWithFrame:(CGRect){ 0, CGRectGetHeight(frame) - (kCropStripeHeight - 60), CGRectGetWidth(frame), (kCropStripeHeight - 60) }];
+        [_bottomStripe setBackgroundColor:RGBColor(0x00ffff, .30)];
+        [_bottomStripe setHidden:YES];
+        [self addSubview:_bottomStripe];
     }
     return self;
 }
@@ -51,10 +68,17 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     if ( !_stripeView ) {
         _stripeView = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), 60 }];
-        [_stripeView setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:.65f]];
+        [_stripeView setBackgroundColor:RGBColor(0x000000, 1)];
     }
     
     return _stripeView;
+}
+
+- (void) setCropMode:(BOOL)cropMode
+{
+    _cropMode = cropMode;
+    [_topStripe setHidden:!_cropMode];
+    [_bottomStripe setHidden:!_cropMode];
 }
 
 - (UIButton *) baseButton
