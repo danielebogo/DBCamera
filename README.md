@@ -1,9 +1,9 @@
 DBCamera
 ========
 
-Inspired by [CropImageSample] (https://github.com/kishikawakatsumi/CropImageSample), DBCamera is a simple custom camera with AVFoundation. At the moment it has been tested only on iOS 7.
+Inspired by [CropImageSample] (https://github.com/kishikawakatsumi/CropImageSample), DBCamera is a simple custom camera with AVFoundation.
 
-![Alt text](http://paperstreetsoapdesign.com/development/dbcamera/github/dbcamera_screen_3.png)
+![Alt text](http://paperstreetsoapdesign.com/development/dbcamera/github/dbcamera_screen_4.png)
 
 ##Getting Started
 
@@ -26,8 +26,8 @@ Change to the directory of your Xcode project, and Create and Edit your Podfile 
 $ cd /path/to/MyProject
 $ touch Podfile
 $ edit Podfile
-platform :ios, '7.0' 
-pod 'DBCamera', '~> 0.7'
+platform :ios, '6.0' 
+pod 'DBCamera', '~> 0.8'
 ```
 
 Install into your project:
@@ -186,8 +186,11 @@ You can also create a custom interface, using a subclass of DBCameraView
 }
 ```
 
+###iOS Min Required
+6.0
+
 ###Version
-0.7
+0.8
 
 ###Created By
 
