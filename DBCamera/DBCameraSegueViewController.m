@@ -7,17 +7,13 @@
 //
 
 #import "DBCameraSegueViewController.h"
+#import "DBCameraSegueView.h"
 #import "UIImage+Crop.h"
 
-#ifndef DBCameraLocalizedStrings
-#define DBCameraLocalizedStrings(key) \
-NSLocalizedStringFromTable(key, @"DBCamera", nil)
-#endif
+#define IS_RETINA_4 ( [[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2 && [[UIScreen mainScreen] bounds].size.height > 480)
 
-#define buttonMargin 20.0f
-
-@interface DBCameraSegueViewController () {
-    UIImageView *_imageView;
+@interface DBCameraSegueViewController () <DBCameraSegueViewDelegate> {
+    DBCameraSegueView *_containerView;
 }
 
 @end
@@ -31,56 +27,39 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
 #endif
-    
+    [self.view setUserInteractionEnabled:YES];
     [self.view setBackgroundColor:[UIColor blackColor]];
     
-    _imageView = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [_imageView setBackgroundColor:[UIColor clearColor]];
-    [_imageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
-    [_imageView setContentMode:UIViewContentModeScaleAspectFit];
-    [self.view addSubview:_imageView];
-    
-    UIView *stripe = [[UIView alloc] initWithFrame:(CGRect){ 0, [[UIScreen mainScreen] bounds].size.height - 50, [[UIScreen mainScreen] bounds].size.width, 50 }];
-    [stripe setBackgroundColor:[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:.1f]];
-    [self.view addSubview:stripe];
-    
-    UIButton *retakeButton = [self baseButton];
-    [retakeButton setTitle:DBCameraLocalizedStrings(@"button.retake") forState:UIControlStateNormal];
-    [retakeButton.titleLabel sizeToFit];
-    [retakeButton sizeToFit];
-    [retakeButton setFrame:(CGRect){ 0, 0, CGRectGetWidth(retakeButton.frame) + buttonMargin, CGRectGetHeight(stripe.frame) }];
-    [retakeButton addTarget:self action:@selector(retakePhoto) forControlEvents:UIControlEventTouchUpInside];
-    [stripe addSubview:retakeButton];
-    
-    UIButton *useButton = [self baseButton];
-    [useButton setTitle:DBCameraLocalizedStrings(@"button.use") forState:UIControlStateNormal];
-    [useButton.titleLabel sizeToFit];
-    [useButton sizeToFit];
-    [useButton setFrame:(CGRect){ CGRectGetWidth(stripe.frame) - (CGRectGetWidth(useButton.frame) + buttonMargin), 0, CGRectGetWidth(useButton.frame) + buttonMargin, CGRectGetHeight(stripe.frame) }];
-    [useButton addTarget:self action:@selector(useImage) forControlEvents:UIControlEventTouchUpInside];
-    [stripe addSubview:useButton];
+    _containerView = [[DBCameraSegueView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [_containerView setBackgroundColor:[UIColor colorWithRed:0.13f green:0.13f blue:0.13f alpha:1.0f]];
+    [_containerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+    [_containerView setDelegate:self];
+    [_containerView buildButtonInterface];
+    [self.view addSubview:_containerView];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [_imageView setImage:self.capturedImage];
+    [_containerView.imageView setImage:self.capturedImage];
+    
+    CGFloat newHeight = [self getNewHeight];
+    CGFloat newY = ((CGRectGetHeight([[UIScreen mainScreen] bounds]) - 60) * .5) - (newHeight * .5);
+    [_containerView.imageView setFrame:(CGRect){ _containerView.imageView.frame.origin.x, newY + ( IS_RETINA_4 ? 60.0f : 0 ),
+                                                 CGRectGetWidth(_containerView.imageView.frame), newHeight }];
+    [_containerView.imageView setDefaultCenter:_containerView.imageView.center];
+}
+
+- (CGFloat) getNewHeight
+{
+    return ( CGRectGetWidth([[UIScreen mainScreen] bounds]) * self.capturedImage.size.height ) / self.capturedImage.size.width;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (UIButton *) baseButton
-{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundColor:[UIColor clearColor]];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-    return button;
 }
 
 - (BOOL) prefersStatusBarHidden
@@ -93,20 +72,28 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     _capturedImage = capturedImage;
 }
 
-- (void) retakePhoto
+#pragma mark - DBCameraViewDelegate
+
+- (void) retakeImageFromCameraView:(DBCameraSegueView *)cameraView
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void) useImage
+- (void) useImageFromCameraView:(DBCameraSegueView *)cameraView
 {
-    if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
+    if ( [cameraView isCropModeOn] ) {
+        if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
+            [_delegate captureImageDidFinish:[[UIImage screenshotFromView:self.view] croppedImage:(CGRect){ 0, 308, 640, 640 }]];
+    } else if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
         [_delegate captureImageDidFinish:self.capturedImage];
 }
 
-- (void) cropQuadImage
+- (void) cameraView:(DBCameraSegueView *)cameraView cropQuadImageForState:(BOOL)state
 {
-    [_imageView setImage:[[UIImage screenshotFromView:self.view] croppedImage:(CGRect){ 0, 248, 640, 640 }]];
+    [cameraView setCropMode:state];
+    [cameraView.imageView setGesturesEnabled:state];
+    if ( state == NO )
+        [cameraView.imageView resetPosition];
 }
 
 @end
