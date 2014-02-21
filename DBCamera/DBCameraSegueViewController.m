@@ -81,10 +81,10 @@
 - (void) useImageFromCameraView:(DBCameraSegueView *)cameraView
 {
     if ( [cameraView isCropModeOn] ) {
-        if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
-            [_delegate captureImageDidFinish:[[UIImage screenshotFromView:self.view] croppedImage:(CGRect){ 0, IS_RETINA_4 ? 308 : 220, 640, 640 }]];
-    } else if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
-        [_delegate captureImageDidFinish:self.capturedImage];
+        if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
+            [_delegate captureImageDidFinish:[[UIImage screenshotFromView:self.view] croppedImage:(CGRect){ 0, IS_RETINA_4 ? 308 : 220, 640, 640 }] withMetadata:self.capturedImageMetadata];
+    } else if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
+        [_delegate captureImageDidFinish:self.capturedImage withMetadata:self.capturedImageMetadata];
 }
 
 - (void) cameraView:(DBCameraSegueView *)cameraView cropQuadImageForState:(BOOL)state

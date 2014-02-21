@@ -166,7 +166,7 @@
 
 #pragma mrak - DBCameraViewControllerDelegate
 
-- (void) captureImageDidFinish:(UIImage *)image
+- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];

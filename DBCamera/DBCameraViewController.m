@@ -176,17 +176,18 @@
         [self.cameraManager setFlashMode:flashMode];
 }
 
-- (void) captureImageDidFinish:(UIImage *)image
+- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
     _processingPhoto = NO;
     
     if ( !self.useCameraSegue ) {
-        if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:)] )
-            [_delegate captureImageDidFinish:image];
+        if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
+            [_delegate captureImageDidFinish:image withMetadata:metadata];
     } else {
         DBCameraSegueViewController *cameraSegueUseViewController = [[DBCameraSegueViewController alloc] init];
         [cameraSegueUseViewController setDelegate:self.delegate];
         [cameraSegueUseViewController setCapturedImage:image];
+        [cameraSegueUseViewController setCapturedImageMetadata:metadata];
         [self.navigationController pushViewController:cameraSegueUseViewController animated:YES];
     }
 }

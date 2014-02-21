@@ -12,4 +12,5 @@
 @interface DBCameraSegueViewController : UIViewController
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
 @property (nonatomic, strong) UIImage *capturedImage;
+@property (nonatomic, strong) NSDictionary *capturedImageMetadata;
 @end

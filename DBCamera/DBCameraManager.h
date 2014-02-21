@@ -44,7 +44,7 @@
 
 @protocol DBCameraManagerDelegate <NSObject>
 @optional
-- (void) captureImageDidFinish:(UIImage *)image;
+- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata;
 - (void) captureImageFailedWithError:(NSError *)error;
 - (void) someOtherError:(NSError *)error;
 - (void) acquiringDeviceLockFailedWithError:(NSError *)error;

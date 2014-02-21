@@ -133,8 +133,11 @@
              NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
              UIImage *image = [[UIImage alloc] initWithData:imageData];
              
-             if ( [delegateBlock respondsToSelector:@selector(captureImageDidFinish:)] )
-                 [delegateBlock captureImageDidFinish:image];
+             CFDictionaryRef metadata = CMCopyDictionaryOfAttachments(NULL, imageDataSampleBuffer, kCMAttachmentMode_ShouldPropagate);
+             NSDictionary *meta = (__bridge NSDictionary *)(metadata);
+             
+             if ( [delegateBlock respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
+                 [delegateBlock captureImageDidFinish:image withMetadata:meta];
              
          } else if ( error ) {
              if ( [delegateBlock respondsToSelector:@selector(captureImageFailedWithError:)] )
