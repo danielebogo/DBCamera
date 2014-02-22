@@ -27,7 +27,7 @@ $ cd /path/to/MyProject
 $ touch Podfile
 $ edit Podfile
 platform :ios, '6.0' 
-pod 'DBCamera', '~> 0.8'
+pod 'DBCamera', '~> 0.9'
 ```
 
 Install into your project:
@@ -190,8 +190,12 @@ You can also create a custom interface, using a subclass of DBCameraView
 6.0
 
 ###Version
-0.8
+0.9
 
 ###Created By
 
 [Daniele Bogo](https://github.com/danielebogo)
+
+###Credits
+
+[Jack](https://github.com/xhzengAIB) - Add GridView
