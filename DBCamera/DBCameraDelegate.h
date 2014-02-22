@@ -17,6 +17,7 @@
 - (void) closeCamera;
 - (void) switchCamera;
 - (void) triggerFlashForMode:(AVCaptureFlashMode)flashMode;
+- (void) cameraView:(UIView *)camera showGridView:(BOOL)show;
 @end
 
 @protocol DBCameraViewControllerDelegate <NSObject>

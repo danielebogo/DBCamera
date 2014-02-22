@@ -14,6 +14,7 @@
 @interface DBCameraView : UIView
 @property (nonatomic, weak) id <DBCameraViewDelegate> delegate;
 @property (nonatomic, strong, readonly) AVCaptureVideoPreviewLayer *previewLayer;
+@property (nonatomic, strong, readonly) UIView *stripe;
 
 + (id) initWithFrame:(CGRect)frame;
 + (DBCameraView *) initWithCaptureSession:(AVCaptureSession *)captureSession;

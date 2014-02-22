@@ -9,8 +9,12 @@
 #import "DBCameraViewController.h"
 #import "DBCameraManager.h"
 #import "DBCameraView.h"
+#import "DBCameraGridView.h"
 #import "DBCameraDelegate.h"
 #import "DBCameraSegueViewController.h"
+
+#import "UIImage+Crop.h"
+#import "DBCameraMacros.h"
 
 #import <AVFoundation/AVFoundation.h>
 
@@ -23,9 +27,24 @@
 @property (nonatomic, strong) id customCamera;
 @property (nonatomic, strong) DBCameraManager *cameraManager;
 
+@property (nonatomic, strong) DBCameraGridView *cameraGridView;
 @end
 
 @implementation DBCameraViewController
+
+#pragma mark - Propertys
+
+- (DBCameraGridView *)cameraGridView {
+    if (!_cameraGridView) {
+        _cameraGridView = [[DBCameraGridView alloc] initWithFrame:self.cameraView.previewLayer.frame];
+        _cameraGridView.numberOfColumns = 2;
+        _cameraGridView.numberOfRows = 2;
+        [self.cameraView insertSubview:_cameraGridView aboveSubview:self.cameraView.stripe];
+    }
+    return _cameraGridView;
+}
+
+#pragma mark - Life cycle
 
 + (DBCameraViewController *) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
 {
@@ -157,6 +176,12 @@
     }
 }
 
+- (void) disPlayGridViewToCameraView:(BOOL)show {
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.cameraGridView.alpha = (show ? 1.0 : 0.0);
+    } completion:NULL];
+}
+
 #pragma mark - CameraManagerDelagate
 
 - (void) closeCamera
@@ -170,6 +195,10 @@
         [self.cameraManager cameraToggle];
 }
 
+- (void) cameraView:(UIView *)camera showGridView:(BOOL)show {
+    [self disPlayGridViewToCameraView:!show];
+}
+
 - (void) triggerFlashForMode:(AVCaptureFlashMode)flashMode
 {
     if ( [self.cameraManager hasFlash] )
@@ -179,7 +208,6 @@
 - (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
     _processingPhoto = NO;
-    
     if ( !self.useCameraSegue ) {
         if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
             [_delegate captureImageDidFinish:image withMetadata:metadata];
