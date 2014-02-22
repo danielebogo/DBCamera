@@ -14,7 +14,8 @@
 
 @interface DBCameraView ()
 @property (nonatomic, strong) CALayer *focusBox, *exposeBox;
-@property (nonatomic, strong) UIButton *triggerButton, *cameraButton, *flashButton, *closeButton;
+@property (nonatomic, strong) UIButton *triggerButton, *cameraButton, *flashButton, *closeButton, *gridButton;
+@property (nonatomic, strong, readwrite) UIView *stripe;
 @end
 
 @implementation DBCameraView
@@ -61,14 +62,15 @@
     [_previewLayer addSublayer:self.focusBox];
     [_previewLayer addSublayer:self.exposeBox];
     
-    UIView *stripe = [[UIView alloc] initWithFrame:(CGRect){ CGRectGetMidX(self.bounds) - 40, CGRectGetMaxY(_previewLayer.frame) - 40, 80, 80 }];
-    [stripe setBackgroundColor:RGBColor(0x000000, .5f)];
-    [stripe.layer setCornerRadius:40.0f];
-    [self addSubview:stripe];
+    _stripe = [[UIView alloc] initWithFrame:(CGRect){ CGRectGetMidX(self.bounds) - 40, CGRectGetMaxY(_previewLayer.frame) - 40, 80, 80 }];
+    [_stripe setBackgroundColor:RGBColor(0x000000, .5f)];
+    [_stripe.layer setCornerRadius:40.0f];
+    [self addSubview:self.stripe];
     
     [self addSubview:self.cameraButton];
     [self addSubview:self.closeButton];
     [self addSubview:self.flashButton];
+    [self addSubview:self.gridButton];
     [self addSubview:self.triggerButton];
     
     [self createGesture];
@@ -129,6 +131,18 @@
     }
     
     return _flashButton;
+}
+
+- (UIButton *)gridButton {
+    if (!_gridButton) {
+        _gridButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_gridButton setBackgroundColor:[UIColor clearColor]];
+        [_gridButton setImage:[UIImage imageNamed:@"cameraGridNormal"] forState:UIControlStateNormal];
+        [_gridButton setImage:[UIImage imageNamed:@"cameraGridSelected"] forState:UIControlStateSelected];
+        [_gridButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 45 * 2.2, 17.5f, 30, 30 }];
+        [_gridButton addTarget:self action:@selector(addGridToCameraAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _gridButton;
 }
 
 #pragma mark - Focus / Expose Box
@@ -217,6 +231,13 @@
 }
 
 #pragma mark - Actions
+
+- (void) addGridToCameraAction:(UIButton *)button {
+    if ( [_delegate respondsToSelector:@selector(cameraView:showGridView:)] ) {
+        [_delegate cameraView:self showGridView:button.selected];
+        [button setSelected:!button.isSelected];
+    }
+}
 
 - (void) flashTriggerAction:(UIButton *)button
 {
