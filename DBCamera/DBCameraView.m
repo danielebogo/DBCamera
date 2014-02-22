@@ -98,7 +98,7 @@
         _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_closeButton setBackgroundColor:[UIColor clearColor]];
         [_closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
-        [_closeButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 15, 17.5f, 30, 30 }];
+        [_closeButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 45, 17.5f, 30, 30 }];
         [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -126,20 +126,21 @@
         [_flashButton setBackgroundColor:[UIColor clearColor]];
         [_flashButton setImage:[UIImage imageNamed:@"flash"] forState:UIControlStateNormal];
         [_flashButton setImage:[UIImage imageNamed:@"flashSelected"] forState:UIControlStateSelected];
-        [_flashButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 45, 17.5f, 30, 30 }];
+        [_flashButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 60, 17.5f, 30, 30 }];
         [_flashButton addTarget:self action:@selector(flashTriggerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _flashButton;
 }
 
-- (UIButton *)gridButton {
-    if (!_gridButton) {
+- (UIButton *) gridButton
+{
+    if ( !_gridButton ) {
         _gridButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_gridButton setBackgroundColor:[UIColor clearColor]];
         [_gridButton setImage:[UIImage imageNamed:@"cameraGridNormal"] forState:UIControlStateNormal];
         [_gridButton setImage:[UIImage imageNamed:@"cameraGridSelected"] forState:UIControlStateSelected];
-        [_gridButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 45 * 2.2, 17.5f, 30, 30 }];
+        [_gridButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) + 30, 17.5f, 30, 30 }];
         [_gridButton addTarget:self action:@selector(addGridToCameraAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _gridButton;

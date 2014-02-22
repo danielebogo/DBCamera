@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "cameraGridSelected.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "cameraGridNormal@2x.png"
+      "filename" : "cameraGridSelected@2x.png"
     }
   ],
   "info" : {

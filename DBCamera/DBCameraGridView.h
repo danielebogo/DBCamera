@@ -10,6 +10,6 @@
 
 @interface DBCameraGridView : UIView
 @property (nonatomic, assign) CGFloat lineWidth; // default is 1.0
-@property (nonatomic, assign) int numberOfColumns;
-@property (nonatomic, assign) int numberOfRows;
+@property (nonatomic, assign) NSUInteger numberOfColumns;
+@property (nonatomic, assign) NSUInteger numberOfRows;
 @end

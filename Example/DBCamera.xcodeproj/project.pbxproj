@@ -27,9 +27,9 @@
 		9AB597D9189BB0B6001BCAD3 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597D8189BB0B6001BCAD3 /* RootViewController.m */; };
 		9AB597DC189BB501001BCAD3 /* DBCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597DB189BB501001BCAD3 /* DBCameraManager.m */; };
 		9AB597DF189BF7A2001BCAD3 /* DBCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597DE189BF7A2001BCAD3 /* DBCameraView.m */; };
+		9AC507F118B8E3A600665E10 /* DBCameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC507F018B8E3A600665E10 /* DBCameraGridView.m */; };
 		9AF961A718A252690068E3C6 /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF961A618A252690068E3C6 /* CustomCamera.m */; };
 		9AFDBEBD18B225DC00FA3928 /* DBCameraSegueView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFDBEBC18B225DC00FA3928 /* DBCameraSegueView.m */; };
-		ABED3F2118B8C91A001B4099 /* DBCameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABED3F2018B8C91A001B4099 /* DBCameraGridView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,12 +82,12 @@
 		9AB597DB189BB501001BCAD3 /* DBCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraManager.m; path = ../../DBCamera/DBCameraManager.m; sourceTree = "<group>"; };
 		9AB597DD189BF7A2001BCAD3 /* DBCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraView.h; path = ../../DBCamera/DBCameraView.h; sourceTree = "<group>"; };
 		9AB597DE189BF7A2001BCAD3 /* DBCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraView.m; path = ../../DBCamera/DBCameraView.m; sourceTree = "<group>"; };
+		9AC507EF18B8E3A600665E10 /* DBCameraGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraGridView.h; path = ../../DBCamera/DBCameraGridView.h; sourceTree = "<group>"; };
+		9AC507F018B8E3A600665E10 /* DBCameraGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraGridView.m; path = ../../DBCamera/DBCameraGridView.m; sourceTree = "<group>"; };
 		9AF961A518A252690068E3C6 /* CustomCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCamera.h; path = Classes/CustomCamera/CustomCamera.h; sourceTree = "<group>"; };
 		9AF961A618A252690068E3C6 /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCamera.m; path = Classes/CustomCamera/CustomCamera.m; sourceTree = "<group>"; };
 		9AFDBEBB18B225DC00FA3928 /* DBCameraSegueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraSegueView.h; path = ../../DBCamera/DBCameraSegueView.h; sourceTree = "<group>"; };
 		9AFDBEBC18B225DC00FA3928 /* DBCameraSegueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraSegueView.m; path = ../../DBCamera/DBCameraSegueView.m; sourceTree = "<group>"; };
-		ABED3F1F18B8C91A001B4099 /* DBCameraGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraGridView.h; sourceTree = "<group>"; };
-		ABED3F2018B8C91A001B4099 /* DBCameraGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraGridView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,8 +202,8 @@
 				9A5134CA18A24811004E72EB /* DBCameraDelegate.h */,
 				9AB597DD189BF7A2001BCAD3 /* DBCameraView.h */,
 				9AB597DE189BF7A2001BCAD3 /* DBCameraView.m */,
-				ABED3F1F18B8C91A001B4099 /* DBCameraGridView.h */,
-				ABED3F2018B8C91A001B4099 /* DBCameraGridView.m */,
+				9AC507EF18B8E3A600665E10 /* DBCameraGridView.h */,
+				9AC507F018B8E3A600665E10 /* DBCameraGridView.m */,
 				9AB597D3189BB08A001BCAD3 /* DBCameraViewController.h */,
 				9AB597D4189BB08A001BCAD3 /* DBCameraViewController.m */,
 				9A50C79F18AA3EAF00CD2DF3 /* DBCameraSegueViewController.h */,
@@ -330,13 +330,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AB597DC189BB501001BCAD3 /* DBCameraManager.m in Sources */,
+				9AC507F118B8E3A600665E10 /* DBCameraGridView.m in Sources */,
 				9AFDBEBD18B225DC00FA3928 /* DBCameraSegueView.m in Sources */,
 				9A369EE518AD62A100EB5D1B /* UIImage+Crop.m in Sources */,
 				9A50C7A118AA3EAF00CD2DF3 /* DBCameraSegueViewController.m in Sources */,
 				9AB597DF189BF7A2001BCAD3 /* DBCameraView.m in Sources */,
 				9AB597B4189BAF9A001BCAD3 /* AppDelegate.m in Sources */,
 				9AB597D5189BB08A001BCAD3 /* DBCameraViewController.m in Sources */,
-				ABED3F2118B8C91A001B4099 /* DBCameraGridView.m in Sources */,
 				9AF961A718A252690068E3C6 /* CustomCamera.m in Sources */,
 				9AB597D9189BB0B6001BCAD3 /* RootViewController.m in Sources */,
 				9A11717B18B24DC900C4CD82 /* DBCameraImageView.m in Sources */,

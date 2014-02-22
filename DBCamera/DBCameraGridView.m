@@ -41,7 +41,7 @@
     // calculate column width
     CGFloat columnWidth = self.frame.size.width / (self.numberOfColumns + 1.0);
     
-    for(int i = 1; i <= self.numberOfColumns; i++)
+    for(NSUInteger i = 1; i <= self.numberOfColumns; i++)
     {
         CGPoint startPoint;
         CGPoint endPoint;
@@ -64,7 +64,7 @@
     // calclulate row height
     CGFloat rowHeight = self.frame.size.height / (self.numberOfRows + 1.0);
     
-    for(int j = 1; j <= self.numberOfRows; j++)
+    for(NSUInteger j = 1; j <= self.numberOfRows; j++)
     {
         CGPoint startPoint;
         CGPoint endPoint;
