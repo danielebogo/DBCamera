@@ -15,7 +15,7 @@
 
 @implementation CustomCamera
 
-- (void) buildIntarface
+- (void) buildInterface
 {
     [self addSubview:self.closeButton];
     

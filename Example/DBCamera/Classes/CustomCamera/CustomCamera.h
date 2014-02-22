@@ -9,5 +9,5 @@
 #import "DBCameraView.h"
 
 @interface CustomCamera : DBCameraView
-- (void) buildIntarface;
+- (void) buildInterface;
 @end

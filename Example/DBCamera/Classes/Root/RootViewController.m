@@ -103,7 +103,7 @@
 - (void) openCustomCamera
 {
     CustomCamera *camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
-    [camera buildIntarface];
+    [camera buildInterface];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[DBCameraViewController alloc] initWithDelegate:self cameraView:camera]];
     [nav setNavigationBarHidden:YES];
