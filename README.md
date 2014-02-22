@@ -90,7 +90,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 #import "DBCameraView.h"
 
 @interface CustomCamera : DBCameraView
-- (void) buildIntarface;
+- (void) buildInterface;
 @end
 ```
 ```objective-c
@@ -103,7 +103,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 
 @implementation CustomCamera
 
-- (void) buildIntarface
+- (void) buildInterface
 {
     [self addSubview:self.closeButton];
     
@@ -179,7 +179,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 - (void) openCustomCamera:(id)sender
 {
     CustomCamera *camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
-    [camera buildIntarface];
+    [camera buildInterface];
     
     [self presentViewController:[[DBCameraViewController alloc] initWithDelegate:self cameraView:camera]
                        animated:YES completion:nil];
