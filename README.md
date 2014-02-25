@@ -27,7 +27,7 @@ $ cd /path/to/MyProject
 $ touch Podfile
 $ edit Podfile
 platform :ios, '6.0' 
-pod 'DBCamera', '~> 0.9'
+pod 'DBCamera', '~> 1.0'
 ```
 
 Install into your project:
@@ -190,7 +190,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 6.0
 
 ###Version
-0.9
+1.0
 
 ###Created By
 
@@ -198,4 +198,4 @@ You can also create a custom interface, using a subclass of DBCameraView
 
 ###Credits
 
-[Jack](https://github.com/xhzengAIB) - Add GridView
+[Jack](https://github.com/xhzengAIB) - Add GridView, Pinch gesture on camera view
