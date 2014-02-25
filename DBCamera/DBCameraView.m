@@ -12,10 +12,20 @@
 #define previewFrameRetina (CGRect){ 0, 65, 320, 350 }
 #define previewFrameRetina_4 (CGRect){ 0, 65, 320, 425 }
 
+// pinch
+#define MAX_PINCH_SCALE_NUM   3.f
+#define MIN_PINCH_SCALE_NUM   1.f
+
 @interface DBCameraView ()
 @property (nonatomic, strong) CALayer *focusBox, *exposeBox;
+@property (nonatomic, strong) UIView *topContainerBar;
+@property (nonatomic, strong) UIView *bottomContainerBar;
 @property (nonatomic, strong) UIButton *triggerButton, *cameraButton, *flashButton, *closeButton, *gridButton;
 @property (nonatomic, strong, readwrite) UIView *stripe;
+
+// pinch
+@property (nonatomic, assign) CGFloat preScaleNum;
+@property (nonatomic, assign) CGFloat scaleNum;
 @end
 
 @implementation DBCameraView
@@ -62,18 +72,41 @@
     [_previewLayer addSublayer:self.focusBox];
     [_previewLayer addSublayer:self.exposeBox];
     
+    [self addSubview:self.topContainerBar];
+    [self addSubview:self.bottomContainerBar];
+    
     _stripe = [[UIView alloc] initWithFrame:(CGRect){ CGRectGetMidX(self.bounds) - 40, CGRectGetMaxY(_previewLayer.frame) - 40, 80, 80 }];
     [_stripe setBackgroundColor:RGBColor(0x000000, .5f)];
     [_stripe.layer setCornerRadius:40.0f];
     [self addSubview:self.stripe];
     
-    [self addSubview:self.cameraButton];
-    [self addSubview:self.closeButton];
-    [self addSubview:self.flashButton];
-    [self addSubview:self.gridButton];
+    [self.topContainerBar addSubview:self.cameraButton];
+    [self.topContainerBar addSubview:self.closeButton];
+    [self.topContainerBar addSubview:self.flashButton];
+    [self.topContainerBar addSubview:self.gridButton];
+    
     [self addSubview:self.triggerButton];
     
     [self createGesture];
+}
+
+#pragma mark - Containers
+
+- (UIView *)topContainerBar {
+    if (!_topContainerBar) {
+        _topContainerBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetMinY(IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina))];
+        _topContainerBar.backgroundColor = [UIColor blackColor];
+    }
+    return _topContainerBar;
+}
+
+- (UIView *)bottomContainerBar {
+    if (!_bottomContainerBar) {
+        CGFloat bottomContainerBarX = CGRectGetMaxY(IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina);
+        _bottomContainerBar = [[UIView alloc] initWithFrame:CGRectMake(0, bottomContainerBarX, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - bottomContainerBarX)];
+        _bottomContainerBar.backgroundColor = [UIColor blackColor];
+    }
+    return _bottomContainerBar;
 }
 
 #pragma mark - Buttons
@@ -229,6 +262,9 @@
     [self addGestureRecognizer:doubleTap];
     
     [singleTap requireGestureRecognizerToFail:doubleTap];
+    
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    [self addGestureRecognizer:pinch];
 }
 
 #pragma mark - Actions
@@ -282,6 +318,66 @@
     CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
     if ( [_delegate respondsToSelector:@selector(cameraView:exposeAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) )
         [_delegate cameraView:self exposeAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - CGRectGetMinY(_previewLayer.frame) }];
+}
+
+- (void)handlePinch:(UIPinchGestureRecognizer *)pinchGestureRecognizer {
+    BOOL allTouchesAreOnThePreviewLayer = YES;
+	NSUInteger numTouches = [pinchGestureRecognizer numberOfTouches], i;
+	for ( i = 0; i < numTouches; ++i ) {
+		CGPoint location = [pinchGestureRecognizer locationOfTouch:i inView:self];
+		CGPoint convertedLocation = [_previewLayer convertPoint:location fromLayer:_previewLayer.superlayer];
+		if ( ! [_previewLayer containsPoint:convertedLocation] ) {
+			allTouchesAreOnThePreviewLayer = NO;
+			break;
+		}
+	}
+	
+	if ( allTouchesAreOnThePreviewLayer ) {
+		_scaleNum = _preScaleNum * pinchGestureRecognizer.scale;
+        
+        if (_scaleNum < MIN_PINCH_SCALE_NUM) {
+            _scaleNum = MIN_PINCH_SCALE_NUM;
+        } else if (_scaleNum > MAX_PINCH_SCALE_NUM) {
+            _scaleNum = MAX_PINCH_SCALE_NUM;
+        }
+        
+        if ([self.delegate respondsToSelector:@selector(cameraCaptureScale:)]) {
+            [self.delegate cameraCaptureScale:_scaleNum];
+        }
+        
+        [self doPinch];
+	}
+    
+    if ([pinchGestureRecognizer state] == UIGestureRecognizerStateEnded ||
+        [pinchGestureRecognizer state] == UIGestureRecognizerStateCancelled ||
+        [pinchGestureRecognizer state] == UIGestureRecognizerStateFailed) {
+        _preScaleNum = _scaleNum;
+    }
+}
+
+- (void) pinchCameraViewWithScalNum:(CGFloat)scale {
+    _scaleNum = scale;
+    if (_scaleNum < MIN_PINCH_SCALE_NUM) {
+        _scaleNum = MIN_PINCH_SCALE_NUM;
+    } else if (_scaleNum > MAX_PINCH_SCALE_NUM) {
+        _scaleNum = MAX_PINCH_SCALE_NUM;
+    }
+    [self doPinch];
+    _preScaleNum = scale;
+}
+
+- (void)doPinch {
+    if ([self.delegate respondsToSelector:@selector(cameraMaxScale)]) {
+        CGFloat maxScale = [self.delegate cameraMaxScale];
+        if (_scaleNum > maxScale) {
+            _scaleNum = maxScale;
+        }
+        
+        [CATransaction begin];
+        [CATransaction setAnimationDuration:.025];
+        [_previewLayer setAffineTransform:CGAffineTransformMakeScale(_scaleNum, _scaleNum)];
+        [CATransaction commit];
+    }
 }
 
 @end
