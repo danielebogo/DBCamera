@@ -92,18 +92,20 @@
 
 #pragma mark - Containers
 
-- (UIView *)topContainerBar {
-    if (!_topContainerBar) {
-        _topContainerBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetMinY(IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina))];
+- (UIView *) topContainerBar
+{
+    if ( !_topContainerBar ) {
+        _topContainerBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth(self.bounds), CGRectGetMinY(IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina) }];
         _topContainerBar.backgroundColor = [UIColor blackColor];
     }
     return _topContainerBar;
 }
 
-- (UIView *)bottomContainerBar {
-    if (!_bottomContainerBar) {
-        CGFloat bottomContainerBarX = CGRectGetMaxY(IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina);
-        _bottomContainerBar = [[UIView alloc] initWithFrame:CGRectMake(0, bottomContainerBarX, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - bottomContainerBarX)];
+- (UIView *) bottomContainerBar
+{
+    if ( !_bottomContainerBar ) {
+        CGFloat bottomContainerBarX = CGRectGetMaxY( IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina );
+        _bottomContainerBar = [[UIView alloc] initWithFrame:(CGRect){ 0, bottomContainerBarX, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - bottomContainerBarX }];
         _bottomContainerBar.backgroundColor = [UIColor blackColor];
     }
     return _bottomContainerBar;
@@ -269,7 +271,8 @@
 
 #pragma mark - Actions
 
-- (void) addGridToCameraAction:(UIButton *)button {
+- (void) addGridToCameraAction:(UIButton *)button
+{
     if ( [_delegate respondsToSelector:@selector(cameraView:showGridView:)] ) {
         [_delegate cameraView:self showGridView:button.selected];
         [button setSelected:!button.isSelected];
@@ -320,7 +323,8 @@
         [_delegate cameraView:self exposeAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - CGRectGetMinY(_previewLayer.frame) }];
 }
 
-- (void)handlePinch:(UIPinchGestureRecognizer *)pinchGestureRecognizer {
+- (void)handlePinch:(UIPinchGestureRecognizer *)pinchGestureRecognizer
+{
     BOOL allTouchesAreOnThePreviewLayer = YES;
 	NSUInteger numTouches = [pinchGestureRecognizer numberOfTouches], i;
 	for ( i = 0; i < numTouches; ++i ) {
@@ -335,43 +339,42 @@
 	if ( allTouchesAreOnThePreviewLayer ) {
 		_scaleNum = _preScaleNum * pinchGestureRecognizer.scale;
         
-        if (_scaleNum < MIN_PINCH_SCALE_NUM) {
+        if ( _scaleNum < MIN_PINCH_SCALE_NUM )
             _scaleNum = MIN_PINCH_SCALE_NUM;
-        } else if (_scaleNum > MAX_PINCH_SCALE_NUM) {
+        else if ( _scaleNum > MAX_PINCH_SCALE_NUM )
             _scaleNum = MAX_PINCH_SCALE_NUM;
-        }
         
-        if ([self.delegate respondsToSelector:@selector(cameraCaptureScale:)]) {
+        if ( [self.delegate respondsToSelector:@selector(cameraCaptureScale:)] )
             [self.delegate cameraCaptureScale:_scaleNum];
-        }
         
         [self doPinch];
 	}
     
-    if ([pinchGestureRecognizer state] == UIGestureRecognizerStateEnded ||
-        [pinchGestureRecognizer state] == UIGestureRecognizerStateCancelled ||
-        [pinchGestureRecognizer state] == UIGestureRecognizerStateFailed) {
-        _preScaleNum = _scaleNum;
+    if ( [pinchGestureRecognizer state] == UIGestureRecognizerStateEnded ||
+         [pinchGestureRecognizer state] == UIGestureRecognizerStateCancelled ||
+         [pinchGestureRecognizer state] == UIGestureRecognizerStateFailed) {
+         _preScaleNum = _scaleNum;
     }
 }
 
-- (void) pinchCameraViewWithScalNum:(CGFloat)scale {
+- (void) pinchCameraViewWithScalNum:(CGFloat)scale
+{
     _scaleNum = scale;
-    if (_scaleNum < MIN_PINCH_SCALE_NUM) {
+    if ( _scaleNum < MIN_PINCH_SCALE_NUM )
         _scaleNum = MIN_PINCH_SCALE_NUM;
-    } else if (_scaleNum > MAX_PINCH_SCALE_NUM) {
+    else if (_scaleNum > MAX_PINCH_SCALE_NUM)
         _scaleNum = MAX_PINCH_SCALE_NUM;
-    }
+
     [self doPinch];
     _preScaleNum = scale;
 }
 
-- (void)doPinch {
-    if ([self.delegate respondsToSelector:@selector(cameraMaxScale)]) {
+- (void) doPinch
+{
+    if ( [self.delegate respondsToSelector:@selector(cameraMaxScale)] ) {
         CGFloat maxScale = [self.delegate cameraMaxScale];
-        if (_scaleNum > maxScale) {
+        if ( _scaleNum > maxScale )
             _scaleNum = maxScale;
-        }
         
         [CATransaction begin];
         [CATransaction setAnimationDuration:.025];
