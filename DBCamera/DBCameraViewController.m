@@ -271,6 +271,14 @@
     }
 }
 
+- (CGFloat) cameraMaxScale {
+    return [self.cameraManager cameraMaxScale];
+}
+
+- (void) cameraCaptureScale:(CGFloat)scaleNum {
+    [self.cameraManager setCameraMaxScale:scaleNum];
+}
+
 #pragma mark - UIApplicationDidEnterBackgroundNotification
 
 - (void) applicationDidEnterBackground:(NSNotification *)notification

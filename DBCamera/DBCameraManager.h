@@ -22,6 +22,8 @@
 @property (nonatomic, assign) AVCaptureWhiteBalanceMode whiteBalanceMode;
 @property (nonatomic, assign, readonly) NSUInteger cameraCount;
 
+- (void) setCameraMaxScale:(CGFloat)maxScale;
+- (CGFloat) cameraMaxScale;
 - (BOOL) cameraToggle;
 - (BOOL) hasMultipleCameras;
 - (BOOL) hasFlash;

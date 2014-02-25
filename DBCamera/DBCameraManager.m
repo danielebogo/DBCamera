@@ -13,6 +13,8 @@
 
 @interface DBCameraManager () {
     AVCaptureStillImageOutput *_stillImageOutput;
+    
+    CGFloat _maxScale;
 }
 
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition)position;
@@ -43,6 +45,8 @@
 {
     self = [super init];
     if ( self ) {
+        _maxScale = 1.0;
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector( captureSessionDidStartRunning: )
                                                      name:AVCaptureSessionDidStartRunningNotification object:_captureSession];
     }
@@ -121,6 +125,7 @@
                 break;
         }
     }
+    [videoConnection setVideoScaleAndCropFactor:_maxScale];
     
     __weak AVCaptureSession *captureSessionBlock = _captureSession;
     __weak id<DBCameraManagerDelegate>delegateBlock = _delegate;
@@ -147,6 +152,15 @@
 }
 
 #pragma mark - Informations
+
+- (void) setCameraMaxScale:(CGFloat)maxScale {
+    _maxScale = maxScale;
+}
+
+- (CGFloat) cameraMaxScale {
+    AVCaptureConnection *videoConnection = [DBCameraManager connectionWithMediaType:AVMediaTypeVideo fromConnections:_stillImageOutput.connections];
+    return videoConnection.videoMaxScaleAndCropFactor;
+}
 
 - (BOOL) cameraToggle
 {
