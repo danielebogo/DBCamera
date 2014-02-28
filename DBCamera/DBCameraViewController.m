@@ -133,6 +133,14 @@
     return YES;
 }
 
+- (void) dismissCamera
+{
+    if ( _delegate && [_delegate respondsToSelector:@selector(dismissCamera)] )
+        [_delegate dismissCamera];
+    else
+        [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (DBCameraView *) cameraView
 {
     if ( !_cameraView ) {
@@ -185,7 +193,7 @@
 
 - (void) closeCamera
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissCamera];
 }
 
 - (void) switchCamera
@@ -284,7 +292,7 @@
 {
     id modalViewController = self.presentingViewController;
     if ( modalViewController )
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissCamera];
 }
 
 @end

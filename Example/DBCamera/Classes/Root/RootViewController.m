@@ -166,6 +166,11 @@
 
 #pragma mrak - DBCameraViewControllerDelegate
 
+- (void) dismissCamera
+{
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
