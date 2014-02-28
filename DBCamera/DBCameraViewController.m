@@ -23,7 +23,6 @@
     UIDeviceOrientation _deviceOrientation;
 }
 
-@property (nonatomic, strong) DBCameraView *cameraView;
 @property (nonatomic, strong) id customCamera;
 @property (nonatomic, strong) DBCameraManager *cameraManager;
 
@@ -31,18 +30,6 @@
 @end
 
 @implementation DBCameraViewController
-
-#pragma mark - Propertys
-
-- (DBCameraGridView *)cameraGridView {
-    if (!_cameraGridView) {
-        _cameraGridView = [[DBCameraGridView alloc] initWithFrame:self.cameraView.previewLayer.frame];
-        _cameraGridView.numberOfColumns = 2;
-        _cameraGridView.numberOfRows = 2;
-        [self.cameraView insertSubview:_cameraGridView aboveSubview:self.cameraView.stripe];
-    }
-    return _cameraGridView;
-}
 
 #pragma mark - Life cycle
 
@@ -165,6 +152,18 @@
     }
     
     return _cameraManager;
+}
+
+- (DBCameraGridView *) cameraGridView
+{
+    if ( !_cameraGridView ) {
+        _cameraGridView = [[DBCameraGridView alloc] initWithFrame:self.cameraView.previewLayer.frame];
+        _cameraGridView.numberOfColumns = 2;
+        _cameraGridView.numberOfRows = 2;
+        [self.cameraView insertSubview:_cameraGridView aboveSubview:self.cameraView.stripe];
+    }
+    
+    return _cameraGridView;
 }
 
 - (void) rotationChanged:(NSNotification *)notification

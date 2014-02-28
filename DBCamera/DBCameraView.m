@@ -253,20 +253,20 @@
 
 - (void) createGesture
 {
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector( tapToFocus: )];
-    [singleTap setNumberOfTapsRequired:1];
-    [singleTap setNumberOfTouchesRequired:1];
-    [self addGestureRecognizer:singleTap];
+    _singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector( tapToFocus: )];
+    [_singleTap setNumberOfTapsRequired:1];
+    [_singleTap setNumberOfTouchesRequired:1];
+    [self addGestureRecognizer:_singleTap];
     
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector( tapToExpose: )];
-    [doubleTap setNumberOfTapsRequired:2];
-    [doubleTap setNumberOfTouchesRequired:1];
-    [self addGestureRecognizer:doubleTap];
+    _doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector( tapToExpose: )];
+    [_doubleTap setNumberOfTapsRequired:2];
+    [_doubleTap setNumberOfTouchesRequired:1];
+    [self addGestureRecognizer:_doubleTap];
     
-    [singleTap requireGestureRecognizerToFail:doubleTap];
+    [_singleTap requireGestureRecognizerToFail:_doubleTap];
     
-    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
-    [self addGestureRecognizer:pinch];
+    _pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    [self addGestureRecognizer:_pinch];
 }
 
 #pragma mark - Actions

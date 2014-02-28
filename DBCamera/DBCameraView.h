@@ -15,6 +15,8 @@
 @property (nonatomic, weak) id <DBCameraViewDelegate> delegate;
 @property (nonatomic, strong, readonly) AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic, strong, readonly) UIView *stripe;
+@property (nonatomic, strong, readonly) UITapGestureRecognizer *singleTap, *doubleTap;
+@property (nonatomic, strong, readonly) UIPinchGestureRecognizer *pinch;
 
 + (id) initWithFrame:(CGRect)frame;
 + (DBCameraView *) initWithCaptureSession:(AVCaptureSession *)captureSession;
