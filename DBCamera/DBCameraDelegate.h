@@ -21,6 +21,8 @@
 
 - (CGFloat) cameraMaxScale;
 - (void) cameraCaptureScale:(CGFloat)scaleNum;
+
+- (BOOL) cameraViewHasFocus;
 @end
 
 @protocol DBCameraViewControllerDelegate <NSObject>

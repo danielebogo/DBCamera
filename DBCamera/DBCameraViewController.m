@@ -261,6 +261,10 @@
     }
 }
 
+- (BOOL) cameraViewHasFocus {
+    return self.cameraManager.hasFocus;
+}
+
 - (void) cameraView:(UIView *)camera exposeAtPoint:(CGPoint)point
 {
     if ( self.cameraManager.videoInput.device.isExposurePointOfInterestSupported ) {

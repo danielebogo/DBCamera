@@ -16,7 +16,7 @@
 #define MAX_PINCH_SCALE_NUM   3.f
 #define MIN_PINCH_SCALE_NUM   1.f
 
-@interface DBCameraView ()
+@interface DBCameraView () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) CALayer *focusBox, *exposeBox;
 @property (nonatomic, strong) UIView *topContainerBar;
 @property (nonatomic, strong) UIView *bottomContainerBar;
@@ -267,6 +267,12 @@
     
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
     [self addGestureRecognizer:pinch];
+    
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(hanldePanGestureRecognizer:)];
+    panGestureRecognizer.minimumNumberOfTouches = 1;
+    panGestureRecognizer.maximumNumberOfTouches = 1;
+    panGestureRecognizer.delegate = self;
+    [self addGestureRecognizer:panGestureRecognizer];
 }
 
 #pragma mark - Actions
@@ -321,6 +327,34 @@
     CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
     if ( [_delegate respondsToSelector:@selector(cameraView:exposeAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) )
         [_delegate cameraView:self exposeAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - CGRectGetMinY(_previewLayer.frame) }];
+}
+
+- (void)hanldePanGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
+    BOOL hasFocus = YES;
+    if ([_delegate respondsToSelector:@selector(cameraViewHasFocus)]) {
+        hasFocus = [_delegate cameraViewHasFocus];
+    }
+    if (!hasFocus)
+        return;
+    UIGestureRecognizerState state = panGestureRecognizer.state;
+    CGPoint touchPoint = [panGestureRecognizer locationInView:self];
+    [self draw:_focusBox atPointOfInterest:(CGPoint){ touchPoint.x, touchPoint.y - CGRectGetMinY(_previewLayer.frame) } andRemove:YES];
+    switch (state) {
+        case UIGestureRecognizerStateBegan:
+            
+            break;
+        case UIGestureRecognizerStateChanged: {
+            break;
+        }
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateFailed:
+        case UIGestureRecognizerStateEnded: {
+            [self tapToFocus:panGestureRecognizer];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 - (void)handlePinch:(UIPinchGestureRecognizer *)pinchGestureRecognizer
