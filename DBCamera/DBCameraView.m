@@ -16,7 +16,7 @@
 #define MAX_PINCH_SCALE_NUM   3.f
 #define MIN_PINCH_SCALE_NUM   1.f
 
-@interface DBCameraView ()
+@interface DBCameraView () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) CALayer *focusBox, *exposeBox;
 @property (nonatomic, strong) UIView *topContainerBar;
 @property (nonatomic, strong) UIView *bottomContainerBar;
@@ -254,11 +254,13 @@
 - (void) createGesture
 {
     _singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector( tapToFocus: )];
+    _singleTap.delaysTouchesEnded = NO;
     [_singleTap setNumberOfTapsRequired:1];
     [_singleTap setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:_singleTap];
     
     _doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector( tapToExpose: )];
+    _doubleTap.delaysTouchesEnded = NO;
     [_doubleTap setNumberOfTapsRequired:2];
     [_doubleTap setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:_doubleTap];
@@ -266,7 +268,15 @@
     [_singleTap requireGestureRecognizerToFail:_doubleTap];
     
     _pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    _pinch.delaysTouchesEnded = NO;
     [self addGestureRecognizer:_pinch];
+    
+    _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector( hanldePanGestureRecognizer: )];
+    _panGestureRecognizer.delaysTouchesEnded = NO;
+    _panGestureRecognizer.minimumNumberOfTouches = 1;
+    _panGestureRecognizer.maximumNumberOfTouches = 1;
+    _panGestureRecognizer.delegate = self;
+    [self addGestureRecognizer:_panGestureRecognizer];
 }
 
 #pragma mark - Actions
@@ -321,6 +331,34 @@
     CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
     if ( [_delegate respondsToSelector:@selector(cameraView:exposeAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) )
         [_delegate cameraView:self exposeAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - CGRectGetMinY(_previewLayer.frame) }];
+}
+
+- (void) hanldePanGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
+    BOOL hasFocus = YES;
+    if ( [_delegate respondsToSelector:@selector(cameraViewHasFocus)] ) {
+        hasFocus = [_delegate cameraViewHasFocus];
+    }
+    if ( !hasFocus )
+        return;
+    UIGestureRecognizerState state = panGestureRecognizer.state;
+    CGPoint touchPoint = [panGestureRecognizer locationInView:self];
+    [self draw:_focusBox atPointOfInterest:(CGPoint){ touchPoint.x, touchPoint.y - CGRectGetMinY(_previewLayer.frame) } andRemove:YES];
+    switch (state) {
+        case UIGestureRecognizerStateBegan:
+            
+            break;
+        case UIGestureRecognizerStateChanged: {
+            break;
+        }
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateFailed:
+        case UIGestureRecognizerStateEnded: {
+            [self tapToFocus:panGestureRecognizer];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 - (void)handlePinch:(UIPinchGestureRecognizer *)pinchGestureRecognizer
