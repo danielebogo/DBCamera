@@ -23,7 +23,6 @@
     UIDeviceOrientation _deviceOrientation;
 }
 
-@property (nonatomic, strong) DBCameraView *cameraView;
 @property (nonatomic, strong) id customCamera;
 @property (nonatomic, strong) DBCameraManager *cameraManager;
 
@@ -31,18 +30,6 @@
 @end
 
 @implementation DBCameraViewController
-
-#pragma mark - Propertys
-
-- (DBCameraGridView *)cameraGridView {
-    if (!_cameraGridView) {
-        _cameraGridView = [[DBCameraGridView alloc] initWithFrame:self.cameraView.previewLayer.frame];
-        _cameraGridView.numberOfColumns = 2;
-        _cameraGridView.numberOfRows = 2;
-        [self.cameraView insertSubview:_cameraGridView aboveSubview:self.cameraView.stripe];
-    }
-    return _cameraGridView;
-}
 
 #pragma mark - Life cycle
 
@@ -146,6 +133,14 @@
     return YES;
 }
 
+- (void) dismissCamera
+{
+    if ( _delegate && [_delegate respondsToSelector:@selector(dismissCamera)] )
+        [_delegate dismissCamera];
+    else
+        [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (DBCameraView *) cameraView
 {
     if ( !_cameraView ) {
@@ -167,6 +162,18 @@
     return _cameraManager;
 }
 
+- (DBCameraGridView *) cameraGridView
+{
+    if ( !_cameraGridView ) {
+        _cameraGridView = [[DBCameraGridView alloc] initWithFrame:self.cameraView.previewLayer.frame];
+        _cameraGridView.numberOfColumns = 2;
+        _cameraGridView.numberOfRows = 2;
+        [self.cameraView insertSubview:_cameraGridView aboveSubview:self.cameraView.stripe];
+    }
+    
+    return _cameraGridView;
+}
+
 - (void) rotationChanged:(NSNotification *)notification
 {
     if ( [[UIDevice currentDevice] orientation] != UIDeviceOrientationUnknown ||
@@ -186,7 +193,7 @@
 
 - (void) closeCamera
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissCamera];
 }
 
 - (void) switchCamera
@@ -289,7 +296,7 @@
 {
     id modalViewController = self.presentingViewController;
     if ( modalViewController )
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissCamera];
 }
 
 @end

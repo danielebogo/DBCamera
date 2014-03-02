@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
 
+@class DBCameraView;
 @interface DBCameraViewController : UIViewController
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL useCameraSegue;
+@property (nonatomic, strong) DBCameraView *cameraView;
 
 + (DBCameraViewController *) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
 + (DBCameraViewController *) init;
