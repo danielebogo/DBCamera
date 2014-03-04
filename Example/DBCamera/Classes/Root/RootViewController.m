@@ -119,7 +119,7 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 
-#pragma mrak - UITableViewDataSource & UITableViewDelegate
+#pragma mark - UITableViewDataSource & UITableViewDelegate
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -164,7 +164,7 @@
     }
 }
 
-#pragma mrak - DBCameraViewControllerDelegate
+#pragma mark - DBCameraViewControllerDelegate
 
 - (void) dismissCamera
 {
