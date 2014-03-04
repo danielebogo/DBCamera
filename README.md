@@ -64,7 +64,7 @@ DBCamera has a simple integration:
 
 ```objective-c
 //Use your captured image
-#pragma mrak - DBCameraViewControllerDelegate
+#pragma mark - DBCameraViewControllerDelegate
 
 - (void) captureImageDidFinish:(UIImage *)image
 {
