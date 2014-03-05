@@ -10,7 +10,8 @@
 
 @implementation DBCameraGridView
 
-- (void)_setup {
+- (void) _setup
+{
     self.backgroundColor = [UIColor clearColor];
     self.lineWidth = 1.0;
 }
@@ -28,7 +29,7 @@
 // -------------------------------------------------------------------------------
 // Used for drawing the grids ontop of the view port
 // -------------------------------------------------------------------------------
-- (void)drawRect:(CGRect)rect
+- (void) drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, self.lineWidth);
@@ -41,7 +42,7 @@
     // calculate column width
     CGFloat columnWidth = self.frame.size.width / (self.numberOfColumns + 1.0);
     
-    for(NSUInteger i = 1; i <= self.numberOfColumns; i++)
+    for ( NSUInteger i = 1; i <= self.numberOfColumns; i++ )
     {
         CGPoint startPoint;
         CGPoint endPoint;
