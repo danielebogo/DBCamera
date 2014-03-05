@@ -199,3 +199,5 @@ You can also create a custom interface, using a subclass of DBCameraView
 ###Credits
 
 [Jack](https://github.com/xhzengAIB) - Add GridView, Pinch & Pan gestures on camera view
+
+TEST EDIT
