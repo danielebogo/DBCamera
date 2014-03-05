@@ -268,7 +268,8 @@
     }
 }
 
-- (BOOL) cameraViewHasFocus {
+- (BOOL) cameraViewHasFocus
+{
     return self.cameraManager.hasFocus;
 }
 
@@ -282,11 +283,13 @@
     }
 }
 
-- (CGFloat) cameraMaxScale {
+- (CGFloat) cameraMaxScale
+{
     return [self.cameraManager cameraMaxScale];
 }
 
-- (void) cameraCaptureScale:(CGFloat)scaleNum {
+- (void) cameraCaptureScale:(CGFloat)scaleNum
+{
     [self.cameraManager setCameraMaxScale:scaleNum];
 }
 
