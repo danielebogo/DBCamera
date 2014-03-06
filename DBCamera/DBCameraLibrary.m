@@ -12,6 +12,7 @@
 #import "DBCollectionViewFlowLayout.h"
 #import "DBCameraSegueViewController.h"
 #import "UIImage+Crop.h"
+#import "DBCameraMacros.h"
 
 #define kItemIdentifier @"ItemIdentifier"
 
@@ -20,7 +21,7 @@
     UICollectionView *_collectionView;
 }
 @property (nonatomic, strong) UIButton *closeButton;
-@property (nonatomic, strong) UIView *topContainerBar;
+@property (nonatomic, strong) UIView *topContainerBar, *loading;;
 @end
 
 @implementation DBCameraLibrary
@@ -52,6 +53,8 @@
     [_collectionView setBackgroundColor:self.view.backgroundColor];
     [_collectionView registerClass:[DBCollectionViewCell class] forCellWithReuseIdentifier:kItemIdentifier];
     [self.view addSubview:_collectionView];
+    
+    [self.view addSubview:self.loading];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -60,10 +63,12 @@
     
     __weak NSMutableArray *blockItems = _items;
     __weak UICollectionView *blockCollection = _collectionView;
+    __weak typeof(self) blockSelf = self;
     [[DBLibraryManager sharedInstance] loadAssetsWithBlock:^(BOOL success, NSArray *items) {
         if ( success ) {
             [blockItems addObjectsFromArray:items];
             [blockCollection reloadData];
+            [blockSelf.loading removeFromSuperview];
         }
     }];
 }
@@ -82,6 +87,24 @@
     } completion:^(BOOL finished) {
         [self.containerDelegate backFromController:self];
     }];
+}
+
+- (UIView *) loading
+{
+    if( !_loading ) {
+        _loading = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, 100, 100 }];
+        [_loading.layer setCornerRadius:10];
+        [_loading setBackgroundColor:RGBColor(0x000000, .7)];
+        [_loading setCenter:self.view.center];
+        [_loading setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin];
+        
+        UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        [activity setCenter:(CGPoint){ CGRectGetMidX(_loading.bounds), CGRectGetMidY(_loading.bounds) }];
+        [_loading addSubview:activity];
+        [activity startAnimating];
+    }
+    
+    return _loading;
 }
 
 - (UIView *) topContainerBar
@@ -135,6 +158,8 @@
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self.view addSubview:self.loading];
+        
         __weak typeof(self) blockSelf = self;
         [[[DBLibraryManager sharedInstance] defaultAssetsLibrary] assetForURL:(NSURL *)_items[indexPath.item]  resultBlock:^(ALAsset *asset) {
             ALAssetRepresentation *defaultRep = [asset defaultRepresentation];
@@ -153,6 +178,8 @@
                 [segue setDelegate:blockSelf.delegate];
                 [blockSelf.navigationController pushViewController:segue animated:YES];
             }
+            
+            [blockSelf.loading removeFromSuperview];
             
         } failureBlock:nil];
     });
