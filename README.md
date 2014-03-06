@@ -3,7 +3,7 @@ DBCamera
 
 Inspired by [CropImageSample] (https://github.com/kishikawakatsumi/CropImageSample), DBCamera is a simple custom camera with AVFoundation.
 
-![Alt text](http://paperstreetsoapdesign.com/development/dbcamera/github/dbcamera_screen_5.png)
+![Alt text](http://paperstreetsoapdesign.com/development/dbcamera/github/dbcamera_screen_6.png)
 
 ##Getting Started
 
@@ -27,7 +27,7 @@ $ cd /path/to/MyProject
 $ touch Podfile
 $ edit Podfile
 platform :ios, '6.0' 
-pod 'DBCamera', '~> 1.0.2'
+pod 'DBCamera', '~> 1.1.0'
 ```
 
 Install into your project:
@@ -47,6 +47,7 @@ DBCamera has a simple integration:
 
 ```objective-c
 #import "DBCameraViewController.h"
+#import "DBCameraContainer.h"
 ```
 
 ```objective-c
@@ -55,10 +56,41 @@ DBCamera has a simple integration:
 ```
 
 ```objective-c
-//Present DBCameraViewController
-- (void) openCamera:(id)sender
+//Present DBCameraViewController with different behaviours
+
+- (void) openCamera
 {
-    [self presentViewController:[DBCameraViewController initWithDelegate:self] animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[DBCameraContainer alloc] initWithDelegate:self]];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void) openCustomCamera
+{
+    CustomCamera *camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
+    [camera buildInterface];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[DBCameraViewController alloc] initWithDelegate:self cameraView:camera]];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void) openCameraWithoutSegue
+{
+    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
+    [cameraController setUseCameraSegue:NO];
+    DBCameraContainer *container = [[DBCameraContainer alloc] initWithDelegate:self];
+    [container setCameraViewController:cameraController];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void) openCameraWithoutContainer
+{
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DBCameraViewController initWithDelegate:self]];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 ```
 
@@ -190,7 +222,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 6.0
 
 ###Version
-1.0.2
+1.1.0
 
 ###Created By
 
@@ -198,4 +230,4 @@ You can also create a custom interface, using a subclass of DBCameraView
 
 ###Credits
 
-[Jack](https://github.com/xhzengAIB) - Add GridView, Pinch & Pan gestures on camera view
+[Jack](https://github.com/xhzengAIB)
