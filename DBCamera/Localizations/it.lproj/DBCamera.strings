@@ -8,3 +8,6 @@
 
 "button.use" = "Usa la foto";
 "button.retake" = "Rifai";
+
+"general.error.title" = "Attenzione";
+"pickerimage.nopolicy" = "Abilita i permessi per poter usare la tua Libreria Foto. Controlla i permessi in Impostazioni > Privacy > Foto";

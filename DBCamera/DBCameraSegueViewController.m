@@ -30,7 +30,7 @@
     [self.view setBackgroundColor:[UIColor blackColor]];
     
     _containerView = [[DBCameraSegueView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [_containerView setBackgroundColor:RGBColor(0x252525, 1)];
+    [_containerView setBackgroundColor:RGBColor(0x202020, 1)];
     [_containerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     [_containerView setDelegate:self];
     [_containerView buildButtonInterface];

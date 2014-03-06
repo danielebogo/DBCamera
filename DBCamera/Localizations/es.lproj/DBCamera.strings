@@ -8,3 +8,6 @@
 
 "button.use" = "Usar";
 "button.retake" = "Volver a tomar";
+
+"general.error.title" = "¡Atención!";
+"pickerimage.nopolicy" = "Por favor, activa los permisos con el fin de utilizar su biblioteca de fotos. Compruebe sus permisos en Ajustes > Privacidad > Fotos";

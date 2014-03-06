@@ -8,3 +8,6 @@
 
 "button.use" = "Use photo";
 "button.retake" = "Retake";
+
+"general.error.title" = "Attention";
+"pickerimage.nopolicy" = "Please enable the permissions in order to use your Photo Library. Check your permissions in Settings > Privacy > Photos";

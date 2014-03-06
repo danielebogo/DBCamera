@@ -12,11 +12,13 @@
 #import "DBCameraGridView.h"
 #import "DBCameraDelegate.h"
 #import "DBCameraSegueViewController.h"
+#import "DBCameraLibrary.h"
 
 #import "UIImage+Crop.h"
 #import "DBCameraMacros.h"
 
 #import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface DBCameraViewController () <DBCameraManagerDelegate, DBCameraViewDelegate> {
     BOOL _processingPhoto;
@@ -145,6 +147,7 @@
 {
     if ( !_cameraView ) {
         _cameraView = [DBCameraView initWithCaptureSession:self.cameraManager.captureSession];
+        [_cameraView setHideLibraryButton:![NSStringFromClass(self.parentViewController.class) isEqualToString:@"DBCameraContainer"]];
         [_cameraView defaultInterface];
         [_cameraView setDelegate:self];
     }
@@ -168,7 +171,7 @@
         _cameraGridView = [[DBCameraGridView alloc] initWithFrame:self.cameraView.previewLayer.frame];
         _cameraGridView.numberOfColumns = 2;
         _cameraGridView.numberOfRows = 2;
-        [self.cameraView insertSubview:_cameraGridView aboveSubview:self.cameraView.stripe];
+        [self.cameraView insertSubview:_cameraGridView atIndex:1];
     }
     
     return _cameraGridView;
@@ -183,7 +186,8 @@
     }
 }
 
-- (void) disPlayGridViewToCameraView:(BOOL)show {
+- (void) disPlayGridViewToCameraView:(BOOL)show
+{
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.cameraGridView.alpha = (show ? 1.0 : 0.0);
     } completion:NULL];
@@ -215,6 +219,7 @@
 - (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
     _processingPhoto = NO;
+    
     if ( !self.useCameraSegue ) {
         if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
             [_delegate captureImageDidFinish:image withMetadata:metadata];
@@ -244,6 +249,25 @@
         [camera drawFocusBoxAtPointOfInterest:screenCenter andRemove:NO];
     if ( [camera respondsToSelector:@selector(drawExposeBoxAtPointOfInterest:andRemove:)] )
         [camera drawExposeBoxAtPointOfInterest:screenCenter andRemove:NO];
+}
+
+- (void) openLibrary
+{
+    if ( [ALAssetsLibrary authorizationStatus] !=  ALAuthorizationStatusDenied ) {
+        [UIView animateWithDuration:.3 animations:^{
+            [self.view setAlpha:0];
+            [self.view setTransform:CGAffineTransformMakeScale(.8, .8)];
+        } completion:^(BOOL finished) {
+            DBCameraLibrary *library = [[DBCameraLibrary alloc] initWithDelegate:self.containerDelegate];
+            [library setDelegate:self.delegate];
+            [library setUseCameraSegue:self.useCameraSegue];
+            [self.containerDelegate switchFromController:self toController:library];
+        }];
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"general.error.title", nil) message:NSLocalizedString(@"pickerimage.nopolicy", nil) delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        });
+    }
 }
 
 #pragma mark - CameraViewDelegate
