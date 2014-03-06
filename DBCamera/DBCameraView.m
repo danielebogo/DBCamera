@@ -8,6 +8,9 @@
 
 #import "DBCameraView.h"
 #import "DBCameraMacros.h"
+#import "UIImage+Crop.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
 
 #define previewFrameRetina (CGRect){ 0, 65, 320, 350 }
 #define previewFrameRetina_4 (CGRect){ 0, 65, 320, 425 }
@@ -20,7 +23,7 @@
 @property (nonatomic, strong) CALayer *focusBox, *exposeBox;
 @property (nonatomic, strong) UIView *topContainerBar;
 @property (nonatomic, strong) UIView *bottomContainerBar;
-@property (nonatomic, strong) UIButton *triggerButton, *cameraButton, *flashButton, *closeButton, *gridButton;
+@property (nonatomic, strong) UIButton *photoLibraryButton, *triggerButton, *cameraButton, *flashButton, *closeButton, *gridButton;
 @property (nonatomic, strong, readwrite) UIView *stripe;
 
 // pinch
@@ -85,9 +88,74 @@
     [self.topContainerBar addSubview:self.flashButton];
     [self.topContainerBar addSubview:self.gridButton];
     
+    [self addSubview:self.photoLibraryButton];
+    __weak typeof(self) weakSelf = self;
+    // ALAssetTypePhoto and ALAssetTypeVideo
+    [self updateLibraryButtonWithCameraMode:ALAssetTypePhoto didFinishcompledBlock:^(UIImage *thumbnail) {
+        [weakSelf.photoLibraryButton setBackgroundImage:thumbnail forState:UIControlStateNormal];
+    }];
+    
     [self addSubview:self.triggerButton];
     
     [self createGesture];
+}
+
+- (void) updateLibraryButtonWithCameraMode:(NSString *)assetPropertyType didFinishcompledBlock:(void (^)(UIImage *thumbnail))compled {
+    __block NSString *blockAssetPropertyType = assetPropertyType;
+    __block NSMutableArray *assets = [[NSMutableArray alloc] init];
+    
+    void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop)
+    {
+        if (group == nil)
+        {
+            return;
+        }
+        *stop = YES;
+        
+        __block int num = 0;
+        [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop)
+         {
+             if(result == nil)
+             {
+                 return;
+             }
+             __block ALAsset *assetResult = result;
+             num++;
+             NSInteger numberOf = [group numberOfAssets];
+             
+             NSString *al_assetPropertyType = [assetResult valueForProperty:ALAssetPropertyType];
+             if ([al_assetPropertyType isEqualToString:blockAssetPropertyType]) {
+                 [assets addObject:assetResult];
+             }
+             
+             if (num == numberOf) {
+                 UIImage *image = [UIImage imageWithCGImage:[[assets lastObject] thumbnail]];
+                 image = [UIImage createRoundedRectImage:image size:image.size roundRadius:8];
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (compled) {
+                         compled(image);
+                     }
+                 });
+             }
+         }];
+    };
+    
+    // Group Enumerator Failure Block
+    void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *img = [UIImage imageNamed:@"photo_Library.png"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (compled) {
+                    compled(img);
+                }
+            });
+        });
+    };
+    // Enumerate Albums
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
+                           usingBlock:assetGroupEnumerator
+                         failureBlock:assetGroupEnumberatorFailure];
 }
 
 #pragma mark - Containers
@@ -112,6 +180,16 @@
 }
 
 #pragma mark - Buttons
+
+- (UIButton *) photoLibraryButton {
+    if (!_photoLibraryButton) {
+        _photoLibraryButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_photoLibraryButton setFrame:(CGRect){ 40, CGRectGetHeight(self.bounds) - 50, 44, 44 }];
+        [_photoLibraryButton addTarget:self action:@selector(libraryAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _photoLibraryButton;
+}
 
 - (UIButton *) triggerButton
 {
@@ -280,6 +358,10 @@
 }
 
 #pragma mark - Actions
+
+- (void) libraryAction:(UIButton *)button {
+    
+}
 
 - (void) addGridToCameraAction:(UIButton *)button
 {
