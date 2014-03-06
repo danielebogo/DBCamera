@@ -12,6 +12,8 @@
 
 + (UIImage *) screenshotFromView:(UIView *)view;
 - (UIImage *) croppedImage:(CGRect)cropRect;
+- (UIImage *) rotateUIImage;
 
 + (UIImage *) createRoundedRectImage:(UIImage *)image size:(CGSize)size roundRadius:(CGFloat)radius;
+
 @end

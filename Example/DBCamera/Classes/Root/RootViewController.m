@@ -8,10 +8,11 @@
 
 #import "RootViewController.h"
 #import "DBCameraViewController.h"
+#import "DBCameraContainer.h"
 #import "CustomCamera.h"
 
 #define kCellIdentifier @"CellIdentifier"
-#define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue" ]
+#define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue", @"Open Camera without Container" ]
 
 @interface DetailViewController : UIViewController {
     UIImageView *_imageView;
@@ -95,7 +96,7 @@
 
 - (void) openCamera
 {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DBCameraViewController initWithDelegate:self]];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[DBCameraContainer alloc] initWithDelegate:self]];
     [nav setNavigationBarHidden:YES];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -114,7 +115,16 @@
 {
     DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
     [cameraController setUseCameraSegue:NO];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraController];
+    DBCameraContainer *container = [[DBCameraContainer alloc] initWithDelegate:self];
+    [container setCameraViewController:cameraController];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void) openCameraWithoutContainer
+{
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DBCameraViewController initWithDelegate:self]];
     [nav setNavigationBarHidden:YES];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -157,6 +167,10 @@
         
         case 2:
             [self openCameraWithoutSegue];
+            break;
+        
+        case 3:
+            [self openCameraWithoutContainer];
             break;
             
         default:

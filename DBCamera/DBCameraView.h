@@ -13,8 +13,8 @@
 
 @interface DBCameraView : UIView
 @property (nonatomic, weak) id <DBCameraViewDelegate> delegate;
+@property (nonatomic, assign, getter = isLibraryButtonHidden) BOOL hideLibraryButton;
 @property (nonatomic, strong, readonly) AVCaptureVideoPreviewLayer *previewLayer;
-@property (nonatomic, strong, readonly) UIView *stripe;
 @property (nonatomic, strong, readonly) UITapGestureRecognizer *singleTap, *doubleTap;
 @property (nonatomic, strong, readonly) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinch;

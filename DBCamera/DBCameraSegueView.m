@@ -18,8 +18,38 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 #define buttonMargin 20.0f
 #define kCropStripeHeight (IS_RETINA_4 ? 154 : 110)
 
+@interface StripeView : UIView
+@end
+
+@implementation StripeView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setBackgroundColor:RGBColor(0x000000, .7)];
+    }
+    return self;
+}
+
+- (void) drawRect:(CGRect)rect
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextClearRect(context, rect);
+    CGContextSetLineWidth(context, 1.0);
+    
+    CGContextBeginPath(context);
+    CGContextSetStrokeColorWithColor(context, RGBColor(0xffffff, .7).CGColor);
+    CGContextMoveToPoint(context, 0, 0);
+    CGContextAddLineToPoint(context, CGRectGetWidth(rect), 0);
+    CGContextStrokePath(context);
+}
+
+@end
+
+
 @interface DBCameraSegueView () {
-    UIView *_topStripe, *_bottomStripe;
+    StripeView *_topStripe, *_bottomStripe;
 }
 @end
 
@@ -37,13 +67,13 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         [_imageView setContentMode:UIViewContentModeScaleAspectFit];
         [self addSubview:_imageView];
         
-        _topStripe = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth(frame), kCropStripeHeight }];
-        [_topStripe setBackgroundColor:RGBColor(0x00ffff, .30)];
+        _topStripe = [[StripeView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth(frame), kCropStripeHeight }];
         [_topStripe setHidden:YES];
+        [_topStripe.layer setAnchorPoint:(CGPoint){ .5, .5 }];
+        [_topStripe setTransform:CGAffineTransformMakeRotation(M_PI)];
         [self addSubview:_topStripe];
         
-        _bottomStripe = [[UIView alloc] initWithFrame:(CGRect){ 0, CGRectGetHeight(frame) - (kCropStripeHeight - 60), CGRectGetWidth(frame), (kCropStripeHeight - 60) }];
-        [_bottomStripe setBackgroundColor:RGBColor(0x00ffff, .30)];
+        _bottomStripe = [[StripeView alloc] initWithFrame:(CGRect){ 0, CGRectGetHeight(frame) - (kCropStripeHeight - 60), CGRectGetWidth(frame), (kCropStripeHeight - 60) }];
         [_bottomStripe setHidden:YES];
         [self addSubview:_bottomStripe];
     }

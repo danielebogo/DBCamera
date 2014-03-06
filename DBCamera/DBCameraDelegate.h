@@ -18,15 +18,19 @@
 - (void) switchCamera;
 - (void) triggerFlashForMode:(AVCaptureFlashMode)flashMode;
 - (void) cameraView:(UIView *)camera showGridView:(BOOL)show;
-
-- (CGFloat) cameraMaxScale;
+- (void) openLibrary;
 - (void) cameraCaptureScale:(CGFloat)scaleNum;
-
 - (BOOL) cameraViewHasFocus;
+- (CGFloat) cameraMaxScale;
 @end
 
 @protocol DBCameraViewControllerDelegate <NSObject>
 @optional
 - (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata;
 - (void) dismissCamera;
+@end
+
+@protocol DBCameraContainerDelegate <NSObject>
+- (void) backFromController:(id)fromController;
+- (void) switchFromController:(id)fromController toController:(id)controller;
 @end

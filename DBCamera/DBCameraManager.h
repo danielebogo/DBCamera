@@ -11,7 +11,6 @@
 
 @protocol DBCameraManagerDelegate;
 @interface DBCameraManager : NSObject
-
 @property (nonatomic, weak) id <DBCameraManagerDelegate> delegate;
 @property (nonatomic, readonly, strong) AVCaptureSession *captureSession;
 @property (nonatomic, readonly, strong) AVCaptureDeviceInput *videoInput;
