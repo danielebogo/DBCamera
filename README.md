@@ -98,7 +98,7 @@ DBCamera has a simple integration:
 //Use your captured image
 #pragma mark - DBCameraViewControllerDelegate
 
-- (void) captureImageDidFinish:(UIImage *)image
+- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
     [_imageView setImage:image];
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
