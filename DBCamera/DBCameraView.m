@@ -130,6 +130,8 @@
         _photoLibraryButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_photoLibraryButton setBackgroundColor:RGBColor(0xffffff, .1)];
         [_photoLibraryButton.layer setCornerRadius:4];
+        [_photoLibraryButton.layer setBorderWidth:1];
+        [_photoLibraryButton.layer setBorderColor:RGBColor(0xffffff, .3).CGColor];
         [_photoLibraryButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 59, CGRectGetMidY(self.bottomContainerBar.bounds) - 22, 44, 44 }];
         [_photoLibraryButton addTarget:self action:@selector(libraryAction:) forControlEvents:UIControlEventTouchUpInside];
     }

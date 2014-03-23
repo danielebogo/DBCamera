@@ -20,6 +20,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
+#ifndef DBCameraLocalizedStrings
+#define DBCameraLocalizedStrings(key) \
+NSLocalizedStringFromTable(key, @"DBCamera", nil)
+#endif
+
 @interface DBCameraViewController () <DBCameraManagerDelegate, DBCameraViewDelegate> {
     BOOL _processingPhoto;
     UIDeviceOrientation _deviceOrientation;
@@ -265,7 +270,7 @@
         }];
     } else {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"general.error.title", nil) message:NSLocalizedString(@"pickerimage.nopolicy", nil) delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            [[[UIAlertView alloc] initWithTitle:DBCameraLocalizedStrings(@"general.error.title") message:DBCameraLocalizedStrings(@"pickerimage.nopolicy") delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
         });
     }
 }

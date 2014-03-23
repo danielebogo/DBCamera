@@ -14,6 +14,11 @@
 #import "UIImage+Crop.h"
 #import "DBCameraMacros.h"
 
+#ifndef DBCameraLocalizedStrings
+#define DBCameraLocalizedStrings(key) \
+NSLocalizedStringFromTable(key, @"DBCamera", nil)
+#endif
+
 #define kItemIdentifier @"ItemIdentifier"
 
 @interface DBCameraLibrary () <UICollectionViewDataSource, UICollectionViewDelegate> {
@@ -66,9 +71,15 @@
     __weak typeof(self) blockSelf = self;
     [[DBLibraryManager sharedInstance] loadAssetsWithBlock:^(BOOL success, NSArray *items) {
         if ( success ) {
-            [blockItems addObjectsFromArray:items];
-            [blockCollection reloadData];
             [blockSelf.loading removeFromSuperview];
+            if ( items.count > 0) {
+                [blockItems addObjectsFromArray:items];
+                [blockCollection reloadData];
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[[UIAlertView alloc] initWithTitle:DBCameraLocalizedStrings(@"general.error.title") message:DBCameraLocalizedStrings(@"pickerimage.nophoto") delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                });
+            }
         }
     }];
 }
