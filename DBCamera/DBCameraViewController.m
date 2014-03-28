@@ -225,14 +225,17 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     _processingPhoto = NO;
     
+    NSMutableDictionary *finalMetadata = [NSMutableDictionary dictionaryWithDictionary:metadata];
+    finalMetadata[@"DBCameraSource"] = @"Camera";
+    
     if ( !self.useCameraSegue ) {
         if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
-            [_delegate captureImageDidFinish:image withMetadata:metadata];
+            [_delegate captureImageDidFinish:image withMetadata:finalMetadata];
     } else {
         DBCameraSegueViewController *cameraSegueUseViewController = [[DBCameraSegueViewController alloc] init];
         [cameraSegueUseViewController setDelegate:self.delegate];
         [cameraSegueUseViewController setCapturedImage:image];
-        [cameraSegueUseViewController setCapturedImageMetadata:metadata];
+        [cameraSegueUseViewController setCapturedImageMetadata:finalMetadata];
         [self.navigationController pushViewController:cameraSegueUseViewController animated:YES];
     }
 }
