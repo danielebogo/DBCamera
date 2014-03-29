@@ -73,7 +73,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         if ( success ) {
             [blockSelf.loading removeFromSuperview];
             if ( items.count > 0) {
-                [blockItems addObjectsFromArray:items];
+                [blockItems addObjectsFromArray:[[items reverseObjectEnumerator] allObjects]];
                 [blockCollection reloadData];
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
