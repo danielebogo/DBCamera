@@ -87,7 +87,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             [item setBackgroundColor:[UIColor blackColor] forState:ADDropDownMenuItemViewStateHighlighted];
             [dropArray addObject:item];
         }
-        ADDropDownMenuView *dropDownMenuView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 0) withItemsViews:dropArray];
+        ADDropDownMenuView *dropDownMenuView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 15) withItemsViews:dropArray];
         dropDownMenuView.separatorColor = [UIColor blackColor];
         dropDownMenuView.delegate = blockSelf;
         
@@ -168,7 +168,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_closeButton setBackgroundColor:[UIColor clearColor]];
         [_closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
-        [_closeButton setFrame:(CGRect){ self.view.frame.size.width-40,  0, 30, 30 }];
+        [_closeButton setFrame:(CGRect){ self.view.frame.size.width-40,  15, 30, 30 }];
         [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }
     
