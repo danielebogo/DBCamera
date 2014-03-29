@@ -35,6 +35,8 @@
 		9AC507F118B8E3A600665E10 /* DBCameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC507F018B8E3A600665E10 /* DBCameraGridView.m */; };
 		9AF961A718A252690068E3C6 /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF961A618A252690068E3C6 /* CustomCamera.m */; };
 		9AFDBEBD18B225DC00FA3928 /* DBCameraSegueView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFDBEBC18B225DC00FA3928 /* DBCameraSegueView.m */; };
+		D8ADC27D18E777F900AD1EFC /* ADDropDownMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ADC27A18E777F900AD1EFC /* ADDropDownMenuItemView.m */; };
+		D8ADC27E18E777F900AD1EFC /* ADDropDownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ADC27C18E777F900AD1EFC /* ADDropDownMenuView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,10 @@
 		9AF961A618A252690068E3C6 /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCamera.m; path = Classes/CustomCamera/CustomCamera.m; sourceTree = "<group>"; };
 		9AFDBEBB18B225DC00FA3928 /* DBCameraSegueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraSegueView.h; path = ../../DBCamera/DBCameraSegueView.h; sourceTree = "<group>"; };
 		9AFDBEBC18B225DC00FA3928 /* DBCameraSegueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraSegueView.m; path = ../../DBCamera/DBCameraSegueView.m; sourceTree = "<group>"; };
+		D8ADC27918E777F900AD1EFC /* ADDropDownMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDropDownMenuItemView.h; sourceTree = "<group>"; };
+		D8ADC27A18E777F900AD1EFC /* ADDropDownMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDropDownMenuItemView.m; sourceTree = "<group>"; };
+		D8ADC27B18E777F900AD1EFC /* ADDropDownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDropDownMenuView.h; sourceTree = "<group>"; };
+		D8ADC27C18E777F900AD1EFC /* ADDropDownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDropDownMenuView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +240,7 @@
 				9A50C7F018AA6C9100CD2DF3 /* DBCameraImages.xcassets */,
 				9AB597B2189BAF9A001BCAD3 /* AppDelegate.h */,
 				9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */,
+				D8ADC27818E777F900AD1EFC /* ADDropDownMenu */,
 				9AB597D6189BB09D001BCAD3 /* Classes */,
 				9AB597D2189BB04B001BCAD3 /* DBCamera */,
 				9AB597AA189BAF9A001BCAD3 /* Supporting Files */,
@@ -294,6 +301,18 @@
 				9AF961A618A252690068E3C6 /* CustomCamera.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		D8ADC27818E777F900AD1EFC /* ADDropDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D8ADC27918E777F900AD1EFC /* ADDropDownMenuItemView.h */,
+				D8ADC27A18E777F900AD1EFC /* ADDropDownMenuItemView.m */,
+				D8ADC27B18E777F900AD1EFC /* ADDropDownMenuView.h */,
+				D8ADC27C18E777F900AD1EFC /* ADDropDownMenuView.m */,
+			);
+			name = ADDropDownMenu;
+			path = ../../ADDropDownMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,7 +416,9 @@
 				9A14056218C8949F00A590AB /* DBCollectionViewFlowLayout.m in Sources */,
 				9A55F75318C796FB007FB6A1 /* DBLibraryManager.m in Sources */,
 				9AB597DC189BB501001BCAD3 /* DBCameraManager.m in Sources */,
+				D8ADC27E18E777F900AD1EFC /* ADDropDownMenuView.m in Sources */,
 				9AC507F118B8E3A600665E10 /* DBCameraGridView.m in Sources */,
+				D8ADC27D18E777F900AD1EFC /* ADDropDownMenuItemView.m in Sources */,
 				9AFDBEBD18B225DC00FA3928 /* DBCameraSegueView.m in Sources */,
 				9A369EE518AD62A100EB5D1B /* UIImage+Crop.m in Sources */,
 				9A50C7A118AA3EAF00CD2DF3 /* DBCameraSegueViewController.m in Sources */,

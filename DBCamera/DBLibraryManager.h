@@ -19,13 +19,14 @@ typedef void (^LastItemCompletionBlock)( BOOL success, UIImage *image );
 }
 
 @property (nonatomic, assign, readonly) BOOL getAllAssets;
-@property (nonatomic, copy) AssetGroupEnumerator assetGroupEnumerator;
+@property (nonatomic, copy) AssetGroupEnumerator lastAssetGroupEnumerator;
 
 + (DBLibraryManager *) sharedInstance;
 
 - (ALAssetsLibrary *) defaultAssetsLibrary;
 - (void) loadLastItemWithBlock:(LastItemCompletionBlock)blockhandler;
-- (void) loadAssetsWithBlock:(ItemsCompletionBlock)blockhandler;
-- (AssetGroupEnumerator) assetGroupEnumerator;
+- (void) loadAssetsWithGroup:(ALAssetsGroup*)group andBlock:(ItemsCompletionBlock)blockhandler;
+-(void) loadGroupsWithBlock:(ItemsCompletionBlock)blockhandler;
+- (AssetGroupEnumerator) lastAssetGroupEnumerator;
 
 @end
