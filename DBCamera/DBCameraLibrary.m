@@ -78,21 +78,27 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         for (ALAssetsGroup* g in items) {
             if ([items indexOfObject:g] == 0) [blockSelf loadAssetWithGroup:g]; //go ahead and load the camera roll's images
 
-            ADDropDownMenuItemView *item = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(320, 30)];
-            NSInteger gCount = [g numberOfAssets];
-            item.titleLabel.text = [NSString stringWithFormat:@"%@ (%ld)",[g valueForProperty:ALAssetsGroupPropertyName], (long)gCount];
+            ADDropDownMenuItemView *item = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(320, 40)];
+            item.titleLabel.text = [NSString stringWithFormat:@"%@",[g valueForProperty:ALAssetsGroupPropertyName]];
             item.tag = [items indexOfObject:g];
-            [item setBackgroundColor:[UIColor blackColor] forState:ADDropDownMenuItemViewStateNormal];
-            [item setBackgroundColor:[UIColor blackColor] forState:ADDropDownMenuItemViewStateSelected];
-            [item setBackgroundColor:[UIColor blackColor] forState:ADDropDownMenuItemViewStateHighlighted];
+//            [item.titleLabel setFont:[UIFont fontWithName:@"" size:12]];
+            [item setBackgroundColor:[UIColor darkGrayColor] forState:ADDropDownMenuItemViewStateNormal];
+            [item setBackgroundColor:[UIColor darkGrayColor] forState:ADDropDownMenuItemViewStateSelected];
+            [item setBackgroundColor:[UIColor darkGrayColor] forState:ADDropDownMenuItemViewStateHighlighted];
             [dropArray addObject:item];
         }
+        
         ADDropDownMenuView *dropDownMenuView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 15) withItemsViews:dropArray];
-        dropDownMenuView.separatorColor = [UIColor blackColor];
+        dropDownMenuView.separatorColor = [UIColor darkGrayColor];
         dropDownMenuView.delegate = blockSelf;
+        
+        UIImageView* arrow = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width-45, 15, 30, 30)];
+        [arrow setBackgroundColor:[UIColor clearColor]];
+        [arrow setImage:[UIImage imageNamed:@"arrow"]];
         
         [blockSelf.view addSubview:dropDownMenuView];
         [blockSelf.view addSubview:blockSelf.closeButton];
+        [blockSelf.view addSubview:arrow];
     }];
     
     
@@ -157,7 +163,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     if ( !_topContainerBar ) {
         _topContainerBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth(self.view.bounds), 65 }];
-        _topContainerBar.backgroundColor = [UIColor blackColor];
+        _topContainerBar.backgroundColor = [UIColor darkGrayColor];
     }
     return _topContainerBar;
 }
@@ -168,7 +174,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_closeButton setBackgroundColor:[UIColor clearColor]];
         [_closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
-        [_closeButton setFrame:(CGRect){ self.view.frame.size.width-40,  15, 30, 30 }];
+        [_closeButton setFrame:(CGRect){ 15, 15, 30, 30 }];
         [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }
     
