@@ -177,15 +177,17 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             UIImage *image = [UIImage imageWithCGImage:[defaultRep fullResolutionImage]
                                                  scale:[defaultRep scale]
                                            orientation:[[asset valueForProperty:ALAssetPropertyOrientation] integerValue]];
+            NSMutableDictionary *metadata = [NSMutableDictionary dictionaryWithDictionary:[defaultRep metadata]];
+            metadata[@"DBCameraSource"] = @"Library";
             
             if ( !blockSelf.useCameraSegue ) {
                 if ( [blockSelf.delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
                     [blockSelf.delegate captureImageDidFinish:[image rotateUIImage]
-                                                 withMetadata:[defaultRep metadata]];
+                                                 withMetadata:metadata ];
             } else {
                 DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] init];
                 [segue setCapturedImage:[image rotateUIImage]];
-                [segue setCapturedImageMetadata:[defaultRep metadata]];
+                [segue setCapturedImageMetadata:metadata];
                 [segue setDelegate:blockSelf.delegate];
                 [blockSelf.navigationController pushViewController:segue animated:YES];
             }

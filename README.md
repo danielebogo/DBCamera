@@ -222,7 +222,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 6.0
 
 ###Version
-1.1.1
+1.1.2
 
 ###Created By
 
