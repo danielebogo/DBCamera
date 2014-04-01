@@ -40,6 +40,13 @@
     [self.view addSubview:self.defaultCameraViewController.view];
 }
 
+
+-(void)viewDidAppear:(BOOL)animated {
+    if (self.navigationController) {
+        [self.navigationController setNavigationBarHidden:YES];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
