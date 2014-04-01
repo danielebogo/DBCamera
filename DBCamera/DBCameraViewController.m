@@ -108,9 +108,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
                                                  name:@"UIDeviceOrientationDidChangeNotification"
                                                object:nil];
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    if (self.navigationController) {
-        [self.navigationController setNavigationBarHidden:YES];
-    }
+    [self.navigationController setNavigationBarHidden:YES];
+
 }
 
 - (void) viewWillDisappear:(BOOL)animated

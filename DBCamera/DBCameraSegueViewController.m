@@ -48,6 +48,8 @@
     [_containerView.imageView setFrame:(CGRect){ _containerView.imageView.frame.origin.x, newY + 60.0f,
                                                  CGRectGetWidth(_containerView.imageView.frame), newHeight }];
     [_containerView.imageView setDefaultCenter:_containerView.imageView.center];
+    [self.navigationController setNavigationBarHidden:YES];
+
 }
 
 - (CGFloat) getNewHeight

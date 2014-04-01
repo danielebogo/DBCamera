@@ -42,9 +42,8 @@
 
 
 -(void)viewDidAppear:(BOOL)animated {
-    if (self.navigationController) {
-        [self.navigationController setNavigationBarHidden:YES];
-    }
+    [self.navigationController setNavigationBarHidden:YES];
+
 }
 
 - (void)didReceiveMemoryWarning
