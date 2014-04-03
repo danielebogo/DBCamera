@@ -13,6 +13,8 @@
 #import "DBCameraSegueViewController.h"
 #import "UIImage+Crop.h"
 #import "DBCameraMacros.h"
+#import "ADDropDownMenuView.h"
+#import "ADDropDownMenuItemView.h"
 
 #ifndef DBCameraLocalizedStrings
 #define DBCameraLocalizedStrings(key) \
@@ -21,9 +23,10 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 #define kItemIdentifier @"ItemIdentifier"
 
-@interface DBCameraLibrary () <UICollectionViewDataSource, UICollectionViewDelegate> {
+@interface DBCameraLibrary () <UICollectionViewDataSource, UICollectionViewDelegate,ADDropDownMenuDelegate> {
     NSMutableArray *_items;
     UICollectionView *_collectionView;
+    NSArray *_groups;
 }
 @property (nonatomic, strong) UIButton *closeButton;
 @property (nonatomic, strong) UIView *topContainerBar, *loading;;
@@ -47,8 +50,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 	// Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self.view addSubview:self.topContainerBar];
-    [self.view addSubview:self.closeButton];
-    
+   
     CGRect frame = (CGRect){ 0, CGRectGetMaxY(self.topContainerBar.frame), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - CGRectGetHeight(self.topContainerBar.frame) };
     
     _collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:[[DBCollectionViewFlowLayout alloc] init]];
@@ -62,18 +64,57 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     [self.view addSubview:self.loading];
 }
 
+
+
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    __weak typeof(self) blockSelf = self;
     
+    [[DBLibraryManager sharedInstance] loadGroupsWithBlock:^(BOOL success, NSArray *items) {
+        
+        NSMutableArray* dropArray = [NSMutableArray array];
+        _groups = items;
+        for (ALAssetsGroup* g in items) {
+            if ([items indexOfObject:g] == 0) [blockSelf loadAssetWithGroup:g]; //go ahead and load the camera roll's images
+
+            ADDropDownMenuItemView *item = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(320, 40)];
+            item.titleLabel.text = [NSString stringWithFormat:@"%@",[g valueForProperty:ALAssetsGroupPropertyName]];
+            item.tag = [items indexOfObject:g];
+//            [item.titleLabel setFont:[UIFont fontWithName:@"" size:12]];
+            [item setBackgroundColor:[UIColor darkGrayColor] forState:ADDropDownMenuItemViewStateNormal];
+            [item setBackgroundColor:[UIColor darkGrayColor] forState:ADDropDownMenuItemViewStateSelected];
+            [item setBackgroundColor:[UIColor darkGrayColor] forState:ADDropDownMenuItemViewStateHighlighted];
+            [dropArray addObject:item];
+        }
+        
+        ADDropDownMenuView *dropDownMenuView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 15) withItemsViews:dropArray];
+        dropDownMenuView.separatorColor = [UIColor darkGrayColor];
+        dropDownMenuView.delegate = blockSelf;
+        
+        UIImageView* arrow = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width-45, 15, 30, 30)];
+        [arrow setBackgroundColor:[UIColor clearColor]];
+        [arrow setImage:[UIImage imageNamed:@"arrow"]];
+        
+        [blockSelf.view addSubview:dropDownMenuView];
+        [blockSelf.view addSubview:blockSelf.closeButton];
+        [blockSelf.view addSubview:arrow];
+    }];
+    
+    
+}
+
+
+-(void)loadAssetWithGroup:(ALAssetsGroup*) assetGroup {
     __weak NSMutableArray *blockItems = _items;
     __weak UICollectionView *blockCollection = _collectionView;
     __weak typeof(self) blockSelf = self;
-    [[DBLibraryManager sharedInstance] loadAssetsWithBlock:^(BOOL success, NSArray *items) {
+    
+    [[DBLibraryManager sharedInstance] loadAssetsWithGroup:assetGroup andBlock:^(BOOL success, NSArray *items) {
         if ( success ) {
             [blockSelf.loading removeFromSuperview];
             if ( items.count > 0) {
-                [blockItems addObjectsFromArray:items];
+                [blockItems setArray:[[items reverseObjectEnumerator] allObjects]];
                 [blockCollection reloadData];
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -122,7 +163,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     if ( !_topContainerBar ) {
         _topContainerBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth(self.view.bounds), 65 }];
-        _topContainerBar.backgroundColor = [UIColor blackColor];
+        _topContainerBar.backgroundColor = [UIColor darkGrayColor];
     }
     return _topContainerBar;
 }
@@ -133,12 +174,18 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_closeButton setBackgroundColor:[UIColor clearColor]];
         [_closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
-        [_closeButton setFrame:(CGRect){ 0,  0, 30, 30 }];
+        [_closeButton setFrame:(CGRect){ 15, 15, 30, 30 }];
         [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
-        [_closeButton setCenter:self.topContainerBar.center];
     }
     
     return _closeButton;
+}
+
+#pragma mark - ADDropDownMenuDelegate
+
+- (void)ADDropDownMenu:(ADDropDownMenuView *)view didSelectItem:(ADDropDownMenuItemView *)item {
+    ALAssetsGroup* g = [_groups objectAtIndex:item.tag];
+    [self loadAssetWithGroup:g];
 }
 
 #pragma mark - UICollectionViewDataSource
