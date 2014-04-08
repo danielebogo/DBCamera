@@ -9,6 +9,15 @@
 #import "DBLibraryManager.h"
 #import "UIImage+Crop.h"
 
+#define kCameraRollName @"camera roll"
+
+@interface DBLibraryManager () {
+    NSMutableArray *_assetGroups;
+}
+@property (nonatomic, strong) ALAssetsGroup *usedGroup;
+@property (nonatomic, copy) ALAssetsGroupEnumerationResultsBlock assetsEnumerator;
+@end
+
 @implementation DBLibraryManager
 
 + (DBLibraryManager *) sharedInstance
@@ -32,6 +41,17 @@
     return library;
 }
 
+- (id) init
+{
+    self = [super init];
+    
+    if ( self ) {
+        _assetGroups = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
+}
+
 - (void) loadLastItemWithBlock:(LastItemCompletionBlock)blockhandler
 {
     _getAllAssets = NO;
@@ -43,56 +63,87 @@
                                              }];
 }
 
-- (void) loadAssetsWithBlock:(ItemsCompletionBlock)blockhandler
+- (void) loadGroupsAssetWithBlock:(GroupsCompletionBlock)blockhandler
 {
     _getAllAssets = YES;
-    _itemsCompletionBlock = blockhandler;
-    __weak ItemsCompletionBlock block = _itemsCompletionBlock;
-    [[self defaultAssetsLibrary] enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:self.assetGroupEnumerator
+    _groupsCompletionBlock = blockhandler;
+    __weak GroupsCompletionBlock block = _groupsCompletionBlock;
+    [[self defaultAssetsLibrary] enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:self.assetGroupEnumerator
                                              failureBlock:^(NSError *error) {
                                                  block( NO, nil );
                                              }];
 }
 
-- (AssetGroupEnumerator) assetGroupEnumerator
+- (ALAssetsLibraryGroupsEnumerationResultsBlock) assetGroupEnumerator
 {
-    __block NSMutableArray *items = [NSMutableArray array];
-    __block BOOL blockGetAllAssets = _getAllAssets;
-    __weak ItemsCompletionBlock block = _itemsCompletionBlock;
-    __weak LastItemCompletionBlock blockLastItem = _lastItemCompletionBlock;
-    __block ALAsset *assetResult;
+    if ( _assetGroups.count > 0 )
+        [_assetGroups removeAllObjects];
     
-    void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop){
+    __block NSMutableArray *groups = _assetGroups;
+    __block BOOL blockGetAllAssets = _getAllAssets;
+    __weak typeof(self) selfBlock = self;
+    __weak GroupsCompletionBlock block = _groupsCompletionBlock;
+    
+    ALAssetsLibraryGroupsEnumerationResultsBlock groupsEnumerator = ^(ALAssetsGroup *group, BOOL *stop){
         if ( group ) {
-            void (^assetEnumerator)(ALAsset *, NSUInteger, BOOL *) = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
-                if ( result ) {
-                    if( [[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto] ) {
-                        [items addObject:[[result defaultRepresentation] url]];
-                        assetResult = result;
-                    }
-                }
-                
-                if ( index == (NSInteger)[group numberOfAssets] - 1) {
-                    *stop = YES;
-                    
-                    if ( !blockGetAllAssets ) {
-                        UIImage *image = [UIImage imageWithCGImage:[assetResult thumbnail]];
-                        image = [UIImage createRoundedRectImage:image size:image.size roundRadius:8];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            blockLastItem( YES, image );
-                        });
-                    } else
-                        block(YES, [items copy] );
-                    
-                    items = nil;
-                }
-            };
-            
-            [group enumerateAssetsUsingBlock:assetEnumerator];
+            [selfBlock setUsedGroup:group];
+            [group enumerateAssetsUsingBlock:self.assetsEnumerator];
+        } else {
+            if ( blockGetAllAssets ) {
+                block ( YES, [groups copy] );
+                groups = nil;
+            }
         }
     };
     
-    return assetGroupEnumerator;
+    return groupsEnumerator;
+}
+
+- (ALAssetsGroupEnumerationResultsBlock) assetsEnumerator
+{
+    __block NSMutableArray *items = [NSMutableArray array];
+    __block ALAsset *assetResult;
+    __block BOOL blockGetAllAssets = _getAllAssets;
+    
+    __weak typeof(self) selfBlock = self;
+    __weak NSMutableArray *assetGroupsBlock = _assetGroups;
+    __weak LastItemCompletionBlock blockLastItem = _lastItemCompletionBlock;
+    
+    ALAssetsGroupEnumerationResultsBlock assetsEnumerator = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
+        if ( result ) {
+            if( [[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto] ) {
+                [items addObject:[[result defaultRepresentation] url]];
+                assetResult = result;
+            }
+        }
+        
+        if ( index == (NSInteger)[selfBlock.usedGroup numberOfAssets] - 1) {
+            *stop = YES;
+            
+            if ( !blockGetAllAssets ) {
+                UIImage *image = [UIImage imageWithCGImage:[assetResult thumbnail]];
+                image = [UIImage createRoundedRectImage:image size:image.size roundRadius:8];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    blockLastItem( YES, image );
+                });
+            } else {
+                NSString *groupPropertyName = (NSString *)[selfBlock.usedGroup valueForProperty:ALAssetsGroupPropertyName];
+                NSString *groupPropertyPersistenID = (NSString *)[selfBlock.usedGroup valueForProperty:ALAssetsGroupPropertyPersistentID];
+                NSUInteger propertyType = [[selfBlock.usedGroup valueForProperty:ALAssetsGroupPropertyType] intValue];
+                
+                NSDictionary *dictionaryGroup = @{ @"groupTitle":groupPropertyName, @"groupAssets":[[items reverseObjectEnumerator] allObjects], @"propertyType":@(propertyType), @"propertyID":groupPropertyPersistenID };
+                
+                if ( propertyType == ALAssetsGroupSavedPhotos )
+                    [assetGroupsBlock insertObject:dictionaryGroup atIndex:0];
+                else
+                    [assetGroupsBlock addObject:dictionaryGroup];
+            }
+            
+            items = nil;
+        }
+    };
+    
+    return assetsEnumerator;
 }
 
 @end

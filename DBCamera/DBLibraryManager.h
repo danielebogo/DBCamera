@@ -9,23 +9,21 @@
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-typedef void (^AssetGroupEnumerator)(ALAssetsGroup *group, BOOL *stop);
-typedef void (^ItemsCompletionBlock)( BOOL success, NSArray *items );
+typedef void (^GroupsCompletionBlock)( BOOL success, NSArray *items );
 typedef void (^LastItemCompletionBlock)( BOOL success, UIImage *image );
 
 @interface DBLibraryManager : NSObject {
-    ItemsCompletionBlock _itemsCompletionBlock;
+    GroupsCompletionBlock _groupsCompletionBlock;
     LastItemCompletionBlock _lastItemCompletionBlock;
 }
 
 @property (nonatomic, assign, readonly) BOOL getAllAssets;
-@property (nonatomic, copy) AssetGroupEnumerator assetGroupEnumerator;
+@property (nonatomic, copy) ALAssetsLibraryGroupsEnumerationResultsBlock assetGroupEnumerator;
 
 + (DBLibraryManager *) sharedInstance;
 
 - (ALAssetsLibrary *) defaultAssetsLibrary;
 - (void) loadLastItemWithBlock:(LastItemCompletionBlock)blockhandler;
-- (void) loadAssetsWithBlock:(ItemsCompletionBlock)blockhandler;
-- (AssetGroupEnumerator) assetGroupEnumerator;
+- (void) loadGroupsAssetWithBlock:(GroupsCompletionBlock)blockhandler;
 
 @end

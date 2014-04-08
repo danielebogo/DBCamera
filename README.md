@@ -27,7 +27,7 @@ $ cd /path/to/MyProject
 $ touch Podfile
 $ edit Podfile
 platform :ios, '6.0' 
-pod 'DBCamera', '~> 1.1.1'
+pod 'DBCamera', '~> 1.2'
 ```
 
 Install into your project:
@@ -222,7 +222,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 6.0
 
 ###Version
-1.1.2
+1.2
 
 ###Created By
 

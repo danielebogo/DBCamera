@@ -34,3 +34,7 @@
 - (void) backFromController:(id)fromController;
 - (void) switchFromController:(id)fromController toController:(id)controller;
 @end
+
+@protocol DBCameraCollectionControllerDelegate <NSObject>
+- (void) collectionView:(UICollectionView *)collectionView itemURL:(NSURL *)URL;
+@end
