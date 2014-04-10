@@ -1,7 +1,7 @@
 DBCamera
 ========
 
-Inspired by [CropImageSample] (https://github.com/kishikawakatsumi/CropImageSample), DBCamera is a simple custom camera with AVFoundation.
+DBCamera is a simple custom camera with AVFoundation.
 
 ![Alt text](http://paperstreetsoapdesign.com/development/dbcamera/github/dbcamera_screen_6.png)
 
