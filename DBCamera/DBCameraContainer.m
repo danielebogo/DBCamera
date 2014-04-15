@@ -22,6 +22,12 @@
     
     if ( self ) {
         _delegate = delegate;
+        
+        // force the interface to load ASAP, so it can be configured
+        // before the view controller is displayed
+        [self defaultCameraViewController];
+        [self.defaultCameraViewController setContainerDelegate:self];
+        [self.defaultCameraViewController view];
     }
     
     return self;
@@ -55,6 +61,10 @@
 {
     if ( !_defaultCameraViewController )
         _defaultCameraViewController = [DBCameraViewController initWithDelegate:_delegate];
+    
+    // set this property since it doesn't seem to be set by anyone else
+    if (! self.cameraViewController)
+        self.cameraViewController = _defaultCameraViewController;
     
     return ( self.cameraViewController ) ? self.cameraViewController : _defaultCameraViewController;
 }
