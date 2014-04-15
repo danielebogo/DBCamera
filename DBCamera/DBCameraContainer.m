@@ -25,25 +25,16 @@
         
         // force the interface to load ASAP, so it can be configured
         // before the view controller is displayed
-        [self defaultCameraViewController];
-        [self.defaultCameraViewController setContainerDelegate:self];
-        [self.defaultCameraViewController view];
+        [self.view setBackgroundColor:RGBColor(0x000000, 1)];
+    
+        if ( !self.defaultCameraViewController.containerDelegate )
+            [self.defaultCameraViewController setContainerDelegate:self];
+    
+        [self addChildViewController:self.defaultCameraViewController];
+        [self.view addSubview:self.defaultCameraViewController.view];
     }
     
     return self;
-}
-
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [self.view setBackgroundColor:RGBColor(0x000000, 1)];
-    
-    if ( !self.defaultCameraViewController.containerDelegate )
-        [self.defaultCameraViewController setContainerDelegate:self];
-    
-    [self addChildViewController:self.defaultCameraViewController];
-    [self.view addSubview:self.defaultCameraViewController.view];
 }
 
 - (void)didReceiveMemoryWarning
