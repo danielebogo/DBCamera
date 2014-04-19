@@ -15,5 +15,4 @@
 @property (nonatomic, strong) DBCameraViewController *cameraViewController;
 
 - (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
-
 @end

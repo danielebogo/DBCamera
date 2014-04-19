@@ -1,16 +1,18 @@
 //
-//  DBCameraUseViewController.h
-//  DBCamera
+//  DBCameraSegueViewController.h
+//  CropImage
 //
-//  Created by iBo on 11/02/14.
-//  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
+//  Created by Daniele Bogo on 19/04/14.
+//  Copyright (c) 2014 Daniele Bogo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DBCameraBaseCropController.h"
 #import "DBCameraDelegate.h"
 
-@interface DBCameraSegueViewController : UIViewController
+@interface DBCameraSegueViewController : DBCameraBaseCropController <DBCameraCropRect>
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
-@property (nonatomic, strong) UIImage *capturedImage;
 @property (nonatomic, strong) NSDictionary *capturedImageMetadata;
+
+- (id) initWithImage:(UIImage *)image thumb:(UIImage *)thumb;
+- (void) createInterface;
 @end

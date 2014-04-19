@@ -86,8 +86,10 @@
     
     ALAssetsLibraryGroupsEnumerationResultsBlock groupsEnumerator = ^(ALAssetsGroup *group, BOOL *stop){
         if ( group ) {
-            [selfBlock setUsedGroup:group];
-            [group enumerateAssetsUsingBlock:self.assetsEnumerator];
+            if ( group.numberOfAssets > 0 ) {
+                [selfBlock setUsedGroup:group];
+                [group enumerateAssetsUsingBlock:selfBlock.assetsEnumerator];
+            }
         } else {
             if ( blockGetAllAssets ) {
                 block ( YES, [groups copy] );
@@ -135,8 +137,10 @@
                 
                 if ( propertyType == ALAssetsGroupSavedPhotos )
                     [assetGroupsBlock insertObject:dictionaryGroup atIndex:0];
-                else
+                else if ( [(NSArray *)dictionaryGroup[@"groupAssets"] count] > 0 )
                     [assetGroupsBlock addObject:dictionaryGroup];
+                
+                NSLog( @"Group %@", dictionaryGroup);
             }
             
             items = nil;

@@ -20,5 +20,4 @@
 + (DBCameraViewController *) init;
 
 - (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraView:(id)camera;
-
 @end

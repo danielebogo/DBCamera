@@ -38,3 +38,8 @@
 @protocol DBCameraCollectionControllerDelegate <NSObject>
 - (void) collectionView:(UICollectionView *)collectionView itemURL:(NSURL *)URL;
 @end
+
+@protocol DBCameraCropRect
+@required
+@property (nonatomic, assign) CGRect cropRect;
+@end

@@ -232,11 +232,19 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
             [_delegate captureImageDidFinish:image withMetadata:finalMetadata];
     } else {
-        DBCameraSegueViewController *cameraSegueUseViewController = [[DBCameraSegueViewController alloc] init];
-        [cameraSegueUseViewController setDelegate:self.delegate];
-        [cameraSegueUseViewController setCapturedImage:image];
-        [cameraSegueUseViewController setCapturedImageMetadata:finalMetadata];
-        [self.navigationController pushViewController:cameraSegueUseViewController animated:YES];
+        CGFloat newW = 256.0;
+        CGFloat newH = 340.0;
+        
+        if ( image.size.width > image.size.height ) {
+            newW = 340.0;
+            newH = ( newW * image.size.height ) / image.size.width;
+        }
+        
+        DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:image thumb:[UIImage returnImage:image withSize:(CGSize){ newW, newH }]];
+        [segue enableGestures:YES];
+        [segue setDelegate:self.delegate];
+        [segue setCapturedImageMetadata:finalMetadata];
+        [self.navigationController pushViewController:segue animated:YES];
     }
 }
 

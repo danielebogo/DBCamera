@@ -27,5 +27,4 @@
 - (void) drawExposeBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove;
 - (void) draw:(CALayer *)layer atPointOfInterest:(CGPoint)point andRemove:(BOOL)remove;
 - (void) pinchCameraViewWithScalNum:(CGFloat)scale;
-
 @end

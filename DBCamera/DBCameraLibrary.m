@@ -311,8 +311,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
                     [blockSelf.delegate captureImageDidFinish:[image rotateUIImage]
                                                  withMetadata:metadata ];
             } else {
-                DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] init];
-                [segue setCapturedImage:[image rotateUIImage]];
+                DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:[image rotateUIImage] thumb:[UIImage imageWithCGImage:[asset aspectRatioThumbnail]]];
+                [segue enableGestures:YES];
                 [segue setCapturedImageMetadata:metadata];
                 [segue setDelegate:blockSelf.delegate];
                 [blockSelf.navigationController pushViewController:segue animated:YES];
