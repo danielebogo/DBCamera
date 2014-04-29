@@ -125,6 +125,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     [super viewDidDisappear:animated];
     [self.cameraManager performSelector:@selector(stopRunning) withObject:nil afterDelay:0.0];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UIDeviceOrientationDidChangeNotification" object:nil];
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 }
@@ -276,7 +277,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (void) captureSessionDidStartRunning
 {
-    id camera = self.customCamera ? self.customCamera : _cameraView;
+    id camera = self.customCamera ?: _cameraView;
     CGRect bounds = [(UIView *)camera bounds];
     AVCaptureVideoPreviewLayer *previewLayer = self.customCamera ? (AVCaptureVideoPreviewLayer *)[self.customCamera valueForKey:@"previewLayer"] : _cameraView.previewLayer;
     CGPoint screenCenter = (CGPoint){ (bounds.size.width * .5f), (bounds.size.height * .5f) - CGRectGetMinY(previewLayer.frame) };

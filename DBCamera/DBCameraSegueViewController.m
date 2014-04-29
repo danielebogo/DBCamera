@@ -19,6 +19,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 @interface DBCameraSegueViewController () {
     DBCameraCropView *_cropView;
+    CGRect _pFrame, _lFrame;
 }
 
 @property (nonatomic, assign) BOOL cropMode;
@@ -56,10 +57,12 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     [self.view setUserInteractionEnabled:YES];
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self.view addSubview:self.navigationBar];
+    [self.view setClipsToBounds:YES];
     
-    [self setCropRect:(CGRect){ ( CGRectGetWidth( self.frameView.frame) - 320 ) * .5,
-        ( CGRectGetHeight( self.frameView.frame) - 320 ) * .5,
-        320, 320 }];
+    _pFrame = (CGRect){ ( CGRectGetWidth( self.frameView.frame) - 320 ) * .5, ( CGRectGetHeight( self.frameView.frame) - 320 ) * .5, 320, 320 };
+    _lFrame = (CGRect){ ( CGRectGetWidth( self.frameView.frame) - 320 ) * .5, ( CGRectGetHeight( self.frameView.frame) - 240) * .5, 320, 240 };
+    
+    [self setCropRect:self.previewImage.size.width > self.previewImage.size.height ? _lFrame : _pFrame];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,9 +75,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     [button setSelected:!button.isSelected];
     [self setCropMode:button.isSelected];
-    
-    if ( !button.isSelected )
-        [self reset:YES];
+    [self setCropRect:button.isSelected ? _pFrame : _lFrame];
+    [self reset:YES];
 }
 
 - (void) createInterface
