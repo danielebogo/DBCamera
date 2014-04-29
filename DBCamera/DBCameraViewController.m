@@ -12,7 +12,8 @@
 #import "DBCameraGridView.h"
 #import "DBCameraDelegate.h"
 #import "DBCameraSegueViewController.h"
-#import "DBCameraLibrary.h"
+#import "DBCameraLibraryViewController.h"
+#import "DBLibraryManager.h"
 
 #import "UIImage+Crop.h"
 #import "DBCameraMacros.h"
@@ -110,9 +111,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
 }
 
-- (void) viewWillDisappear:(BOOL)animated
+- (void) viewWillAppear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+    [super viewWillAppear:animated];
+    if ( !self.customCamera )
+        [self checkForLibraryImage];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -135,6 +138,19 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     [self setCameraManager:nil];
 }
 
+- (void) checkForLibraryImage
+{
+    if ( !self.cameraView.photoLibraryButton.isHidden && [NSStringFromClass(self.parentViewController.class) isEqualToString:@"DBCameraContainerViewController"] ) {
+        if ( [ALAssetsLibrary authorizationStatus] !=  ALAuthorizationStatusDenied ) {
+            __weak DBCameraView *weakCamera = self.cameraView;
+            [[DBLibraryManager sharedInstance] loadLastItemWithBlock:^(BOOL success, UIImage *image) {
+                [weakCamera.photoLibraryButton setBackgroundImage:image forState:UIControlStateNormal];
+            }];
+        }
+    } else
+        [self.cameraView.photoLibraryButton setHidden:YES];
+}
+
 - (BOOL) prefersStatusBarHidden
 {
     return YES;
@@ -152,7 +168,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     if ( !_cameraView ) {
         _cameraView = [DBCameraView initWithCaptureSession:self.cameraManager.captureSession];
-        [_cameraView setHideLibraryButton:![NSStringFromClass(self.parentViewController.class) isEqualToString:@"DBCameraContainer"]];
+//        [_cameraView setHideLibraryButton:![NSStringFromClass(self.parentViewController.class) isEqualToString:@"DBCameraContainer"]];
         [_cameraView defaultInterface];
         [_cameraView setDelegate:self];
     }
@@ -274,7 +290,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             [self.view setAlpha:0];
             [self.view setTransform:CGAffineTransformMakeScale(.8, .8)];
         } completion:^(BOOL finished) {
-            DBCameraLibrary *library = [[DBCameraLibrary alloc] initWithDelegate:self.containerDelegate];
+            DBCameraLibraryViewController *library = [[DBCameraLibraryViewController alloc] initWithDelegate:self.containerDelegate];
             [library setDelegate:self.delegate];
             [library setUseCameraSegue:self.useCameraSegue];
             [self.containerDelegate switchFromController:self toController:library];

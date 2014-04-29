@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "DBCameraViewController.h"
-#import "DBCameraContainer.h"
+#import "DBCameraContainerViewController.h"
 #import "CustomCamera.h"
 
 #define kCellIdentifier @"CellIdentifier"
@@ -96,7 +96,12 @@
 
 - (void) openCamera
 {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[DBCameraContainer alloc] initWithDelegate:self]];
+    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+//    DBCameraContainer *cameraContainer = [[DBCameraContainer alloc] initWithDelegate:self cameraSettingsBlock:^(DBCameraView *cameraView) {
+//        [cameraView.photoLibraryButton setHidden:YES];
+//    }];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraContainer];
     [nav setNavigationBarHidden:YES];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -115,7 +120,7 @@
 {
     DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
     [cameraController setUseCameraSegue:NO];
-    DBCameraContainer *container = [[DBCameraContainer alloc] initWithDelegate:self];
+    DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     [container setCameraViewController:cameraController];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
     [nav setNavigationBarHidden:YES];

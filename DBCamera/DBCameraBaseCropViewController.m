@@ -1,12 +1,12 @@
 //
-//  DBCameraBaseCropController.m
+//  DBCameraBaseCropViewController.m
 //  CropImage
 //
 //  Created by Daniele Bogo on 19/04/14.
 //  Copyright (c) 2014 Daniele Bogo. All rights reserved.
 //
 
-#import "DBCameraBaseCropController.h"
+#import "DBCameraBaseCropViewController.h"
 
 typedef struct {
     CGPoint tl,tr,bl,br;
@@ -19,7 +19,7 @@ static const CGFloat kDefaultCropHeight = 320;
 static const NSTimeInterval kAnimationIntervalReset = 0.25;
 static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
-@interface DBCameraBaseCropController () <UIGestureRecognizerDelegate>
+@interface DBCameraBaseCropViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic,strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic,strong) UIRotationGestureRecognizer *rotationRecognizer;
 @property (nonatomic,strong) UIPinchGestureRecognizer *pinchRecognizer;
@@ -35,7 +35,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 @property (nonatomic, assign) BOOL panEnabled, rotateEnabled, scaleEnabled, tapToResetEnabled;
 @end
 
-@implementation DBCameraBaseCropController
+@implementation DBCameraBaseCropViewController
 
 - (id)init
 {

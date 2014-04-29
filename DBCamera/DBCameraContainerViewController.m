@@ -1,40 +1,56 @@
 //
-//  DBCameraContainer.m
+//  DBCameraContainerViewController.m
 //  DBCamera
 //
 //  Created by iBo on 06/03/14.
 //  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
 //
 
-#import "DBCameraContainer.h"
+#import "DBCameraContainerViewController.h"
 #import "DBCameraViewController.h"
 #import "DBCameraMacros.h"
+#import "DBCameraView.h"
 
-@interface DBCameraContainer () <DBCameraContainerDelegate>
+@interface DBCameraContainerViewController () <DBCameraContainerDelegate> {
+    CameraSettingsBlock _settingsBlock;
+}
 @property (nonatomic, strong) DBCameraViewController *defaultCameraViewController;
 @end
 
-@implementation DBCameraContainer
+@implementation DBCameraContainerViewController
 
 - (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
 {
+    return [[DBCameraContainerViewController alloc] initWithDelegate:delegate cameraSettingsBlock:nil];
+}
+
+- (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraSettingsBlock:(CameraSettingsBlock)block
+{
     self = [super init];
-    
     if ( self ) {
         _delegate = delegate;
-        
-        // force the interface to load ASAP, so it can be configured
-        // before the view controller is displayed
-        [self.view setBackgroundColor:RGBColor(0x000000, 1)];
-    
+        _settingsBlock = block;
         if ( !self.defaultCameraViewController.containerDelegate )
             [self.defaultCameraViewController setContainerDelegate:self];
-    
-        [self addChildViewController:self.defaultCameraViewController];
-        [self.view addSubview:self.defaultCameraViewController.view];
     }
     
     return self;
+}
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.view setBackgroundColor:RGBColor(0x000000, 1)];
+    [self addChildViewController:self.defaultCameraViewController];
+    [self.view addSubview:self.defaultCameraViewController.view];
+    if ( _settingsBlock )
+        _settingsBlock(self.cameraViewController.cameraView);
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,18 +62,6 @@
 - (BOOL) prefersStatusBarHidden
 {
     return YES;
-}
-
-- (DBCameraViewController *) defaultCameraViewController
-{
-    if ( !_defaultCameraViewController )
-        _defaultCameraViewController = [DBCameraViewController initWithDelegate:_delegate];
-    
-    // set this property since it doesn't seem to be set by anyone else
-    if (! self.cameraViewController)
-        self.cameraViewController = _defaultCameraViewController;
-    
-    return ( self.cameraViewController ) ? self.cameraViewController : _defaultCameraViewController;
 }
 
 #pragma mark - DBCameraContainerDelegate
@@ -85,6 +89,25 @@
                                 [blockViewController removeFromParentViewController];
                                 blockViewController = nil;
                             }];
+}
+
+#pragma mark - Properties
+
+- (DBCameraViewController *) defaultCameraViewController
+{
+    if ( !_defaultCameraViewController )
+        _defaultCameraViewController = [DBCameraViewController initWithDelegate:_delegate];
+    
+    if ( !self.cameraViewController )
+        [self setCameraViewController:_defaultCameraViewController];
+    
+    return self.cameraViewController;
+}
+
+- (void) setCameraViewController:(DBCameraViewController *)cameraViewController
+{
+    _cameraViewController = cameraViewController;
+    _defaultCameraViewController = nil;
 }
 
 @end

@@ -1,17 +1,17 @@
 //
-//  DBCameraLibrary.m
+//  DBCameraLibraryViewController.m
 //  DBCamera
 //
 //  Created by iBo on 06/03/14.
 //  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
 //
 
-#import "DBCameraLibrary.h"
+#import "DBCameraLibraryViewController.h"
 #import "DBLibraryManager.h"
 #import "DBCollectionViewCell.h"
 #import "DBCollectionViewFlowLayout.h"
 #import "DBCameraSegueViewController.h"
-#import "DBCameraCollectionController.h"
+#import "DBCameraCollectionViewController.h"
 #import "UIImage+Crop.h"
 #import "DBCameraMacros.h"
 
@@ -24,7 +24,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 #define kContainers 3
 #define kScrollViewTag 101
 
-@interface DBCameraLibrary () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, DBCameraCollectionControllerDelegate> {
+@interface DBCameraLibraryViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, DBCameraCollectionControllerDelegate> {
     NSMutableArray *_items;
     UILabel *_titleLabel, *_pageLabel;
     NSMutableDictionary *_containersMapping;
@@ -38,7 +38,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 @property (nonatomic, strong) UIView *topContainerBar, *bottomContainerBar, *loading;;
 @end
 
-@implementation DBCameraLibrary
+@implementation DBCameraLibraryViewController
 
 - (id) initWithDelegate:(id<DBCameraContainerDelegate>)delegate
 {
@@ -62,7 +62,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                                                                        options:[NSDictionary dictionaryWithObject:@(0) forKey:UIPageViewControllerOptionInterPageSpacingKey]];
+                                                                        options:@{ UIPageViewControllerOptionInterPageSpacingKey :@0 }];
     
     [_pageViewController setDelegate:self];
     [_pageViewController setDataSource:self];
@@ -134,14 +134,14 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
                 [blockContainerMapping removeAllObjects];
                 
                 for ( NSUInteger i=0; i<blockItems.count; i++ ) {
-                    DBCameraCollectionController *vc = [[DBCameraCollectionController alloc] initWithCollectionIdentifier:kItemIdentifier];
+                    DBCameraCollectionViewController *vc = [[DBCameraCollectionViewController alloc] initWithCollectionIdentifier:kItemIdentifier];
                     [vc setCurrentIndex:i];
                     [vc setItems:(NSArray *)blockItems[i][@"groupAssets"]];
-                    [vc setCollectionControllerDelegate:self];
+                    [vc setCollectionControllerDelegate:blockSelf];
                     [blockContainerMapping setObject:vc forKey:@(i)];
                 }
                 
-                NSInteger usedIndex = [blockSelf test];
+                NSInteger usedIndex = [blockSelf indexForSelectedItem];
                 blockPresentationIndex = usedIndex >= 0 ? usedIndex : 0;
                 [blockSelf setNavigationTitleAtIndex:blockPresentationIndex];
                 [blockSelf setSelectedItemID:blockItems[blockPresentationIndex][@"propertyID"]];
@@ -170,7 +170,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     [_pageLabel setText:[NSString stringWithFormat:DBCameraLocalizedStrings(@"pagecontrol.text"), index + 1, _items.count ]];
 }
 
-- (NSInteger) test
+- (NSInteger) indexForSelectedItem
 {
     __weak typeof(self) blockSelf = self;
     __block NSUInteger blockIndex = -1;
@@ -256,27 +256,27 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (UIViewController *) pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    DBCameraCollectionController *vc = (DBCameraCollectionController *)viewController;
+    DBCameraCollectionViewController *vc = (DBCameraCollectionViewController *)viewController;
     
     _vcIndex = vc.currentIndex;
     
     if ( _vcIndex == 0 )
         return nil;
     
-    DBCameraCollectionController *beforeVc = _containersMapping[@(_vcIndex - 1)];
+    DBCameraCollectionViewController *beforeVc = _containersMapping[@(_vcIndex - 1)];
     [beforeVc.collectionView reloadData];
     return beforeVc;
 }
 
 - (UIViewController *) pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    DBCameraCollectionController *vc = (DBCameraCollectionController *)viewController;
+    DBCameraCollectionViewController *vc = (DBCameraCollectionViewController *)viewController;
     _vcIndex = vc.currentIndex;
     
     if ( _vcIndex == (_items.count - 1) )
         return nil;
     
-    DBCameraCollectionController *nextVc = _containersMapping[@(_vcIndex + 1)];
+    DBCameraCollectionViewController *nextVc = _containersMapping[@(_vcIndex + 1)];
     [nextVc.collectionView reloadData];
     return nextVc;
 }
@@ -285,7 +285,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (void) pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers
 {
-    NSUInteger itemIndex = [(DBCameraCollectionController *)pendingViewControllers[0] currentIndex];
+    NSUInteger itemIndex = [(DBCameraCollectionViewController *)pendingViewControllers[0] currentIndex];
     [self setNavigationTitleAtIndex:itemIndex];
     [self setSelectedItemID:_items[itemIndex][@"propertyID"]];
 }

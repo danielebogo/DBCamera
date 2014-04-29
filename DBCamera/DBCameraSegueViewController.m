@@ -7,7 +7,7 @@
 //
 
 #import "DBCameraSegueViewController.h"
-#import "DBCameraBaseCropController+Private.h"
+#import "DBCameraBaseCropViewController+Private.h"
 #import "DBCameraCropView.h"
 
 #ifndef DBCameraLocalizedStrings

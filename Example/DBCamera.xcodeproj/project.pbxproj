@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A14055818C8822E00A590AB /* DBCameraContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14055718C8822E00A590AB /* DBCameraContainer.m */; };
-		9A14055B18C8865100A590AB /* DBCameraLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14055A18C8865100A590AB /* DBCameraLibrary.m */; };
+		9A14055818C8822E00A590AB /* DBCameraContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14055718C8822E00A590AB /* DBCameraContainerViewController.m */; };
+		9A14055B18C8865100A590AB /* DBCameraLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14055A18C8865100A590AB /* DBCameraLibraryViewController.m */; };
 		9A14055F18C8935A00A590AB /* DBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14055E18C8935A00A590AB /* DBCollectionViewCell.m */; };
 		9A14056218C8949F00A590AB /* DBCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14056118C8949F00A590AB /* DBCollectionViewFlowLayout.m */; };
-		9A1E98FE18F40CF40088E307 /* DBCameraCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1E98FD18F40CF40088E307 /* DBCameraCollectionController.m */; };
+		9A1E98FE18F40CF40088E307 /* DBCameraCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1E98FD18F40CF40088E307 /* DBCameraCollectionViewController.m */; };
 		9A369EE518AD62A100EB5D1B /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A369EE418AD62A100EB5D1B /* UIImage+Crop.m */; };
 		9A50C7A118AA3EAF00CD2DF3 /* DBCameraSegueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A50C7A018AA3EAF00CD2DF3 /* DBCameraSegueViewController.m */; };
 		9A50C7B018AA432200CD2DF3 /* DBCamera.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A50C7B218AA432200CD2DF3 /* DBCamera.strings */; };
 		9A50C7F118AA6C9100CD2DF3 /* DBCameraImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A50C7F018AA6C9100CD2DF3 /* DBCameraImages.xcassets */; };
 		9A55F75318C796FB007FB6A1 /* DBLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A55F75218C796FB007FB6A1 /* DBLibraryManager.m */; };
-		9A96E13B19029944007A4B28 /* DBCameraBaseCropController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A96E13919029944007A4B28 /* DBCameraBaseCropController.m */; };
+		9A96E13B19029944007A4B28 /* DBCameraBaseCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A96E13919029944007A4B28 /* DBCameraBaseCropViewController.m */; };
 		9A96E13E19029957007A4B28 /* DBCameraCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A96E13D19029957007A4B28 /* DBCameraCropView.m */; };
 		9AB597A4189BAF9A001BCAD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A3189BAF9A001BCAD3 /* Foundation.framework */; };
 		9AB597A6189BAF9A001BCAD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A5189BAF9A001BCAD3 /* CoreGraphics.framework */; };
@@ -50,16 +50,16 @@
 
 /* Begin PBXFileReference section */
 		9A11717C18B261C600C4CD82 /* DBCameraMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraMacros.h; path = ../../DBCamera/DBCameraMacros.h; sourceTree = "<group>"; };
-		9A14055618C8822E00A590AB /* DBCameraContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraContainer.h; path = ../../DBCamera/DBCameraContainer.h; sourceTree = "<group>"; };
-		9A14055718C8822E00A590AB /* DBCameraContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraContainer.m; path = ../../DBCamera/DBCameraContainer.m; sourceTree = "<group>"; };
-		9A14055918C8865100A590AB /* DBCameraLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraLibrary.h; path = ../../DBCamera/DBCameraLibrary.h; sourceTree = "<group>"; };
-		9A14055A18C8865100A590AB /* DBCameraLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraLibrary.m; path = ../../DBCamera/DBCameraLibrary.m; sourceTree = "<group>"; };
+		9A14055618C8822E00A590AB /* DBCameraContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraContainerViewController.h; path = ../../DBCamera/DBCameraContainerViewController.h; sourceTree = "<group>"; };
+		9A14055718C8822E00A590AB /* DBCameraContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraContainerViewController.m; path = ../../DBCamera/DBCameraContainerViewController.m; sourceTree = "<group>"; };
+		9A14055918C8865100A590AB /* DBCameraLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraLibraryViewController.h; path = ../../DBCamera/DBCameraLibraryViewController.h; sourceTree = "<group>"; };
+		9A14055A18C8865100A590AB /* DBCameraLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraLibraryViewController.m; path = ../../DBCamera/DBCameraLibraryViewController.m; sourceTree = "<group>"; };
 		9A14055D18C8935A00A590AB /* DBCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCollectionViewCell.h; path = ../../DBCamera/DBCollectionViewCell.h; sourceTree = "<group>"; };
 		9A14055E18C8935A00A590AB /* DBCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCollectionViewCell.m; path = ../../DBCamera/DBCollectionViewCell.m; sourceTree = "<group>"; };
 		9A14056018C8949F00A590AB /* DBCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCollectionViewFlowLayout.h; path = ../../DBCamera/DBCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		9A14056118C8949F00A590AB /* DBCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCollectionViewFlowLayout.m; path = ../../DBCamera/DBCollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		9A1E98FC18F40CF40088E307 /* DBCameraCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraCollectionController.h; path = ../../DBCamera/DBCameraCollectionController.h; sourceTree = "<group>"; };
-		9A1E98FD18F40CF40088E307 /* DBCameraCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraCollectionController.m; path = ../../DBCamera/DBCameraCollectionController.m; sourceTree = "<group>"; };
+		9A1E98FC18F40CF40088E307 /* DBCameraCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraCollectionViewController.h; path = ../../DBCamera/DBCameraCollectionViewController.h; sourceTree = "<group>"; };
+		9A1E98FD18F40CF40088E307 /* DBCameraCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraCollectionViewController.m; path = ../../DBCamera/DBCameraCollectionViewController.m; sourceTree = "<group>"; };
 		9A369EE318AD62A100EB5D1B /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Crop.h"; path = "../../DBCamera/UIImage+Crop.h"; sourceTree = "<group>"; };
 		9A369EE418AD62A100EB5D1B /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Crop.m"; path = "../../DBCamera/UIImage+Crop.m"; sourceTree = "<group>"; };
 		9A50C79F18AA3EAF00CD2DF3 /* DBCameraSegueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraSegueViewController.h; path = ../../DBCamera/DBCameraSegueViewController.h; sourceTree = "<group>"; };
@@ -75,9 +75,9 @@
 		9A5134CA18A24811004E72EB /* DBCameraDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraDelegate.h; path = ../../DBCamera/DBCameraDelegate.h; sourceTree = "<group>"; };
 		9A55F75118C796FB007FB6A1 /* DBLibraryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBLibraryManager.h; path = ../../DBCamera/DBLibraryManager.h; sourceTree = "<group>"; };
 		9A55F75218C796FB007FB6A1 /* DBLibraryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBLibraryManager.m; path = ../../DBCamera/DBLibraryManager.m; sourceTree = "<group>"; };
-		9A96E13819029944007A4B28 /* DBCameraBaseCropController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraBaseCropController.h; path = ../../DBCamera/DBCameraBaseCropController.h; sourceTree = "<group>"; };
-		9A96E13919029944007A4B28 /* DBCameraBaseCropController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraBaseCropController.m; path = ../../DBCamera/DBCameraBaseCropController.m; sourceTree = "<group>"; };
-		9A96E13A19029944007A4B28 /* DBCameraBaseCropController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DBCameraBaseCropController+Private.h"; path = "../../DBCamera/DBCameraBaseCropController+Private.h"; sourceTree = "<group>"; };
+		9A96E13819029944007A4B28 /* DBCameraBaseCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraBaseCropViewController.h; path = ../../DBCamera/DBCameraBaseCropViewController.h; sourceTree = "<group>"; };
+		9A96E13919029944007A4B28 /* DBCameraBaseCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraBaseCropViewController.m; path = ../../DBCamera/DBCameraBaseCropViewController.m; sourceTree = "<group>"; };
+		9A96E13A19029944007A4B28 /* DBCameraBaseCropViewController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DBCameraBaseCropViewController+Private.h"; path = "../../DBCamera/DBCameraBaseCropViewController+Private.h"; sourceTree = "<group>"; };
 		9A96E13C19029957007A4B28 /* DBCameraCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCameraCropView.h; path = ../../DBCamera/DBCameraCropView.h; sourceTree = "<group>"; };
 		9A96E13D19029957007A4B28 /* DBCameraCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCameraCropView.m; path = ../../DBCamera/DBCameraCropView.m; sourceTree = "<group>"; };
 		9AB597A0189BAF9A001BCAD3 /* DBCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,19 +179,19 @@
 		9A55F74F18C79695007FB6A1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9A96E13A19029944007A4B28 /* DBCameraBaseCropController+Private.h */,
-				9A96E13819029944007A4B28 /* DBCameraBaseCropController.h */,
-				9A96E13919029944007A4B28 /* DBCameraBaseCropController.m */,
-				9A14055618C8822E00A590AB /* DBCameraContainer.h */,
-				9A14055718C8822E00A590AB /* DBCameraContainer.m */,
+				9A96E13A19029944007A4B28 /* DBCameraBaseCropViewController+Private.h */,
+				9A96E13819029944007A4B28 /* DBCameraBaseCropViewController.h */,
+				9A96E13919029944007A4B28 /* DBCameraBaseCropViewController.m */,
+				9A14055618C8822E00A590AB /* DBCameraContainerViewController.h */,
+				9A14055718C8822E00A590AB /* DBCameraContainerViewController.m */,
 				9AB597D3189BB08A001BCAD3 /* DBCameraViewController.h */,
 				9AB597D4189BB08A001BCAD3 /* DBCameraViewController.m */,
 				9A50C79F18AA3EAF00CD2DF3 /* DBCameraSegueViewController.h */,
 				9A50C7A018AA3EAF00CD2DF3 /* DBCameraSegueViewController.m */,
-				9A14055918C8865100A590AB /* DBCameraLibrary.h */,
-				9A14055A18C8865100A590AB /* DBCameraLibrary.m */,
-				9A1E98FC18F40CF40088E307 /* DBCameraCollectionController.h */,
-				9A1E98FD18F40CF40088E307 /* DBCameraCollectionController.m */,
+				9A14055918C8865100A590AB /* DBCameraLibraryViewController.h */,
+				9A14055A18C8865100A590AB /* DBCameraLibraryViewController.m */,
+				9A1E98FC18F40CF40088E307 /* DBCameraCollectionViewController.h */,
+				9A1E98FD18F40CF40088E307 /* DBCameraCollectionViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -410,13 +410,13 @@
 				9A96E13E19029957007A4B28 /* DBCameraCropView.m in Sources */,
 				9AB597DF189BF7A2001BCAD3 /* DBCameraView.m in Sources */,
 				9AB597B4189BAF9A001BCAD3 /* AppDelegate.m in Sources */,
-				9A1E98FE18F40CF40088E307 /* DBCameraCollectionController.m in Sources */,
-				9A14055818C8822E00A590AB /* DBCameraContainer.m in Sources */,
+				9A1E98FE18F40CF40088E307 /* DBCameraCollectionViewController.m in Sources */,
+				9A14055818C8822E00A590AB /* DBCameraContainerViewController.m in Sources */,
 				9AB597D5189BB08A001BCAD3 /* DBCameraViewController.m in Sources */,
 				9AF961A718A252690068E3C6 /* CustomCamera.m in Sources */,
-				9A14055B18C8865100A590AB /* DBCameraLibrary.m in Sources */,
+				9A14055B18C8865100A590AB /* DBCameraLibraryViewController.m in Sources */,
 				9AB597D9189BB0B6001BCAD3 /* RootViewController.m in Sources */,
-				9A96E13B19029944007A4B28 /* DBCameraBaseCropController.m in Sources */,
+				9A96E13B19029944007A4B28 /* DBCameraBaseCropViewController.m in Sources */,
 				9A14055F18C8935A00A590AB /* DBCollectionViewCell.m in Sources */,
 				9AB597B0189BAF9A001BCAD3 /* main.m in Sources */,
 			);

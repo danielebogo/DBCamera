@@ -1,23 +1,23 @@
 //
-//  DBCameraCollectionController.m
+//  DBCameraCollectionViewController.m
 //  DBCamera
 //
 //  Created by iBo on 08/04/14.
 //  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
 //
 
-#import "DBCameraCollectionController.h"
+#import "DBCameraCollectionViewController.h"
 #import "DBCollectionViewFlowLayout.h"
 #import "DBCollectionViewCell.h"
 #import "DBLibraryManager.h"
 
-@interface DBCameraCollectionController () <UICollectionViewDataSource, UICollectionViewDelegate> {
+@interface DBCameraCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
     NSString *_collectionIdentifier;
 }
 
 @end
 
-@implementation DBCameraCollectionController
+@implementation DBCameraCollectionViewController
 
 - (id)initWithCollectionIdentifier:(NSString *)identifier
 {

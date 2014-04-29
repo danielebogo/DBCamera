@@ -8,7 +8,6 @@
 
 #import "DBCameraView.h"
 #import "DBCameraMacros.h"
-#import "DBLibraryManager.h"
 #import "UIImage+Crop.h"
 
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -84,17 +83,7 @@
     
     [self.bottomContainerBar addSubview:self.triggerButton];
     [self.bottomContainerBar addSubview:self.closeButton];
-    
-    if ( !self.isLibraryButtonHidden ) {
-        [self.bottomContainerBar addSubview:self.photoLibraryButton];
-        
-        if ( [ALAssetsLibrary authorizationStatus] !=  ALAuthorizationStatusDenied ) {
-            __weak typeof(self) weakSelf = self;
-            [[DBLibraryManager sharedInstance] loadLastItemWithBlock:^(BOOL success, UIImage *image) {
-                [weakSelf.photoLibraryButton setBackgroundImage:image forState:UIControlStateNormal];
-            }];
-        }
-    }
+    [self.bottomContainerBar addSubview:self.photoLibraryButton];
     
     [self createGesture];
 }

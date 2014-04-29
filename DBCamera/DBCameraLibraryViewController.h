@@ -1,5 +1,5 @@
 //
-//  DBCameraLibrary.h
+//  DBCameraLibraryViewController.h
 //  DBCamera
 //
 //  Created by iBo on 06/03/14.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
 
-@interface DBCameraLibrary : UIViewController
+@interface DBCameraLibraryViewController : UIViewController
 @property (nonatomic, weak) id <DBCameraContainerDelegate> containerDelegate;
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL useCameraSegue;

@@ -14,6 +14,7 @@
 @end
 
 @implementation CustomCamera
+@synthesize closeButton = _closeButton;
 
 - (void) buildInterface
 {

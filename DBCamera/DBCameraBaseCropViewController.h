@@ -1,5 +1,5 @@
 //
-//  DBCameraBaseCropController.h
+//  DBCameraBaseCropViewController.h
 //  CropImage
 //
 //  Created by Daniele Bogo on 19/04/14.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
 
-@interface DBCameraBaseCropController : UIViewController
+@interface DBCameraBaseCropViewController : UIViewController
 @property (nonatomic, weak) UIImageView *imageView;
 @property (nonatomic, copy) UIImage *sourceImage;
 @property (nonatomic, copy) UIImage *previewImage;
