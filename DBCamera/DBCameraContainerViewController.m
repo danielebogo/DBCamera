@@ -30,8 +30,6 @@
     if ( self ) {
         _delegate = delegate;
         _settingsBlock = block;
-        if ( !self.defaultCameraViewController.containerDelegate )
-            [self.defaultCameraViewController setContainerDelegate:self];
     }
     
     return self;
@@ -40,6 +38,13 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    [self setWantsFullScreenLayout:YES];
+#elif __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+#endif
     
     [self.view setBackgroundColor:RGBColor(0x000000, 1)];
     [self addChildViewController:self.defaultCameraViewController];
@@ -107,6 +112,7 @@
 - (void) setCameraViewController:(DBCameraViewController *)cameraViewController
 {
     _cameraViewController = cameraViewController;
+    [_cameraViewController setContainerDelegate:self];
     _defaultCameraViewController = nil;
 }
 
