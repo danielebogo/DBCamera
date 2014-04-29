@@ -19,6 +19,9 @@
 @property (nonatomic, strong, readonly) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinch;
 
+// camera UI buttons
+@property (nonatomic, strong) UIButton *photoLibraryButton, *triggerButton, *cameraButton, *flashButton, *closeButton, *gridButton;
+
 + (id) initWithFrame:(CGRect)frame;
 + (DBCameraView *) initWithCaptureSession:(AVCaptureSession *)captureSession;
 

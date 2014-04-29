@@ -22,22 +22,19 @@
     
     if ( self ) {
         _delegate = delegate;
+        
+        // force the interface to load ASAP, so it can be configured
+        // before the view controller is displayed
+        [self.view setBackgroundColor:RGBColor(0x000000, 1)];
+    
+        if ( !self.defaultCameraViewController.containerDelegate )
+            [self.defaultCameraViewController setContainerDelegate:self];
+    
+        [self addChildViewController:self.defaultCameraViewController];
+        [self.view addSubview:self.defaultCameraViewController.view];
     }
     
     return self;
-}
-
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [self.view setBackgroundColor:RGBColor(0x000000, 1)];
-    
-    if ( !self.defaultCameraViewController.containerDelegate )
-        [self.defaultCameraViewController setContainerDelegate:self];
-    
-    [self addChildViewController:self.defaultCameraViewController];
-    [self.view addSubview:self.defaultCameraViewController.view];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,6 +52,10 @@
 {
     if ( !_defaultCameraViewController )
         _defaultCameraViewController = [DBCameraViewController initWithDelegate:_delegate];
+    
+    // set this property since it doesn't seem to be set by anyone else
+    if (! self.cameraViewController)
+        self.cameraViewController = _defaultCameraViewController;
     
     return ( self.cameraViewController ) ? self.cameraViewController : _defaultCameraViewController;
 }
