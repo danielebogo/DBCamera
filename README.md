@@ -252,4 +252,5 @@ You can also create a custom interface, using a subclass of DBCameraView
 
 ###Credits
 
+[mkcode](https://github.com/mkcode)
 [Jack](https://github.com/xhzengAIB)
