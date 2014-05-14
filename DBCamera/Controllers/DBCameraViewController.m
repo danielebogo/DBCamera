@@ -33,8 +33,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 @property (nonatomic, strong) id customCamera;
 @property (nonatomic, strong) DBCameraManager *cameraManager;
-
-@property (nonatomic, strong) DBCameraGridView *cameraGridView;
 @end
 
 @implementation DBCameraViewController
@@ -172,7 +170,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     if ( !_cameraView ) {
         _cameraView = [DBCameraView initWithCaptureSession:self.cameraManager.captureSession];
-//        [_cameraView setHideLibraryButton:![NSStringFromClass(self.parentViewController.class) isEqualToString:@"DBCameraContainer"]];
         [_cameraView defaultInterface];
         [_cameraView setDelegate:self];
     }
