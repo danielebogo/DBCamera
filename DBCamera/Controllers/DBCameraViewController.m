@@ -170,6 +170,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (DBCameraView *) cameraView
 {
+    if ( _customCamera )
+    {
+        return _customCamera;
+    }
+    
     if ( !_cameraView ) {
         _cameraView = [DBCameraView initWithCaptureSession:self.cameraManager.captureSession];
 //        [_cameraView setHideLibraryButton:![NSStringFromClass(self.parentViewController.class) isEqualToString:@"DBCameraContainer"]];
