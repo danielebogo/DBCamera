@@ -252,5 +252,6 @@ You can also create a custom interface, using a subclass of DBCameraView
 
 ###Credits
 
-[mkcode](https://github.com/mkcode)
-[Jack](https://github.com/xhzengAIB)
+Apache Cordova: [mkcode](https://github.com/mkcode)
+
+Grid view & pinch gesture: [Jack](https://github.com/xhzengAIB)
