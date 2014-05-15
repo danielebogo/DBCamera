@@ -12,7 +12,7 @@
 @class DBCameraView;
 @class DBCameraViewController;
 
-typedef void(^CameraSettingsBlock)(DBCameraView *cameraView);
+typedef void(^CameraSettingsBlock)(DBCameraView *cameraView, id container);
 
 @interface DBCameraContainerViewController : UIViewController
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;

@@ -11,6 +11,7 @@
 /**
  *  DBCameraView delegate protocol
  */
+@class DBCameraGridView;
 @protocol DBCameraViewDelegate <NSObject>
 @optional
 /**

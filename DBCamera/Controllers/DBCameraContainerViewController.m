@@ -50,7 +50,7 @@
     [self addChildViewController:self.defaultCameraViewController];
     [self.view addSubview:self.defaultCameraViewController.view];
     if ( _settingsBlock )
-        _settingsBlock(self.cameraViewController.cameraView);
+        _settingsBlock(self.cameraViewController.cameraView, self);
 }
 
 - (void) viewDidAppear:(BOOL)animated

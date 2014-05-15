@@ -10,6 +10,7 @@
 #import "DBCameraViewController.h"
 #import "DBCameraContainerViewController.h"
 #import "CustomCamera.h"
+#import "DBCameraGridView.h"
 
 #define kCellIdentifier @"CellIdentifier"
 #define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue", @"Open Camera without Container" ]
@@ -96,10 +97,14 @@
 
 - (void) openCamera
 {
-    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
-//    DBCameraContainer *cameraContainer = [[DBCameraContainer alloc] initWithDelegate:self cameraSettingsBlock:^(DBCameraView *cameraView) {
-//        [cameraView.photoLibraryButton setHidden:YES];
-//    }];
+//    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self cameraSettingsBlock:^(DBCameraView *cameraView, DBCameraContainerViewController *container) {
+        [cameraView.photoLibraryButton setHidden:YES];
+        DBCameraGridView *cameraGridView = [[DBCameraGridView alloc] initWithFrame:cameraView.previewLayer.frame];
+        [cameraGridView setNumberOfColumns:4];
+        [cameraGridView setNumberOfRows:4];
+        [container.cameraViewController setCameraGridView:cameraGridView];
+    }];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraContainer];
     [nav setNavigationBarHidden:YES];

@@ -36,6 +36,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 @end
 
 @implementation DBCameraViewController
+@synthesize cameraGridView = _cameraGridView;
 
 #pragma mark - Life cycle
 
@@ -98,6 +99,9 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         } else
             [self.view addSubview:self.cameraView];
     }
+    
+    id camera =_customCamera ?: _cameraView;
+    [camera insertSubview:self.cameraGridView atIndex:1];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -190,13 +194,29 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 - (DBCameraGridView *) cameraGridView
 {
     if ( !_cameraGridView ) {
-        _cameraGridView = [[DBCameraGridView alloc] initWithFrame:self.cameraView.previewLayer.frame];
-        _cameraGridView.numberOfColumns = 2;
-        _cameraGridView.numberOfRows = 2;
-        [self.cameraView insertSubview:_cameraGridView atIndex:1];
+        DBCameraView *camera =_customCamera ?: _cameraView;
+        _cameraGridView = [[DBCameraGridView alloc] initWithFrame:camera.previewLayer.frame];
+        [_cameraGridView setNumberOfColumns:2];
+        [_cameraGridView setNumberOfRows:2];
+        [_cameraGridView setAlpha:0];
     }
     
     return _cameraGridView;
+}
+
+- (void) setCameraGridView:(DBCameraGridView *)cameraGridView
+{
+    _cameraGridView = cameraGridView;
+    __block DBCameraGridView *blockGridView = cameraGridView;
+    __weak DBCameraView *camera =_customCamera ?: _cameraView;
+    [camera.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ( [obj isKindOfClass:[DBCameraGridView class]] ) {
+            [obj removeFromSuperview];
+            [camera insertSubview:blockGridView atIndex:1];
+            blockGridView = nil;
+            *stop = YES;
+        }
+    }];
 }
 
 - (void) rotationChanged:(NSNotification *)notification
