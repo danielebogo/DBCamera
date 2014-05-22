@@ -37,6 +37,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 @implementation DBCameraViewController
 @synthesize cameraGridView = _cameraGridView;
+@synthesize forceQuadCrop = _forceQuadCrop;
 
 #pragma mark - Life cycle
 
@@ -278,6 +279,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         }
         
         DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:image thumb:[UIImage returnImage:image withSize:(CGSize){ newW, newH }]];
+        [segue setForceQuadCrop:_forceQuadCrop];
         [segue enableGestures:YES];
         [segue setDelegate:self.delegate];
         [segue setCapturedImageMetadata:finalMetadata];
@@ -312,6 +314,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             [self.view setTransform:CGAffineTransformMakeScale(.8, .8)];
         } completion:^(BOOL finished) {
             DBCameraLibraryViewController *library = [[DBCameraLibraryViewController alloc] initWithDelegate:self.containerDelegate];
+            [library setForceQuadCrop:_forceQuadCrop];
             [library setDelegate:self.delegate];
             [library setUseCameraSegue:self.useCameraSegue];
             [self.containerDelegate switchFromController:self toController:library];

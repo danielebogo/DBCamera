@@ -28,6 +28,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 @end
 
 @implementation DBCameraSegueViewController
+@synthesize forceQuadCrop = _forceQuadCrop;
+@synthesize useCameraSegue = _useCameraSegue;
 
 - (id) initWithImage:(UIImage *)image thumb:(UIImage *)thumb
 {
@@ -63,6 +65,17 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     _lFrame = (CGRect){ ( CGRectGetWidth( self.frameView.frame) - 320 ) * .5, ( CGRectGetHeight( self.frameView.frame) - 240) * .5, 320, 240 };
     
     [self setCropRect:self.previewImage.size.width > self.previewImage.size.height ? _lFrame : _pFrame];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ( _forceQuadCrop ) {
+        [self setCropMode:YES];
+        [self setCropRect:_pFrame];
+        [self reset:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -136,7 +149,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         [_navigationBar setUserInteractionEnabled:YES];
         [_navigationBar addSubview:self.useButton];
         [_navigationBar addSubview:self.retakeButton];
-        [_navigationBar addSubview:self.cropButton];
+        if ( !_forceQuadCrop )
+            [_navigationBar addSubview:self.cropButton];
     }
     
     return _navigationBar;

@@ -39,6 +39,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 @end
 
 @implementation DBCameraLibraryViewController
+@synthesize forceQuadCrop = _forceQuadCrop;
+@synthesize useCameraSegue = _useCameraSegue;
 
 - (id) initWithDelegate:(id<DBCameraContainerDelegate>)delegate
 {
@@ -312,6 +314,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
                                                  withMetadata:metadata ];
             } else {
                 DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:[image rotateUIImage] thumb:[UIImage imageWithCGImage:[asset aspectRatioThumbnail]]];
+                [segue setForceQuadCrop:_forceQuadCrop];
                 [segue enableGestures:YES];
                 [segue setCapturedImageMetadata:metadata];
                 [segue setDelegate:blockSelf.delegate];

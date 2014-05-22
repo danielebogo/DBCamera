@@ -13,7 +13,7 @@
 #import "DBCameraGridView.h"
 
 #define kCellIdentifier @"CellIdentifier"
-#define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue", @"Open Camera without Container" ]
+#define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue", @"Open Camera without Container", @"Camera with force quad crop" ]
 
 @interface DetailViewController : UIViewController {
     UIImageView *_imageView;
@@ -103,6 +103,7 @@
         DBCameraGridView *cameraGridView = [[DBCameraGridView alloc] initWithFrame:cameraView.previewLayer.frame];
         [cameraGridView setNumberOfColumns:4];
         [cameraGridView setNumberOfRows:4];
+        [cameraGridView setAlpha:0];
         [container.cameraViewController setCameraGridView:cameraGridView];
     }];
     
@@ -126,6 +127,17 @@
     DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
     [cameraController setUseCameraSegue:NO];
+    [container setCameraViewController:cameraController];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void) openCameraWithForceQuad
+{
+    DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
+    [cameraController setForceQuadCrop:YES];
     [container setCameraViewController:cameraController];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
     [nav setNavigationBarHidden:YES];
@@ -177,6 +189,10 @@
         
         case 3:
             [self openCameraWithoutContainer];
+            break;
+            
+        case 4:
+            [self openCameraWithForceQuad];
             break;
             
         default:
