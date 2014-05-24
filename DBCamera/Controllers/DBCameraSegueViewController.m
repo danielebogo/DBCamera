@@ -9,6 +9,7 @@
 #import "DBCameraSegueViewController.h"
 #import "DBCameraBaseCropViewController+Private.h"
 #import "DBCameraCropView.h"
+#import "UIImage+TintColor.h"
 
 #ifndef DBCameraLocalizedStrings
 #define DBCameraLocalizedStrings(key) \
@@ -189,8 +190,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     if ( !_cropButton) {
         _cropButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_cropButton setBackgroundColor:[UIColor clearColor]];
-        [_cropButton setImage:[UIImage imageNamed:@"Crop"] forState:UIControlStateNormal];
-        [_cropButton setImage:[UIImage imageNamed:@"CropSelected"] forState:UIControlStateSelected];
+        [_cropButton setImage:[[UIImage imageNamed:@"Crop"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
+        [_cropButton setImage:[[UIImage imageNamed:@"Crop"] tintImageWithColor:self.selectedTintColor] forState:UIControlStateSelected];
         [_cropButton setFrame:(CGRect){ CGRectGetMidX(self.view.bounds) - 15, 15, 30, 30 }];
         [_cropButton addTarget:self action:@selector(cropModeAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -202,7 +203,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setBackgroundColor:[UIColor clearColor]];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitleColor:self.tintColor forState:UIControlStateNormal];
     
     return button;
 }

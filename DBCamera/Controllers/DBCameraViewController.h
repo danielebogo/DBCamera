@@ -17,6 +17,8 @@
 @property (nonatomic, assign) BOOL useCameraSegue;
 @property (nonatomic, strong) DBCameraView *cameraView;
 @property (nonatomic, strong) DBCameraGridView *cameraGridView;
+@property (nonatomic, strong) UIColor *tintColor;
+@property (nonatomic, strong) UIColor *selectedTintColor;
 
 + (DBCameraViewController *) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
 + (DBCameraViewController *) init;

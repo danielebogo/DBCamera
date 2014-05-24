@@ -9,6 +9,7 @@
 #import "DBCameraView.h"
 #import "DBCameraMacros.h"
 #import "UIImage+Crop.h"
+#import "UIImage+TintColor.h"
 
 #import <AssetsLibrary/AssetsLibrary.h>
 
@@ -64,13 +65,16 @@
         [_previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
         
         [self.layer addSublayer:_previewLayer];
+        
+        self.tintColor = [UIColor whiteColor];
+        self.selectedTintColor = [UIColor redColor];
     }
     
     return self;
 }
 
 - (void) defaultInterface
-{
+{   
     [_previewLayer addSublayer:self.focusBox];
     [_previewLayer addSublayer:self.exposeBox];
     
@@ -131,7 +135,7 @@
 {
     if ( !_triggerButton ) {
         _triggerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_triggerButton setBackgroundColor:[UIColor whiteColor]];
+        [_triggerButton setBackgroundColor:self.tintColor];
         [_triggerButton setImage:[UIImage imageNamed:@"trigger"] forState:UIControlStateNormal];
         [_triggerButton setFrame:(CGRect){ 0, 0, 66, 66 }];
         [_triggerButton.layer setCornerRadius:33.0f];
@@ -147,7 +151,7 @@
     if ( !_closeButton ) {
         _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_closeButton setBackgroundColor:[UIColor clearColor]];
-        [_closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+        [_closeButton setImage:[[UIImage imageNamed:@"close"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
         [_closeButton setFrame:(CGRect){ 25,  CGRectGetMidY(self.bottomContainerBar.bounds) - 15, 30, 30 }];
         [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -160,8 +164,8 @@
     if ( !_cameraButton ) {
         _cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_cameraButton setBackgroundColor:[UIColor clearColor]];
-        [_cameraButton setImage:[UIImage imageNamed:@"flip"] forState:UIControlStateNormal];
-        [_cameraButton setImage:[UIImage imageNamed:@"flipSelected"] forState:UIControlStateSelected];
+        [_cameraButton setImage:[[UIImage imageNamed:@"flip"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
+        [_cameraButton setImage:[[UIImage imageNamed:@"flip"] tintImageWithColor:self.selectedTintColor] forState:UIControlStateSelected];
         [_cameraButton setFrame:(CGRect){ 25, 17.5f, 30, 30 }];
         [_cameraButton addTarget:self action:@selector(changeCamera:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -174,8 +178,8 @@
     if ( !_flashButton ) {
         _flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_flashButton setBackgroundColor:[UIColor clearColor]];
-        [_flashButton setImage:[UIImage imageNamed:@"flash"] forState:UIControlStateNormal];
-        [_flashButton setImage:[UIImage imageNamed:@"flashSelected"] forState:UIControlStateSelected];
+        [_flashButton setImage:[[UIImage imageNamed:@"flash"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
+        [_flashButton setImage:[[UIImage imageNamed:@"flash"] tintImageWithColor:self.selectedTintColor] forState:UIControlStateSelected];
         [_flashButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 55, 17.5f, 30, 30 }];
         [_flashButton addTarget:self action:@selector(flashTriggerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -188,8 +192,8 @@
     if ( !_gridButton ) {
         _gridButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_gridButton setBackgroundColor:[UIColor clearColor]];
-        [_gridButton setImage:[UIImage imageNamed:@"cameraGridNormal"] forState:UIControlStateNormal];
-        [_gridButton setImage:[UIImage imageNamed:@"cameraGridSelected"] forState:UIControlStateSelected];
+        [_gridButton setImage:[[UIImage imageNamed:@"cameraGrid"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
+        [_gridButton setImage:[[UIImage imageNamed:@"cameraGrid"] tintImageWithColor:self.selectedTintColor] forState:UIControlStateSelected];
         [_gridButton setFrame:(CGRect){ 0, 0, 30, 30 }];
         [_gridButton setCenter:(CGPoint){ CGRectGetMidX(self.topContainerBar.bounds), CGRectGetMidY(self.topContainerBar.bounds) }];
         [_gridButton addTarget:self action:@selector(addGridToCameraAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -220,7 +224,7 @@
         [_exposeBox setCornerRadius:55.0f];
         [_exposeBox setBounds:CGRectMake(0.0f, 0.0f, 110, 110)];
         [_exposeBox setBorderWidth:5.f];
-        [_exposeBox setBorderColor:[RGBColor(0x00ffff, 1) CGColor]];
+        [_exposeBox setBorderColor:[self.selectedTintColor CGColor]];
         [_exposeBox setOpacity:0];
     }
     
@@ -360,7 +364,7 @@
     BOOL hasFocus = YES;
     if ( [_delegate respondsToSelector:@selector(cameraViewHasFocus)] )
         hasFocus = [_delegate cameraViewHasFocus];
-
+    
     if ( !hasFocus )
         return;
     
@@ -414,9 +418,9 @@
 	}
     
     if ( [pinchGestureRecognizer state] == UIGestureRecognizerStateEnded ||
-         [pinchGestureRecognizer state] == UIGestureRecognizerStateCancelled ||
-         [pinchGestureRecognizer state] == UIGestureRecognizerStateFailed) {
-         _preScaleNum = _scaleNum;
+        [pinchGestureRecognizer state] == UIGestureRecognizerStateCancelled ||
+        [pinchGestureRecognizer state] == UIGestureRecognizerStateFailed) {
+        _preScaleNum = _scaleNum;
     }
 }
 
@@ -427,7 +431,7 @@
         _scaleNum = MIN_PINCH_SCALE_NUM;
     else if (_scaleNum > MAX_PINCH_SCALE_NUM)
         _scaleNum = MAX_PINCH_SCALE_NUM;
-
+    
     [self doPinch];
     _preScaleNum = scale;
 }
