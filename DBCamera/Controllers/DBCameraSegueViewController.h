@@ -12,6 +12,8 @@
 @interface DBCameraSegueViewController : DBCameraBaseCropViewController <DBCameraCropRect, DBCameraSegueSettings>
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSDictionary *capturedImageMetadata;
+@property (nonatomic, strong) UIColor *tintColor;
+@property (nonatomic, strong) UIColor *selectedTintColor;
 
 - (id) initWithImage:(UIImage *)image thumb:(UIImage *)thumb;
 - (void) createInterface;

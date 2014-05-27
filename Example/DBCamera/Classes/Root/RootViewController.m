@@ -138,6 +138,8 @@
     DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
     [cameraController setForceQuadCrop:YES];
+    [cameraController setTintColor:[UIColor brownColor]];
+    [cameraController setSelectedTintColor:[UIColor orangeColor]];
     [container setCameraViewController:cameraController];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
     [nav setNavigationBarHidden:YES];

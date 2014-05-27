@@ -65,6 +65,9 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             [self setCustomCamera:camera];
 
         [self setUseCameraSegue:YES];
+        
+        [self setTintColor:[UIColor whiteColor]];
+        [self setSelectedTintColor:[UIColor cyanColor]];
     }
     
     return self;
@@ -175,6 +178,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     if ( !_cameraView ) {
         _cameraView = [DBCameraView initWithCaptureSession:self.cameraManager.captureSession];
+        [_cameraView setTintColor:self.tintColor];
+        [_cameraView setSelectedTintColor:self.selectedTintColor];
         [_cameraView defaultInterface];
         [_cameraView setDelegate:self];
     }
@@ -279,6 +284,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         }
         
         DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:image thumb:[UIImage returnImage:image withSize:(CGSize){ newW, newH }]];
+        [segue setTintColor:self.tintColor];
+        [segue setSelectedTintColor:self.selectedTintColor];
         [segue setForceQuadCrop:_forceQuadCrop];
         [segue enableGestures:YES];
         [segue setDelegate:self.delegate];
@@ -314,6 +321,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             [self.view setTransform:CGAffineTransformMakeScale(.8, .8)];
         } completion:^(BOOL finished) {
             DBCameraLibraryViewController *library = [[DBCameraLibraryViewController alloc] initWithDelegate:self.containerDelegate];
+            [library setTintColor:self.tintColor];
+            [library setSelectedTintColor:self.selectedTintColor];
             [library setForceQuadCrop:_forceQuadCrop];
             [library setDelegate:self.delegate];
             [library setUseCameraSegue:self.useCameraSegue];
