@@ -9,6 +9,12 @@
 #import "DBCameraBaseCropViewController.h"
 #import "DBCameraDelegate.h"
 
+/**
+ *  DBCameraBaseCropViewController private method
+ */
 @interface DBCameraBaseCropViewController (Private)
+/**
+ *  UIView complies with the DBCameraCropRect protocol
+ */
 @property (nonatomic, strong) UIView <DBCameraCropRect> *frameView;
 @end

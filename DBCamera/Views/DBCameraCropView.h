@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
 
+/**
+ *  Show the crop rect bounds
+ */
 @interface DBCameraCropView : UIView <DBCameraCropRect>
 @end

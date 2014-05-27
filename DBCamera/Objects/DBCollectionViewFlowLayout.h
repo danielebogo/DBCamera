@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  The layout of DBCollectionViewCell
+ */
 @interface DBCollectionViewFlowLayout : UICollectionViewFlowLayout
+/**
+ *  The property set the scroll direction value
+ */
 @property (nonatomic, assign) UICollectionViewScrollDirection scrollDirection;
 @end

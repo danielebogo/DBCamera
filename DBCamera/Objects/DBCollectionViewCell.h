@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  The CollectionViewCell used within Library
+ */
 @interface DBCollectionViewCell : UICollectionViewCell
+/**
+ *  The item UIImageView
+ */
 @property (nonatomic, strong) UIImageView *itemImage;
 @end

@@ -8,8 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  The grid view of the camera
+ */
 @interface DBCameraGridView : UIView
-@property (nonatomic, assign) CGFloat lineWidth; // default is 1.0
+/**
+ *  The line width of a line. Default value is 1.0.
+ */
+@property (nonatomic, assign) CGFloat lineWidth;
+
+/**
+ *  The number of the grid's columns
+ */
 @property (nonatomic, assign) NSUInteger numberOfColumns;
+
+/**
+ *  The number of the grid's rows
+ */
 @property (nonatomic, assign) NSUInteger numberOfRows;
 @end
