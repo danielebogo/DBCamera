@@ -18,6 +18,8 @@
 @end
 
 @implementation DBCameraContainerViewController
+@synthesize tintColor = _tintColor;
+@synthesize selectedTintColor = _selectedTintColor;
 
 - (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
 {
@@ -100,8 +102,13 @@
 
 - (DBCameraViewController *) defaultCameraViewController
 {
-    if ( !_defaultCameraViewController )
+    if ( !_defaultCameraViewController ) {
         _defaultCameraViewController = [DBCameraViewController initWithDelegate:_delegate];
+        if ( self.tintColor )
+            [_defaultCameraViewController setTintColor:self.tintColor];
+        if ( self.selectedTintColor )
+            [_defaultCameraViewController setSelectedTintColor:self.selectedTintColor];
+    }
     
     if ( !self.cameraViewController )
         [self setCameraViewController:_defaultCameraViewController];

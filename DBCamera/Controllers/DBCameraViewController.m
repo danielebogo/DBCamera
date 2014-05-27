@@ -38,6 +38,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 @implementation DBCameraViewController
 @synthesize cameraGridView = _cameraGridView;
 @synthesize forceQuadCrop = _forceQuadCrop;
+@synthesize tintColor = _tintColor;
+@synthesize selectedTintColor = _selectedTintColor;
 
 #pragma mark - Life cycle
 

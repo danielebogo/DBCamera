@@ -107,6 +107,9 @@
         [container.cameraViewController setCameraGridView:cameraGridView];
     }];
     
+    [cameraContainer setTintColor:[UIColor redColor]];
+    [cameraContainer setSelectedTintColor:[UIColor yellowColor]];
+    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraContainer];
     [nav setNavigationBarHidden:YES];
     [self presentViewController:nav animated:YES completion:nil];

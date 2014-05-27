@@ -11,14 +11,12 @@
 
 @class DBCameraView;
 @class DBCameraGridView;
-@interface DBCameraViewController : UIViewController <DBCameraSegueSettings>
+@interface DBCameraViewController : UIViewController <DBCameraSegueSettings, DBCameraViewControllerSettings>
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
 @property (nonatomic, weak) id <DBCameraContainerDelegate> containerDelegate;
 @property (nonatomic, assign) BOOL useCameraSegue;
 @property (nonatomic, strong) DBCameraView *cameraView;
 @property (nonatomic, strong) DBCameraGridView *cameraGridView;
-@property (nonatomic, strong) UIColor *tintColor;
-@property (nonatomic, strong) UIColor *selectedTintColor;
 
 + (DBCameraViewController *) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
 + (DBCameraViewController *) init;

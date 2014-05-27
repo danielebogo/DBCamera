@@ -165,3 +165,18 @@
  */
 @property (nonatomic, assign) BOOL useCameraSegue;
 @end
+
+/**
+ *  DBCameraViewControllerSettings protocol
+ */
+@protocol DBCameraViewControllerSettings <NSObject>
+/**
+ *  Set the tint color of icons and labels
+ */
+@property (nonatomic, strong) UIColor *tintColor;
+
+/**
+ *  Set the tint color of icons and labels for the selected state
+ */
+@property (nonatomic, strong) UIColor *selectedTintColor;
+@end
