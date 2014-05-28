@@ -25,5 +25,4 @@ typedef void (^LastItemCompletionBlock)( BOOL success, UIImage *image );
 - (ALAssetsLibrary *) defaultAssetsLibrary;
 - (void) loadLastItemWithBlock:(LastItemCompletionBlock)blockhandler;
 - (void) loadGroupsAssetWithBlock:(GroupsCompletionBlock)blockhandler;
-
 @end

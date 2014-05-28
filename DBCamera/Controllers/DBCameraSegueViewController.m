@@ -31,6 +31,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 @implementation DBCameraSegueViewController
 @synthesize forceQuadCrop = _forceQuadCrop;
 @synthesize useCameraSegue = _useCameraSegue;
+@synthesize tintColor = _tintColor;
+@synthesize selectedTintColor = _selectedTintColor;
 
 - (id) initWithImage:(UIImage *)image thumb:(UIImage *)thumb
 {

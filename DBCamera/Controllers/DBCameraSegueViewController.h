@@ -9,12 +9,32 @@
 #import "DBCameraBaseCropViewController.h"
 #import "DBCameraDelegate.h"
 
-@interface DBCameraSegueViewController : DBCameraBaseCropViewController <DBCameraCropRect, DBCameraSegueSettings>
+/**
+ *  DBCameraSegueViewController
+ */
+@interface DBCameraSegueViewController : DBCameraBaseCropViewController <DBCameraCropRect, DBCameraSegueSettings, DBCameraViewControllerSettings>
+/**
+ *  An id object compliant with the DBCameraContainerDelegate
+ */
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
-@property (nonatomic, strong) NSDictionary *capturedImageMetadata;
-@property (nonatomic, strong) UIColor *tintColor;
-@property (nonatomic, strong) UIColor *selectedTintColor;
 
+/**
+ *  The metadata dictionary of the captured image
+ */
+@property (nonatomic, strong) NSDictionary *capturedImageMetadata;
+
+/**
+ *  The init method with the captured image and thumb
+ *
+ *  @param image The captured image
+ *  @param thumb The thumb of the captured image
+ *
+ *  @return A DBCameraSegueViewController
+ */
 - (id) initWithImage:(UIImage *)image thumb:(UIImage *)thumb;
+
+/**
+ *  Create the interface of the view controller
+ */
 - (void) createInterface;
 @end

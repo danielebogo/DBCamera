@@ -9,12 +9,26 @@
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
 
-@interface DBCameraLibraryViewController : UIViewController <DBCameraSegueSettings>
+/**
+ *  DBCameraLibraryViewController
+ */
+@interface DBCameraLibraryViewController : UIViewController <DBCameraSegueSettings, DBCameraViewControllerSettings>
+/**
+ *  An id object compliant with the DBCameraContainerDelegate
+ */
 @property (nonatomic, weak) id <DBCameraContainerDelegate> containerDelegate;
+
+/**
+ *  An id object compliant with the DBCameraViewControllerDelegate
+ */
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
-@property (nonatomic, strong) UIColor *tintColor;
-@property (nonatomic, strong) UIColor *selectedTintColor;
 
+/**
+ *  The init method with an DBCameraContainerDelegate object
+ *
+ *  @param delegate The DBCameraContainerDelegate object
+ *
+ *  @return A DBCameraLibraryViewController
+ */
 - (id) initWithDelegate:(id<DBCameraContainerDelegate>)delegate;
-
 @end
