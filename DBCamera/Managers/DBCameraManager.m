@@ -146,6 +146,7 @@
              if ( [delegateBlock respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
                  [delegateBlock captureImageDidFinish:image withMetadata:meta];
              
+             CFRelease(metadata);
          } else if ( error ) {
              if ( [delegateBlock respondsToSelector:@selector(captureImageFailedWithError:)] )
                  [delegateBlock captureImageFailedWithError:error];
