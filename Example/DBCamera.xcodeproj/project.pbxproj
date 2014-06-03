@@ -50,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A0FAE53193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/DBCamera.strings; sourceTree = "<group>"; };
+		9A0FAE54193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9A0FAE55193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A1F4A5B191C20CB0084C305 /* DBCameraBaseCropViewController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBCameraBaseCropViewController+Private.h"; sourceTree = "<group>"; };
 		9A1F4A5C191C20CB0084C305 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
 		9A1F4A5D191C20CB0084C305 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
@@ -391,6 +394,7 @@
 				en,
 				it,
 				es,
+				pt,
 			);
 			mainGroup = 9AB59797189BAF9A001BCAD3;
 			productRefGroup = 9AB597A1189BAF9A001BCAD3 /* Products */;
@@ -476,6 +480,7 @@
 				9A50C7B118AA432200CD2DF3 /* en */,
 				9A50C7B318AA435500CD2DF3 /* it */,
 				9A50C7B418AA435500CD2DF3 /* es */,
+				9A0FAE53193E840D008D5FAD /* pt */,
 			);
 			name = DBCamera.strings;
 			path = ../../DBCamera/Localizations;
@@ -487,6 +492,7 @@
 				9AB597AD189BAF9A001BCAD3 /* en */,
 				9A50C7A918AA42BC00CD2DF3 /* it */,
 				9A50C7AC18AA42C300CD2DF3 /* es */,
+				9A0FAE54193E840D008D5FAD /* pt */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -497,6 +503,7 @@
 				9AB597C6189BAF9A001BCAD3 /* en */,
 				9A50C7AA18AA42BC00CD2DF3 /* it */,
 				9A50C7AD18AA42C300CD2DF3 /* es */,
+				9A0FAE55193E840D008D5FAD /* pt */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
