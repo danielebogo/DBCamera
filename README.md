@@ -52,7 +52,7 @@ DBCamera has a simple integration:
 
 ```objective-c
 #import "DBCameraViewController.h"
-#import "DBCameraContainer.h"
+#import "DBCameraContainerViewController.h"
 ```
 
 ```objective-c
