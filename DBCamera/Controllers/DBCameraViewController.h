@@ -11,16 +11,64 @@
 
 @class DBCameraView;
 @class DBCameraGridView;
-@interface DBCameraViewController : UIViewController <DBCameraSegueSettings, DBCameraViewControllerSettings>
-@property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
-@property (nonatomic, weak) id <DBCameraContainerDelegate> containerDelegate;
-@property (nonatomic, assign) BOOL useCameraSegue;
-@property (nonatomic, strong) DBCameraView *cameraView;
-@property (nonatomic, strong) DBCameraGridView *cameraGridView;
-@property BOOL isContained; //Check if it is contained in a DBCameraContainer
 
+/**
+ *  DBCameraViewController
+ */
+@interface DBCameraViewController : UIViewController <DBCameraSegueSettings, DBCameraViewControllerSettings>
+/**
+ *  An id object compliant with the DBCameraViewControllerDelegate
+ */
+@property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
+
+/**
+ *  An id object compliant with the DBCameraContainerDelegate
+ */
+@property (nonatomic, weak) id <DBCameraContainerDelegate> containerDelegate;
+
+/**
+ *  The BOOL value to set if the view controller will have a DBCameraSegueViewController
+ */
+@property (nonatomic, assign) BOOL useCameraSegue;
+
+/**
+ *  The BOOL value to set if it is contained in a DBCameraContainer
+ */
+@property (nonatomic, assign) BOOL isContained;
+
+/**
+ *  The DBCameraView property
+ */
+@property (nonatomic, strong) DBCameraView *cameraView;
+
+/**
+ *  The DBCameraGridView property
+ */
+@property (nonatomic, strong) DBCameraGridView *cameraGridView;
+
+/**
+ *  The init class method with a DBCameraViewControllerDelegate
+ *
+ *  @param delegate The DBCameraViewControllerDelegate
+ *
+ *  @return A DBCameraViewController
+ */
 + (DBCameraViewController *) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
+
+/**
+ *  The init class method
+ *
+ *  @return A DBCameraViewController
+ */
 + (DBCameraViewController *) init;
 
+/**
+ *  The init method with a DBCameraViewControllerDelegate and a custom camera view
+ *
+ *  @param delegate The DBCameraViewControllerDelegate
+ *  @param camera   The custom camera view
+ *
+ *  @return A DBCameraViewController
+ */
 - (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraView:(id)camera;
 @end
