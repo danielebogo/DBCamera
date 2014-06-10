@@ -262,16 +262,15 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         [self.cameraManager setFlashMode:flashMode];
 }
 
-- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
-{
+- (void) DBCamera:(DBCameraViewController *)dbCameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata {
     _processingPhoto = NO;
     
     NSMutableDictionary *finalMetadata = [NSMutableDictionary dictionaryWithDictionary:metadata];
     finalMetadata[@"DBCameraSource"] = @"Camera";
     
     if ( !self.useCameraSegue ) {
-        if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
-            [_delegate captureImageDidFinish:image withMetadata:finalMetadata];
+        if ( [_delegate respondsToSelector:@selector(DBCamera:didFinishWithImage:withMetadata:)] )
+            [_delegate DBCamera:self didFinishWithImage:image withMetadata:finalMetadata];
     } else {
         CGFloat newW = 256.0;
         CGFloat newH = 340.0;

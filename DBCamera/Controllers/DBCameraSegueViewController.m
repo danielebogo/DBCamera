@@ -107,11 +107,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (void) saveImage
 {
-    if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] ) {
+    if ( [_delegate respondsToSelector:@selector(DBCamera:didFinishWithImage:withMetadata:)] ) {
         if ( _cropMode )
             [self cropImage];
         else
-            [_delegate captureImageDidFinish:self.sourceImage withMetadata:self.capturedImageMetadata];
+            [_delegate DBCamera:self didFinishWithImage:self.sourceImage withMetadata:self.capturedImageMetadata];
     }
 }
 
@@ -128,7 +128,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *transform =  [UIImage imageWithCGImage:resultRef scale:1.0 orientation:UIImageOrientationUp];
             CGImageRelease(resultRef);
-            [_delegate captureImageDidFinish:transform withMetadata:self.capturedImageMetadata];
+            [_delegate DBCamera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
         });
     });
 }
