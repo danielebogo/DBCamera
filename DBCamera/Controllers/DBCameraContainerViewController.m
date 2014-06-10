@@ -13,6 +13,8 @@
 
 @interface DBCameraContainerViewController () <DBCameraContainerDelegate> {
     CameraSettingsBlock _settingsBlock;
+    BOOL wasStatusBarHidden;
+    BOOL wasWantsFullScreenLayout;
 }
 @property (nonatomic, strong) DBCameraViewController *defaultCameraViewController;
 @end
@@ -20,6 +22,11 @@
 @implementation DBCameraContainerViewController
 @synthesize tintColor = _tintColor;
 @synthesize selectedTintColor = _selectedTintColor;
+
+- (id) initWithoutContainerAndWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
+{
+    return [[DBCameraContainerViewController alloc] initWithDelegate:delegate cameraSettingsBlock:nil];
+}
 
 - (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
 {
@@ -42,6 +49,8 @@
     [super viewDidLoad];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    wasStatusBarHidden = [UIApplication sharedApplication].statusBarHidden;
+    wasWantsFullScreenLayout = self.wantsFullScreenLayout;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     [self setWantsFullScreenLayout:YES];
 #elif __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
@@ -58,6 +67,15 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    [[UIApplication sharedApplication] setStatusBarHidden:wasStatusBarHidden withAnimation:UIStatusBarAnimationSlide];
+    [self setWantsFullScreenLayout:wasWantsFullScreenLayout];
+#endif
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,6 +137,7 @@
 - (void) setCameraViewController:(DBCameraViewController *)cameraViewController
 {
     _cameraViewController = cameraViewController;
+    _cameraViewController.isContained = YES;
     [_cameraViewController setContainerDelegate:self];
     _defaultCameraViewController = nil;
 }
