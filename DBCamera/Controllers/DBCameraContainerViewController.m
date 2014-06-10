@@ -13,6 +13,8 @@
 
 @interface DBCameraContainerViewController () <DBCameraContainerDelegate> {
     CameraSettingsBlock _settingsBlock;
+    BOOL _wasStatusBarHidden;
+    BOOL _wasWantsFullScreenLayout;
 }
 @property (nonatomic, strong) DBCameraViewController *defaultCameraViewController;
 @end
@@ -42,6 +44,8 @@
     [super viewDidLoad];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    _wasStatusBarHidden = [UIApplication sharedApplication].statusBarHidden;
+    _wasWantsFullScreenLayout = self.wantsFullScreenLayout;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     [self setWantsFullScreenLayout:YES];
 #elif __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
@@ -58,6 +62,15 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    [[UIApplication sharedApplication] setStatusBarHidden:_wasStatusBarHidden withAnimation:UIStatusBarAnimationSlide];
+    [self setWantsFullScreenLayout:_wasWantsFullScreenLayout];
+#endif
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,6 +132,7 @@
 - (void) setCameraViewController:(DBCameraViewController *)cameraViewController
 {
     _cameraViewController = cameraViewController;
+    [_cameraViewController setIsContained:YES];
     [_cameraViewController setContainerDelegate:self];
     _defaultCameraViewController = nil;
 }

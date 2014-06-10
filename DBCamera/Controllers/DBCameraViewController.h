@@ -32,6 +32,11 @@
 @property (nonatomic, assign) BOOL useCameraSegue;
 
 /**
+ *  The BOOL value to set if it is contained in a DBCameraContainer
+ */
+@property (nonatomic, assign) BOOL isContained;
+
+/**
  *  The DBCameraView property
  */
 @property (nonatomic, strong) DBCameraView *cameraView;
