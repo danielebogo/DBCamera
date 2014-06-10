@@ -31,7 +31,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     UIDeviceOrientation _deviceOrientation;
 }
 
-@property (nonatomic, strong) id customCamera;
+@property (nonatomic, weak) id customCamera;
 @property (nonatomic, strong) DBCameraManager *cameraManager;
 @end
 

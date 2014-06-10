@@ -35,8 +35,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     BOOL _isEnumeratingGroups;
 }
 
-@property (nonatomic, strong) NSString *selectedItemID;
-@property (nonatomic, strong) UIView *topContainerBar, *bottomContainerBar, *loading;;
+@property (nonatomic, weak) NSString *selectedItemID;
+@property (nonatomic, strong) UIView *topContainerBar, *bottomContainerBar, *loading;
 @end
 
 @implementation DBCameraLibraryViewController

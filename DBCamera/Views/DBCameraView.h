@@ -11,7 +11,7 @@
 
 #import "DBCameraDelegate.h"
 
-@interface DBCameraView : UIView
+@interface DBCameraView : UIView <DBCameraViewControllerSettings>
 @property (nonatomic, weak) id <DBCameraViewDelegate> delegate;
 @property (nonatomic, strong) UIButton *photoLibraryButton, *triggerButton, *closeButton;
 @property (nonatomic, strong) UIButton *gridButton, *cameraButton, *flashButton;
@@ -19,8 +19,6 @@
 @property (nonatomic, strong, readonly) UITapGestureRecognizer *singleTap, *doubleTap;
 @property (nonatomic, strong, readonly) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinch;
-@property (nonatomic, strong) UIColor *tintColor;
-@property (nonatomic, strong) UIColor *selectedTintColor;
 
 + (id) initWithFrame:(CGRect)frame;
 + (DBCameraView *) initWithCaptureSession:(AVCaptureSession *)captureSession;

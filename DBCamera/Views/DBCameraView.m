@@ -32,6 +32,8 @@
 @end
 
 @implementation DBCameraView
+@synthesize tintColor = _tintColor;
+@synthesize selectedTintColor = _selectedTintColor;
 
 + (id) initWithFrame:(CGRect)frame
 {
