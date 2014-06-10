@@ -13,8 +13,8 @@
 
 @interface DBCameraContainerViewController () <DBCameraContainerDelegate> {
     CameraSettingsBlock _settingsBlock;
-    BOOL wasStatusBarHidden;
-    BOOL wasWantsFullScreenLayout;
+    BOOL _wasStatusBarHidden;
+    BOOL _wasWantsFullScreenLayout;
 }
 @property (nonatomic, strong) DBCameraViewController *defaultCameraViewController;
 @end
@@ -22,11 +22,6 @@
 @implementation DBCameraContainerViewController
 @synthesize tintColor = _tintColor;
 @synthesize selectedTintColor = _selectedTintColor;
-
-- (id) initWithoutContainerAndWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
-{
-    return [[DBCameraContainerViewController alloc] initWithDelegate:delegate cameraSettingsBlock:nil];
-}
 
 - (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
 {
@@ -49,8 +44,8 @@
     [super viewDidLoad];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    wasStatusBarHidden = [UIApplication sharedApplication].statusBarHidden;
-    wasWantsFullScreenLayout = self.wantsFullScreenLayout;
+    _wasStatusBarHidden = [UIApplication sharedApplication].statusBarHidden;
+    _wasWantsFullScreenLayout = self.wantsFullScreenLayout;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     [self setWantsFullScreenLayout:YES];
 #elif __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
@@ -73,8 +68,8 @@
 {
     [super viewWillDisappear:animated];
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    [[UIApplication sharedApplication] setStatusBarHidden:wasStatusBarHidden withAnimation:UIStatusBarAnimationSlide];
-    [self setWantsFullScreenLayout:wasWantsFullScreenLayout];
+    [[UIApplication sharedApplication] setStatusBarHidden:_wasStatusBarHidden withAnimation:UIStatusBarAnimationSlide];
+    [self setWantsFullScreenLayout:_wasWantsFullScreenLayout];
 #endif
 }
 
@@ -137,7 +132,7 @@
 - (void) setCameraViewController:(DBCameraViewController *)cameraViewController
 {
     _cameraViewController = cameraViewController;
-    _cameraViewController.isContained = YES;
+    [_cameraViewController setIsContained:YES];
     [_cameraViewController setContainerDelegate:self];
     _defaultCameraViewController = nil;
 }
