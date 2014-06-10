@@ -81,16 +81,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if(!_isContained){
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    wasStatusBarHidden = [UIApplication sharedApplication].statusBarHidden;
-    wasWantsFullScreenLayout = self.wantsFullScreenLayout;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-    [self setWantsFullScreenLayout:YES];
-#elif __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
-    [self setEdgesForExtendedLayout:UIRectEdgeNone];
-#endif
-    }
     
     [self.view setBackgroundColor:[UIColor blackColor]];
     
@@ -138,12 +128,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    if(!_isContained){
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    [[UIApplication sharedApplication] setStatusBarHidden:wasStatusBarHidden withAnimation:UIStatusBarAnimationSlide];
-    [self setWantsFullScreenLayout:wasWantsFullScreenLayout];
-#endif
-    }
     [self.cameraManager performSelector:@selector(stopRunning) withObject:nil afterDelay:0.0];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UIDeviceOrientationDidChangeNotification" object:nil];

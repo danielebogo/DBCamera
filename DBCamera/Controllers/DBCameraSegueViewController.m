@@ -53,11 +53,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
-    [self setEdgesForExtendedLayout:UIRectEdgeNone];
-#else
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-#endif
     
     [self.view setUserInteractionEnabled:YES];
     [self.view setBackgroundColor:[UIColor blackColor]];

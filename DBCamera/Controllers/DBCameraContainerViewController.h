@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
+#import "UIViewController+UIViewController_FullScreen.h"
 
 @class DBCameraView;
 @class DBCameraViewController;

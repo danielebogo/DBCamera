@@ -8,6 +8,7 @@
 
 #import "DBCameraBaseCropViewController.h"
 #import "DBCameraDelegate.h"
+#import "UIViewController+UIViewController_FullScreen.h"
 
 /**
  *  DBCameraSegueViewController
