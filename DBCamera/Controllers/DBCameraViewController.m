@@ -33,7 +33,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     BOOL wasWantsFullScreenLayout;
 }
 
-@property (nonatomic, weak) id customCamera;
+@property (nonatomic, strong) id customCamera;
 @property (nonatomic, strong) DBCameraManager *cameraManager;
 @end
 
