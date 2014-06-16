@@ -11,7 +11,8 @@
 
 @implementation UIViewController (UIViewController_FullScreen)
 
-- (void) setFullScreenMode {
+- (void) setFullScreenMode
+{
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     self.wasStatusBarHidden = [UIApplication sharedApplication].statusBarHidden;
     self.wasFullScreenLayout = self.wantsFullScreenLayout;
@@ -22,30 +23,36 @@
 #endif
 }
 
-- (void) restoreFullScreenMode {
+- (void) restoreFullScreenMode
+{
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     [[UIApplication sharedApplication] setStatusBarHidden:self.wasStatusBarHidden withAnimation:UIStatusBarAnimationSlide];
     [self setWantsFullScreenLayout:self.wasFullScreenLayout];
 #endif
 }
 
-- (BOOL)wasStatusBarHidden {
+- (BOOL)wasStatusBarHidden
+{
     NSNumber *number = objc_getAssociatedObject(self, @selector(wasStatusBarHidden));
     return [number boolValue];
 }
 
-- (void)setWasStatusBarHidden:(BOOL)property {
+- (void)setWasStatusBarHidden:(BOOL)property
+{
     NSNumber *number = [NSNumber numberWithBool: property];
     objc_setAssociatedObject(self, @selector(wasStatusBarHidden), number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)wasFullScreenLayout {
+- (BOOL)wasFullScreenLayout
+{
     NSNumber *number = objc_getAssociatedObject(self, @selector(wasFullScreenLayout));
     return [number boolValue];
 }
 
-- (void)setWasFullScreenLayout:(BOOL)property {
+- (void)setWasFullScreenLayout:(BOOL)property
+{
     NSNumber *number = [NSNumber numberWithBool: property];
     objc_setAssociatedObject(self, @selector(wasFullScreenLayout), number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
 @end

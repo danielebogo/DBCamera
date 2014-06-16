@@ -215,12 +215,12 @@
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) DBCamera:(DBCameraViewController*)dbCameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
+- (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
     DetailViewController *detail = [[DetailViewController alloc] init];
     [detail setDetailImage:image];
     [self.navigationController pushViewController:detail animated:NO];
-    [dbCameraViewController restoreFullScreenMode];
+    [cameraViewController restoreFullScreenMode];
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
