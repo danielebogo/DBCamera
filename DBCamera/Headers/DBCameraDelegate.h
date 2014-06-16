@@ -12,6 +12,7 @@
  *  DBCameraView delegate protocol
  */
 @class DBCameraGridView;
+@class DBCameraViewController;
 @protocol DBCameraViewDelegate <NSObject>
 @optional
 /**
@@ -95,10 +96,11 @@
 /**
  *  Tells the delegate when the image is ready to use
  *
+ *  @param dbCameraViewController    The controller object managing the DBCamera interface.
  *  @param image    The captured image
  *  @param metadata The metadata of the image
  */
-- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata;
+- (void) DBCamera:(id)dbCameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata;
 
 /**
  *  Tells the delegate when the camera must be dismissed
