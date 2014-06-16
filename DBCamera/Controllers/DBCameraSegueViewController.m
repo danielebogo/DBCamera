@@ -53,11 +53,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
-    [self setEdgesForExtendedLayout:UIRectEdgeNone];
-#else
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-#endif
     
     [self.view setUserInteractionEnabled:YES];
     [self.view setBackgroundColor:[UIColor blackColor]];
@@ -112,11 +107,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (void) saveImage
 {
-    if ( [_delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] ) {
+    if ( [_delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] ) {
         if ( _cropMode )
             [self cropImage];
         else
-            [_delegate captureImageDidFinish:self.sourceImage withMetadata:self.capturedImageMetadata];
+            [_delegate camera:self didFinishWithImage:self.sourceImage withMetadata:self.capturedImageMetadata];
     }
 }
 
@@ -133,7 +128,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *transform =  [UIImage imageWithCGImage:resultRef scale:1.0 orientation:UIImageOrientationUp];
             CGImageRelease(resultRef);
-            [_delegate captureImageDidFinish:transform withMetadata:self.capturedImageMetadata];
+            [_delegate camera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
         });
     });
 }

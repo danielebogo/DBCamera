@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		653E218619474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 653E218519474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m */; };
 		9A1F4A7F191C20CB0084C305 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A5D191C20CB0084C305 /* UIImage+Crop.m */; };
 		9A1F4A80191C20CB0084C305 /* DBCameraBaseCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A60191C20CB0084C305 /* DBCameraBaseCropViewController.m */; };
 		9A1F4A81191C20CB0084C305 /* DBCameraCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A62191C20CB0084C305 /* DBCameraCollectionViewController.m */; };
@@ -50,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		653E218419474DA2001433A5 /* UIViewController+UIViewController_FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIViewController_FullScreen.h"; sourceTree = "<group>"; };
+		653E218519474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UIViewController_FullScreen.m"; sourceTree = "<group>"; };
 		9A0FAE53193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/DBCamera.strings; sourceTree = "<group>"; };
 		9A0FAE54193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A0FAE55193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				9A1F4A5D191C20CB0084C305 /* UIImage+Crop.m */,
 				9A8E9A84192EA6930005CD5D /* UIImage+TintColor.h */,
 				9A8E9A85192EA6930005CD5D /* UIImage+TintColor.m */,
+				653E218419474DA2001433A5 /* UIViewController+UIViewController_FullScreen.h */,
+				653E218519474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m */,
 			);
 			name = Categories;
 			path = ../../DBCamera/Categories;
@@ -378,7 +383,7 @@
 		9AB59798189BAF9A001BCAD3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "PSSD - Daniele Bogo";
 				TargetAttributes = {
 					9AB597BA189BAF9A001BCAD3 = {
@@ -437,6 +442,7 @@
 				9A1F4A8B191C20CB0084C305 /* DBCameraGridView.m in Sources */,
 				9A1F4A83191C20CB0084C305 /* DBCameraLibraryViewController.m in Sources */,
 				9A1F4A88191C20CB0084C305 /* DBCollectionViewCell.m in Sources */,
+				653E218619474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m in Sources */,
 				9A1F4A84191C20CB0084C305 /* DBCameraSegueViewController.m in Sources */,
 				9A1F4A86191C20CB0084C305 /* DBCameraManager.m in Sources */,
 				9AB597B4189BAF9A001BCAD3 /* AppDelegate.m in Sources */,
@@ -515,7 +521,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -554,7 +559,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -616,7 +620,6 @@
 		9AB597D0189BAF9A001BCAD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DBCamera.app/DBCamera";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -639,7 +642,6 @@
 		9AB597D1189BAF9A001BCAD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DBCamera.app/DBCamera";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

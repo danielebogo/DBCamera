@@ -112,6 +112,7 @@
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraContainer];
     [nav setNavigationBarHidden:YES];
+    [cameraContainer setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -133,6 +134,7 @@
     [container setCameraViewController:cameraController];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
     [nav setNavigationBarHidden:YES];
+    [container setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -146,6 +148,7 @@
     [container setCameraViewController:cameraController];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
     [nav setNavigationBarHidden:YES];
+    [container setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -212,14 +215,12 @@
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
+- (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-#endif
     DetailViewController *detail = [[DetailViewController alloc] init];
     [detail setDetailImage:image];
     [self.navigationController pushViewController:detail animated:NO];
+    [cameraViewController restoreFullScreenMode];
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

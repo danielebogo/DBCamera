@@ -68,6 +68,7 @@ DBCamera has a simple integration:
     DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraContainer];
     [nav setNavigationBarHidden:YES];
+    [cameraContainer setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -79,13 +80,16 @@ DBCamera has a simple integration:
     [container setCameraViewController:cameraController];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
     [nav setNavigationBarHidden:YES];
+    [container setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void) openCameraWithoutContainer
 {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DBCameraViewController initWithDelegate:self]];
+    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraController];
     [nav setNavigationBarHidden:YES];
+    [cameraController setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 ```
@@ -94,9 +98,10 @@ DBCamera has a simple integration:
 //Use your captured image
 #pragma mark - DBCameraViewControllerDelegate
 
-- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
+- (void) DBCamera:(DBCameraViewController*)dbCameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
     [_imageView setImage:image];
+    [dbCameraViewController restoreFullScreenMode];
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 ```
@@ -111,6 +116,7 @@ When you create DBCameraViewController instance, you can set ``` useCameraSegue:
     [container setCameraViewController:cameraController];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
     [nav setNavigationBarHidden:YES];
+    [container setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 ```
@@ -131,6 +137,7 @@ For simple customizations, you can customize the built-in camera view by sending
 
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraContainer];
     [nav setNavigationBarHidden:YES];
+    [cameraContainer setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 ```

@@ -43,15 +43,6 @@
 {
     [super viewDidLoad];
     
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    _wasStatusBarHidden = [UIApplication sharedApplication].statusBarHidden;
-    _wasWantsFullScreenLayout = self.wantsFullScreenLayout;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-    [self setWantsFullScreenLayout:YES];
-#elif __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
-    [self setEdgesForExtendedLayout:UIRectEdgeNone];
-#endif
-    
     [self.view setBackgroundColor:RGBColor(0x000000, 1)];
     [self addChildViewController:self.defaultCameraViewController];
     [self.view addSubview:self.defaultCameraViewController.view];
@@ -62,15 +53,6 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-}
-
-- (void) viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    [[UIApplication sharedApplication] setStatusBarHidden:_wasStatusBarHidden withAnimation:UIStatusBarAnimationSlide];
-    [self setWantsFullScreenLayout:_wasWantsFullScreenLayout];
-#endif
 }
 
 - (void)didReceiveMemoryWarning

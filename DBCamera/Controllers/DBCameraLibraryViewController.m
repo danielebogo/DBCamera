@@ -314,9 +314,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             metadata[@"DBCameraSource"] = @"Library";
 
             if ( !blockSelf.useCameraSegue ) {
-                if ( [blockSelf.delegate respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
-                    [blockSelf.delegate captureImageDidFinish:[image rotateUIImage]
-                                                 withMetadata:metadata ];
+                if ( [blockSelf.delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] )
+                    [blockSelf.delegate camera:self didFinishWithImage:[image rotateUIImage] withMetadata:metadata];
             } else {
                 DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:[image rotateUIImage] thumb:[UIImage imageWithCGImage:[asset aspectRatioThumbnail]]];
                 [segue setTintColor:self.tintColor];
