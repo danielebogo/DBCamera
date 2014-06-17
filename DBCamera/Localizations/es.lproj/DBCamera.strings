@@ -10,7 +10,12 @@
 "button.retake" = "Volver a tomar";
 
 "general.error.title" = "¡Atención!";
+"general.button.cancel" = "Cancelar";
+
 "pickerimage.nopolicy" = "Por favor, activa los permisos con el fin de utilizar su biblioteca de fotos. Compruebe sus permisos en Ajustes > Privacidad > Fotos";
 "pickerimage.nophoto" = "No hay imágenes en tu película";
 
 "pagecontrol.text" = "%i de %i";
+
+"cropmode.title" = "Aspect Ratio";
+"cropmode.square" = "Cuadrado";

@@ -10,7 +10,12 @@
 "button.retake" = "Rifai";
 
 "general.error.title" = "Attenzione";
+"general.button.cancel" = "Annulla";
+
 "pickerimage.nopolicy" = "Abilita i permessi per poter usare la tua Libreria Foto. Controlla i permessi in Impostazioni > Privacy > Foto";
 "pickerimage.nophoto" = "Non ci sono immagini nel tuo rullino";
 
 "pagecontrol.text" = "%i di %i";
+
+"cropmode.title" = "Aspect Ratio";
+"cropmode.square" = "Quadrato";

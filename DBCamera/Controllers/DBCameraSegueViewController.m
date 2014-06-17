@@ -18,13 +18,14 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 #define buttonMargin 20.0f
 
-@interface DBCameraSegueViewController () {
+@interface DBCameraSegueViewController () <UIActionSheetDelegate> {
     DBCameraCropView *_cropView;
+    NSArray *_cropArray;
     CGRect _pFrame, _lFrame;
 }
 
 @property (nonatomic, assign) BOOL cropMode;
-@property (nonatomic, strong) UIView *navigationBar;
+@property (nonatomic, strong) UIView *navigationBar, *bottomBar;
 @property (nonatomic, strong) UIButton *useButton, *retakeButton, *cropButton;
 @end
 
@@ -39,6 +40,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     self = [super init];
     if (self) {
         // Custom initialization
+        _cropArray = @[ @320, @213, @240, @192, @180 ];
+        
         [self setSourceImage:image];
         [self setPreviewImage:thumb];
         [self setCropRect:(CGRect){ 0, 320 }];
@@ -57,10 +60,12 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     [self.view setUserInteractionEnabled:YES];
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self.view addSubview:self.navigationBar];
+    [self.view addSubview:self.bottomBar];
     [self.view setClipsToBounds:YES];
     
-    _pFrame = (CGRect){ ( CGRectGetWidth( self.frameView.frame) - 320 ) * .5, ( CGRectGetHeight( self.frameView.frame) - 320 ) * .5, 320, 320 };
-    _lFrame = (CGRect){ ( CGRectGetWidth( self.frameView.frame) - 320 ) * .5, ( CGRectGetHeight( self.frameView.frame) - 240) * .5, 320, 240 };
+    CGFloat cropX = ( CGRectGetWidth( self.frameView.frame) - 320 ) * .5;
+    _pFrame = (CGRect){ cropX, ( CGRectGetHeight( self.frameView.frame) - 360 ) * .5, 320, 320 };
+    _lFrame = (CGRect){ cropX, ( CGRectGetHeight( self.frameView.frame) - 240) * .5, 320, 240 };
     
     [self setCropRect:self.previewImage.size.width > self.previewImage.size.height ? _lFrame : _pFrame];
 }
@@ -88,6 +93,12 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     [self setCropMode:button.isSelected];
     [self setCropRect:button.isSelected ? _pFrame : _lFrame];
     [self reset:YES];
+}
+
+- (void) openActionsheet:(UIButton *)button
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:DBCameraLocalizedStrings(@"general.button.cancel") destructiveButtonTitle:nil otherButtonTitles:DBCameraLocalizedStrings(@"cropmode.square"), @"3:2", @"4:3", @"5:3", @"16:9", nil];
+    [actionSheet showInView:self.view];
 }
 
 - (void) createInterface
@@ -137,6 +148,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     _cropMode = cropMode;
     [self.frameView setHidden:!_cropMode];
+    [self.bottomBar setHidden:!_cropMode];
 }
 
 - (UIView *) navigationBar
@@ -152,6 +164,24 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     }
     
     return _navigationBar;
+}
+
+- (UIView *) bottomBar
+{
+    if ( !_bottomBar ) {
+        _bottomBar = [[UIView alloc] initWithFrame:(CGRect){ 0, CGRectGetHeight([[UIScreen mainScreen] bounds]) - 40, 320, 40 }];
+        [_bottomBar setBackgroundColor:[UIColor blackColor]];
+        [_bottomBar setHidden:YES];
+        
+        UIButton *actionsheetButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [actionsheetButton setFrame:_bottomBar.bounds];
+        [actionsheetButton setBackgroundColor:[UIColor clearColor]];
+        [actionsheetButton setTitle:DBCameraLocalizedStrings(@"cropmode.title") forState:UIControlStateNormal];
+        [actionsheetButton addTarget:self action:@selector(openActionsheet:) forControlEvents:UIControlEventTouchUpInside];
+        [_bottomBar addSubview:actionsheetButton];
+    }
+    
+    return _bottomBar;
 }
 
 - (UIButton *) useButton
@@ -208,6 +238,20 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 - (BOOL) prefersStatusBarHidden
 {
     return YES;
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ( buttonIndex != actionSheet.cancelButtonIndex ) {
+        NSUInteger height = [_cropArray[buttonIndex] integerValue];
+        CGFloat cropX = ( CGRectGetWidth( self.frameView.frame) - 320 ) * .5;
+        CGRect cropRect = (CGRect){ cropX, ( CGRectGetHeight( self.frameView.frame) - (CGRectGetHeight(self.bottomBar.frame) + height) ) * .5, 320, height };
+        
+        [self setCropRect:cropRect];
+        [self reset:YES];
+    }
 }
 
 @end

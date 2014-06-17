@@ -11,7 +11,12 @@
 "button.retake" = "Repetir";
 
 "general.error.title" = "Atenção";
+"general.button.cancel" = "Cancelar";
+
 "pickerimage.nopolicy" = "Por favor, habilite as permissões para poder acessar sua Biblioteca de Fotos. Verifique suas permissões em Ajustes > Privacidade > Fotos";
 "pickerimage.nophoto" = "Não há nenhuma imagem na sua biblioteca";
 
 "pagecontrol.text" = "%i de %i";
+
+"cropmode.title" = "Aspect Ratio";
+"cropmode.square" = "Quadrado";

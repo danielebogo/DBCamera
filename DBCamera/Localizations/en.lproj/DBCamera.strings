@@ -10,7 +10,12 @@
 "button.retake" = "Retake";
 
 "general.error.title" = "Attention";
+"general.button.cancel" = "Cancel";
+
 "pickerimage.nopolicy" = "Please enable the permissions in order to use your Photo Library. Check your permissions in Settings > Privacy > Photos";
 "pickerimage.nophoto" = "There are no images in your Library";
 
 "pagecontrol.text" = "%i of %i";
+
+"cropmode.title" = "Aspect Ratio";
+"cropmode.square" = "Square";
