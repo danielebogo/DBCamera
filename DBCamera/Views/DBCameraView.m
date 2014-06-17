@@ -76,9 +76,16 @@
 }
 
 - (void) defaultInterface
-{   
-    [_previewLayer addSublayer:self.focusBox];
-    [_previewLayer addSublayer:self.exposeBox];
+{
+    UIView *focusView = [[UIView alloc] initWithFrame:self.frame];
+    focusView.backgroundColor = [UIColor clearColor];
+    [focusView.layer addSublayer:self.focusBox];
+    [self addSubview:focusView];
+    
+    UIView *exposeView = [[UIView alloc] initWithFrame:self.frame];
+    exposeView.backgroundColor = [UIColor clearColor];
+    [exposeView.layer addSublayer:self.exposeBox];
+    [self addSubview:exposeView];
     
     [self addSubview:self.topContainerBar];
     [self addSubview:self.bottomContainerBar];
@@ -350,15 +357,19 @@
 - (void) tapToFocus:(UIGestureRecognizer *)recognizer
 {
     CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
-    if ( [_delegate respondsToSelector:@selector(cameraView:focusAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) )
+    if ( [_delegate respondsToSelector:@selector(cameraView:focusAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) ){
         [_delegate cameraView:self focusAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - CGRectGetMinY(_previewLayer.frame) }];
+        [self drawFocusBoxAtPointOfInterest:tempPoint andRemove:YES];
+    }
 }
 
 - (void) tapToExpose:(UIGestureRecognizer *)recognizer
 {
     CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
-    if ( [_delegate respondsToSelector:@selector(cameraView:exposeAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) )
+    if ( [_delegate respondsToSelector:@selector(cameraView:exposeAtPoint:)] && CGRectContainsPoint(_previewLayer.frame, tempPoint) ){
         [_delegate cameraView:self exposeAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - CGRectGetMinY(_previewLayer.frame) }];
+        [self drawExposeBoxAtPointOfInterest:tempPoint andRemove:YES];
+    }
 }
 
 - (void) hanldePanGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer
