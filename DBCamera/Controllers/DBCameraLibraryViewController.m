@@ -45,6 +45,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 @synthesize tintColor = _tintColor;
 @synthesize selectedTintColor = _selectedTintColor;
 
+- (id) init
+{
+    return [[DBCameraLibraryViewController alloc] initWithDelegate:nil];
+}
+
 - (id) initWithDelegate:(id<DBCameraContainerDelegate>)delegate
 {
     self = [super init];
@@ -53,6 +58,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         _containerDelegate = delegate;
         _containersMapping = [NSMutableDictionary dictionary];
         _items = [NSMutableArray array];
+        
+        [self setTintColor:[UIColor whiteColor]];
     }
     return self;
 }
@@ -79,8 +86,15 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
     [self.view addSubview:self.loading];
     [self.view setGestureRecognizers:_pageViewController.gestureRecognizers];
-  
-    [self setTintColor:[UIColor whiteColor]];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+#endif
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -100,6 +114,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification
                                                   object:[UIApplication sharedApplication]];
+}
+
+- (BOOL) prefersStatusBarHidden
+{
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -193,6 +212,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (void) close
 {
+    if ( !self.containerDelegate ) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
+        
     [UIView animateWithDuration:.3 animations:^{
         [self.view setAlpha:0];
         [self.view setTransform:CGAffineTransformMakeScale(.8, .8)];
@@ -304,7 +328,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.view addSubview:self.loading];
 
-        __weak typeof(self) blockSelf = self;
+        __weak typeof(self) weakSelf = self;
         [[[DBLibraryManager sharedInstance] defaultAssetsLibrary] assetForURL:URL resultBlock:^(ALAsset *asset) {
             ALAssetRepresentation *defaultRep = [asset defaultRepresentation];
             UIImage *image = [UIImage imageWithCGImage:[defaultRep fullResolutionImage]
@@ -313,9 +337,9 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             NSMutableDictionary *metadata = [NSMutableDictionary dictionaryWithDictionary:[defaultRep metadata]];
             metadata[@"DBCameraSource"] = @"Library";
 
-            if ( !blockSelf.useCameraSegue ) {
-                if ( [blockSelf.delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] )
-                    [blockSelf.delegate camera:self didFinishWithImage:[image rotateUIImage] withMetadata:metadata];
+            if ( !weakSelf.useCameraSegue ) {
+                if ( [weakSelf.delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] )
+                    [weakSelf.delegate camera:self didFinishWithImage:[image rotateUIImage] withMetadata:metadata];
             } else {
                 DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:[image rotateUIImage] thumb:[UIImage imageWithCGImage:[asset aspectRatioThumbnail]]];
                 [segue setTintColor:self.tintColor];
@@ -323,11 +347,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
                 [segue setForceQuadCrop:_forceQuadCrop];
                 [segue enableGestures:YES];
                 [segue setCapturedImageMetadata:metadata];
-                [segue setDelegate:blockSelf.delegate];
-                [blockSelf.navigationController pushViewController:segue animated:YES];
+                [segue setDelegate:weakSelf.delegate];
+                [weakSelf.navigationController pushViewController:segue animated:YES];
             }
 
-            [blockSelf.loading removeFromSuperview];
+            [weakSelf.loading removeFromSuperview];
             
         } failureBlock:nil];
     });

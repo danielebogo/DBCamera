@@ -9,11 +9,12 @@
 #import "RootViewController.h"
 #import "DBCameraViewController.h"
 #import "DBCameraContainerViewController.h"
+#import "DBCameraLibraryViewController.h"
 #import "CustomCamera.h"
 #import "DBCameraGridView.h"
 
 #define kCellIdentifier @"CellIdentifier"
-#define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue", @"Open Camera without Container", @"Camera with force quad crop" ]
+#define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue", @"Open Camera without Container", @"Camera with force quad crop", @"Open Library Picker" ]
 
 @interface DetailViewController : UIViewController {
     UIImageView *_imageView;
@@ -159,6 +160,16 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 
+- (void) openLibrary
+{
+    DBCameraLibraryViewController *vc = [[DBCameraLibraryViewController alloc] init];
+    [vc setDelegate:self];
+//    [vc setUseCameraSegue:YES]; //Optional
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
 #pragma mark - UITableViewDataSource & UITableViewDelegate
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -201,6 +212,10 @@
             
         case 4:
             [self openCameraWithForceQuad];
+            break;
+            
+        case 5:
+            [self openLibrary];
             break;
             
         default:
