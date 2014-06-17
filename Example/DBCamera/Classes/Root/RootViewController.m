@@ -13,9 +13,6 @@
 #import "CustomCamera.h"
 #import "DBCameraGridView.h"
 
-#define kCellIdentifier @"CellIdentifier"
-#define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue", @"Open Camera without Container", @"Camera with force quad crop", @"Open Library Picker" ]
-
 @interface DetailViewController : UIViewController {
     UIImageView *_imageView;
 }
@@ -55,12 +52,31 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define kCellIdentifier @"CellIdentifier"
+#define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue", @"Open Camera without Container", @"Camera with force quad crop", @"Open Library Picker" ]
+
+typedef void (^TableRowBlock)();
+
 @interface RootViewController () <DBCameraViewControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     UITableView *_tableView;
+    NSDictionary *_actionMapping;
 }
 @end
 
 @implementation RootViewController
+
+- (id) init
+{
+    self = [super init];
+    
+    if ( self ) {
+        _actionMapping = @{ @0:^{ [self openCamera]; }, @1:^{ [self openCustomCamera]; },
+                            @2:^{ [self openCameraWithoutSegue]; }, @3:^{ [self openCameraWithoutContainer]; },
+                            @4:^{ [self openCameraWithForceQuad]; }, @5:^{ [self openLibrary]; } };
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -98,22 +114,30 @@
 
 - (void) openCamera
 {
-//    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+/*
+    If you want to customize the camera view, use initWithDelegate:cameraSettingsBlock:
+ 
     DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self cameraSettingsBlock:^(DBCameraView *cameraView, DBCameraContainerViewController *container) {
-        [cameraView.photoLibraryButton setHidden:YES];
+        [cameraView.photoLibraryButton setHidden:YES]; //Hide Library button
+     
+        //Override the camera grid
         DBCameraGridView *cameraGridView = [[DBCameraGridView alloc] initWithFrame:cameraView.previewLayer.frame];
         [cameraGridView setNumberOfColumns:4];
         [cameraGridView setNumberOfRows:4];
         [cameraGridView setAlpha:0];
         [container.cameraViewController setCameraGridView:cameraGridView];
     }];
-    
+
+    //Set the Tint Color and the Selected Color
     [cameraContainer setTintColor:[UIColor redColor]];
     [cameraContainer setSelectedTintColor:[UIColor yellowColor]];
+*/
+
+    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+    [cameraContainer setFullScreenMode];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraContainer];
     [nav setNavigationBarHidden:YES];
-    [cameraContainer setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -122,34 +146,37 @@
     CustomCamera *camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
     [camera buildInterface];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[DBCameraViewController alloc] initWithDelegate:self cameraView:camera]];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[DBCameraViewController alloc] initWithDelegate:self
+                                                                                                                                   cameraView:camera]];
     [nav setNavigationBarHidden:YES];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void) openCameraWithoutSegue
 {
-    DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
     [cameraController setUseCameraSegue:NO];
+    
+    DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     [container setCameraViewController:cameraController];
+    [container setFullScreenMode];
+    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
     [nav setNavigationBarHidden:YES];
-    [container setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void) openCameraWithForceQuad
 {
-    DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
     [cameraController setForceQuadCrop:YES];
-    [cameraController setTintColor:[UIColor brownColor]];
-    [cameraController setSelectedTintColor:[UIColor orangeColor]];
+    
+    DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     [container setCameraViewController:cameraController];
+    [container setFullScreenMode];
+
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
     [nav setNavigationBarHidden:YES];
-    [container setFullScreenMode];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -163,7 +190,8 @@
 - (void) openLibrary
 {
     DBCameraLibraryViewController *vc = [[DBCameraLibraryViewController alloc] init];
-    [vc setDelegate:self];
+    [vc setDelegate:self]; //DBCameraLibraryViewController must have a DBCameraViewControllerDelegate object
+//    [vc setForceQuadCrop:YES]; //Optional
 //    [vc setUseCameraSegue:YES]; //Optional
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     [nav setNavigationBarHidden:YES];
@@ -183,7 +211,6 @@
     
     if ( !cell )
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier];
-    
     [[cell textLabel] setText:kCameraTitles[indexPath.row]];
     
     return cell;
@@ -193,34 +220,8 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    switch ( indexPath.row ) {
-        case 0:
-            [self openCamera];
-            break;
-            
-        case 1:
-            [self openCustomCamera];
-            break;
-        
-        case 2:
-            [self openCameraWithoutSegue];
-            break;
-        
-        case 3:
-            [self openCameraWithoutContainer];
-            break;
-            
-        case 4:
-            [self openCameraWithForceQuad];
-            break;
-            
-        case 5:
-            [self openLibrary];
-            break;
-            
-        default:
-            break;
-    }
+    TableRowBlock block = _actionMapping[@(indexPath.row)];
+    block();
 }
 
 #pragma mark - DBCameraViewControllerDelegate

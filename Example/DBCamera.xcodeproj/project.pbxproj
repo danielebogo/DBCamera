@@ -37,6 +37,7 @@
 		9AB597C7189BAF9A001BCAD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AB597C5189BAF9A001BCAD3 /* InfoPlist.strings */; };
 		9AB597C9189BAF9A001BCAD3 /* DBCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */; };
 		9AB597D9189BB0B6001BCAD3 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597D8189BB0B6001BCAD3 /* RootViewController.m */; };
+		9AD2CB221950914B00E5D834 /* AppResources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2CB211950914B00E5D834 /* AppResources.xcassets */; };
 		9AF961A718A252690068E3C6 /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF961A618A252690068E3C6 /* CustomCamera.m */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,7 @@
 		9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBCameraTests.m; sourceTree = "<group>"; };
 		9AB597D7189BB0B6001BCAD3 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Classes/Root/RootViewController.h; sourceTree = "<group>"; };
 		9AB597D8189BB0B6001BCAD3 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Classes/Root/RootViewController.m; sourceTree = "<group>"; };
+		9AD2CB211950914B00E5D834 /* AppResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppResources.xcassets; sourceTree = "<group>"; };
 		9AF961A518A252690068E3C6 /* CustomCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCamera.h; path = Classes/CustomCamera/CustomCamera.h; sourceTree = "<group>"; };
 		9AF961A618A252690068E3C6 /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCamera.m; path = Classes/CustomCamera/CustomCamera.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -331,6 +333,7 @@
 		9AB597D6189BB09D001BCAD3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9AD2CB211950914B00E5D834 /* AppResources.xcassets */,
 				9AB597D7189BB0B6001BCAD3 /* RootViewController.h */,
 				9AB597D8189BB0B6001BCAD3 /* RootViewController.m */,
 				9AF961A518A252690068E3C6 /* CustomCamera.h */,
@@ -418,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A50C7B018AA432200CD2DF3 /* DBCamera.strings in Resources */,
+				9AD2CB221950914B00E5D834 /* AppResources.xcassets in Resources */,
 				9A1F4A8F191C20F10084C305 /* DBCameraImages.xcassets in Resources */,
 				9AB597AE189BAF9A001BCAD3 /* InfoPlist.strings in Resources */,
 			);
