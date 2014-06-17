@@ -262,7 +262,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         [self.cameraManager setFlashMode:flashMode];
 }
 
-- (void) camera:(DBCameraViewController *)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
+- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
     _processingPhoto = NO;
     
@@ -304,7 +304,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     id camera = self.customCamera ?: _cameraView;
     CGRect bounds = [(UIView *)camera bounds];
     AVCaptureVideoPreviewLayer *previewLayer = self.customCamera ? (AVCaptureVideoPreviewLayer *)[self.customCamera valueForKey:@"previewLayer"] : _cameraView.previewLayer;
-    CGPoint screenCenter = (CGPoint){ (bounds.size.width * .5f), (bounds.size.height * .5f) - CGRectGetMinY(previewLayer.frame) };
+    CGPoint screenCenter = (CGPoint){ CGRectGetMidX(bounds), CGRectGetMidY(bounds) - CGRectGetMinY(previewLayer.frame) };
     if ([camera respondsToSelector:@selector(drawFocusBoxAtPointOfInterest:andRemove:)] )
         [camera drawFocusBoxAtPointOfInterest:screenCenter andRemove:NO];
     if ( [camera respondsToSelector:@selector(drawExposeBoxAtPointOfInterest:andRemove:)] )
