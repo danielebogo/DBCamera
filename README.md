@@ -1,9 +1,9 @@
+![Alt text](http://bogodaniele.com/apps/development/dbcamera/github/dbcamera_splash.png)
+
 DBCamera
 ========
 
 DBCamera is a simple custom camera with AVFoundation.
-
-![Alt text](http://paperstreetsoapdesign.com/development/dbcamera/github/dbcamera_screen_6.png)
 
 ##Getting Started
 
