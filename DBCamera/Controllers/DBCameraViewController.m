@@ -262,7 +262,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         [self.cameraManager setFlashMode:flashMode];
 }
 
-- (void) camera:(DBCameraViewController *)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
+- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
     _processingPhoto = NO;
     

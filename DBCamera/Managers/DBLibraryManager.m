@@ -139,8 +139,6 @@
                     [assetGroupsBlock insertObject:dictionaryGroup atIndex:0];
                 else if ( [(NSArray *)dictionaryGroup[@"groupAssets"] count] > 0 )
                     [assetGroupsBlock addObject:dictionaryGroup];
-                
-                NSLog( @"Group %@", dictionaryGroup);
             }
             
             items = nil;
