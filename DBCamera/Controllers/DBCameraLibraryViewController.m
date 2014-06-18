@@ -331,11 +331,12 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         __weak typeof(self) weakSelf = self;
         [[[DBLibraryManager sharedInstance] defaultAssetsLibrary] assetForURL:URL resultBlock:^(ALAsset *asset) {
             ALAssetRepresentation *defaultRep = [asset defaultRepresentation];
-            UIImage *image = [UIImage imageWithCGImage:[defaultRep fullResolutionImage]
-                                                 scale:[defaultRep scale]
-                                           orientation:[[asset valueForProperty:ALAssetPropertyOrientation] integerValue]];
             NSMutableDictionary *metadata = [NSMutableDictionary dictionaryWithDictionary:[defaultRep metadata]];
             metadata[@"DBCameraSource"] = @"Library";
+            
+            UIImage *image = [UIImage imageWithCGImage:metadata[@"AdjustmentXMP"] ? [defaultRep fullScreenImage] : [defaultRep fullResolutionImage]
+                                                 scale:[defaultRep scale]
+                                           orientation:[[asset valueForProperty:ALAssetPropertyOrientation] integerValue]];
 
             if ( !weakSelf.useCameraSegue ) {
                 if ( [weakSelf.delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] )
