@@ -1,0 +1,21 @@
+/*
+ DBCamera.strings
+ DBCamera
+ 
+ Created by iBo on 11/02/14.
+ Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
+ */
+
+"button.use" = "Kullan";
+"button.retake" = "Tekrar Çek";
+
+"general.error.title" = "Uyarı";
+"general.button.cancel" = "İptal";
+
+"pickerimage.nopolicy" = "Fotoğraflara erişim izni verilmemiş. Lütfen telefon Ayarlarından > Gizlilik > Fotoğraf bölümüne gidip uygulamamıza izin verip tekrar deneyin.";
+"pickerimage.nophoto" = "Albümde fotoğraf bulunamadı.";
+
+"pagecontrol.text" = "%i / %i (sağa/sola kaydırın)";
+
+"cropmode.title" = "Kırpma Oranı";
+"cropmode.square" = "Kare";

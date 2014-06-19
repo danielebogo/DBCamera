@@ -115,6 +115,9 @@
 		9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBCameraTests.m; sourceTree = "<group>"; };
 		9AB597D7189BB0B6001BCAD3 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Classes/Root/RootViewController.h; sourceTree = "<group>"; };
 		9AB597D8189BB0B6001BCAD3 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Classes/Root/RootViewController.m; sourceTree = "<group>"; };
+		9ABDB6E5195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/DBCamera.strings; sourceTree = "<group>"; };
+		9ABDB6E6195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9ABDB6E7195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9AD2CB211950914B00E5D834 /* AppResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppResources.xcassets; sourceTree = "<group>"; };
 		9AF961A518A252690068E3C6 /* CustomCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCamera.h; path = Classes/CustomCamera/CustomCamera.h; sourceTree = "<group>"; };
 		9AF961A618A252690068E3C6 /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCamera.m; path = Classes/CustomCamera/CustomCamera.m; sourceTree = "<group>"; };
@@ -403,6 +406,7 @@
 				it,
 				es,
 				pt,
+				tr,
 			);
 			mainGroup = 9AB59797189BAF9A001BCAD3;
 			productRefGroup = 9AB597A1189BAF9A001BCAD3 /* Products */;
@@ -491,6 +495,7 @@
 				9A50C7B318AA435500CD2DF3 /* it */,
 				9A50C7B418AA435500CD2DF3 /* es */,
 				9A0FAE53193E840D008D5FAD /* pt */,
+				9ABDB6E5195391A500A1539D /* tr */,
 			);
 			name = DBCamera.strings;
 			path = ../../DBCamera/Localizations;
@@ -503,6 +508,7 @@
 				9A50C7A918AA42BC00CD2DF3 /* it */,
 				9A50C7AC18AA42C300CD2DF3 /* es */,
 				9A0FAE54193E840D008D5FAD /* pt */,
+				9ABDB6E6195391A500A1539D /* tr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				9A50C7AA18AA42BC00CD2DF3 /* it */,
 				9A50C7AD18AA42C300CD2DF3 /* es */,
 				9A0FAE55193E840D008D5FAD /* pt */,
+				9ABDB6E7195391A500A1539D /* tr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
