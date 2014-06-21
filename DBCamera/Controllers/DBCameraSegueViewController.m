@@ -24,7 +24,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     CGRect _pFrame, _lFrame;
 }
 
-@property (nonatomic, assign) BOOL cropMode;
 @property (nonatomic, strong) UIView *navigationBar, *bottomBar;
 @property (nonatomic, strong) UIButton *useButton, *retakeButton, *cropButton;
 @end

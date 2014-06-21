@@ -38,4 +38,7 @@
  *  Create the interface of the view controller
  */
 - (void) createInterface;
+
+@property (nonatomic, assign) BOOL cropMode;
+
 @end
