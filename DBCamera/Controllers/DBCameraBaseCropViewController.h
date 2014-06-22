@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
+#import "GPUImage.h"
+#import "DBCameraFiltersView.h"
 
 /**
  *  DBCameraBaseCropViewController
  */
-@interface DBCameraBaseCropViewController : UIViewController
+@interface DBCameraBaseCropViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 /**
  *  The source image view
  */
@@ -49,6 +51,16 @@
 @property (nonatomic, readonly) CGRect cropBoundsInSourceImage;
 
 /**
+ *  Filter to be applied to the image
+ */
+@property (nonatomic, strong) NSIndexPath *selectedFilterIndex;
+
+/**
+ *  Filter collectionView
+ */
+@property (nonatomic, strong) DBCameraFiltersView *filtersView;
+
+/**
  *  Enable the crop gestures
  *
  *  @param enable BOOL value to set enable value
@@ -78,4 +90,6 @@
 - (CGImageRef) newTransformedImage:(CGAffineTransform)transform sourceImage:(CGImageRef)sourceImage sourceSize:(CGSize)sourceSize
                  sourceOrientation:(UIImageOrientation)sourceOrientation outputWidth:(CGFloat)outputWidth
                           cropRect:(CGRect)cropRect imageViewSize:(CGSize)imageViewSize;
+
+- (GPUImageFilter*) setFilter:(int) index;
 @end

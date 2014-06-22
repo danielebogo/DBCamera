@@ -7,6 +7,8 @@
 //
 
 #import "DBCameraBaseCropViewController.h"
+#import "DBCameraFiltersView.h"
+#import "DBFilterCell.h"
 
 typedef struct {
     CGPoint tl,tr,bl,br;
@@ -18,6 +20,7 @@ static const CGFloat kDefaultCropWidth = 320;
 static const CGFloat kDefaultCropHeight = 320;
 static const NSTimeInterval kAnimationIntervalReset = 0.25;
 static const NSTimeInterval kAnimationIntervalTransform = 0.2;
+static const CGSize kFilterCellSize = {75, 90};
 
 @interface DBCameraBaseCropViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic,strong) UIPanGestureRecognizer *panRecognizer;
@@ -25,6 +28,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 @property (nonatomic,strong) UIPinchGestureRecognizer *pinchRecognizer;
 @property (nonatomic,strong) UITapGestureRecognizer *tapRecognizer;
 @property (nonatomic, weak) UIView <DBCameraCropRect> *frameView;
+@property (nonatomic, strong) NSArray *filtersList;
 
 @property (nonatomic, assign) NSUInteger gestureCount;
 @property (nonatomic, assign) CGPoint touchCenter, rotationCenter, scaleCenter;
@@ -56,6 +60,19 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     UIImageView *imageView = [[UIImageView alloc] init];
     [self.view insertSubview:imageView belowSubview:self.frameView];
     [self setImageView:imageView];
+    
+    UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.minimumLineSpacing = 0.f;
+    _filtersView = [[DBCameraFiltersView alloc] initWithFrame:(CGRect){ 0, self.view.frame.size.height-kFilterCellSize.height, self.view.frame.size.width, kFilterCellSize.height} collectionViewLayout:layout];
+    _filtersView.delegate = self;
+    _filtersView.dataSource = self;
+    _filtersView.backgroundColor = [UIColor blackColor];
+    [_filtersView registerClass:[DBFilterCell class] forCellWithReuseIdentifier:@"filterCell"];
+    [self.view addSubview:_filtersView];
+    
+    self.filtersList = @[@"normal", @"1977", @"amaro", @"grey", @"hudson", @"mayfair", @"nashville", @"valencia"];
+    self.selectedFilterIndex = 0;
     
     [self.view setMultipleTouchEnabled:YES];
     
@@ -260,7 +277,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 }
 
 
-- (void)checkBoundsWithTransform:(CGAffineTransform)transform
+- (void) checkBoundsWithTransform:(CGAffineTransform)transform
 {
     CGRect r1 = [self boundingBoxForRect:self.cropRect rotatedByRadians:[self imageRotation]];
     Rectangle r2 = [self applyTransform:transform toRect:self.initialImageFrame];
@@ -618,6 +635,74 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         .br = CGPointApplyAffineTransform(r.br, t),
         .bl = CGPointApplyAffineTransform(r.bl, t)
     };
+}
+
+- (GPUImageFilter*) setFilter:(int) index {
+    GPUImageFilter *filter;
+
+    switch (index) {
+        case 1: {
+            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"1977"];
+        } break;
+        case 2: {
+            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"amaro"];
+        } break;
+        case 3: {
+            filter = [[GPUImageGrayscaleFilter alloc] init];
+        } break;
+        case 4: {
+            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Hudson"];
+        } break;
+        case 5: {
+            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"mayfair"];
+        } break;
+        case 6: {
+            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Nashville"];
+        } break;
+        case 7: {
+            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Valencia"];
+        } break;
+        default:
+            filter = [[GPUImageFilter alloc] init];
+            break;
+    }
+    
+    return filter;
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self.filtersList count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    DBFilterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"filterCell" forIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@Filter", [self.filtersList objectAtIndex:indexPath.row]]];
+    cell.label.text = [[self.filtersList objectAtIndex:indexPath.row] uppercaseString];
+    
+    if (self.selectedFilterIndex.row == indexPath.row) {
+        cell.imageView.layer.borderWidth = 1.f;
+    } else {
+        cell.imageView.layer.borderWidth = 0.f;
+    }
+    
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kFilterCellSize;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectedFilterIndex = indexPath;
+    [self.filtersView reloadData];
+    
+    UIImage *filteredImage = [[self setFilter:indexPath.row] imageByFilteringImage:self.sourceImage];
+    [self.imageView setImage:filteredImage];
 }
 
 @end

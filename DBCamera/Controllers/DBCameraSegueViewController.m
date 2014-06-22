@@ -20,6 +20,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 @interface DBCameraSegueViewController () <UIActionSheetDelegate> {
     DBCameraCropView *_cropView;
+    
     NSArray *_cropArray;
     CGRect _pFrame, _lFrame;
 }
@@ -103,9 +104,10 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (void) createInterface
 {
-    CGFloat viewHeight = CGRectGetHeight([[UIScreen mainScreen] bounds]) - 64;
+    CGFloat viewHeight = CGRectGetHeight([[UIScreen mainScreen] bounds]) - 64 - 50;
     _cropView = [[DBCameraCropView alloc] initWithFrame:(CGRect){ 0, 64, 320, viewHeight }];
     [_cropView setHidden:YES];
+    
     [self setFrameView:_cropView];
 }
 
@@ -121,8 +123,10 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     if ( [_delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] ) {
         if ( _cropMode )
             [self cropImage];
-        else
-            [_delegate camera:self didFinishWithImage:self.sourceImage withMetadata:self.capturedImageMetadata];
+        else{
+            UIImage *transform = [[self setFilter:self.selectedFilterIndex.row] imageByFilteringImage:self.sourceImage];
+            [_delegate camera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
+        }
     }
 }
 
@@ -139,6 +143,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *transform =  [UIImage imageWithCGImage:resultRef scale:1.0 orientation:UIImageOrientationUp];
             CGImageRelease(resultRef);
+            transform = [[self setFilter:self.selectedFilterIndex.row] imageByFilteringImage:transform];
             [_delegate camera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
         });
     });
@@ -149,6 +154,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     _cropMode = cropMode;
     [self.frameView setHidden:!_cropMode];
     [self.bottomBar setHidden:!_cropMode];
+    [self.filtersView setHidden:_cropMode];
 }
 
 - (UIView *) navigationBar
@@ -188,7 +194,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     if ( !_useButton ) {
         _useButton = [self baseButton];
-        [_useButton setTitle:DBCameraLocalizedStrings(@"button.use") forState:UIControlStateNormal];
+        [_useButton setTitle:[DBCameraLocalizedStrings(@"button.use") uppercaseString] forState:UIControlStateNormal];
         [_useButton.titleLabel sizeToFit];
         [_useButton sizeToFit];
         [_useButton setFrame:(CGRect){ CGRectGetWidth(self.view.frame) - (CGRectGetWidth(_useButton.frame) + buttonMargin), 0, CGRectGetWidth(_useButton.frame) + buttonMargin, 60 }];
@@ -202,7 +208,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     if ( !_retakeButton ) {
         _retakeButton = [self baseButton];
-        [_retakeButton setTitle:DBCameraLocalizedStrings(@"button.retake") forState:UIControlStateNormal];
+        [_retakeButton setTitle:[DBCameraLocalizedStrings(@"button.retake") uppercaseString] forState:UIControlStateNormal];
         [_retakeButton.titleLabel sizeToFit];
         [_retakeButton sizeToFit];
         [_retakeButton setFrame:(CGRect){ 0, 0, CGRectGetWidth(_retakeButton.frame) + buttonMargin, 60 }];
@@ -231,6 +237,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setBackgroundColor:[UIColor clearColor]];
     [button setTitleColor:self.tintColor forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:12];
     
     return button;
 }

@@ -11,5 +11,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'DBCamera/Categories/*.{h,m}', 'DBCamera/Controllers/*.{h,m}', 'DBCamera/Headers/*.{h,m}', 'DBCamera/Managers/*.{h,m}', 'DBCamera/Objects/*.{h,m}', 'DBCamera/Views/*.{h,m}'
   s.resource = ['DBCamera/Resources/*.{xib,xcassets}', 'DBCamera/Localizations/**']
-  s.framework = 'AVFoundation', 'CoreMedia'
+  s.framework = 'AVFoundation', 'CoreMedia', 'OpenGLES', 'AVFoundation', 'QuartzCore'
+  s.dependency 'GPUImage', '~> 0.1'
 end
