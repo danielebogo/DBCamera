@@ -288,10 +288,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         [segue enableGestures:YES];
         [segue setDelegate:self.delegate];
         [segue setCapturedImageMetadata:finalMetadata];
-        
-        if(self.cameraSegueConfigureBlock) {
-            segue = self.cameraSegueConfigureBlock(segue);
-        }
+        [segue setConfigureBlock:self.cameraSegueConfigureBlock];
         
         [self.navigationController pushViewController:segue animated:YES];
     }

@@ -51,7 +51,7 @@
 /**
  * Use this to alter the segue view before it is presented.
  */
-@property (nonatomic, copy) DBCameraSegueViewController * (^cameraSegueConfigureBlock)(DBCameraSegueViewController *segue);
+@property (nonatomic, copy) void (^cameraSegueConfigureBlock)(DBCameraSegueViewController *segue);
 
 /**
  *  The init class method with a DBCameraViewControllerDelegate

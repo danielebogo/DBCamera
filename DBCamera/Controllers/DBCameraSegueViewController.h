@@ -41,4 +41,6 @@
 
 @property (nonatomic, assign) BOOL cropMode;
 
+@property (nonatomic, copy) void (^configureBlock)(DBCameraSegueViewController *segue);
+
 @end

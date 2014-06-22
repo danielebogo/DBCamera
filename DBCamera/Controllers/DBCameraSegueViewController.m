@@ -67,6 +67,10 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     _lFrame = (CGRect){ cropX, ( CGRectGetHeight( self.frameView.frame) - 240) * .5, 320, 240 };
     
     [self setCropRect:self.previewImage.size.width > self.previewImage.size.height ? _lFrame : _pFrame];
+    
+    if(self.configureBlock) {
+        self.configureBlock(self);
+    }
 }
 
 - (void) viewWillAppear:(BOOL)animated

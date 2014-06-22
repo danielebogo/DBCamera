@@ -25,7 +25,7 @@
  */
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
 
-@property (nonatomic, copy) DBCameraSegueViewController * (^cameraSegueConfigureBlock)(DBCameraSegueViewController *segue);
+@property (nonatomic, copy) void (^cameraSegueConfigureBlock)(DBCameraSegueViewController *segue);
 
 /**
  *  The init method with an DBCameraContainerDelegate object
