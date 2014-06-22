@@ -328,6 +328,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             [library setForceQuadCrop:_forceQuadCrop];
             [library setDelegate:self.delegate];
             [library setUseCameraSegue:self.useCameraSegue];
+            [library setCameraSegueConfigureBlock:self.cameraSegueConfigureBlock];
             [self.containerDelegate switchFromController:self toController:library];
         }];
     } else {

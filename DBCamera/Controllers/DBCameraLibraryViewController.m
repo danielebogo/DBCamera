@@ -349,6 +349,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
                 [segue enableGestures:YES];
                 [segue setCapturedImageMetadata:metadata];
                 [segue setDelegate:weakSelf.delegate];
+                
+                if(weakSelf.cameraSegueConfigureBlock) {
+                    segue = weakSelf.cameraSegueConfigureBlock(segue);
+                }
+                
                 [weakSelf.navigationController pushViewController:segue animated:YES];
             }
 

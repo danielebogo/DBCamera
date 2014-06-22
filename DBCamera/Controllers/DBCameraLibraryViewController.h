@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
 
+@class DBCameraSegueViewController;
+
 /**
  *  DBCameraLibraryViewController
  */
@@ -22,6 +24,8 @@
  *  An id object compliant with the DBCameraViewControllerDelegate
  */
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
+
+@property (nonatomic, copy) DBCameraSegueViewController * (^cameraSegueConfigureBlock)(DBCameraSegueViewController *segue);
 
 /**
  *  The init method with an DBCameraContainerDelegate object
