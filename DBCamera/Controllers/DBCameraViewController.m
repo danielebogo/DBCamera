@@ -166,10 +166,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (void) dismissCamera
 {
-    if ( _delegate && [_delegate respondsToSelector:@selector(dismissCamera)] )
-        [_delegate dismissCamera];
-    else
-        [self dismissViewControllerAnimated:YES completion:nil];
+    if ( _delegate && [_delegate respondsToSelector:@selector(dismissCamera:)] )
+        [_delegate dismissCamera:self];
 }
 
 - (DBCameraView *) cameraView

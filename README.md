@@ -80,6 +80,11 @@ DBCamera has a simple integration:
     [cameraViewController restoreFullScreenMode];
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void) dismissCamera:(id)cameraViewController{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [cameraViewController restoreFullScreenMode];
+}
 ```
 By default, DBCameraViewController has another controller to display the image preview.
 When you create DBCameraViewController instance, you can set ``` useCameraSegue: ``` NO, to avoid it.
@@ -272,3 +277,5 @@ You can also create a custom interface, using a subclass of DBCameraView
 Apache Cordova: [mkcode](https://github.com/mkcode)
 
 Grid view & pinch gesture: [Jack](https://github.com/xhzengAIB)
+
+Filters segue: [denadai2](https://github.com/denadai2)
