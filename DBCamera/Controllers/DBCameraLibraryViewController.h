@@ -26,6 +26,11 @@
 @property (nonatomic, weak) id <DBCameraViewControllerDelegate> delegate;
 
 /**
+ *  Set the max resolution for the selected image
+ */
+@property (nonatomic, assign) NSUInteger libraryMaxImageSize;
+
+/**
  *  The init method with an DBCameraContainerDelegate object
  *
  *  @param delegate The DBCameraContainerDelegate object

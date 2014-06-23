@@ -325,6 +325,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             [library setDelegate:self.delegate];
             [library setUseCameraSegue:self.useCameraSegue];
             [library setCameraSegueConfigureBlock:self.cameraSegueConfigureBlock];
+            [library setLibraryMaxImageSize:self.libraryMaxImageSize];
             [self.containerDelegate switchFromController:self toController:library];
         }];
     } else {

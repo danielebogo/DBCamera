@@ -49,6 +49,11 @@
 @property (nonatomic, strong) DBCameraGridView *cameraGridView;
 
 /**
+ *  Set the max resolution for the library selected image
+ */
+@property (nonatomic, assign) NSUInteger libraryMaxImageSize;
+
+/**
  *  The init class method with a DBCameraViewControllerDelegate
  *
  *  @param delegate The DBCameraViewControllerDelegate

@@ -130,7 +130,7 @@ static const CGSize kFilterCellSize = { 75, 90 };
 
 - (void) createInterface
 {
-    CGFloat viewHeight = CGRectGetHeight([[UIScreen mainScreen] bounds]) - 64 - 50;
+    CGFloat viewHeight = CGRectGetHeight([[UIScreen mainScreen] bounds]) - 64 - 40;
     _cropView = [[DBCameraCropView alloc] initWithFrame:(CGRect){ 0, 64, 320, viewHeight }];
     [_cropView setHidden:YES];
     
@@ -149,7 +149,7 @@ static const CGSize kFilterCellSize = { 75, 90 };
     if ( [_delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] ) {
         if ( _cropMode )
             [self cropImage];
-        else{
+        else {
             UIImage *transform = [_filterMapping[@(_selectedFilterIndex.row)] imageByFilteringImage:self.sourceImage];
             [_delegate camera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
         }

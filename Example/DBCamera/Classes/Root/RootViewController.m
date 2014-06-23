@@ -44,6 +44,14 @@
     [_imageView setImage:_detailImage];
 }
 
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    _detailImage = nil;
+    [_imageView setImage:nil];
+}
+
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -155,6 +163,7 @@ typedef void (^TableRowBlock)();
 {
     DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
     [cameraController setUseCameraSegue:NO];
+//    [cameraController setLibraryMaxImageSize:1280]; //You can set a value for the maximum output resolution for the image selected from the Library
     
     DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     [container setCameraViewController:cameraController];

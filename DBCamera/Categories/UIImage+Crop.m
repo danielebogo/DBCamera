@@ -171,4 +171,26 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, CGFloat oval
     return image;
 }
 
+- (UIImage *) imageScaledToSize:(CGSize)newSize
+{
+    CGFloat newW = newSize.width;
+    CGFloat newH = newSize.height;
+    
+    if ( self.size.width < self.size.height ) {
+        newW = newSize.height;
+        newH = (newW * self.size.height) / self.size.width;
+    } else if ( self.size.width == self.size.height ) {
+        newH = newW;
+    } else {
+        newW = newSize.width;
+        newH = (newW * self.size.height) / self.size.width;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions((CGSize){ newW, newH }, NO, 0.0);
+    [self drawInRect:CGRectMake(0, 0, newW, newH)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 @end

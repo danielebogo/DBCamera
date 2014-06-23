@@ -12,10 +12,12 @@
 #import "DBCollectionViewFlowLayout.h"
 #import "DBCameraSegueViewController.h"
 #import "DBCameraCollectionViewController.h"
-#import "UIImage+Crop.h"
-#import "UIImage+TintColor.h"
 #import "DBCameraMacros.h"
 #import "DBCameraLoadingView.h"
+
+#import "UIImage+Crop.h"
+#import "UIImage+TintColor.h"
+#import "UIImage+Asset.h"
 
 #ifndef DBCameraLocalizedStrings
 #define DBCameraLocalizedStrings(key) \
@@ -60,6 +62,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         _containerDelegate = delegate;
         _containersMapping = [NSMutableDictionary dictionary];
         _items = [NSMutableArray array];
+        _libraryMaxImageSize = 1900;
         
         [self setTintColor:[UIColor whiteColor]];
     }
@@ -227,6 +230,12 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     }];
 }
 
+- (void) setLibraryMaxImageSize:(NSUInteger)libraryMaxImageSize
+{
+    if ( libraryMaxImageSize > 0 )
+        _libraryMaxImageSize = libraryMaxImageSize;
+}
+
 - (UIView *) loading
 {
     if( !_loading ) {
@@ -328,15 +337,13 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             NSMutableDictionary *metadata = [NSMutableDictionary dictionaryWithDictionary:[defaultRep metadata]];
             metadata[@"DBCameraSource"] = @"Library";
             
-            UIImage *image = [UIImage imageWithCGImage:metadata[@"AdjustmentXMP"] ? [defaultRep fullScreenImage] : [defaultRep fullResolutionImage]
-                                                 scale:[defaultRep scale]
-                                           orientation:[[asset valueForProperty:ALAssetPropertyOrientation] integerValue]];
-
+            UIImage *image = [UIImage imageForAsset:asset maxPixelSize:_libraryMaxImageSize];
+            
             if ( !weakSelf.useCameraSegue ) {
                 if ( [weakSelf.delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] )
-                    [weakSelf.delegate camera:self didFinishWithImage:[image rotateUIImage] withMetadata:metadata];
+                    [weakSelf.delegate camera:self didFinishWithImage:image withMetadata:metadata];
             } else {
-                DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:[image rotateUIImage] thumb:[UIImage imageWithCGImage:[asset aspectRatioThumbnail]]];
+                DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:image thumb:[UIImage imageWithCGImage:[asset aspectRatioThumbnail]]];
                 [segue setTintColor:self.tintColor];
                 [segue setSelectedTintColor:self.selectedTintColor];
                 [segue setForceQuadCrop:_forceQuadCrop];
@@ -347,9 +354,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
                 
                 [weakSelf.navigationController pushViewController:segue animated:YES];
             }
-
-            [weakSelf.loading removeFromSuperview];
             
+            [weakSelf.loading removeFromSuperview];
         } failureBlock:nil];
     });
 }

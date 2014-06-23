@@ -142,11 +142,10 @@
              
              CFDictionaryRef metadata = CMCopyDictionaryOfAttachments(NULL, imageDataSampleBuffer, kCMAttachmentMode_ShouldPropagate);
              NSDictionary *meta = (__bridge NSDictionary *)(metadata);
+             CFRelease(metadata);
              
              if ( [delegateBlock respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
                  [delegateBlock captureImageDidFinish:image withMetadata:meta];
-             
-             CFRelease(metadata);
          } else if ( error ) {
              if ( [delegateBlock respondsToSelector:@selector(captureImageFailedWithError:)] )
                  [delegateBlock captureImageFailedWithError:error];
