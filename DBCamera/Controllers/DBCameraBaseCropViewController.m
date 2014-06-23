@@ -260,7 +260,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 }
 
 
-- (void)checkBoundsWithTransform:(CGAffineTransform)transform
+- (void) checkBoundsWithTransform:(CGAffineTransform)transform
 {
     CGRect r1 = [self boundingBoxForRect:self.cropRect rotatedByRadians:[self imageRotation]];
     Rectangle r2 = [self applyTransform:transform toRect:self.initialImageFrame];

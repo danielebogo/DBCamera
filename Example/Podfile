@@ -1,0 +1,5 @@
+platform :ios, "6.0"
+
+target "DBCamera" do
+pod 'GPUImage', '~> 0.1'
+end
