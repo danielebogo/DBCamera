@@ -643,7 +643,8 @@ static const CGSize kFilterCellSize = {75, 90};
     GPUImageFilter *filter;
     
     self.loadingView = [[DBCameraLoadingView alloc] initWithFrame:(CGRect){ 0, 0, 100, 100 }];
-
+    [self.loadingView setCenter:self.view.center];
+    
     switch (index) {
         case 1: {
             filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"1977"];

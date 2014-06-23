@@ -17,7 +17,6 @@
     if (self) {
         [self.layer setCornerRadius:10];
         [self setBackgroundColor:RGBColor(0x000000, .7)];
-        [self setCenter:self.center];
         [self setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin];
             
         UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];

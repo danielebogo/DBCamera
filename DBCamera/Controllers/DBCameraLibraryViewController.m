@@ -230,6 +230,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     if( !_loading ) {
         _loading = [[DBCameraLoadingView alloc] initWithFrame:(CGRect){ 0, 0, 100, 100 }];
+        [_loading setCenter:self.view.center];
     }
     
     return _loading;
