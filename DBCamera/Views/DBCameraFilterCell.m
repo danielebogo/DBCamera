@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
 //
 
-#import "DBFilterCell.h"
+#import "DBCameraFilterCell.h"
 #import <QuartzCore/QuartzCore.h>
 
 static const int kLabelHeight = 18;
 static const int kCellPadding = 10;
 static const int kBorderWidth = 1;
 
-@implementation DBFilterCell
+@implementation DBCameraFilterCell
 
 - (id)initWithFrame:(CGRect)frame
 {

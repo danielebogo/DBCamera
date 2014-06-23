@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DBFilterCell : UICollectionViewCell
+@interface DBCameraFilterCell : UICollectionViewCell
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UIImageView *imageView;
 @end

@@ -8,7 +8,8 @@
 
 #import "DBCameraBaseCropViewController.h"
 #import "DBCameraFiltersView.h"
-#import "DBFilterCell.h"
+#import "DBCameraFilterCell.h"
+#import "DBCameraLoadingView.h"
 
 typedef struct {
     CGPoint tl,tr,bl,br;
@@ -29,6 +30,7 @@ static const CGSize kFilterCellSize = {75, 90};
 @property (nonatomic,strong) UITapGestureRecognizer *tapRecognizer;
 @property (nonatomic, weak) UIView <DBCameraCropRect> *frameView;
 @property (nonatomic, strong) NSArray *filtersList;
+@property (nonatomic, strong) DBCameraLoadingView *loadingView;
 
 @property (nonatomic, assign) NSUInteger gestureCount;
 @property (nonatomic, assign) CGPoint touchCenter, rotationCenter, scaleCenter;
@@ -68,7 +70,7 @@ static const CGSize kFilterCellSize = {75, 90};
     _filtersView.delegate = self;
     _filtersView.dataSource = self;
     _filtersView.backgroundColor = [UIColor blackColor];
-    [_filtersView registerClass:[DBFilterCell class] forCellWithReuseIdentifier:@"filterCell"];
+    [_filtersView registerClass:[DBCameraFilterCell class] forCellWithReuseIdentifier:@"filterCell"];
     [self.view addSubview:_filtersView];
     
     self.filtersList = @[@"normal", @"1977", @"amaro", @"grey", @"hudson", @"mayfair", @"nashville", @"valencia"];
@@ -639,6 +641,8 @@ static const CGSize kFilterCellSize = {75, 90};
 
 - (GPUImageFilter*) setFilter:(int) index {
     GPUImageFilter *filter;
+    
+    self.loadingView = [[DBCameraLoadingView alloc] initWithFrame:(CGRect){ 0, 0, 100, 100 }];
 
     switch (index) {
         case 1: {
@@ -679,7 +683,7 @@ static const CGSize kFilterCellSize = {75, 90};
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DBFilterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"filterCell" forIndexPath:indexPath];
+    DBCameraFilterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"filterCell" forIndexPath:indexPath];
     cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@Filter", [self.filtersList objectAtIndex:indexPath.row]]];
     cell.label.text = [[self.filtersList objectAtIndex:indexPath.row] uppercaseString];
     
@@ -702,6 +706,7 @@ static const CGSize kFilterCellSize = {75, 90};
     [self.filtersView reloadData];
     
     UIImage *filteredImage = [[self setFilter:indexPath.row] imageByFilteringImage:self.sourceImage];
+    [self.loadingView removeFromSuperview];
     [self.imageView setImage:filteredImage];
 }
 
