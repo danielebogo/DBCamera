@@ -166,6 +166,11 @@
  *  Set if Camera View Controller will use the camera segue
  */
 @property (nonatomic, assign) BOOL useCameraSegue;
+
+/**
+ *  Use this to alter the segue view before it is presented.
+ */
+@property (nonatomic, copy) void (^cameraSegueConfigureBlock)(id segueViewController);
 @end
 
 /**

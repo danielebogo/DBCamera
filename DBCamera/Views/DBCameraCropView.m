@@ -36,9 +36,9 @@
 
 - (void) setCropRect:(CGRect)cropRect
 {
-    if( !CGRectEqualToRect(_cropRect,cropRect) ){
+    if( !CGRectEqualToRect(_cropRect, cropRect) ){
         // center the rect
-        cropRect = CGRectMake(0, 0, cropRect.size.width, cropRect.size.height);
+        cropRect = (CGRect){ 0, 0, cropRect.size.width, cropRect.size.height };
         cropRect = CGRectOffset(cropRect, (CGRectGetWidth(self.frame) - CGRectGetWidth(cropRect)) * .5, (CGRectGetHeight(self.frame) - CGRectGetHeight(cropRect)) * .5);
 
         _cropRect = CGRectOffset(cropRect, self.frame.origin.x, self.frame.origin.y);

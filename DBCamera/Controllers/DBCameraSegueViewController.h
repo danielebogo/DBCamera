@@ -25,6 +25,11 @@
 @property (nonatomic, strong) NSDictionary *capturedImageMetadata;
 
 /**
+ *  BOOL value indicates the status of the crop mode
+ */
+@property (nonatomic, assign) BOOL cropMode;
+
+/**
  *  The init method with the captured image and thumb
  *
  *  @param image The captured image
@@ -38,9 +43,4 @@
  *  Create the interface of the view controller
  */
 - (void) createInterface;
-
-@property (nonatomic, assign) BOOL cropMode;
-
-@property (nonatomic, copy) void (^configureBlock)(DBCameraSegueViewController *segue);
-
 @end

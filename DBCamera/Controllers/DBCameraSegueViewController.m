@@ -33,6 +33,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 @synthesize useCameraSegue = _useCameraSegue;
 @synthesize tintColor = _tintColor;
 @synthesize selectedTintColor = _selectedTintColor;
+@synthesize cameraSegueConfigureBlock = _cameraSegueConfigureBlock;
 
 - (id) initWithImage:(UIImage *)image thumb:(UIImage *)thumb
 {
@@ -68,9 +69,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     
     [self setCropRect:self.previewImage.size.width > self.previewImage.size.height ? _lFrame : _pFrame];
     
-    if(self.configureBlock) {
-        self.configureBlock(self);
-    }
+    if( self.cameraSegueConfigureBlock )
+        self.cameraSegueConfigureBlock(self);
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -82,6 +82,9 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         [self setCropRect:_pFrame];
         [self reset:YES];
     }
+    
+    if ( _cropMode )
+        [_cropButton setSelected:YES];
 }
 
 - (void)didReceiveMemoryWarning

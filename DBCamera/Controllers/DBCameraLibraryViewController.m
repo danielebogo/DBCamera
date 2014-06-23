@@ -40,6 +40,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 @end
 
 @implementation DBCameraLibraryViewController
+@synthesize cameraSegueConfigureBlock = _cameraSegueConfigureBlock;
 @synthesize forceQuadCrop = _forceQuadCrop;
 @synthesize useCameraSegue = _useCameraSegue;
 @synthesize tintColor = _tintColor;
@@ -349,7 +350,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
                 [segue enableGestures:YES];
                 [segue setCapturedImageMetadata:metadata];
                 [segue setDelegate:weakSelf.delegate];
-                [segue setConfigureBlock:self.cameraSegueConfigureBlock];
+                [segue setCameraSegueConfigureBlock:self.cameraSegueConfigureBlock];
                 
                 [weakSelf.navigationController pushViewController:segue animated:YES];
             }
