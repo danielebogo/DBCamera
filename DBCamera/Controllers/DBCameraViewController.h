@@ -12,6 +12,7 @@
 
 @class DBCameraView;
 @class DBCameraGridView;
+@class DBCameraSegueViewController;
 
 /**
  *  DBCameraViewController

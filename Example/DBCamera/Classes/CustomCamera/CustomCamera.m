@@ -90,11 +90,13 @@
 - (void) createGesture
 {
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector( tapToFocus: )];
+    [singleTap setDelaysTouchesEnded:NO];
     [singleTap setNumberOfTapsRequired:1];
     [singleTap setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:singleTap];
     
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector( tapToExpose: )];
+    [doubleTap setDelaysTouchesEnded:NO];
     [doubleTap setNumberOfTapsRequired:2];
     [doubleTap setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:doubleTap];
@@ -105,15 +107,19 @@
 - (void) tapToFocus:(UIGestureRecognizer *)recognizer
 {
     CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
-    if ( [self.delegate respondsToSelector:@selector(cameraView:focusAtPoint:)] && CGRectContainsPoint(self.previewLayer.frame, tempPoint) )
+    if ( [self.delegate respondsToSelector:@selector(cameraView:focusAtPoint:)] && CGRectContainsPoint(self.previewLayer.frame, tempPoint) ) {
         [self.delegate cameraView:self focusAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - CGRectGetMinY(self.previewLayer.frame) }];
+        [self drawFocusBoxAtPointOfInterest:tempPoint andRemove:YES];
+    }
 }
 
 - (void) tapToExpose:(UIGestureRecognizer *)recognizer
 {
     CGPoint tempPoint = (CGPoint)[recognizer locationInView:self];
-    if ( [self.delegate respondsToSelector:@selector(cameraView:exposeAtPoint:)] && CGRectContainsPoint(self.previewLayer.frame, tempPoint) )
+    if ( [self.delegate respondsToSelector:@selector(cameraView:exposeAtPoint:)] && CGRectContainsPoint(self.previewLayer.frame, tempPoint) ) {
         [self.delegate cameraView:self exposeAtPoint:(CGPoint){ tempPoint.x, tempPoint.y - CGRectGetMinY(self.previewLayer.frame) }];
+        [self drawExposeBoxAtPointOfInterest:tempPoint andRemove:YES];
+    }
 }
 
 @end

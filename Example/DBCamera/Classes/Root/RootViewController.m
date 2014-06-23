@@ -10,6 +10,7 @@
 #import "DBCameraViewController.h"
 #import "DBCameraContainerViewController.h"
 #import "DBCameraLibraryViewController.h"
+#import "DBCameraSegueViewController.h"
 #import "CustomCamera.h"
 #import "DBCameraGridView.h"
 
@@ -155,7 +156,12 @@ typedef void (^TableRowBlock)();
 - (void) openCameraWithoutSegue
 {
     DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
-    [cameraController setUseCameraSegue:NO];
+//    [cameraController setUseCameraSegue:NO];
+    
+    [cameraController setCameraSegueConfigureBlock:^( DBCameraSegueViewController *segue ) {
+        segue.cropMode = YES;
+        segue.cropRect = CGRectMake(0, 0, 200, 400);
+    }];
     
     DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     [container setCameraViewController:cameraController];

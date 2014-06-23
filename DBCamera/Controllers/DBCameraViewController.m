@@ -42,6 +42,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 @synthesize forceQuadCrop = _forceQuadCrop;
 @synthesize tintColor = _tintColor;
 @synthesize selectedTintColor = _selectedTintColor;
+@synthesize cameraSegueConfigureBlock = _cameraSegueConfigureBlock;
 
 #pragma mark - Life cycle
 
@@ -288,6 +289,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         [segue enableGestures:YES];
         [segue setDelegate:self.delegate];
         [segue setCapturedImageMetadata:finalMetadata];
+        [segue setCameraSegueConfigureBlock:self.cameraSegueConfigureBlock];
+        
         [self.navigationController pushViewController:segue animated:YES];
     }
 }
@@ -323,6 +326,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             [library setForceQuadCrop:_forceQuadCrop];
             [library setDelegate:self.delegate];
             [library setUseCameraSegue:self.useCameraSegue];
+            [library setCameraSegueConfigureBlock:self.cameraSegueConfigureBlock];
             [self.containerDelegate switchFromController:self toController:library];
         }];
     } else {

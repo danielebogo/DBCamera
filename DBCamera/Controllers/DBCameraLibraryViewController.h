@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
 
+@class DBCameraSegueViewController;
+
 /**
  *  DBCameraLibraryViewController
  */
