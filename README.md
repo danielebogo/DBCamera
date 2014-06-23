@@ -156,6 +156,16 @@ For simple customizations, you can customize the built-in camera view by sending
 }
 ```
 
+##Customize the Segue View controller
+For a simple customization, you can use the block
+```objective-c
+#import "DBCameraSegueViewController.h"
+[cameraController setCameraSegueConfigureBlock:^( DBCameraSegueViewController *segue ) {
+  segue.cropMode = YES;
+  segue.cropRect = (CGRect){ 0, 0, 200, 400 };
+}];
+```
+
 ### Advanced
 You can also create a custom interface, using a subclass of DBCameraView
 ```objective-c
