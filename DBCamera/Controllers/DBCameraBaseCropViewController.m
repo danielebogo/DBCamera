@@ -644,6 +644,7 @@ static const CGSize kFilterCellSize = {75, 90};
     
     self.loadingView = [[DBCameraLoadingView alloc] initWithFrame:(CGRect){ 0, 0, 100, 100 }];
     [self.loadingView setCenter:self.view.center];
+    [self.view addSubview:self.loadingView];
     
     switch (index) {
         case 1: {
