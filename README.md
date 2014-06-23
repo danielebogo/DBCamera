@@ -157,7 +157,7 @@ For simple customizations, you can customize the built-in camera view by sending
 ```
 
 ##Customize the Segue View controller
-For a simple customization, you can use the block
+For a simple customization, you can use the block ``` cameraSegueConfigureBlock ```
 ```objective-c
 #import "DBCameraSegueViewController.h"
 [cameraController setCameraSegueConfigureBlock:^( DBCameraSegueViewController *segue ) {
