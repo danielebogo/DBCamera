@@ -10,6 +10,8 @@
 #import "DBCameraDelegate.h"
 #import "UIViewController+UIViewController_FullScreen.h"
 
+@class DBCameraFiltersView;
+
 /**
  *  DBCameraSegueViewController
  */
@@ -28,6 +30,16 @@
  *  BOOL value indicates the status of the crop mode
  */
 @property (nonatomic, assign) BOOL cropMode;
+
+/**
+ *  Filter collectionView
+ */
+@property (nonatomic, strong) DBCameraFiltersView *filtersView;
+
+/**
+ *  Filter to be applied to the image
+ */
+@property (nonatomic, readonly) NSIndexPath *selectedFilterIndex;
 
 /**
  *  The init method with the captured image and thumb

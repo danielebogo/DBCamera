@@ -12,7 +12,7 @@ The recommended approach for installating DBCamera is via the [CocoaPods](http:/
 
 ```ruby
 platform :ios, '6.0'
-pod 'DBCamera', '~> 2.2'
+pod 'DBCamera', '~> 2.3'
 ```
 
 #### via Apache Cordova
@@ -79,6 +79,11 @@ DBCamera has a simple integration:
     [self.navigationController pushViewController:detail animated:NO];
     [cameraViewController restoreFullScreenMode];
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) dismissCamera:(id)cameraViewController{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [cameraViewController restoreFullScreenMode];
 }
 ```
 By default, DBCameraViewController has another controller to display the image preview.
@@ -261,7 +266,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 6.0
 
 ###Version
-2.2.2
+2.3
 
 ###Created By
 
@@ -272,3 +277,5 @@ You can also create a custom interface, using a subclass of DBCameraView
 Apache Cordova: [mkcode](https://github.com/mkcode)
 
 Grid view & pinch gesture: [Jack](https://github.com/xhzengAIB)
+
+Filters segue and various improvements: [denadai2](https://github.com/denadai2)

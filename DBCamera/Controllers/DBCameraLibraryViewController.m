@@ -15,6 +15,7 @@
 #import "UIImage+Crop.h"
 #import "UIImage+TintColor.h"
 #import "DBCameraMacros.h"
+#import "DBCameraLoadingView.h"
 
 #ifndef DBCameraLocalizedStrings
 #define DBCameraLocalizedStrings(key) \
@@ -229,16 +230,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 - (UIView *) loading
 {
     if( !_loading ) {
-        _loading = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, 100, 100 }];
-        [_loading.layer setCornerRadius:10];
-        [_loading setBackgroundColor:RGBColor(0x000000, .7)];
+        _loading = [[DBCameraLoadingView alloc] initWithFrame:(CGRect){ 0, 0, 100, 100 }];
         [_loading setCenter:self.view.center];
-        [_loading setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin];
-        
-        UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        [activity setCenter:(CGPoint){ CGRectGetMidX(_loading.bounds), CGRectGetMidY(_loading.bounds) }];
-        [_loading addSubview:activity];
-        [activity startAnimating];
     }
     
     return _loading;

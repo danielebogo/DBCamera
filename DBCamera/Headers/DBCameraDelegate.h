@@ -105,7 +105,7 @@
 /**
  *  Tells the delegate when the camera must be dismissed
  */
-- (void) dismissCamera;
+- (void) dismissCamera:(id)cameraViewController;
 @end
 
 /**

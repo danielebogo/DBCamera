@@ -232,9 +232,9 @@ typedef void (^TableRowBlock)();
 
 #pragma mark - DBCameraViewControllerDelegate
 
-- (void) dismissCamera
-{
+- (void) dismissCamera:(id)cameraViewController{
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    [cameraViewController restoreFullScreenMode];
 }
 
 - (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
