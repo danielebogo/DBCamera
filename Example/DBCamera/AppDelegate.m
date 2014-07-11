@@ -19,6 +19,9 @@
     [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]]];
     [self.window makeKeyAndVisible];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logWarning)
+                                                 name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    
     return YES;
 }
 
@@ -46,7 +49,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void) logWarning
+{
+    NSLog(@"App warning");
 }
 
 @end

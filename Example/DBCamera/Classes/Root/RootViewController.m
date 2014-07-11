@@ -123,7 +123,7 @@ typedef void (^TableRowBlock)();
 - (void) openCamera
 {
 /*
-    If you want to customize the camera view, use initWithDelegate:cameraSettingsBlock:
+//If you want to customize the camera view, use initWithDelegate:cameraSettingsBlock:
  
     DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self cameraSettingsBlock:^(DBCameraView *cameraView, DBCameraContainerViewController *container) {
         [cameraView.photoLibraryButton setHidden:YES]; //Hide Library button
@@ -134,9 +134,10 @@ typedef void (^TableRowBlock)();
         [cameraGridView setNumberOfRows:4];
         [cameraGridView setAlpha:0];
         [container.cameraViewController setCameraGridView:cameraGridView];
+        [container.cameraViewController setUseCameraSegue:NO];
     }];
 
-    //Set the Tint Color and the Selected Color
+//Set the Tint Color and the Selected Color
     [cameraContainer setTintColor:[UIColor redColor]];
     [cameraContainer setSelectedTintColor:[UIColor yellowColor]];
 */
