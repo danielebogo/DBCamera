@@ -91,6 +91,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
     [self.view addSubview:self.loading];
     [self.view setGestureRecognizers:_pageViewController.gestureRecognizers];
+	
+	[self loadLibraryGroups];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -106,7 +108,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     [super viewDidAppear:animated];
     
-    [self loadLibraryGroups];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification object:[UIApplication sharedApplication]];
