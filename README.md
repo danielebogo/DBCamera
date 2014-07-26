@@ -20,7 +20,7 @@ pod 'DBCamera', '~> 2.3'
 DBCamera is available for use as an apache cordova plugin for ios. Visit [Cordova-DBCamera](https://github.com/vulume/Cordova-DBCamera) for more.
 
 ## Example
-If you use the example project, run ``` pod install ``` to install GPUImage dependency
+If you use the example project, run ``` pod install ``` to install GPUImage and  MotionOrientation@PTEz dependency
 
 ## Integration
 
