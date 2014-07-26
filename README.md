@@ -12,7 +12,7 @@ The recommended approach for installating DBCamera is via the [CocoaPods](http:/
 
 ```ruby
 platform :ios, '6.0'
-pod 'DBCamera@YuxiangQ', '~> 2.3'
+pod 'DBCamera@YuxiangQ', '~> 2.3.3'
 ```
 
 #### via Apache Cordova
