@@ -12,7 +12,7 @@ The recommended approach for installating DBCamera is via the [CocoaPods](http:/
 
 ```ruby
 platform :ios, '6.0'
-pod 'DBCamera', '~> 2.3'
+pod 'DBCamera@YuxiangQ', '~> 2.3'
 ```
 
 #### via Apache Cordova
@@ -292,3 +292,5 @@ Apache Cordova: [mkcode](https://github.com/mkcode)
 Grid view & pinch gesture: [Jack](https://github.com/xhzengAIB)
 
 Filters segue and various improvements: [denadai2](https://github.com/denadai2)
+
+Solve the rotation locked:[YuxiangQ](https://github.com/yuxiangq)
