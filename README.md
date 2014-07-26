@@ -293,4 +293,3 @@ Grid view & pinch gesture: [Jack](https://github.com/xhzengAIB)
 
 Filters segue and various improvements: [denadai2](https://github.com/denadai2)
 
-Solve the rotation locked:[YuxiangQ](https://github.com/yuxiangq)
