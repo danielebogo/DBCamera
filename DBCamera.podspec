@@ -13,4 +13,5 @@ Pod::Spec.new do |s|
   s.resource = ['DBCamera/Resources/*.{xib,xcassets}', 'DBCamera/Localizations/**', 'DBCamera/Filters/*.{acv}']
   s.framework = 'AVFoundation', 'CoreMedia', 'QuartzCore'
   s.dependency 'GPUImage', '~> 0.1'
+  s.dependency 'MotionOrientation@PTEz', '~> 1.1.0'
 end

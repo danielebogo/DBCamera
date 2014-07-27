@@ -364,10 +364,10 @@
 		9AB597A9189BAF9A001BCAD3 /* DBCamera */ = {
 			isa = PBXGroup;
 			children = (
+				9AB597D2189BB04B001BCAD3 /* DBCamera */,
 				9AB597B2189BAF9A001BCAD3 /* AppDelegate.h */,
 				9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */,
 				655AA2D41956DB860017C143 /* Classes */,
-				9AB597D2189BB04B001BCAD3 /* DBCamera */,
 				9AB597AA189BAF9A001BCAD3 /* Supporting Files */,
 			);
 			path = DBCamera;
