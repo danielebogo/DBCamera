@@ -12,7 +12,7 @@ The recommended approach for installating DBCamera is via the [CocoaPods](http:/
 
 ```ruby
 platform :ios, '6.0'
-pod 'DBCamera@YuxiangQ', '~> 2.3.3'
+pod 'DBCamera', '~> 2.3'
 ```
 
 #### via Apache Cordova
@@ -20,7 +20,7 @@ pod 'DBCamera@YuxiangQ', '~> 2.3.3'
 DBCamera is available for use as an apache cordova plugin for ios. Visit [Cordova-DBCamera](https://github.com/vulume/Cordova-DBCamera) for more.
 
 ## Example
-If you use the example project, run ``` pod install ``` to install GPUImage and  MotionOrientation@PTEz dependency
+If you use the example project, run ``` pod install ``` to install GPUImage dependency
 
 ## Integration
 
@@ -292,4 +292,3 @@ Apache Cordova: [mkcode](https://github.com/mkcode)
 Grid view & pinch gesture: [Jack](https://github.com/xhzengAIB)
 
 Filters segue and various improvements: [denadai2](https://github.com/denadai2)
-
