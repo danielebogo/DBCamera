@@ -60,14 +60,14 @@
  *
  *  @return A DBCameraViewController
  */
-+ (DBCameraViewController *) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
++ (instancetype) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
 
 /**
  *  The init class method
  *
  *  @return A DBCameraViewController
  */
-+ (DBCameraViewController *) init;
++ (instancetype) init;
 
 /**
  *  The init method with a DBCameraViewControllerDelegate and a custom camera view
@@ -77,5 +77,5 @@
  *
  *  @return A DBCameraViewController
  */
-- (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraView:(id)camera;
+- (instancetype) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraView:(id)camera;
 @end
