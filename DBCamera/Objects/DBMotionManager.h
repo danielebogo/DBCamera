@@ -8,11 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  DBMotionManagerRotationHandler handles the current orientation
+ */
 typedef void (^DBMotionManagerRotationHandler)();
 
+/**
+ *  DBMotionManager detect the orientation using CoreMotion
+ */
 @interface DBMotionManager : NSObject
+/**
+ *  The DBMotionManagerRotationHandler property
+ */
 @property (nonatomic, copy) DBMotionManagerRotationHandler motionRotationHandler;
 
+/**
+ *  The constructor method of
+ *
+ *  @return the DBMotionManager instancetype
+ */
 + (instancetype) sharedManager;
+
+/**
+ *  Start to detect the rotation
+ */
 - (void) startMotionHandler;
 @end
