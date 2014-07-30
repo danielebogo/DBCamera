@@ -14,6 +14,7 @@
 #import "DBCameraSegueViewController.h"
 #import "DBCameraLibraryViewController.h"
 #import "DBLibraryManager.h"
+#import "DBMotionManager.h"
 
 #import "UIImage+Crop.h"
 #import "DBCameraMacros.h"
@@ -111,12 +112,13 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     [super viewDidAppear:animated];
     [self.cameraManager performSelector:@selector(startRunning) withObject:nil afterDelay:0.0];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(rotationChanged:)
-                                                 name:@"UIDeviceOrientationDidChangeNotification"
-                                               object:nil];
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    
+    __weak typeof(self) weakSelf = self;
+    [[DBMotionManager sharedManager] startMotionHandler];
+    [[DBMotionManager sharedManager] setMotionRotationHandler:^(UIDeviceOrientation orientation){
+        NSLog(@"last orientation %d", orientation);
+        [weakSelf rotationChanged:orientation];
+    }];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -130,9 +132,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 {
     [super viewWillDisappear:animated];
     [self.cameraManager performSelector:@selector(stopRunning) withObject:nil afterDelay:0.0];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UIDeviceOrientationDidChangeNotification" object:nil];
-    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 }
 
 - (void)didReceiveMemoryWarning
@@ -222,12 +221,12 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     }];
 }
 
-- (void) rotationChanged:(NSNotification *)notification
+- (void) rotationChanged:(UIDeviceOrientation) orientation
 {
-    if ( [[UIDevice currentDevice] orientation] != UIDeviceOrientationUnknown ||
-         [[UIDevice currentDevice] orientation] != UIDeviceOrientationFaceUp ||
-         [[UIDevice currentDevice] orientation] != UIDeviceOrientationFaceDown ) {
-        _deviceOrientation = [[UIDevice currentDevice] orientation];
+    if ( orientation != UIDeviceOrientationUnknown ||
+         orientation != UIDeviceOrientationFaceUp ||
+         orientation != UIDeviceOrientationFaceDown ) {
+        _deviceOrientation = orientation;
     }
 }
 

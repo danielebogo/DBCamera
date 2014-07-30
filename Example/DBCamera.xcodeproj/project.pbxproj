@@ -38,6 +38,7 @@
 		9A1F4A8A191C20CB0084C305 /* DBCameraCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A7A191C20CB0084C305 /* DBCameraCropView.m */; };
 		9A1F4A8B191C20CB0084C305 /* DBCameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A7C191C20CB0084C305 /* DBCameraGridView.m */; };
 		9A1F4A8C191C20CB0084C305 /* DBCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A7E191C20CB0084C305 /* DBCameraView.m */; };
+		9A2237F719894BAC0084BFD7 /* DBMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2237F619894BAC0084BFD7 /* DBMotionManager.m */; };
 		9A50C7B018AA432200CD2DF3 /* DBCamera.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A50C7B218AA432200CD2DF3 /* DBCamera.strings */; };
 		9A71D2ED1958402A00224B82 /* DBCameraFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A71D2EC1958402A00224B82 /* DBCameraFilterCell.m */; };
 		9A8E9A86192EA6930005CD5D /* UIImage+TintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E9A85192EA6930005CD5D /* UIImage+TintColor.m */; };
@@ -122,6 +123,8 @@
 		9A1F4A7E191C20CB0084C305 /* DBCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraView.m; sourceTree = "<group>"; };
 		9A1F4A91191C22250084C305 /* DBCameraDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraDelegate.h; sourceTree = "<group>"; };
 		9A1F4A92191C22250084C305 /* DBCameraMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraMacros.h; sourceTree = "<group>"; };
+		9A2237F519894BAC0084BFD7 /* DBMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMotionManager.h; sourceTree = "<group>"; };
+		9A2237F619894BAC0084BFD7 /* DBMotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMotionManager.m; sourceTree = "<group>"; };
 		9A50C7A918AA42BC00CD2DF3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A50C7AA18AA42BC00CD2DF3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A50C7AC18AA42C300CD2DF3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 				9A1F4A75191C20CB0084C305 /* DBCollectionViewCell.m */,
 				9A1F4A76191C20CB0084C305 /* DBCollectionViewFlowLayout.h */,
 				9A1F4A77191C20CB0084C305 /* DBCollectionViewFlowLayout.m */,
+				9A2237F519894BAC0084BFD7 /* DBMotionManager.h */,
+				9A2237F619894BAC0084BFD7 /* DBMotionManager.m */,
 			);
 			name = Objects;
 			path = ../../DBCamera/Objects;
@@ -574,6 +579,7 @@
 				6548431C1958236B0008F803 /* DBCameraLoadingView.m in Sources */,
 				9A1F4A80191C20CB0084C305 /* DBCameraBaseCropViewController.m in Sources */,
 				9A1F4A7F191C20CB0084C305 /* UIImage+Crop.m in Sources */,
+				9A2237F719894BAC0084BFD7 /* DBMotionManager.m in Sources */,
 				9ABB69A219587983007E2B9E /* UIImage+Asset.m in Sources */,
 				9AB597B0189BAF9A001BCAD3 /* main.m in Sources */,
 				9A1F4A8A191C20CB0084C305 /* DBCameraCropView.m in Sources */,
