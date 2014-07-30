@@ -227,12 +227,14 @@ static const CGSize kFilterCellSize = { 75, 90 };
         [_bottomBar setBackgroundColor:[UIColor blackColor]];
         [_bottomBar setHidden:YES];
         
-        UIButton *actionsheetButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [actionsheetButton setFrame:_bottomBar.bounds];
-        [actionsheetButton setBackgroundColor:[UIColor clearColor]];
-        [actionsheetButton setTitle:DBCameraLocalizedStrings(@"cropmode.title") forState:UIControlStateNormal];
-        [actionsheetButton addTarget:self action:@selector(openActionsheet:) forControlEvents:UIControlEventTouchUpInside];
-        [_bottomBar addSubview:actionsheetButton];
+        if ( !_forceQuadCrop ) {
+            UIButton *actionsheetButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            [actionsheetButton setFrame:_bottomBar.bounds];
+            [actionsheetButton setBackgroundColor:[UIColor clearColor]];
+            [actionsheetButton setTitle:DBCameraLocalizedStrings(@"cropmode.title") forState:UIControlStateNormal];
+            [actionsheetButton addTarget:self action:@selector(openActionsheet:) forControlEvents:UIControlEventTouchUpInside];
+            [_bottomBar addSubview:actionsheetButton];
+        }
     }
     
     return _bottomBar;
