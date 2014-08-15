@@ -11,7 +11,7 @@
 /**
  *  DBMotionManagerRotationHandler handles the current orientation
  */
-typedef void (^DBMotionManagerRotationHandler)();
+typedef void (^DBMotionManagerRotationHandler)(UIDeviceOrientation);
 
 /**
  *  DBMotionManager detect the orientation using CoreMotion
