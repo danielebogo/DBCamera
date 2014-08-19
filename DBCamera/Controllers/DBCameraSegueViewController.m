@@ -179,8 +179,12 @@ static const CGSize kFilterCellSize = { 75, 90 };
 {
     _cropMode = cropMode;
     [self.frameView setHidden:!_cropMode];
-    [self.bottomBar setHidden:!_cropMode];
-    [self.filtersView setHidden:_cropMode];
+    
+    // Only hide filters if quad crop is not forced, otherwise filters are not accessible
+    if (!_forceQuadCrop) {
+        [self.bottomBar setHidden:!_cropMode];
+        [self.filtersView setHidden:_cropMode];
+    }
 }
 
 - (DBCameraFiltersView *) filtersView
