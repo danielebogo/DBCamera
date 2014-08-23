@@ -332,9 +332,11 @@ static const CGSize kFilterCellSize = { 75, 90 };
     _selectedFilterIndex = indexPath;
     [self.filtersView reloadData];
     
-    UIImage *filteredImage = [_filterMapping[@(indexPath.row)] imageByFilteringImage:self.sourceImage];
-    [self.loadingView removeFromSuperview];
-    [self.imageView setImage:filteredImage];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImage *filteredImage = [_filterMapping[@(indexPath.row)] imageByFilteringImage:self.sourceImage];
+        [self.loadingView removeFromSuperview];
+        [self.imageView setImage:filteredImage];
+    });
 }
 
 #pragma mark - UIActionSheetDelegate
