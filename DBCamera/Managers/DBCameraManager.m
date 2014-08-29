@@ -66,7 +66,7 @@
 
 - (BOOL) setupSessionWithPreset:(NSString *)sessionPreset error:(NSError **)error
 {
-    _videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self backCamera] error:error];
+    _videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self frontCamera] error:error];
     
     _stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
     [_stillImageOutput setOutputSettings:@{ AVVideoCodecKey : AVVideoCodecJPEG }];
