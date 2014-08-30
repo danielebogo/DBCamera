@@ -115,7 +115,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     
     __weak typeof(self) weakSelf = self;
     [[DBMotionManager sharedManager] setMotionRotationHandler:^(UIDeviceOrientation orientation){
-        NSLog(@"last orientation %d", orientation);
         [weakSelf rotationChanged:orientation];
     }];
     [[DBMotionManager sharedManager] startMotionHandler];
