@@ -9,11 +9,10 @@
 #import "DBLibraryManager.h"
 #import "UIImage+Crop.h"
 
-#define kCameraRollName @"camera roll"
-
 @interface DBLibraryManager () {
     NSMutableArray *_assetGroups;
 }
+@property (nonatomic, assign) NSInteger usedGroupAssetsCount;
 @property (nonatomic, strong) ALAssetsGroup *usedGroup;
 @property (nonatomic, copy) ALAssetsGroupEnumerationResultsBlock assetsEnumerator;
 @end
@@ -81,14 +80,15 @@
     
     __block NSMutableArray *groups = _assetGroups;
     __block BOOL blockGetAllAssets = _getAllAssets;
-    __weak typeof(self) selfBlock = self;
+    __weak typeof(self) weakSelf = self;
     __weak GroupsCompletionBlock block = _groupsCompletionBlock;
     
     ALAssetsLibraryGroupsEnumerationResultsBlock groupsEnumerator = ^(ALAssetsGroup *group, BOOL *stop){
         if ( group ) {
             if ( group.numberOfAssets > 0 ) {
-                [selfBlock setUsedGroup:group];
-                [group enumerateAssetsUsingBlock:selfBlock.assetsEnumerator];
+                [weakSelf setUsedGroup:group];
+                [weakSelf setUsedGroupAssetsCount:group.numberOfAssets];
+                [group enumerateAssetsUsingBlock:weakSelf.assetsEnumerator];
             }
         } else {
             if ( blockGetAllAssets ) {
@@ -106,8 +106,9 @@
     __block NSMutableArray *items = [NSMutableArray array];
     __block ALAsset *assetResult;
     __block BOOL blockGetAllAssets = _getAllAssets;
+    __block NSUInteger currentIndex = 0;
     
-    __weak typeof(self) selfBlock = self;
+    __weak typeof(self) weakSelf = self;
     __weak NSMutableArray *assetGroupsBlock = _assetGroups;
     __weak LastItemCompletionBlock blockLastItem = _lastItemCompletionBlock;
     
@@ -117,11 +118,14 @@
                 if ( [result defaultRepresentation] ) {
                     [items addObject:[[result defaultRepresentation] url]];
                     assetResult = result;
+                    
                 }
             }
         }
         
-        if ( index == (NSInteger)[selfBlock.usedGroup numberOfAssets] - 1) {
+        currentIndex++;
+        
+        if ( currentIndex == weakSelf.usedGroupAssetsCount - 1) {
             *stop = YES;
             
             if ( !blockGetAllAssets ) {
@@ -131,9 +135,9 @@
                     blockLastItem( YES, image );
                 });
             } else {
-                NSString *groupPropertyName = (NSString *)[selfBlock.usedGroup valueForProperty:ALAssetsGroupPropertyName];
-                NSString *groupPropertyPersistenID = (NSString *)[selfBlock.usedGroup valueForProperty:ALAssetsGroupPropertyPersistentID];
-                NSUInteger propertyType = [[selfBlock.usedGroup valueForProperty:ALAssetsGroupPropertyType] intValue];
+                NSString *groupPropertyName = (NSString *)[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyName];
+                NSString *groupPropertyPersistenID = (NSString *)[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyPersistentID];
+                NSUInteger propertyType = [[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyType] integerValue];
                 
                 NSDictionary *dictionaryGroup = @{ @"groupTitle":groupPropertyName, @"groupAssets":[[items reverseObjectEnumerator] allObjects], @"propertyType":@(propertyType), @"propertyID":groupPropertyPersistenID };
                 
@@ -142,8 +146,6 @@
                 else if ( [(NSArray *)dictionaryGroup[@"groupAssets"] count] > 0 )
                     [assetGroupsBlock addObject:dictionaryGroup];
             }
-            
-            items = nil;
         }
     };
     
