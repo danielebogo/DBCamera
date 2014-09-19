@@ -117,8 +117,7 @@
                     assetResult = result;
                 }
             }
-        }
-        else {
+        } else {
             *stop = YES;
             
             if ( !blockGetAllAssets ) {
@@ -128,8 +127,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     blockLastItem( YES, image );
                 });
-            }
-            else {
+            } else {
                 NSString *groupPropertyName = (NSString *)[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyName];
                 NSString *groupPropertyPersistentID = (NSString *)[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyPersistentID];
                 NSUInteger propertyType = [[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyType] unsignedIntegerValue];
