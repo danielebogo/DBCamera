@@ -12,7 +12,6 @@
 @interface DBLibraryManager () {
     NSMutableArray *_assetGroups;
 }
-@property (nonatomic, assign) NSInteger usedGroupAssetsCount;
 @property (nonatomic, strong) ALAssetsGroup *usedGroup;
 @property (nonatomic, copy) ALAssetsGroupEnumerationResultsBlock assetsEnumerator;
 @end
@@ -87,7 +86,6 @@
         if ( group ) {
             if ( group.numberOfAssets > 0 ) {
                 [weakSelf setUsedGroup:group];
-                [weakSelf setUsedGroupAssetsCount:group.numberOfAssets];
                 [group enumerateAssetsUsingBlock:weakSelf.assetsEnumerator];
             }
         } else {
@@ -106,8 +104,7 @@
     __block NSMutableArray *items = [NSMutableArray array];
     __block ALAsset *assetResult;
     __block BOOL blockGetAllAssets = _getAllAssets;
-    __block NSUInteger currentIndex = 0;
-    
+
     __weak typeof(self) weakSelf = self;
     __weak NSMutableArray *assetGroupsBlock = _assetGroups;
     __weak LastItemCompletionBlock blockLastItem = _lastItemCompletionBlock;
@@ -118,33 +115,38 @@
                 if ( [result defaultRepresentation] ) {
                     [items addObject:[[result defaultRepresentation] url]];
                     assetResult = result;
-                    
                 }
             }
         }
-        
-        currentIndex++;
-        
-        if ( currentIndex == weakSelf.usedGroupAssetsCount - 1) {
+        else {
             *stop = YES;
             
             if ( !blockGetAllAssets ) {
                 UIImage *image = [UIImage imageWithCGImage:[assetResult thumbnail]];
                 image = [UIImage createRoundedRectImage:image size:image.size roundRadius:8];
+
                 dispatch_async(dispatch_get_main_queue(), ^{
                     blockLastItem( YES, image );
                 });
-            } else {
+            }
+            else {
                 NSString *groupPropertyName = (NSString *)[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyName];
-                NSString *groupPropertyPersistenID = (NSString *)[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyPersistentID];
-                NSUInteger propertyType = [[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyType] integerValue];
-                
-                NSDictionary *dictionaryGroup = @{ @"groupTitle":groupPropertyName, @"groupAssets":[[items reverseObjectEnumerator] allObjects], @"propertyType":@(propertyType), @"propertyID":groupPropertyPersistenID };
-                
-                if ( propertyType == ALAssetsGroupSavedPhotos )
+                NSString *groupPropertyPersistentID = (NSString *)[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyPersistentID];
+                NSUInteger propertyType = [[weakSelf.usedGroup valueForProperty:ALAssetsGroupPropertyType] unsignedIntegerValue];
+
+                NSDictionary *dictionaryGroup = @{
+                        @"groupTitle" : groupPropertyName,
+                        @"groupAssets" : [[items reverseObjectEnumerator] allObjects],
+                        @"propertyType" : @(propertyType),
+                        @"propertyID" : groupPropertyPersistentID
+                };
+
+                if ( propertyType == ALAssetsGroupSavedPhotos ) {
                     [assetGroupsBlock insertObject:dictionaryGroup atIndex:0];
-                else if ( [(NSArray *)dictionaryGroup[@"groupAssets"] count] > 0 )
+                }
+                else if ( [(NSArray *)dictionaryGroup[@"groupAssets"] count] > 0 ) {
                     [assetGroupsBlock addObject:dictionaryGroup];
+                }
             }
         }
     };
