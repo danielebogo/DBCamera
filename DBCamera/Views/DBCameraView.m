@@ -13,9 +13,7 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 
-
-#define previewFrameRetina (CGRect){ 0, 65, 320, 342 }
-#define previewFrameRetina_4 (CGRect){ 0, 65, 320, 430 }
+#define previewFrame (CGRect){ 0, 65, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - 138 }
 
 // pinch
 #define MAX_PINCH_SCALE_NUM   3.f
@@ -55,7 +53,7 @@
         _previewLayer = [[AVCaptureVideoPreviewLayer alloc] init];
         if ( captureSession ) {
             [_previewLayer setSession:captureSession];
-            [_previewLayer setFrame: IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina ];
+            [_previewLayer setFrame: previewFrame ];
         } else
             [_previewLayer setFrame:self.bounds];
         
@@ -106,7 +104,7 @@
 - (UIView *) topContainerBar
 {
     if ( !_topContainerBar ) {
-        _topContainerBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth(self.bounds), CGRectGetMinY(IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina) }];
+        _topContainerBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth(self.bounds), CGRectGetMinY(previewFrame) }];
         [_topContainerBar setBackgroundColor:RGBColor(0x000000, 1)];
     }
     return _topContainerBar;
@@ -115,7 +113,7 @@
 - (UIView *) bottomContainerBar
 {
     if ( !_bottomContainerBar ) {
-        CGFloat newY = CGRectGetMaxY( IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina );
+        CGFloat newY = CGRectGetMaxY( previewFrame );
         _bottomContainerBar = [[UIView alloc] initWithFrame:(CGRect){ 0, newY, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - newY }];
         [_bottomContainerBar setUserInteractionEnabled:YES];
         [_bottomContainerBar setBackgroundColor:RGBColor(0x000000, 1)];
