@@ -35,7 +35,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 }
 
 @property (nonatomic, strong) id customCamera;
-@property (nonatomic, strong) DBCameraManager *cameraManager;
 @end
 
 @implementation DBCameraViewController
