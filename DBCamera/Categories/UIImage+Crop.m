@@ -147,6 +147,10 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, CGFloat oval
     CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedFirst);
     CGRect rect = CGRectMake(0, 0, w, h);
     
+    if (context == nil) {
+        return nil;
+    }
+    
     CGContextBeginPath(context);
     addRoundedRectToPath(context, rect, radius, radius);
     CGContextClosePath(context);
