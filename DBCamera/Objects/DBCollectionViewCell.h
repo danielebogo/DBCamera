@@ -16,4 +16,9 @@
  *  The item UIImageView
  */
 @property (nonatomic, strong) UIImageView *itemImage;
+
+/**
+ *  The item Duration
+ */
+@property (nonatomic, strong) UILabel *itemDuration;
 @end

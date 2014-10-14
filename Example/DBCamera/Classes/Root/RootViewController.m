@@ -12,6 +12,7 @@
 #import "DBCameraLibraryViewController.h"
 #import "CustomCamera.h"
 #import "DBCameraGridView.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface DetailViewController : UIViewController {
     UIImageView *_imageView;
@@ -50,6 +51,57 @@
     
     _detailImage = nil;
     [_imageView setImage:nil];
+}
+
+@end
+
+@interface VideoDetailViewController : UIViewController {
+    
+}
+
+@property (nonatomic, strong) NSURL *videoURL;
+
+@property (nonatomic, strong) MPMoviePlayerController *moviePlayerController;
+
+@end
+
+@implementation VideoDetailViewController
+
+- (MPMoviePlayerController *)moviePlayerController {
+    if (!_moviePlayerController) {
+        _moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:self.videoURL];
+        _moviePlayerController.repeatMode = MPMovieRepeatModeOne;
+        _moviePlayerController.scalingMode = MPMovieScalingModeAspectFill;
+        _moviePlayerController.view.frame = self.view.frame;
+    }
+    return _moviePlayerController;
+}
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+#endif
+    
+    [self.navigationItem setTitle:@"VideoDetail"];
+    
+    [self.view addSubview:self.moviePlayerController.view];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.moviePlayerController play];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [_moviePlayerController stop];
+    _moviePlayerController = nil;
 }
 
 @end
@@ -244,6 +296,14 @@ typedef void (^TableRowBlock)();
 {
     DetailViewController *detail = [[DetailViewController alloc] init];
     [detail setDetailImage:image];
+    [self.navigationController pushViewController:detail animated:NO];
+    [cameraViewController restoreFullScreenMode];
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) camera:(id)cameraViewController didFinishWithVideoALAsset:(ALAsset *)videoAsset {
+    VideoDetailViewController *detail = [[VideoDetailViewController alloc] init];
+    detail.videoURL = [[videoAsset defaultRepresentation] url];
     [self.navigationController pushViewController:detail animated:NO];
     [cameraViewController restoreFullScreenMode];
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];

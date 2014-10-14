@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+
 /**
  *  DBCameraView delegate protocol
  */
@@ -101,6 +103,14 @@
  *  @param metadata The metadata of the image
  */
 - (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata;
+
+/**
+ *  Tells the delegate when the video is ready to use
+ *
+ *  @param cameraViewController    The controller object managing the DBCamera interface.
+ *  @param videoAsset    The captured video asset
+ */
+- (void) camera:(id)cameraViewController didFinishWithVideoALAsset:(ALAsset *)videoAsset;
 
 /**
  *  Tells the delegate when the camera must be dismissed

@@ -340,21 +340,35 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             
             UIImage *image = [UIImage imageForAsset:asset maxPixelSize:_libraryMaxImageSize];
             
-            if ( !weakSelf.useCameraSegue ) {
-                if ( [weakSelf.delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] )
-                    [weakSelf.delegate camera:self didFinishWithImage:image withMetadata:metadata];
-            } else {
-                DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:image thumb:[UIImage imageWithCGImage:[asset aspectRatioThumbnail]]];
-                [segue setTintColor:self.tintColor];
-                [segue setSelectedTintColor:self.selectedTintColor];
-                [segue setForceQuadCrop:_forceQuadCrop];
-                [segue enableGestures:YES];
-                [segue setCapturedImageMetadata:metadata];
-                [segue setDelegate:weakSelf.delegate];
-                [segue setCameraSegueConfigureBlock:self.cameraSegueConfigureBlock];
+            NSString *assetPropertyType = [asset valueForProperty:ALAssetPropertyType];
+            if ([assetPropertyType isEqualToString:ALAssetTypePhoto]) {
+                if ( !weakSelf.useCameraSegue ) {
+                    if ( [weakSelf.delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] )
+                        [weakSelf.delegate camera:self didFinishWithImage:image withMetadata:metadata];
+                } else {
+                    DBCameraSegueViewController *segue = [[DBCameraSegueViewController alloc] initWithImage:image thumb:[UIImage imageWithCGImage:[asset aspectRatioThumbnail]]];
+                    [segue setTintColor:self.tintColor];
+                    [segue setSelectedTintColor:self.selectedTintColor];
+                    [segue setForceQuadCrop:_forceQuadCrop];
+                    [segue enableGestures:YES];
+                    [segue setCapturedImageMetadata:metadata];
+                    [segue setDelegate:weakSelf.delegate];
+                    [segue setCameraSegueConfigureBlock:self.cameraSegueConfigureBlock];
+                    
+                    [weakSelf.navigationController pushViewController:segue animated:YES];
+                }
                 
-                [weakSelf.navigationController pushViewController:segue animated:YES];
+            } else if ([assetPropertyType isEqualToString:ALAssetTypeVideo]) {
+                
+//                if ( !weakSelf.useCameraSegue ) {
+                    if ( [weakSelf.delegate respondsToSelector:@selector(camera:didFinishWithVideoALAsset:)] ) {
+                        [weakSelf.delegate camera:self didFinishWithVideoALAsset:asset];
+                    }
+//                } else {
+                    // Video Segue Controller
+//                }
             }
+            
             
             [weakSelf.loading removeFromSuperview];
         } failureBlock:nil];

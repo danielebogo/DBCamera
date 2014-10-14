@@ -16,6 +16,8 @@
     if (self) {
         // Initialization code
         [self.contentView addSubview:self.itemImage];
+        
+        [self.contentView addSubview:self.itemDuration];
     }
     return self;
 }
@@ -30,6 +32,20 @@
     }
     
     return _itemImage;
+}
+
+- (UILabel *) itemDuration
+{
+    if( !_itemDuration ) {
+        CGFloat durationLabelHeight = 20;
+        _itemDuration = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds) - durationLabelHeight, CGRectGetWidth(self.bounds), durationLabelHeight)];
+        [_itemDuration setTextColor:[UIColor whiteColor]];
+        [_itemDuration setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.5]];
+        [_itemDuration setTextAlignment:NSTextAlignmentRight];
+        [_itemDuration setFont:[UIFont systemFontOfSize:14]];
+    }
+    
+    return _itemDuration;
 }
 
 @end

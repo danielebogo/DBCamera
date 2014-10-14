@@ -111,7 +111,7 @@
     
     ALAssetsGroupEnumerationResultsBlock assetsEnumerator = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
         if ( result ) {
-            if( [[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto] ) {
+            if( [[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto] || [[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo] ) {
                 if ( [result defaultRepresentation] ) {
                     [items addObject:[[result defaultRepresentation] url]];
                     assetResult = result;
