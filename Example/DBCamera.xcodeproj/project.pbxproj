@@ -1,845 +1,2539 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		653E218619474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 653E218519474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m */; };
-		6548431C1958236B0008F803 /* DBCameraLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6548431B1958236B0008F803 /* DBCameraLoadingView.m */; };
-		655AA2B01955FA350017C143 /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 655AA2AF1955FA350017C143 /* CustomCamera.m */; };
-		655AA2C21955FB040017C143 /* DBCameraImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C11955FB040017C143 /* DBCameraImages.xcassets */; };
-		655AA2C51955FFC40017C143 /* 1977.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C41955FFC40017C143 /* 1977.acv */; };
-		655AA2CB195602340017C143 /* amaro.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C6195602340017C143 /* amaro.acv */; };
-		655AA2CC195602340017C143 /* Hudson.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C7195602340017C143 /* Hudson.acv */; };
-		655AA2CD195602340017C143 /* mayfair.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C8195602340017C143 /* mayfair.acv */; };
-		655AA2CE195602340017C143 /* Nashville.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C9195602340017C143 /* Nashville.acv */; };
-		655AA2CF195602340017C143 /* Valencia.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2CA195602340017C143 /* Valencia.acv */; };
-		655AA2D61956DBD90017C143 /* AppResources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2D51956DBD90017C143 /* AppResources.xcassets */; };
-		6594EC041955D94E00E22EBD /* DBCameraFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6594EC031955D94E00E22EBD /* DBCameraFiltersView.m */; };
-		6594EE0B1955F11500E22EBD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6594EE0A1955F11500E22EBD /* QuartzCore.framework */; };
-		6594EE0D1955F11D00E22EBD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6594EE0C1955F11D00E22EBD /* OpenGLES.framework */; };
-		6594EE0F1955F12800E22EBD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6594EE0E1955F12800E22EBD /* AVFoundation.framework */; };
-		6594EE121955F19600E22EBD /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6594EE111955F19600E22EBD /* RootViewController.m */; };
-		733E4274497440D09A9F1EE7 /* libPods-DBCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE3F8BFBAFD401181A3E55F /* libPods-DBCamera.a */; };
-		9A1F4A7F191C20CB0084C305 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A5D191C20CB0084C305 /* UIImage+Crop.m */; };
-		9A1F4A80191C20CB0084C305 /* DBCameraBaseCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A60191C20CB0084C305 /* DBCameraBaseCropViewController.m */; };
-		9A1F4A81191C20CB0084C305 /* DBCameraCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A62191C20CB0084C305 /* DBCameraCollectionViewController.m */; };
-		9A1F4A82191C20CB0084C305 /* DBCameraContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A64191C20CB0084C305 /* DBCameraContainerViewController.m */; };
-		9A1F4A83191C20CB0084C305 /* DBCameraLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A66191C20CB0084C305 /* DBCameraLibraryViewController.m */; };
-		9A1F4A84191C20CB0084C305 /* DBCameraSegueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A68191C20CB0084C305 /* DBCameraSegueViewController.m */; };
-		9A1F4A85191C20CB0084C305 /* DBCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A6A191C20CB0084C305 /* DBCameraViewController.m */; };
-		9A1F4A86191C20CB0084C305 /* DBCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A6E191C20CB0084C305 /* DBCameraManager.m */; };
-		9A1F4A87191C20CB0084C305 /* DBLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A70191C20CB0084C305 /* DBLibraryManager.m */; };
-		9A1F4A88191C20CB0084C305 /* DBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A75191C20CB0084C305 /* DBCollectionViewCell.m */; };
-		9A1F4A89191C20CB0084C305 /* DBCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A77191C20CB0084C305 /* DBCollectionViewFlowLayout.m */; };
-		9A1F4A8A191C20CB0084C305 /* DBCameraCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A7A191C20CB0084C305 /* DBCameraCropView.m */; };
-		9A1F4A8B191C20CB0084C305 /* DBCameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A7C191C20CB0084C305 /* DBCameraGridView.m */; };
-		9A1F4A8C191C20CB0084C305 /* DBCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A7E191C20CB0084C305 /* DBCameraView.m */; };
-		9A2237F719894BAC0084BFD7 /* DBMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2237F619894BAC0084BFD7 /* DBMotionManager.m */; };
-		9A50C7B018AA432200CD2DF3 /* DBCamera.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A50C7B218AA432200CD2DF3 /* DBCamera.strings */; };
-		9A71D2ED1958402A00224B82 /* DBCameraFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A71D2EC1958402A00224B82 /* DBCameraFilterCell.m */; };
-		9A8E9A86192EA6930005CD5D /* UIImage+TintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E9A85192EA6930005CD5D /* UIImage+TintColor.m */; };
-		9AB597A4189BAF9A001BCAD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A3189BAF9A001BCAD3 /* Foundation.framework */; };
-		9AB597A6189BAF9A001BCAD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A5189BAF9A001BCAD3 /* CoreGraphics.framework */; };
-		9AB597A8189BAF9A001BCAD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A7189BAF9A001BCAD3 /* UIKit.framework */; };
-		9AB597AE189BAF9A001BCAD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AB597AC189BAF9A001BCAD3 /* InfoPlist.strings */; };
-		9AB597B0189BAF9A001BCAD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597AF189BAF9A001BCAD3 /* main.m */; };
-		9AB597B4189BAF9A001BCAD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */; };
-		9AB597BD189BAF9A001BCAD3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597BC189BAF9A001BCAD3 /* XCTest.framework */; };
-		9AB597BE189BAF9A001BCAD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A3189BAF9A001BCAD3 /* Foundation.framework */; };
-		9AB597BF189BAF9A001BCAD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A7189BAF9A001BCAD3 /* UIKit.framework */; };
-		9AB597C7189BAF9A001BCAD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AB597C5189BAF9A001BCAD3 /* InfoPlist.strings */; };
-		9AB597C9189BAF9A001BCAD3 /* DBCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */; };
-		9ABB69A219587983007E2B9E /* UIImage+Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB69A119587983007E2B9E /* UIImage+Asset.m */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9AB597C0189BAF9A001BCAD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AB59798189BAF9A001BCAD3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9AB5979F189BAF9A001BCAD3;
-			remoteInfo = DBCamera;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		4BE3F8BFBAFD401181A3E55F /* libPods-DBCamera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DBCamera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		653E218419474DA2001433A5 /* UIViewController+UIViewController_FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIViewController_FullScreen.h"; sourceTree = "<group>"; };
-		653E218519474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UIViewController_FullScreen.m"; sourceTree = "<group>"; };
-		6548431A1958236B0008F803 /* DBCameraLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraLoadingView.h; sourceTree = "<group>"; };
-		6548431B1958236B0008F803 /* DBCameraLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraLoadingView.m; sourceTree = "<group>"; };
-		655AA2AE1955FA350017C143 /* CustomCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCamera.h; path = Classes/CustomCamera/CustomCamera.h; sourceTree = "<group>"; };
-		655AA2AF1955FA350017C143 /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCamera.m; path = Classes/CustomCamera/CustomCamera.m; sourceTree = "<group>"; };
-		655AA2C11955FB040017C143 /* DBCameraImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DBCameraImages.xcassets; sourceTree = "<group>"; };
-		655AA2C41955FFC40017C143 /* 1977.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1977.acv; sourceTree = "<group>"; };
-		655AA2C6195602340017C143 /* amaro.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = amaro.acv; sourceTree = "<group>"; };
-		655AA2C7195602340017C143 /* Hudson.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hudson.acv; sourceTree = "<group>"; };
-		655AA2C8195602340017C143 /* mayfair.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = mayfair.acv; sourceTree = "<group>"; };
-		655AA2C9195602340017C143 /* Nashville.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nashville.acv; sourceTree = "<group>"; };
-		655AA2CA195602340017C143 /* Valencia.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Valencia.acv; sourceTree = "<group>"; };
-		655AA2D51956DBD90017C143 /* AppResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppResources.xcassets; sourceTree = "<group>"; };
-		6594EC021955D94E00E22EBD /* DBCameraFiltersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraFiltersView.h; sourceTree = "<group>"; };
-		6594EC031955D94E00E22EBD /* DBCameraFiltersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraFiltersView.m; sourceTree = "<group>"; };
-		6594EE0A1955F11500E22EBD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		6594EE0C1955F11D00E22EBD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		6594EE0E1955F12800E22EBD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		6594EE101955F19600E22EBD /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Classes/Root/RootViewController.h; sourceTree = "<group>"; };
-		6594EE111955F19600E22EBD /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Classes/Root/RootViewController.m; sourceTree = "<group>"; };
-		9A0FAE53193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/DBCamera.strings; sourceTree = "<group>"; };
-		9A0FAE54193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A0FAE55193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A1F4A5B191C20CB0084C305 /* DBCameraBaseCropViewController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBCameraBaseCropViewController+Private.h"; sourceTree = "<group>"; };
-		9A1F4A5C191C20CB0084C305 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
-		9A1F4A5D191C20CB0084C305 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
-		9A1F4A5F191C20CB0084C305 /* DBCameraBaseCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraBaseCropViewController.h; sourceTree = "<group>"; };
-		9A1F4A60191C20CB0084C305 /* DBCameraBaseCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraBaseCropViewController.m; sourceTree = "<group>"; };
-		9A1F4A61191C20CB0084C305 /* DBCameraCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraCollectionViewController.h; sourceTree = "<group>"; };
-		9A1F4A62191C20CB0084C305 /* DBCameraCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraCollectionViewController.m; sourceTree = "<group>"; };
-		9A1F4A63191C20CB0084C305 /* DBCameraContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraContainerViewController.h; sourceTree = "<group>"; };
-		9A1F4A64191C20CB0084C305 /* DBCameraContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraContainerViewController.m; sourceTree = "<group>"; };
-		9A1F4A65191C20CB0084C305 /* DBCameraLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraLibraryViewController.h; sourceTree = "<group>"; };
-		9A1F4A66191C20CB0084C305 /* DBCameraLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraLibraryViewController.m; sourceTree = "<group>"; };
-		9A1F4A67191C20CB0084C305 /* DBCameraSegueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraSegueViewController.h; sourceTree = "<group>"; };
-		9A1F4A68191C20CB0084C305 /* DBCameraSegueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraSegueViewController.m; sourceTree = "<group>"; };
-		9A1F4A69191C20CB0084C305 /* DBCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraViewController.h; sourceTree = "<group>"; };
-		9A1F4A6A191C20CB0084C305 /* DBCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraViewController.m; sourceTree = "<group>"; };
-		9A1F4A6D191C20CB0084C305 /* DBCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraManager.h; sourceTree = "<group>"; };
-		9A1F4A6E191C20CB0084C305 /* DBCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraManager.m; sourceTree = "<group>"; };
-		9A1F4A6F191C20CB0084C305 /* DBLibraryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBLibraryManager.h; sourceTree = "<group>"; };
-		9A1F4A70191C20CB0084C305 /* DBLibraryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBLibraryManager.m; sourceTree = "<group>"; };
-		9A1F4A74191C20CB0084C305 /* DBCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCollectionViewCell.h; sourceTree = "<group>"; };
-		9A1F4A75191C20CB0084C305 /* DBCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCollectionViewCell.m; sourceTree = "<group>"; };
-		9A1F4A76191C20CB0084C305 /* DBCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		9A1F4A77191C20CB0084C305 /* DBCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		9A1F4A79191C20CB0084C305 /* DBCameraCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraCropView.h; sourceTree = "<group>"; };
-		9A1F4A7A191C20CB0084C305 /* DBCameraCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraCropView.m; sourceTree = "<group>"; };
-		9A1F4A7B191C20CB0084C305 /* DBCameraGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraGridView.h; sourceTree = "<group>"; };
-		9A1F4A7C191C20CB0084C305 /* DBCameraGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraGridView.m; sourceTree = "<group>"; };
-		9A1F4A7D191C20CB0084C305 /* DBCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraView.h; sourceTree = "<group>"; };
-		9A1F4A7E191C20CB0084C305 /* DBCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraView.m; sourceTree = "<group>"; };
-		9A1F4A91191C22250084C305 /* DBCameraDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraDelegate.h; sourceTree = "<group>"; };
-		9A1F4A92191C22250084C305 /* DBCameraMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraMacros.h; sourceTree = "<group>"; };
-		9A2237F519894BAC0084BFD7 /* DBMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMotionManager.h; sourceTree = "<group>"; };
-		9A2237F619894BAC0084BFD7 /* DBMotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMotionManager.m; sourceTree = "<group>"; };
-		9A50C7A918AA42BC00CD2DF3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A50C7AA18AA42BC00CD2DF3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A50C7AC18AA42C300CD2DF3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A50C7AD18AA42C300CD2DF3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A50C7B118AA432200CD2DF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DBCamera.strings; sourceTree = "<group>"; };
-		9A50C7B318AA435500CD2DF3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/DBCamera.strings; sourceTree = "<group>"; };
-		9A50C7B418AA435500CD2DF3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DBCamera.strings; sourceTree = "<group>"; };
-		9A71D2EB1958402A00224B82 /* DBCameraFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraFilterCell.h; sourceTree = "<group>"; };
-		9A71D2EC1958402A00224B82 /* DBCameraFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraFilterCell.m; sourceTree = "<group>"; };
-		9A8E9A84192EA6930005CD5D /* UIImage+TintColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TintColor.h"; sourceTree = "<group>"; };
-		9A8E9A85192EA6930005CD5D /* UIImage+TintColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TintColor.m"; sourceTree = "<group>"; };
-		9AB597A0189BAF9A001BCAD3 /* DBCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AB597A3189BAF9A001BCAD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		9AB597A5189BAF9A001BCAD3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9AB597A7189BAF9A001BCAD3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9AB597AB189BAF9A001BCAD3 /* DBCamera-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DBCamera-Info.plist"; sourceTree = "<group>"; };
-		9AB597AD189BAF9A001BCAD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9AB597AF189BAF9A001BCAD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9AB597B1189BAF9A001BCAD3 /* DBCamera-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBCamera-Prefix.pch"; sourceTree = "<group>"; };
-		9AB597B2189BAF9A001BCAD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9AB597BB189BAF9A001BCAD3 /* DBCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DBCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AB597BC189BAF9A001BCAD3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		9AB597C4189BAF9A001BCAD3 /* DBCameraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DBCameraTests-Info.plist"; sourceTree = "<group>"; };
-		9AB597C6189BAF9A001BCAD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBCameraTests.m; sourceTree = "<group>"; };
-		9ABB69A019587983007E2B9E /* UIImage+Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Asset.h"; sourceTree = "<group>"; };
-		9ABB69A119587983007E2B9E /* UIImage+Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Asset.m"; sourceTree = "<group>"; };
-		9ABDB6E5195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/DBCamera.strings; sourceTree = "<group>"; };
-		9ABDB6E6195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9ABDB6E7195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BF04884E51D24925BF79CD2E /* Pods-DBCamera.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.xcconfig"; path = "Pods/Pods-DBCamera.xcconfig"; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		9AB5979D189BAF9A001BCAD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6594EE0F1955F12800E22EBD /* AVFoundation.framework in Frameworks */,
-				6594EE0D1955F11D00E22EBD /* OpenGLES.framework in Frameworks */,
-				6594EE0B1955F11500E22EBD /* QuartzCore.framework in Frameworks */,
-				9AB597A6189BAF9A001BCAD3 /* CoreGraphics.framework in Frameworks */,
-				9AB597A8189BAF9A001BCAD3 /* UIKit.framework in Frameworks */,
-				9AB597A4189BAF9A001BCAD3 /* Foundation.framework in Frameworks */,
-				733E4274497440D09A9F1EE7 /* libPods-DBCamera.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AB597B8189BAF9A001BCAD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AB597BD189BAF9A001BCAD3 /* XCTest.framework in Frameworks */,
-				9AB597BF189BAF9A001BCAD3 /* UIKit.framework in Frameworks */,
-				9AB597BE189BAF9A001BCAD3 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		655AA2C31955FFC40017C143 /* Filters */ = {
-			isa = PBXGroup;
-			children = (
-				655AA2D319564F250017C143 /* Curves */,
-			);
-			name = Filters;
-			path = ../../DBCamera/Filters;
-			sourceTree = "<group>";
-		};
-		655AA2D319564F250017C143 /* Curves */ = {
-			isa = PBXGroup;
-			children = (
-				655AA2C41955FFC40017C143 /* 1977.acv */,
-				655AA2C6195602340017C143 /* amaro.acv */,
-				655AA2C7195602340017C143 /* Hudson.acv */,
-				655AA2C8195602340017C143 /* mayfair.acv */,
-				655AA2C9195602340017C143 /* Nashville.acv */,
-				655AA2CA195602340017C143 /* Valencia.acv */,
-			);
-			name = Curves;
-			sourceTree = "<group>";
-		};
-		655AA2D41956DB860017C143 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				655AA2D51956DBD90017C143 /* AppResources.xcassets */,
-				655AA2AE1955FA350017C143 /* CustomCamera.h */,
-				655AA2AF1955FA350017C143 /* CustomCamera.m */,
-				6594EE101955F19600E22EBD /* RootViewController.h */,
-				6594EE111955F19600E22EBD /* RootViewController.m */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
-		9A1F4A5A191C20CB0084C305 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				9A1F4A5B191C20CB0084C305 /* DBCameraBaseCropViewController+Private.h */,
-				9ABB69A019587983007E2B9E /* UIImage+Asset.h */,
-				9ABB69A119587983007E2B9E /* UIImage+Asset.m */,
-				9A1F4A5C191C20CB0084C305 /* UIImage+Crop.h */,
-				9A1F4A5D191C20CB0084C305 /* UIImage+Crop.m */,
-				9A8E9A84192EA6930005CD5D /* UIImage+TintColor.h */,
-				9A8E9A85192EA6930005CD5D /* UIImage+TintColor.m */,
-				653E218419474DA2001433A5 /* UIViewController+UIViewController_FullScreen.h */,
-				653E218519474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m */,
-			);
-			name = Categories;
-			path = ../../DBCamera/Categories;
-			sourceTree = "<group>";
-		};
-		9A1F4A5E191C20CB0084C305 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				9A1F4A5F191C20CB0084C305 /* DBCameraBaseCropViewController.h */,
-				9A1F4A60191C20CB0084C305 /* DBCameraBaseCropViewController.m */,
-				9A1F4A61191C20CB0084C305 /* DBCameraCollectionViewController.h */,
-				9A1F4A62191C20CB0084C305 /* DBCameraCollectionViewController.m */,
-				9A1F4A63191C20CB0084C305 /* DBCameraContainerViewController.h */,
-				9A1F4A64191C20CB0084C305 /* DBCameraContainerViewController.m */,
-				9A1F4A65191C20CB0084C305 /* DBCameraLibraryViewController.h */,
-				9A1F4A66191C20CB0084C305 /* DBCameraLibraryViewController.m */,
-				9A1F4A67191C20CB0084C305 /* DBCameraSegueViewController.h */,
-				9A1F4A68191C20CB0084C305 /* DBCameraSegueViewController.m */,
-				9A1F4A69191C20CB0084C305 /* DBCameraViewController.h */,
-				9A1F4A6A191C20CB0084C305 /* DBCameraViewController.m */,
-			);
-			name = Controllers;
-			path = ../../DBCamera/Controllers;
-			sourceTree = "<group>";
-		};
-		9A1F4A6C191C20CB0084C305 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				9A1F4A6D191C20CB0084C305 /* DBCameraManager.h */,
-				9A1F4A6E191C20CB0084C305 /* DBCameraManager.m */,
-				9A1F4A6F191C20CB0084C305 /* DBLibraryManager.h */,
-				9A1F4A70191C20CB0084C305 /* DBLibraryManager.m */,
-			);
-			name = Managers;
-			path = ../../DBCamera/Managers;
-			sourceTree = "<group>";
-		};
-		9A1F4A71191C20CB0084C305 /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				9A71D2EB1958402A00224B82 /* DBCameraFilterCell.h */,
-				9A71D2EC1958402A00224B82 /* DBCameraFilterCell.m */,
-				9A1F4A74191C20CB0084C305 /* DBCollectionViewCell.h */,
-				9A1F4A75191C20CB0084C305 /* DBCollectionViewCell.m */,
-				9A1F4A76191C20CB0084C305 /* DBCollectionViewFlowLayout.h */,
-				9A1F4A77191C20CB0084C305 /* DBCollectionViewFlowLayout.m */,
-				9A2237F519894BAC0084BFD7 /* DBMotionManager.h */,
-				9A2237F619894BAC0084BFD7 /* DBMotionManager.m */,
-			);
-			name = Objects;
-			path = ../../DBCamera/Objects;
-			sourceTree = "<group>";
-		};
-		9A1F4A78191C20CB0084C305 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9A1F4A79191C20CB0084C305 /* DBCameraCropView.h */,
-				9A1F4A7A191C20CB0084C305 /* DBCameraCropView.m */,
-				9A1F4A7B191C20CB0084C305 /* DBCameraGridView.h */,
-				9A1F4A7C191C20CB0084C305 /* DBCameraGridView.m */,
-				9A1F4A7D191C20CB0084C305 /* DBCameraView.h */,
-				9A1F4A7E191C20CB0084C305 /* DBCameraView.m */,
-				6594EC021955D94E00E22EBD /* DBCameraFiltersView.h */,
-				6594EC031955D94E00E22EBD /* DBCameraFiltersView.m */,
-				6548431A1958236B0008F803 /* DBCameraLoadingView.h */,
-				6548431B1958236B0008F803 /* DBCameraLoadingView.m */,
-			);
-			name = Views;
-			path = ../../DBCamera/Views;
-			sourceTree = "<group>";
-		};
-		9A1F4A8D191C20F10084C305 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				655AA2C11955FB040017C143 /* DBCameraImages.xcassets */,
-			);
-			name = Resources;
-			path = ../../DBCamera/Resources;
-			sourceTree = "<group>";
-		};
-		9A1F4A90191C22250084C305 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				9A1F4A91191C22250084C305 /* DBCameraDelegate.h */,
-				9A1F4A92191C22250084C305 /* DBCameraMacros.h */,
-			);
-			name = Headers;
-			path = ../../DBCamera/Headers;
-			sourceTree = "<group>";
-		};
-		9A50C7A718AA423C00CD2DF3 /* Localizations */ = {
-			isa = PBXGroup;
-			children = (
-				9A50C7B218AA432200CD2DF3 /* DBCamera.strings */,
-			);
-			name = Localizations;
-			sourceTree = "<group>";
-		};
-		9AB59797189BAF9A001BCAD3 = {
-			isa = PBXGroup;
-			children = (
-				9AB597A9189BAF9A001BCAD3 /* DBCamera */,
-				9AB597C2189BAF9A001BCAD3 /* DBCameraTests */,
-				9AB597A2189BAF9A001BCAD3 /* Frameworks */,
-				9AB597A1189BAF9A001BCAD3 /* Products */,
-				BF04884E51D24925BF79CD2E /* Pods-DBCamera.xcconfig */,
-			);
-			sourceTree = "<group>";
-		};
-		9AB597A1189BAF9A001BCAD3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9AB597A0189BAF9A001BCAD3 /* DBCamera.app */,
-				9AB597BB189BAF9A001BCAD3 /* DBCameraTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9AB597A2189BAF9A001BCAD3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6594EE0E1955F12800E22EBD /* AVFoundation.framework */,
-				6594EE0C1955F11D00E22EBD /* OpenGLES.framework */,
-				6594EE0A1955F11500E22EBD /* QuartzCore.framework */,
-				9AB597A3189BAF9A001BCAD3 /* Foundation.framework */,
-				9AB597A5189BAF9A001BCAD3 /* CoreGraphics.framework */,
-				9AB597A7189BAF9A001BCAD3 /* UIKit.framework */,
-				9AB597BC189BAF9A001BCAD3 /* XCTest.framework */,
-				4BE3F8BFBAFD401181A3E55F /* libPods-DBCamera.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9AB597A9189BAF9A001BCAD3 /* DBCamera */ = {
-			isa = PBXGroup;
-			children = (
-				9AB597B2189BAF9A001BCAD3 /* AppDelegate.h */,
-				9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */,
-				655AA2D41956DB860017C143 /* Classes */,
-				9AB597D2189BB04B001BCAD3 /* DBCamera */,
-				9AB597AA189BAF9A001BCAD3 /* Supporting Files */,
-			);
-			path = DBCamera;
-			sourceTree = "<group>";
-		};
-		9AB597AA189BAF9A001BCAD3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9AB597AB189BAF9A001BCAD3 /* DBCamera-Info.plist */,
-				9AB597AC189BAF9A001BCAD3 /* InfoPlist.strings */,
-				9AB597AF189BAF9A001BCAD3 /* main.m */,
-				9AB597B1189BAF9A001BCAD3 /* DBCamera-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9AB597C2189BAF9A001BCAD3 /* DBCameraTests */ = {
-			isa = PBXGroup;
-			children = (
-				9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */,
-				9AB597C3189BAF9A001BCAD3 /* Supporting Files */,
-			);
-			path = DBCameraTests;
-			sourceTree = "<group>";
-		};
-		9AB597C3189BAF9A001BCAD3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9AB597C4189BAF9A001BCAD3 /* DBCameraTests-Info.plist */,
-				9AB597C5189BAF9A001BCAD3 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9AB597D2189BB04B001BCAD3 /* DBCamera */ = {
-			isa = PBXGroup;
-			children = (
-				655AA2C31955FFC40017C143 /* Filters */,
-				9A1F4A8D191C20F10084C305 /* Resources */,
-				9A50C7A718AA423C00CD2DF3 /* Localizations */,
-				9A1F4A5A191C20CB0084C305 /* Categories */,
-				9A1F4A5E191C20CB0084C305 /* Controllers */,
-				9A1F4A90191C22250084C305 /* Headers */,
-				9A1F4A6C191C20CB0084C305 /* Managers */,
-				9A1F4A71191C20CB0084C305 /* Objects */,
-				9A1F4A78191C20CB0084C305 /* Views */,
-			);
-			name = DBCamera;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		9AB5979F189BAF9A001BCAD3 /* DBCamera */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9AB597CC189BAF9A001BCAD3 /* Build configuration list for PBXNativeTarget "DBCamera" */;
-			buildPhases = (
-				94C7FA8D31CF40F5BA4556C8 /* Check Pods Manifest.lock */,
-				9AB5979C189BAF9A001BCAD3 /* Sources */,
-				9AB5979D189BAF9A001BCAD3 /* Frameworks */,
-				9AB5979E189BAF9A001BCAD3 /* Resources */,
-				E9BB28F5DC0B461A8AA01285 /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DBCamera;
-			productName = DBCamera;
-			productReference = 9AB597A0189BAF9A001BCAD3 /* DBCamera.app */;
-			productType = "com.apple.product-type.application";
-		};
-		9AB597BA189BAF9A001BCAD3 /* DBCameraTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9AB597CF189BAF9A001BCAD3 /* Build configuration list for PBXNativeTarget "DBCameraTests" */;
-			buildPhases = (
-				9AB597B7189BAF9A001BCAD3 /* Sources */,
-				9AB597B8189BAF9A001BCAD3 /* Frameworks */,
-				9AB597B9189BAF9A001BCAD3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9AB597C1189BAF9A001BCAD3 /* PBXTargetDependency */,
-			);
-			name = DBCameraTests;
-			productName = DBCameraTests;
-			productReference = 9AB597BB189BAF9A001BCAD3 /* DBCameraTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		9AB59798189BAF9A001BCAD3 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "PSSD - Daniele Bogo";
-				TargetAttributes = {
-					9AB597BA189BAF9A001BCAD3 = {
-						TestTargetID = 9AB5979F189BAF9A001BCAD3;
-					};
-				};
-			};
-			buildConfigurationList = 9AB5979B189BAF9A001BCAD3 /* Build configuration list for PBXProject "DBCamera" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				it,
-				es,
-				pt,
-				tr,
-			);
-			mainGroup = 9AB59797189BAF9A001BCAD3;
-			productRefGroup = 9AB597A1189BAF9A001BCAD3 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				9AB5979F189BAF9A001BCAD3 /* DBCamera */,
-				9AB597BA189BAF9A001BCAD3 /* DBCameraTests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		9AB5979E189BAF9A001BCAD3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				655AA2C51955FFC40017C143 /* 1977.acv in Resources */,
-				655AA2D61956DBD90017C143 /* AppResources.xcassets in Resources */,
-				9A50C7B018AA432200CD2DF3 /* DBCamera.strings in Resources */,
-				655AA2C21955FB040017C143 /* DBCameraImages.xcassets in Resources */,
-				655AA2CE195602340017C143 /* Nashville.acv in Resources */,
-				9AB597AE189BAF9A001BCAD3 /* InfoPlist.strings in Resources */,
-				655AA2CB195602340017C143 /* amaro.acv in Resources */,
-				655AA2CD195602340017C143 /* mayfair.acv in Resources */,
-				655AA2CC195602340017C143 /* Hudson.acv in Resources */,
-				655AA2CF195602340017C143 /* Valencia.acv in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AB597B9189BAF9A001BCAD3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AB597C7189BAF9A001BCAD3 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		94C7FA8D31CF40F5BA4556C8 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E9BB28F5DC0B461A8AA01285 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-DBCamera-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		9AB5979C189BAF9A001BCAD3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A1F4A87191C20CB0084C305 /* DBLibraryManager.m in Sources */,
-				9A1F4A8B191C20CB0084C305 /* DBCameraGridView.m in Sources */,
-				9A1F4A83191C20CB0084C305 /* DBCameraLibraryViewController.m in Sources */,
-				9A1F4A88191C20CB0084C305 /* DBCollectionViewCell.m in Sources */,
-				653E218619474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m in Sources */,
-				9A1F4A84191C20CB0084C305 /* DBCameraSegueViewController.m in Sources */,
-				9A1F4A86191C20CB0084C305 /* DBCameraManager.m in Sources */,
-				9AB597B4189BAF9A001BCAD3 /* AppDelegate.m in Sources */,
-				655AA2B01955FA350017C143 /* CustomCamera.m in Sources */,
-				9A1F4A8C191C20CB0084C305 /* DBCameraView.m in Sources */,
-				9A8E9A86192EA6930005CD5D /* UIImage+TintColor.m in Sources */,
-				6548431C1958236B0008F803 /* DBCameraLoadingView.m in Sources */,
-				9A1F4A80191C20CB0084C305 /* DBCameraBaseCropViewController.m in Sources */,
-				9A1F4A7F191C20CB0084C305 /* UIImage+Crop.m in Sources */,
-				9A2237F719894BAC0084BFD7 /* DBMotionManager.m in Sources */,
-				9ABB69A219587983007E2B9E /* UIImage+Asset.m in Sources */,
-				9AB597B0189BAF9A001BCAD3 /* main.m in Sources */,
-				9A1F4A8A191C20CB0084C305 /* DBCameraCropView.m in Sources */,
-				6594EE121955F19600E22EBD /* RootViewController.m in Sources */,
-				9A1F4A81191C20CB0084C305 /* DBCameraCollectionViewController.m in Sources */,
-				9A1F4A85191C20CB0084C305 /* DBCameraViewController.m in Sources */,
-				9A1F4A89191C20CB0084C305 /* DBCollectionViewFlowLayout.m in Sources */,
-				6594EC041955D94E00E22EBD /* DBCameraFiltersView.m in Sources */,
-				9A1F4A82191C20CB0084C305 /* DBCameraContainerViewController.m in Sources */,
-				9A71D2ED1958402A00224B82 /* DBCameraFilterCell.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AB597B7189BAF9A001BCAD3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AB597C9189BAF9A001BCAD3 /* DBCameraTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9AB597C1189BAF9A001BCAD3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9AB5979F189BAF9A001BCAD3 /* DBCamera */;
-			targetProxy = 9AB597C0189BAF9A001BCAD3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		9A50C7B218AA432200CD2DF3 /* DBCamera.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9A50C7B118AA432200CD2DF3 /* en */,
-				9A50C7B318AA435500CD2DF3 /* it */,
-				9A50C7B418AA435500CD2DF3 /* es */,
-				9A0FAE53193E840D008D5FAD /* pt */,
-				9ABDB6E5195391A500A1539D /* tr */,
-			);
-			name = DBCamera.strings;
-			path = ../../DBCamera/Localizations;
-			sourceTree = "<group>";
-		};
-		9AB597AC189BAF9A001BCAD3 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9AB597AD189BAF9A001BCAD3 /* en */,
-				9A50C7A918AA42BC00CD2DF3 /* it */,
-				9A50C7AC18AA42C300CD2DF3 /* es */,
-				9A0FAE54193E840D008D5FAD /* pt */,
-				9ABDB6E6195391A500A1539D /* tr */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		9AB597C5189BAF9A001BCAD3 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9AB597C6189BAF9A001BCAD3 /* en */,
-				9A50C7AA18AA42BC00CD2DF3 /* it */,
-				9A50C7AD18AA42C300CD2DF3 /* es */,
-				9A0FAE55193E840D008D5FAD /* pt */,
-				9ABDB6E7195391A500A1539D /* tr */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		9AB597CA189BAF9A001BCAD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"submodules/GPUImage/**",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		9AB597CB189BAF9A001BCAD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		9AB597CD189BAF9A001BCAD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF04884E51D24925BF79CD2E /* Pods-DBCamera.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		9AB597CE189BAF9A001BCAD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF04884E51D24925BF79CD2E /* Pods-DBCamera.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		9AB597D0189BAF9A001BCAD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DBCamera.app/DBCamera";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "DBCameraTests/DBCameraTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		9AB597D1189BAF9A001BCAD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DBCamera.app/DBCamera";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
-				INFOPLIST_FILE = "DBCameraTests/DBCameraTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		9AB5979B189BAF9A001BCAD3 /* Build configuration list for PBXProject "DBCamera" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9AB597CA189BAF9A001BCAD3 /* Debug */,
-				9AB597CB189BAF9A001BCAD3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9AB597CC189BAF9A001BCAD3 /* Build configuration list for PBXNativeTarget "DBCamera" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9AB597CD189BAF9A001BCAD3 /* Debug */,
-				9AB597CE189BAF9A001BCAD3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9AB597CF189BAF9A001BCAD3 /* Build configuration list for PBXNativeTarget "DBCameraTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9AB597D0189BAF9A001BCAD3 /* Debug */,
-				9AB597D1189BAF9A001BCAD3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 9AB59798189BAF9A001BCAD3 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>1293A6E87AF10FB7879E3B3A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>571DA4108EDD41043B02FD3E</string>
+				<string>F8C3B10970379AE21DB236C2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4BE3F8BFBAFD401181A3E55F</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-DBCamera.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>571DA4108EDD41043B02FD3E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-DBCamera.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>653E218419474DA2001433A5</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UIViewController+UIViewController_FullScreen.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>653E218519474DA2001433A5</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UIViewController+UIViewController_FullScreen.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>653E218619474DA2001433A5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>653E218519474DA2001433A5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6548431A1958236B0008F803</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraLoadingView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6548431B1958236B0008F803</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraLoadingView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6548431C1958236B0008F803</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6548431B1958236B0008F803</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>655AA2AE1955FA350017C143</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CustomCamera.h</string>
+			<key>path</key>
+			<string>Classes/CustomCamera/CustomCamera.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2AF1955FA350017C143</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CustomCamera.m</string>
+			<key>path</key>
+			<string>Classes/CustomCamera/CustomCamera.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2B01955FA350017C143</key>
+		<dict>
+			<key>fileRef</key>
+			<string>655AA2AF1955FA350017C143</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>655AA2C11955FB040017C143</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>DBCameraImages.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2C21955FB040017C143</key>
+		<dict>
+			<key>fileRef</key>
+			<string>655AA2C11955FB040017C143</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>655AA2C31955FFC40017C143</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>655AA2D319564F250017C143</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Filters</string>
+			<key>path</key>
+			<string>../../DBCamera/Filters</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2C41955FFC40017C143</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>1977.acv</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2C51955FFC40017C143</key>
+		<dict>
+			<key>fileRef</key>
+			<string>655AA2C41955FFC40017C143</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>655AA2C6195602340017C143</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>amaro.acv</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2C7195602340017C143</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Hudson.acv</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2C8195602340017C143</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>mayfair.acv</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2C9195602340017C143</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Nashville.acv</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2CA195602340017C143</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Valencia.acv</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2CB195602340017C143</key>
+		<dict>
+			<key>fileRef</key>
+			<string>655AA2C6195602340017C143</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>655AA2CC195602340017C143</key>
+		<dict>
+			<key>fileRef</key>
+			<string>655AA2C7195602340017C143</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>655AA2CD195602340017C143</key>
+		<dict>
+			<key>fileRef</key>
+			<string>655AA2C8195602340017C143</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>655AA2CE195602340017C143</key>
+		<dict>
+			<key>fileRef</key>
+			<string>655AA2C9195602340017C143</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>655AA2CF195602340017C143</key>
+		<dict>
+			<key>fileRef</key>
+			<string>655AA2CA195602340017C143</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>655AA2D319564F250017C143</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>655AA2C41955FFC40017C143</string>
+				<string>655AA2C6195602340017C143</string>
+				<string>655AA2C7195602340017C143</string>
+				<string>655AA2C8195602340017C143</string>
+				<string>655AA2C9195602340017C143</string>
+				<string>655AA2CA195602340017C143</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Curves</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2D41956DB860017C143</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>655AA2D51956DBD90017C143</string>
+				<string>655AA2AE1955FA350017C143</string>
+				<string>655AA2AF1955FA350017C143</string>
+				<string>6594EE101955F19600E22EBD</string>
+				<string>6594EE111955F19600E22EBD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Classes</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2D51956DBD90017C143</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>AppResources.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>655AA2D61956DBD90017C143</key>
+		<dict>
+			<key>fileRef</key>
+			<string>655AA2D51956DBD90017C143</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6594EC021955D94E00E22EBD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraFiltersView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6594EC031955D94E00E22EBD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraFiltersView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6594EC041955D94E00E22EBD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6594EC031955D94E00E22EBD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6594EE0A1955F11500E22EBD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>QuartzCore.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/QuartzCore.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>6594EE0B1955F11500E22EBD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6594EE0A1955F11500E22EBD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6594EE0C1955F11D00E22EBD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>OpenGLES.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/OpenGLES.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>6594EE0D1955F11D00E22EBD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6594EE0C1955F11D00E22EBD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6594EE0E1955F12800E22EBD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>AVFoundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/AVFoundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>6594EE0F1955F12800E22EBD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6594EE0E1955F12800E22EBD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6594EE101955F19600E22EBD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>RootViewController.h</string>
+			<key>path</key>
+			<string>Classes/Root/RootViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6594EE111955F19600E22EBD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>RootViewController.m</string>
+			<key>path</key>
+			<string>Classes/Root/RootViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6594EE121955F19600E22EBD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6594EE111955F19600E22EBD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>733E4274497440D09A9F1EE7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4BE3F8BFBAFD401181A3E55F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>94C7FA8D31CF40F5BA4556C8</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>9A0FAE53193E840D008D5FAD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>pt</string>
+			<key>path</key>
+			<string>pt.lproj/DBCamera.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A0FAE54193E840D008D5FAD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>pt</string>
+			<key>path</key>
+			<string>pt.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A0FAE55193E840D008D5FAD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>pt</string>
+			<key>path</key>
+			<string>pt.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A5A191C20CB0084C305</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9A1F4A5B191C20CB0084C305</string>
+				<string>9ABB69A019587983007E2B9E</string>
+				<string>9ABB69A119587983007E2B9E</string>
+				<string>9A1F4A5C191C20CB0084C305</string>
+				<string>9A1F4A5D191C20CB0084C305</string>
+				<string>9A8E9A84192EA6930005CD5D</string>
+				<string>9A8E9A85192EA6930005CD5D</string>
+				<string>653E218419474DA2001433A5</string>
+				<string>653E218519474DA2001433A5</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Categories</string>
+			<key>path</key>
+			<string>../../DBCamera/Categories</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A5B191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraBaseCropViewController+Private.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A5C191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UIImage+Crop.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A5D191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UIImage+Crop.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A5E191C20CB0084C305</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9A1F4A5F191C20CB0084C305</string>
+				<string>9A1F4A60191C20CB0084C305</string>
+				<string>9A1F4A61191C20CB0084C305</string>
+				<string>9A1F4A62191C20CB0084C305</string>
+				<string>9A1F4A63191C20CB0084C305</string>
+				<string>9A1F4A64191C20CB0084C305</string>
+				<string>9A1F4A65191C20CB0084C305</string>
+				<string>9A1F4A66191C20CB0084C305</string>
+				<string>9A1F4A67191C20CB0084C305</string>
+				<string>9A1F4A68191C20CB0084C305</string>
+				<string>9A1F4A69191C20CB0084C305</string>
+				<string>9A1F4A6A191C20CB0084C305</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Controllers</string>
+			<key>path</key>
+			<string>../../DBCamera/Controllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A5F191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraBaseCropViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A60191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraBaseCropViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A61191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraCollectionViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A62191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraCollectionViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A63191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraContainerViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A64191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraContainerViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A65191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraLibraryViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A66191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraLibraryViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A67191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraSegueViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A68191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraSegueViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A69191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A6A191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A6C191C20CB0084C305</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9A1F4A6D191C20CB0084C305</string>
+				<string>9A1F4A6E191C20CB0084C305</string>
+				<string>9A1F4A6F191C20CB0084C305</string>
+				<string>9A1F4A70191C20CB0084C305</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Managers</string>
+			<key>path</key>
+			<string>../../DBCamera/Managers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A6D191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A6E191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A6F191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBLibraryManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A70191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBLibraryManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A71191C20CB0084C305</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9A71D2EB1958402A00224B82</string>
+				<string>9A71D2EC1958402A00224B82</string>
+				<string>9A1F4A74191C20CB0084C305</string>
+				<string>9A1F4A75191C20CB0084C305</string>
+				<string>9A1F4A76191C20CB0084C305</string>
+				<string>9A1F4A77191C20CB0084C305</string>
+				<string>9A2237F519894BAC0084BFD7</string>
+				<string>9A2237F619894BAC0084BFD7</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Objects</string>
+			<key>path</key>
+			<string>../../DBCamera/Objects</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A74191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCollectionViewCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A75191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCollectionViewCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A76191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCollectionViewFlowLayout.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A77191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCollectionViewFlowLayout.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A78191C20CB0084C305</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9A1F4A79191C20CB0084C305</string>
+				<string>9A1F4A7A191C20CB0084C305</string>
+				<string>9A1F4A7B191C20CB0084C305</string>
+				<string>9A1F4A7C191C20CB0084C305</string>
+				<string>9A1F4A7D191C20CB0084C305</string>
+				<string>9A1F4A7E191C20CB0084C305</string>
+				<string>6594EC021955D94E00E22EBD</string>
+				<string>6594EC031955D94E00E22EBD</string>
+				<string>6548431A1958236B0008F803</string>
+				<string>6548431B1958236B0008F803</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Views</string>
+			<key>path</key>
+			<string>../../DBCamera/Views</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A79191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraCropView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A7A191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraCropView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A7B191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraGridView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A7C191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraGridView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A7D191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A7E191C20CB0084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A7F191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A5D191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A80191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A60191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A81191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A62191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A82191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A64191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A83191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A66191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A84191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A68191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A85191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A6A191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A86191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A6E191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A87191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A70191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A88191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A75191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A89191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A77191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A8A191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A7A191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A8B191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A7C191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A8C191C20CB0084C305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A1F4A7E191C20CB0084C305</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A1F4A8D191C20F10084C305</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>655AA2C11955FB040017C143</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Resources</string>
+			<key>path</key>
+			<string>../../DBCamera/Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A90191C22250084C305</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9A1F4A91191C22250084C305</string>
+				<string>9A1F4A92191C22250084C305</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Headers</string>
+			<key>path</key>
+			<string>../../DBCamera/Headers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A91191C22250084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A1F4A92191C22250084C305</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraMacros.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A2237F519894BAC0084BFD7</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBMotionManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A2237F619894BAC0084BFD7</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBMotionManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A2237F719894BAC0084BFD7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A2237F619894BAC0084BFD7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A50C7A718AA423C00CD2DF3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9A50C7B218AA432200CD2DF3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Localizations</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A50C7A918AA42BC00CD2DF3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>it</string>
+			<key>path</key>
+			<string>it.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A50C7AA18AA42BC00CD2DF3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>it</string>
+			<key>path</key>
+			<string>it.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A50C7AC18AA42C300CD2DF3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>es</string>
+			<key>path</key>
+			<string>es.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A50C7AD18AA42C300CD2DF3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>es</string>
+			<key>path</key>
+			<string>es.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A50C7B018AA432200CD2DF3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A50C7B218AA432200CD2DF3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A50C7B118AA432200CD2DF3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/DBCamera.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A50C7B218AA432200CD2DF3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9A50C7B118AA432200CD2DF3</string>
+				<string>9A50C7B318AA435500CD2DF3</string>
+				<string>9A50C7B418AA435500CD2DF3</string>
+				<string>9A0FAE53193E840D008D5FAD</string>
+				<string>9ABDB6E5195391A500A1539D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>DBCamera.strings</string>
+			<key>path</key>
+			<string>../../DBCamera/Localizations</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A50C7B318AA435500CD2DF3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>it</string>
+			<key>path</key>
+			<string>it.lproj/DBCamera.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A50C7B418AA435500CD2DF3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>es</string>
+			<key>path</key>
+			<string>es.lproj/DBCamera.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A71D2EB1958402A00224B82</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCameraFilterCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A71D2EC1958402A00224B82</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraFilterCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A71D2ED1958402A00224B82</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A71D2EC1958402A00224B82</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9A8E9A84192EA6930005CD5D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UIImage+TintColor.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A8E9A85192EA6930005CD5D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UIImage+TintColor.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A8E9A86192EA6930005CD5D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A8E9A85192EA6930005CD5D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB59797189BAF9A001BCAD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9AB597A9189BAF9A001BCAD3</string>
+				<string>9AB597C2189BAF9A001BCAD3</string>
+				<string>9AB597A2189BAF9A001BCAD3</string>
+				<string>9AB597A1189BAF9A001BCAD3</string>
+				<string>1293A6E87AF10FB7879E3B3A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB59798189BAF9A001BCAD3</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastUpgradeCheck</key>
+				<string>0510</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>PSSD - Daniele Bogo</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>9AB597BA189BAF9A001BCAD3</key>
+					<dict>
+						<key>TestTargetID</key>
+						<string>9AB5979F189BAF9A001BCAD3</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>9AB5979B189BAF9A001BCAD3</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>it</string>
+				<string>es</string>
+				<string>pt</string>
+				<string>tr</string>
+			</array>
+			<key>mainGroup</key>
+			<string>9AB59797189BAF9A001BCAD3</string>
+			<key>productRefGroup</key>
+			<string>9AB597A1189BAF9A001BCAD3</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>9AB5979F189BAF9A001BCAD3</string>
+				<string>9AB597BA189BAF9A001BCAD3</string>
+			</array>
+		</dict>
+		<key>9AB5979B189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>9AB597CA189BAF9A001BCAD3</string>
+				<string>9AB597CB189BAF9A001BCAD3</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>9AB5979C189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>9A1F4A87191C20CB0084C305</string>
+				<string>9A1F4A8B191C20CB0084C305</string>
+				<string>9A1F4A83191C20CB0084C305</string>
+				<string>9A1F4A88191C20CB0084C305</string>
+				<string>653E218619474DA2001433A5</string>
+				<string>9A1F4A84191C20CB0084C305</string>
+				<string>9A1F4A86191C20CB0084C305</string>
+				<string>9AB597B4189BAF9A001BCAD3</string>
+				<string>655AA2B01955FA350017C143</string>
+				<string>9A1F4A8C191C20CB0084C305</string>
+				<string>9A8E9A86192EA6930005CD5D</string>
+				<string>6548431C1958236B0008F803</string>
+				<string>9A1F4A80191C20CB0084C305</string>
+				<string>9A1F4A7F191C20CB0084C305</string>
+				<string>9A2237F719894BAC0084BFD7</string>
+				<string>9ABB69A219587983007E2B9E</string>
+				<string>9AB597B0189BAF9A001BCAD3</string>
+				<string>9A1F4A8A191C20CB0084C305</string>
+				<string>6594EE121955F19600E22EBD</string>
+				<string>9A1F4A81191C20CB0084C305</string>
+				<string>9A1F4A85191C20CB0084C305</string>
+				<string>9A1F4A89191C20CB0084C305</string>
+				<string>6594EC041955D94E00E22EBD</string>
+				<string>9A1F4A82191C20CB0084C305</string>
+				<string>9A71D2ED1958402A00224B82</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9AB5979D189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6594EE0F1955F12800E22EBD</string>
+				<string>6594EE0D1955F11D00E22EBD</string>
+				<string>6594EE0B1955F11500E22EBD</string>
+				<string>9AB597A6189BAF9A001BCAD3</string>
+				<string>9AB597A8189BAF9A001BCAD3</string>
+				<string>9AB597A4189BAF9A001BCAD3</string>
+				<string>733E4274497440D09A9F1EE7</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9AB5979E189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>655AA2C51955FFC40017C143</string>
+				<string>655AA2D61956DBD90017C143</string>
+				<string>9A50C7B018AA432200CD2DF3</string>
+				<string>655AA2C21955FB040017C143</string>
+				<string>655AA2CE195602340017C143</string>
+				<string>9AB597AE189BAF9A001BCAD3</string>
+				<string>655AA2CB195602340017C143</string>
+				<string>655AA2CD195602340017C143</string>
+				<string>655AA2CC195602340017C143</string>
+				<string>655AA2CF195602340017C143</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9AB5979F189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>9AB597CC189BAF9A001BCAD3</string>
+			<key>buildPhases</key>
+			<array>
+				<string>94C7FA8D31CF40F5BA4556C8</string>
+				<string>9AB5979C189BAF9A001BCAD3</string>
+				<string>9AB5979D189BAF9A001BCAD3</string>
+				<string>9AB5979E189BAF9A001BCAD3</string>
+				<string>E9BB28F5DC0B461A8AA01285</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>DBCamera</string>
+			<key>productName</key>
+			<string>DBCamera</string>
+			<key>productReference</key>
+			<string>9AB597A0189BAF9A001BCAD3</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>9AB597A0189BAF9A001BCAD3</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>DBCamera.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>9AB597A1189BAF9A001BCAD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9AB597A0189BAF9A001BCAD3</string>
+				<string>9AB597BB189BAF9A001BCAD3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597A2189BAF9A001BCAD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6594EE0E1955F12800E22EBD</string>
+				<string>6594EE0C1955F11D00E22EBD</string>
+				<string>6594EE0A1955F11500E22EBD</string>
+				<string>9AB597A3189BAF9A001BCAD3</string>
+				<string>9AB597A5189BAF9A001BCAD3</string>
+				<string>9AB597A7189BAF9A001BCAD3</string>
+				<string>9AB597BC189BAF9A001BCAD3</string>
+				<string>4BE3F8BFBAFD401181A3E55F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597A3189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>9AB597A4189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597A3189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597A5189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreGraphics.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreGraphics.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>9AB597A6189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597A5189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597A7189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>UIKit.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/UIKit.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>9AB597A8189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597A7189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597A9189BAF9A001BCAD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9AB597B2189BAF9A001BCAD3</string>
+				<string>9AB597B3189BAF9A001BCAD3</string>
+				<string>655AA2D41956DB860017C143</string>
+				<string>9AB597D2189BB04B001BCAD3</string>
+				<string>9AB597AA189BAF9A001BCAD3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>DBCamera</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597AA189BAF9A001BCAD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9AB597AB189BAF9A001BCAD3</string>
+				<string>9AB597AC189BAF9A001BCAD3</string>
+				<string>9AB597AF189BAF9A001BCAD3</string>
+				<string>9AB597B1189BAF9A001BCAD3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597AB189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>DBCamera-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597AC189BAF9A001BCAD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9AB597AD189BAF9A001BCAD3</string>
+				<string>9A50C7A918AA42BC00CD2DF3</string>
+				<string>9A50C7AC18AA42C300CD2DF3</string>
+				<string>9A0FAE54193E840D008D5FAD</string>
+				<string>9ABDB6E6195391A500A1539D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597AD189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597AE189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597AC189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597AF189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597B0189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597AF189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597B1189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DBCamera-Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597B2189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597B3189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597B4189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597B3189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597B7189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>9AB597C9189BAF9A001BCAD3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9AB597B8189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>9AB597BD189BAF9A001BCAD3</string>
+				<string>9AB597BF189BAF9A001BCAD3</string>
+				<string>9AB597BE189BAF9A001BCAD3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9AB597B9189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>9AB597C7189BAF9A001BCAD3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9AB597BA189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>9AB597CF189BAF9A001BCAD3</string>
+			<key>buildPhases</key>
+			<array>
+				<string>9AB597B7189BAF9A001BCAD3</string>
+				<string>9AB597B8189BAF9A001BCAD3</string>
+				<string>9AB597B9189BAF9A001BCAD3</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>9AB597C1189BAF9A001BCAD3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>DBCameraTests</string>
+			<key>productName</key>
+			<string>DBCameraTests</string>
+			<key>productReference</key>
+			<string>9AB597BB189BAF9A001BCAD3</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>9AB597BB189BAF9A001BCAD3</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>DBCameraTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>9AB597BC189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>XCTest.framework</string>
+			<key>path</key>
+			<string>Library/Frameworks/XCTest.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>9AB597BD189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597BC189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597BE189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597A3189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597BF189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597A7189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597C0189BAF9A001BCAD3</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>9AB59798189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>9AB5979F189BAF9A001BCAD3</string>
+			<key>remoteInfo</key>
+			<string>DBCamera</string>
+		</dict>
+		<key>9AB597C1189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>9AB5979F189BAF9A001BCAD3</string>
+			<key>targetProxy</key>
+			<string>9AB597C0189BAF9A001BCAD3</string>
+		</dict>
+		<key>9AB597C2189BAF9A001BCAD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9AB597C8189BAF9A001BCAD3</string>
+				<string>9AB597C3189BAF9A001BCAD3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>DBCameraTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597C3189BAF9A001BCAD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9AB597C4189BAF9A001BCAD3</string>
+				<string>9AB597C5189BAF9A001BCAD3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597C4189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>DBCameraTests-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597C5189BAF9A001BCAD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9AB597C6189BAF9A001BCAD3</string>
+				<string>9A50C7AA18AA42BC00CD2DF3</string>
+				<string>9A50C7AD18AA42C300CD2DF3</string>
+				<string>9A0FAE55193E840D008D5FAD</string>
+				<string>9ABDB6E7195391A500A1539D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597C6189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597C7189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597C5189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597C8189BAF9A001BCAD3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DBCameraTests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AB597C9189BAF9A001BCAD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AB597C8189BAF9A001BCAD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9AB597CA189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>HEADER_SEARCH_PATHS[arch=*]</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include</string>
+					<string>submodules/GPUImage/**</string>
+				</array>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>6.0</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>9AB597CB189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>HEADER_SEARCH_PATHS[arch=*]</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include</string>
+				</array>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>6.0</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>9AB597CC189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>9AB597CD189BAF9A001BCAD3</string>
+				<string>9AB597CE189BAF9A001BCAD3</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>9AB597CD189BAF9A001BCAD3</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>571DA4108EDD41043B02FD3E</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>DBCamera/DBCamera-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>$(SRCROOT)/DBCamera/DBCamera-Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>6.0</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>9AB597CE189BAF9A001BCAD3</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>F8C3B10970379AE21DB236C2</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>DBCamera/DBCamera-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>$(SRCROOT)/DBCamera/DBCamera-Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>6.0</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>9AB597CF189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>9AB597D0189BAF9A001BCAD3</string>
+				<string>9AB597D1189BAF9A001BCAD3</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>9AB597D0189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/DBCamera.app/DBCamera</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>DBCamera/DBCamera-Prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>DBCameraTests/DBCameraTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>9AB597D1189BAF9A001BCAD3</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/DBCamera.app/DBCamera</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>DBCamera/DBCamera-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>DBCameraTests/DBCameraTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>9AB597D2189BB04B001BCAD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>655AA2C31955FFC40017C143</string>
+				<string>9A1F4A8D191C20F10084C305</string>
+				<string>9A50C7A718AA423C00CD2DF3</string>
+				<string>9A1F4A5A191C20CB0084C305</string>
+				<string>9A1F4A5E191C20CB0084C305</string>
+				<string>9A1F4A90191C22250084C305</string>
+				<string>9A1F4A6C191C20CB0084C305</string>
+				<string>9A1F4A71191C20CB0084C305</string>
+				<string>9A1F4A78191C20CB0084C305</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>DBCamera</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9ABB69A019587983007E2B9E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UIImage+Asset.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9ABB69A119587983007E2B9E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UIImage+Asset.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9ABB69A219587983007E2B9E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9ABB69A119587983007E2B9E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9ABDB6E5195391A500A1539D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>tr</string>
+			<key>path</key>
+			<string>tr.lproj/DBCamera.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9ABDB6E6195391A500A1539D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>tr</string>
+			<key>path</key>
+			<string>tr.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9ABDB6E7195391A500A1539D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>tr</string>
+			<key>path</key>
+			<string>tr.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9BB28F5DC0B461A8AA01285</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>F8C3B10970379AE21DB236C2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-DBCamera.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>9AB59798189BAF9A001BCAD3</string>
+</dict>
+</plist>

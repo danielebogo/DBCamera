@@ -70,6 +70,17 @@
         
         self.tintColor = [UIColor whiteColor];
         self.selectedTintColor = [UIColor redColor];
+        
+#if TARGET_IPHONE_SIMULATOR
+        // Mock image for simulator
+        UIImage *launchImage = [UIImage imageNamed:@"LaunchImage-700"] ?: [UIImage imageNamed:@"Default"];
+        UIImageView *launchImageView = [[UIImageView alloc] initWithImage:launchImage];
+        launchImageView.contentMode = UIViewContentModeScaleAspectFill;
+        launchImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        launchImageView.frame = self.bounds;
+        [self insertSubview:launchImageView atIndex:0];
+#endif
+
     }
     
     return self;
