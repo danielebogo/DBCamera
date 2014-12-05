@@ -66,12 +66,31 @@
 {
     DBCollectionViewCell *item = [collectionView dequeueReusableCellWithReuseIdentifier:_collectionIdentifier forIndexPath:indexPath];
     [item.itemImage setImage:nil];
+    [item.itemDuration setText:nil];
+    item.itemDuration.hidden = YES;
     
     if ( _items.count > 0) {
         __weak DBCollectionViewCell *blockItem = item;
         [[[DBLibraryManager sharedInstance] defaultAssetsLibrary] assetForURL:(NSURL *)_items[indexPath.item]  resultBlock:^(ALAsset *asset) {
             UIImage *image = [UIImage imageWithCGImage:[asset thumbnail]];
             [blockItem.itemImage setImage:image];
+            NSString *assetPropertyType = [asset valueForProperty:ALAssetPropertyType];
+            if ([assetPropertyType isEqualToString:ALAssetTypeVideo]) {
+                blockItem.itemDuration.hidden = NO;
+                double value = [[asset valueForProperty:ALAssetPropertyDuration] doubleValue];
+                
+                NSNumber *theDouble = [NSNumber numberWithDouble:round(value)];
+                
+                int inputSeconds = [theDouble intValue];
+                int hours =  inputSeconds / 3600;
+                int minutes = ( inputSeconds - hours * 3600 ) / 60;
+                int seconds = inputSeconds - hours * 3600 - minutes * 60;
+                
+                NSString *theTime = [NSString stringWithFormat:@"%.2d:%.2d:%.2d", hours, minutes, seconds];
+                
+                blockItem.itemDuration.text = theTime;
+            }
+            
         } failureBlock:nil];
     }
     
