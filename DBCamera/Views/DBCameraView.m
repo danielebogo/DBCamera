@@ -13,9 +13,7 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 
-
-#define previewFrameRetina (CGRect){ 0, 65, 320, 342 }
-#define previewFrameRetina_4 (CGRect){ 0, 65, 320, 430 }
+#define previewFrame (CGRect){ 0, 65, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - 138 }
 
 // pinch
 #define MAX_PINCH_SCALE_NUM   3.f
@@ -48,30 +46,30 @@
 - (id) initWithFrame:(CGRect)frame captureSession:(AVCaptureSession *)captureSession
 {
     self = [super initWithFrame:frame];
-    
+
     if ( self ) {
         [self setBackgroundColor:[UIColor blackColor]];
-        
+
         _previewLayer = [[AVCaptureVideoPreviewLayer alloc] init];
         if ( captureSession ) {
             [_previewLayer setSession:captureSession];
-            [_previewLayer setFrame: IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina ];
+            [_previewLayer setFrame: previewFrame ];
         } else
             [_previewLayer setFrame:self.bounds];
-        
+
         if ( [_previewLayer respondsToSelector:@selector(connection)] ) {
             if ( [_previewLayer.connection isVideoOrientationSupported] )
                 [_previewLayer.connection setVideoOrientation:AVCaptureVideoOrientationPortrait];
         }
-        
+
         [_previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-        
+
         [self.layer addSublayer:_previewLayer];
-        
+
         self.tintColor = [UIColor whiteColor];
         self.selectedTintColor = [UIColor redColor];
     }
-    
+
     return self;
 }
 
@@ -81,23 +79,23 @@
     focusView.backgroundColor = [UIColor clearColor];
     [focusView.layer addSublayer:self.focusBox];
     [self addSubview:focusView];
-    
+
     UIView *exposeView = [[UIView alloc] initWithFrame:self.frame];
     exposeView.backgroundColor = [UIColor clearColor];
     [exposeView.layer addSublayer:self.exposeBox];
     [self addSubview:exposeView];
-    
+
     [self addSubview:self.topContainerBar];
     [self addSubview:self.bottomContainerBar];
-    
+
     [self.topContainerBar addSubview:self.cameraButton];
     [self.topContainerBar addSubview:self.flashButton];
     [self.topContainerBar addSubview:self.gridButton];
-    
+
     [self.bottomContainerBar addSubview:self.triggerButton];
     [self.bottomContainerBar addSubview:self.closeButton];
     [self.bottomContainerBar addSubview:self.photoLibraryButton];
-    
+
     [self createGesture];
 }
 
@@ -106,7 +104,7 @@
 - (UIView *) topContainerBar
 {
     if ( !_topContainerBar ) {
-        _topContainerBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth(self.bounds), CGRectGetMinY(IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina) }];
+        _topContainerBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth(self.bounds), CGRectGetMinY(previewFrame) }];
         [_topContainerBar setBackgroundColor:RGBColor(0x000000, 1)];
     }
     return _topContainerBar;
@@ -115,7 +113,7 @@
 - (UIView *) bottomContainerBar
 {
     if ( !_bottomContainerBar ) {
-        CGFloat newY = CGRectGetMaxY( IS_RETINA_4 ? previewFrameRetina_4 : previewFrameRetina );
+        CGFloat newY = CGRectGetMaxY(previewFrame);
         _bottomContainerBar = [[UIView alloc] initWithFrame:(CGRect){ 0, newY, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - newY }];
         [_bottomContainerBar setUserInteractionEnabled:YES];
         [_bottomContainerBar setBackgroundColor:RGBColor(0x000000, 1)];
@@ -136,7 +134,7 @@
         [_photoLibraryButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 59, CGRectGetMidY(self.bottomContainerBar.bounds) - 22, 44, 44 }];
         [_photoLibraryButton addTarget:self action:@selector(libraryAction:) forControlEvents:UIControlEventTouchUpInside];
     }
-    
+
     return _photoLibraryButton;
 }
 
@@ -151,7 +149,7 @@
         [_triggerButton setCenter:(CGPoint){ CGRectGetMidX(self.bottomContainerBar.bounds), CGRectGetMidY(self.bottomContainerBar.bounds) }];
         [_triggerButton addTarget:self action:@selector(triggerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
-    
+
     return _triggerButton;
 }
 
@@ -164,7 +162,7 @@
         [_closeButton setFrame:(CGRect){ 25,  CGRectGetMidY(self.bottomContainerBar.bounds) - 15, 30, 30 }];
         [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }
-    
+
     return _closeButton;
 }
 
@@ -178,7 +176,7 @@
         [_cameraButton setFrame:(CGRect){ 25, 17.5f, 30, 30 }];
         [_cameraButton addTarget:self action:@selector(changeCamera:) forControlEvents:UIControlEventTouchUpInside];
     }
-    
+
     return _cameraButton;
 }
 
@@ -192,7 +190,7 @@
         [_flashButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 55, 17.5f, 30, 30 }];
         [_flashButton addTarget:self action:@selector(flashTriggerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
-    
+
     return _flashButton;
 }
 
@@ -222,7 +220,7 @@
         [_focusBox setBorderColor:[RGBColor(0xffffff, 1) CGColor]];
         [_focusBox setOpacity:0];
     }
-    
+
     return _focusBox;
 }
 
@@ -236,7 +234,7 @@
         [_exposeBox setBorderColor:[self.selectedTintColor CGColor]];
         [_exposeBox setOpacity:0];
     }
-    
+
     return _exposeBox;
 }
 
@@ -244,25 +242,25 @@
 {
     if ( remove )
         [layer removeAllAnimations];
-    
+
     if ( [layer animationForKey:@"transform.scale"] == nil && [layer animationForKey:@"opacity"] == nil ) {
         [CATransaction begin];
         [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
         [layer setPosition:point];
         [CATransaction commit];
-        
+
         CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
         [scale setFromValue:[NSNumber numberWithFloat:1]];
         [scale setToValue:[NSNumber numberWithFloat:0.7]];
         [scale setDuration:0.8];
         [scale setRemovedOnCompletion:YES];
-        
+
         CABasicAnimation *opacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
         [opacity setFromValue:[NSNumber numberWithFloat:1]];
         [opacity setToValue:[NSNumber numberWithFloat:0]];
         [opacity setDuration:0.8];
         [opacity setRemovedOnCompletion:YES];
-        
+
         [layer addAnimation:scale forKey:@"transform.scale"];
         [layer addAnimation:opacity forKey:@"opacity"];
     }
@@ -287,19 +285,19 @@
     [_singleTap setNumberOfTapsRequired:1];
     [_singleTap setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:_singleTap];
-    
+
     _doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector( tapToExpose: )];
     [_doubleTap setDelaysTouchesEnded:NO];
     [_doubleTap setNumberOfTapsRequired:2];
     [_doubleTap setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:_doubleTap];
-    
+
     [_singleTap requireGestureRecognizerToFail:_doubleTap];
-    
+
     _pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
     [_pinch setDelaysTouchesEnded:NO];
     [self addGestureRecognizer:_pinch];
-    
+
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector( hanldePanGestureRecognizer: )];
     [_panGestureRecognizer setDelaysTouchesEnded:NO];
     [_panGestureRecognizer setMinimumNumberOfTouches:1];
@@ -377,17 +375,17 @@
     BOOL hasFocus = YES;
     if ( [_delegate respondsToSelector:@selector(cameraViewHasFocus)] )
         hasFocus = [_delegate cameraViewHasFocus];
-    
+
     if ( !hasFocus )
         return;
-    
+
     UIGestureRecognizerState state = panGestureRecognizer.state;
     CGPoint touchPoint = [panGestureRecognizer locationInView:self];
     [self draw:_focusBox atPointOfInterest:(CGPoint){ touchPoint.x, touchPoint.y - CGRectGetMinY(_previewLayer.frame) } andRemove:YES];
-    
+
     switch (state) {
         case UIGestureRecognizerStateBegan:
-            
+
             break;
         case UIGestureRecognizerStateChanged: {
             break;
@@ -406,30 +404,30 @@
 - (void) handlePinch:(UIPinchGestureRecognizer *)pinchGestureRecognizer
 {
     BOOL allTouchesAreOnThePreviewLayer = YES;
-	NSUInteger numTouches = [pinchGestureRecognizer numberOfTouches], i;
-	for ( i = 0; i < numTouches; ++i ) {
-		CGPoint location = [pinchGestureRecognizer locationOfTouch:i inView:self];
-		CGPoint convertedLocation = [_previewLayer convertPoint:location fromLayer:_previewLayer.superlayer];
-		if ( ! [_previewLayer containsPoint:convertedLocation] ) {
-			allTouchesAreOnThePreviewLayer = NO;
-			break;
-		}
-	}
-	
-	if ( allTouchesAreOnThePreviewLayer ) {
-		_scaleNum = _preScaleNum * pinchGestureRecognizer.scale;
-        
+    NSUInteger numTouches = [pinchGestureRecognizer numberOfTouches], i;
+    for ( i = 0; i < numTouches; ++i ) {
+        CGPoint location = [pinchGestureRecognizer locationOfTouch:i inView:self];
+        CGPoint convertedLocation = [_previewLayer convertPoint:location fromLayer:_previewLayer.superlayer];
+        if ( ! [_previewLayer containsPoint:convertedLocation] ) {
+            allTouchesAreOnThePreviewLayer = NO;
+            break;
+        }
+    }
+
+    if ( allTouchesAreOnThePreviewLayer ) {
+        _scaleNum = _preScaleNum * pinchGestureRecognizer.scale;
+
         if ( _scaleNum < MIN_PINCH_SCALE_NUM )
             _scaleNum = MIN_PINCH_SCALE_NUM;
         else if ( _scaleNum > MAX_PINCH_SCALE_NUM )
             _scaleNum = MAX_PINCH_SCALE_NUM;
-        
+
         if ( [self.delegate respondsToSelector:@selector(cameraCaptureScale:)] )
             [self.delegate cameraCaptureScale:_scaleNum];
-        
+
         [self doPinch];
-	}
-    
+    }
+
     if ( [pinchGestureRecognizer state] == UIGestureRecognizerStateEnded ||
         [pinchGestureRecognizer state] == UIGestureRecognizerStateCancelled ||
         [pinchGestureRecognizer state] == UIGestureRecognizerStateFailed) {
@@ -444,7 +442,7 @@
         _scaleNum = MIN_PINCH_SCALE_NUM;
     else if (_scaleNum > MAX_PINCH_SCALE_NUM)
         _scaleNum = MAX_PINCH_SCALE_NUM;
-    
+
     [self doPinch];
     _preScaleNum = scale;
 }
@@ -455,7 +453,7 @@
         CGFloat maxScale = [self.delegate cameraMaxScale];
         if ( _scaleNum > maxScale )
             _scaleNum = maxScale;
-        
+
         [CATransaction begin];
         [CATransaction setAnimationDuration:.025];
         [_previewLayer setAffineTransform:CGAffineTransformMakeScale(_scaleNum, _scaleNum)];
