@@ -11,6 +11,7 @@
 #import "DBCollectionViewCell.h"
 #import "DBCollectionViewFlowLayout.h"
 #import "DBCameraSegueViewController.h"
+#import "DBCameraVideoSegueViewController.h"
 #import "DBCameraCollectionViewController.h"
 #import "DBCameraMacros.h"
 #import "DBCameraLoadingView.h"
@@ -360,13 +361,15 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
                 
             } else if ([assetPropertyType isEqualToString:ALAssetTypeVideo]) {
                 
-//                if ( !weakSelf.useCameraSegue ) {
+                if ( !weakSelf.useCameraSegue ) {
                     if ( [weakSelf.delegate respondsToSelector:@selector(camera:didFinishWithVideoALAsset:)] ) {
                         [weakSelf.delegate camera:self didFinishWithVideoALAsset:asset];
                     }
-//                } else {
+                } else {
                     // Video Segue Controller
-//                }
+                    DBCameraVideoSegueViewController *videoSegueViewController = [[DBCameraVideoSegueViewController alloc] initWithVideoALAsset:asset];
+                    [weakSelf.navigationController pushViewController:videoSegueViewController animated:YES];
+                }
             }
             
             

@@ -24,6 +24,8 @@
 		6594EE0F1955F12800E22EBD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6594EE0E1955F12800E22EBD /* AVFoundation.framework */; };
 		6594EE121955F19600E22EBD /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6594EE111955F19600E22EBD /* RootViewController.m */; };
 		733E4274497440D09A9F1EE7 /* libPods-DBCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE3F8BFBAFD401181A3E55F /* libPods-DBCamera.a */; };
+		7DA3A4D719ECF96F006AB015 /* DBCameraVideoSegueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA3A4D619ECF96F006AB015 /* DBCameraVideoSegueViewController.m */; };
+		7DA3A4D919ED1269006AB015 /* me.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7DA3A4D819ED1269006AB015 /* me.mp4 */; };
 		9A1F4A7F191C20CB0084C305 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A5D191C20CB0084C305 /* UIImage+Crop.m */; };
 		9A1F4A80191C20CB0084C305 /* DBCameraBaseCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A60191C20CB0084C305 /* DBCameraBaseCropViewController.m */; };
 		9A1F4A81191C20CB0084C305 /* DBCameraCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F4A62191C20CB0084C305 /* DBCameraCollectionViewController.m */; };
@@ -67,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		156CF6154F58F51D3369CF26 /* Pods-DBCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.release.xcconfig"; sourceTree = "<group>"; };
 		4BE3F8BFBAFD401181A3E55F /* libPods-DBCamera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DBCamera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		653E218419474DA2001433A5 /* UIViewController+UIViewController_FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIViewController_FullScreen.h"; sourceTree = "<group>"; };
 		653E218519474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UIViewController_FullScreen.m"; sourceTree = "<group>"; };
@@ -89,6 +92,10 @@
 		6594EE0E1955F12800E22EBD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6594EE101955F19600E22EBD /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Classes/Root/RootViewController.h; sourceTree = "<group>"; };
 		6594EE111955F19600E22EBD /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Classes/Root/RootViewController.m; sourceTree = "<group>"; };
+		7DA3A4D519ECF96F006AB015 /* DBCameraVideoSegueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraVideoSegueViewController.h; sourceTree = "<group>"; };
+		7DA3A4D619ECF96F006AB015 /* DBCameraVideoSegueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraVideoSegueViewController.m; sourceTree = "<group>"; };
+		7DA3A4D819ED1269006AB015 /* me.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = me.mp4; sourceTree = "<group>"; };
+		949CBF1C771BF7785A762159 /* Pods-DBCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.debug.xcconfig"; sourceTree = "<group>"; };
 		9A0FAE53193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/DBCamera.strings; sourceTree = "<group>"; };
 		9A0FAE54193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A0FAE55193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -156,7 +163,6 @@
 		9ABDB6E5195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/DBCamera.strings; sourceTree = "<group>"; };
 		9ABDB6E6195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9ABDB6E7195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BF04884E51D24925BF79CD2E /* Pods-DBCamera.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.xcconfig"; path = "Pods/Pods-DBCamera.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +227,15 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		85499B0308E04BB80F02A92C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				949CBF1C771BF7785A762159 /* Pods-DBCamera.debug.xcconfig */,
+				156CF6154F58F51D3369CF26 /* Pods-DBCamera.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9A1F4A5A191C20CB0084C305 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +266,8 @@
 				9A1F4A66191C20CB0084C305 /* DBCameraLibraryViewController.m */,
 				9A1F4A67191C20CB0084C305 /* DBCameraSegueViewController.h */,
 				9A1F4A68191C20CB0084C305 /* DBCameraSegueViewController.m */,
+				7DA3A4D519ECF96F006AB015 /* DBCameraVideoSegueViewController.h */,
+				7DA3A4D619ECF96F006AB015 /* DBCameraVideoSegueViewController.m */,
 				9A1F4A69191C20CB0084C305 /* DBCameraViewController.h */,
 				9A1F4A6A191C20CB0084C305 /* DBCameraViewController.m */,
 			);
@@ -338,7 +355,7 @@
 				9AB597C2189BAF9A001BCAD3 /* DBCameraTests */,
 				9AB597A2189BAF9A001BCAD3 /* Frameworks */,
 				9AB597A1189BAF9A001BCAD3 /* Products */,
-				BF04884E51D24925BF79CD2E /* Pods-DBCamera.xcconfig */,
+				85499B0308E04BB80F02A92C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -371,6 +388,7 @@
 			children = (
 				9AB597B2189BAF9A001BCAD3 /* AppDelegate.h */,
 				9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */,
+				7DA3A4D819ED1269006AB015 /* me.mp4 */,
 				655AA2D41956DB860017C143 /* Classes */,
 				9AB597D2189BB04B001BCAD3 /* DBCamera */,
 				9AB597AA189BAF9A001BCAD3 /* Supporting Files */,
@@ -511,6 +529,7 @@
 				655AA2CE195602340017C143 /* Nashville.acv in Resources */,
 				9AB597AE189BAF9A001BCAD3 /* InfoPlist.strings in Resources */,
 				655AA2CB195602340017C143 /* amaro.acv in Resources */,
+				7DA3A4D919ED1269006AB015 /* me.mp4 in Resources */,
 				655AA2CD195602340017C143 /* mayfair.acv in Resources */,
 				655AA2CC195602340017C143 /* Hudson.acv in Resources */,
 				655AA2CF195602340017C143 /* Valencia.acv in Resources */,
@@ -555,7 +574,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-DBCamera-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -590,6 +609,7 @@
 				6594EC041955D94E00E22EBD /* DBCameraFiltersView.m in Sources */,
 				9A1F4A82191C20CB0084C305 /* DBCameraContainerViewController.m in Sources */,
 				9A71D2ED1958402A00224B82 /* DBCameraFilterCell.m in Sources */,
+				7DA3A4D719ECF96F006AB015 /* DBCameraVideoSegueViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,18 +753,18 @@
 		};
 		9AB597CD189BAF9A001BCAD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF04884E51D24925BF79CD2E /* Pods-DBCamera.xcconfig */;
+			baseConfigurationReference = 949CBF1C771BF7785A762159 /* Pods-DBCamera.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 宪华 zeng (GZ6E8YQ54Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 宪华 zeng (GZ6E8YQ54Z)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "E5FA67B9-CB93-4572-BDA3-B7AFABED44CD";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -752,7 +772,7 @@
 		};
 		9AB597CE189BAF9A001BCAD3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF04884E51D24925BF79CD2E /* Pods-DBCamera.xcconfig */;
+			baseConfigurationReference = 156CF6154F58F51D3369CF26 /* Pods-DBCamera.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -763,7 +783,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "E5FA67B9-CB93-4572-BDA3-B7AFABED44CD";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
