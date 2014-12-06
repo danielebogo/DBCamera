@@ -15,10 +15,12 @@
 
 @implementation CustomCamera
 @synthesize closeButton = _closeButton;
+@synthesize triggerButton = _triggerButton;
 
 - (void) buildInterface
 {
     [self addSubview:self.closeButton];
+    [self addSubview:self.triggerButton];
     
     [self.previewLayer addSublayer:self.focusBox];
     [self.previewLayer addSublayer:self.exposeBox];
@@ -39,10 +41,31 @@
     return _closeButton;
 }
 
+- (UIButton *) triggerButton
+{
+    if ( !_triggerButton ) {
+        _triggerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_triggerButton setBackgroundColor:self.tintColor];
+        [_triggerButton setImage:[UIImage imageNamed:@"trigger"] forState:UIControlStateNormal];
+        [_triggerButton setFrame:(CGRect){ 0, 0, 66, 66 }];
+        [_triggerButton.layer setCornerRadius:33.0f];
+        [_triggerButton setCenter:(CGPoint){ CGRectGetMidX(self.bounds), CGRectGetHeight(self.bounds) - 100 }];
+        [_triggerButton addTarget:self action:@selector(triggerAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _triggerButton;
+}
+
 - (void) close
 {
     if ( [self.delegate respondsToSelector:@selector(closeCamera)] )
         [self.delegate closeCamera];
+}
+
+- (void) triggerAction:(UIButton *)button
+{
+    if ( [self.delegate respondsToSelector:@selector(cameraViewStartRecording)] )
+        [self.delegate cameraViewStartRecording];
 }
 
 #pragma mark - Focus / Expose Box

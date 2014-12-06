@@ -55,6 +55,27 @@ static void releaseAssetCallback(void *info) {
     if (!imageRef) {
         return nil;
     }
+    
+//    NSString *adjustmentXMP = [rep.metadata objectForKey:@"AdjustmentXMP"];
+//    NSData *adjustmentXMPData = [adjustmentXMP dataUsingEncoding:NSUTF8StringEncoding];
+//    NSError *__autoreleasing error = nil;
+//    CGRect extend = CGRectZero;
+//    extend.size = (CGSize){ CGImageGetWidth(imageRef), CGImageGetHeight(imageRef) };
+//    NSArray *filters = [CIFilter filterArrayFromSerializedXMP:adjustmentXMPData inputImageExtent:extend error:&error];
+//    if (filters)
+//    {
+//        CIImage *image = [CIImage imageWithCGImage:imageRef];
+//        CIContext *context = [CIContext contextWithOptions:nil];
+//        for (CIFilter *filter in filters)
+//        {
+//            [filter setValue:image forKey:kCIInputImageKey];
+//            image = [filter outputImage];
+//        }
+//        
+//        imageRef = [context createCGImage:image fromRect:image.extent];
+//    }
+    
+    
     UIImage *toReturn = [UIImage imageWithCGImage:imageRef];
     CFRelease(imageRef);
     return toReturn;
