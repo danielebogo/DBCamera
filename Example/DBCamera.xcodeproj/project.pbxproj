@@ -67,6 +67,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1809A13D1A3F79560089855F /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/DBCamera.strings"; sourceTree = "<group>"; };
+		1809A13E1A3F79560089855F /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		1809A13F1A3F79560089855F /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4BE3F8BFBAFD401181A3E55F /* libPods-DBCamera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DBCamera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD22A93BC5AAC7ACFAE4C92 /* Pods-DBCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.debug.xcconfig"; sourceTree = "<group>"; };
 		653E218419474DA2001433A5 /* UIViewController+UIViewController_FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIViewController_FullScreen.h"; sourceTree = "<group>"; };
@@ -500,6 +503,7 @@
 				es,
 				pt,
 				tr,
+				"sv-SE",
 			);
 			mainGroup = 9AB59797189BAF9A001BCAD3;
 			productRefGroup = 9AB597A1189BAF9A001BCAD3 /* Products */;
@@ -633,6 +637,7 @@
 				9A50C7B418AA435500CD2DF3 /* es */,
 				9A0FAE53193E840D008D5FAD /* pt */,
 				9ABDB6E5195391A500A1539D /* tr */,
+				1809A13D1A3F79560089855F /* sv-SE */,
 			);
 			name = DBCamera.strings;
 			path = ../../DBCamera/Localizations;
@@ -646,6 +651,7 @@
 				9A50C7AC18AA42C300CD2DF3 /* es */,
 				9A0FAE54193E840D008D5FAD /* pt */,
 				9ABDB6E6195391A500A1539D /* tr */,
+				1809A13E1A3F79560089855F /* sv-SE */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -658,6 +664,7 @@
 				9A50C7AD18AA42C300CD2DF3 /* es */,
 				9A0FAE55193E840D008D5FAD /* pt */,
 				9ABDB6E7195391A500A1539D /* tr */,
+				1809A13F1A3F79560089855F /* sv-SE */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
