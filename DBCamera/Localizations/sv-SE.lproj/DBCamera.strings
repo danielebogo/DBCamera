@@ -1,0 +1,21 @@
+/* 
+  DBCamera.strings
+  DBCamera
+
+  Created by iBo on 11/02/14.
+  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
+*/
+
+"button.use" = "Använd foto";
+"button.retake" = "Ta om";
+
+"general.error.title" = "Obs";
+"general.button.cancel" = "Avbryt";
+
+"pickerimage.nopolicy" = "Var vänlig slå på rättigheter för att kunna använda fotobibliotek. Kontrollera dina inställningar i Inställningar > Integritetsskydd > Bilder";
+"pickerimage.nophoto" = "Det finns inga bilder i ditt bibliotek";
+
+"pagecontrol.text" = "%i av %i";
+
+"cropmode.title" = "Bildförhållande";
+"cropmode.square" = "Kvadrat";
