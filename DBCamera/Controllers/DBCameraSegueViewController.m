@@ -13,6 +13,7 @@
 #import "DBCameraFilterCell.h"
 #import "DBCameraLoadingView.h"
 #import "UIImage+TintColor.h"
+#import "GrayscaleContrastFilter.h"
 
 #import <GPUImage/GPUImage.h>
 
@@ -31,6 +32,9 @@ static const CGSize kFilterCellSize = { 75, 90 };
     DBCameraCropView *_cropView;
     
     NSArray *_cropArray, *_filtersList;
+    GPUImageVignetteFilter *vignetteFilter;
+    GPUImageFilterGroup *vignetteFilterGroup;
+    GPUImageToneCurveFilter *vignetteToneCurveFilter;
     NSDictionary *_filterMapping;
     CGRect _pFrame, _lFrame;
 }
@@ -52,12 +56,15 @@ static const CGSize kFilterCellSize = { 75, 90 };
     self = [super init];
     if (self) {
         // Custom initialization
+        
+        [self initVignetteFilter];
+        
         _cropArray = @[ @320, @213, @240, @192, @180 ];
-        _filtersList = @[ @"normal", @"1977", @"amaro", @"grey", @"hudson", @"mayfair", @"nashville", @"valencia" ];
+        _filtersList = @[ @"normal", @"1977", @"amaro", @"grey", @"hudson", @"mayfair", @"nashville", @"valencia", @"contrastgrey", @"vignette" ];
         _filterMapping = @{ @0:[[GPUImageFilter alloc] init], @1:[[GPUImageToneCurveFilter alloc] initWithACV:@"1977"],
                             @2:[[GPUImageToneCurveFilter alloc] initWithACV:@"amaro"], @3:[[GPUImageGrayscaleFilter alloc] init],
                             @4:[[GPUImageToneCurveFilter alloc] initWithACV:@"Hudson"], @5:[[GPUImageToneCurveFilter alloc] initWithACV:@"mayfair"],
-                            @6:[[GPUImageToneCurveFilter alloc] initWithACV:@"Nashville"], @7:[[GPUImageToneCurveFilter alloc] initWithACV:@"Valencia"] };
+                            @6:[[GPUImageToneCurveFilter alloc] initWithACV:@"Nashville"], @7:[[GPUImageToneCurveFilter alloc] initWithACV:@"Valencia"], @8: [[GrayscaleContrastFilter alloc] init], @9:vignetteFilterGroup};
         
         _selectedFilterIndex = 0;
         
@@ -69,6 +76,19 @@ static const CGSize kFilterCellSize = { 75, 90 };
         [self createInterface];
     }
     return self;
+}
+
+- (void)initVignetteFilter {
+    vignetteFilter = [[GPUImageVignetteFilter alloc] init];
+    vignetteToneCurveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Vignette"];
+    vignetteFilterGroup = [[GPUImageFilterGroup alloc] init];
+    
+    [vignetteFilterGroup addFilter:vignetteToneCurveFilter];
+    [vignetteFilterGroup addFilter:vignetteFilter];
+    
+    [vignetteToneCurveFilter addTarget:vignetteFilter];
+    [vignetteFilterGroup setInitialFilters:[NSArray arrayWithObject:vignetteToneCurveFilter]];
+    [vignetteFilterGroup setTerminalFilter:vignetteFilter];
 }
 
 - (void)viewDidLoad
