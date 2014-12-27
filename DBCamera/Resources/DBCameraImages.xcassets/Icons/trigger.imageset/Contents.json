@@ -3,12 +3,16 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename":"trigger.png"
+      "filename" : "trigger.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename":"trigger@2x.png"
+      "filename" : "trigger@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
