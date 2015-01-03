@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		189DC46C1A4DD02A005F686B /* GrayscaleContrastFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 189DC46B1A4DD02A005F686B /* GrayscaleContrastFilter.m */; };
+		189DC46E1A4DD1FD005F686B /* Vignette.acv in Resources */ = {isa = PBXBuildFile; fileRef = 189DC46D1A4DD1FD005F686B /* Vignette.acv */; };
 		653E218619474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 653E218519474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m */; };
 		6548431C1958236B0008F803 /* DBCameraLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6548431B1958236B0008F803 /* DBCameraLoadingView.m */; };
 		655AA2B01955FA350017C143 /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 655AA2AF1955FA350017C143 /* CustomCamera.m */; };
@@ -70,6 +72,9 @@
 		1809A13D1A3F79560089855F /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/DBCamera.strings"; sourceTree = "<group>"; };
 		1809A13E1A3F79560089855F /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1809A13F1A3F79560089855F /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		189DC46A1A4DD02A005F686B /* GrayscaleContrastFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrayscaleContrastFilter.h; sourceTree = "<group>"; };
+		189DC46B1A4DD02A005F686B /* GrayscaleContrastFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrayscaleContrastFilter.m; sourceTree = "<group>"; };
+		189DC46D1A4DD1FD005F686B /* Vignette.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Vignette.acv; sourceTree = "<group>"; };
 		4BE3F8BFBAFD401181A3E55F /* libPods-DBCamera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DBCamera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD22A93BC5AAC7ACFAE4C92 /* Pods-DBCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.debug.xcconfig"; sourceTree = "<group>"; };
 		653E218419474DA2001433A5 /* UIViewController+UIViewController_FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIViewController_FullScreen.h"; sourceTree = "<group>"; };
@@ -203,6 +208,8 @@
 		655AA2C31955FFC40017C143 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				189DC46A1A4DD02A005F686B /* GrayscaleContrastFilter.h */,
+				189DC46B1A4DD02A005F686B /* GrayscaleContrastFilter.m */,
 				655AA2D319564F250017C143 /* Curves */,
 			);
 			name = Filters;
@@ -212,6 +219,7 @@
 		655AA2D319564F250017C143 /* Curves */ = {
 			isa = PBXGroup;
 			children = (
+				189DC46D1A4DD1FD005F686B /* Vignette.acv */,
 				655AA2C41955FFC40017C143 /* 1977.acv */,
 				655AA2C6195602340017C143 /* amaro.acv */,
 				655AA2C7195602340017C143 /* Hudson.acv */,
@@ -522,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				655AA2C51955FFC40017C143 /* 1977.acv in Resources */,
+				189DC46E1A4DD1FD005F686B /* Vignette.acv in Resources */,
 				655AA2D61956DBD90017C143 /* AppResources.xcassets in Resources */,
 				9A50C7B018AA432200CD2DF3 /* DBCamera.strings in Resources */,
 				655AA2C21955FB040017C143 /* DBCameraImages.xcassets in Resources */,
@@ -583,6 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A1F4A87191C20CB0084C305 /* DBLibraryManager.m in Sources */,
+				189DC46C1A4DD02A005F686B /* GrayscaleContrastFilter.m in Sources */,
 				9A1F4A8B191C20CB0084C305 /* DBCameraGridView.m in Sources */,
 				9A1F4A83191C20CB0084C305 /* DBCameraLibraryViewController.m in Sources */,
 				9A1F4A88191C20CB0084C305 /* DBCollectionViewCell.m in Sources */,

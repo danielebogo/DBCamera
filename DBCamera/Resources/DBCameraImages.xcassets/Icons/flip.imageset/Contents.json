@@ -3,12 +3,16 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename":"flip.png"
+      "filename" : "flip.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename":"flip@2x.png"
+      "filename" : "flip@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
