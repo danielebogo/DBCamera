@@ -25,7 +25,7 @@
 
 - (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
 {
-    return [[DBCameraContainerViewController alloc] initWithDelegate:delegate cameraSettingsBlock:nil];
+    return [self initWithDelegate:delegate cameraSettingsBlock:nil];
 }
 
 - (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraSettingsBlock:(CameraSettingsBlock)block

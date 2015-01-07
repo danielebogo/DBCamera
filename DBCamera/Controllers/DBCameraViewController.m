@@ -106,6 +106,11 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
     id camera =_customCamera ?: _cameraView;
     [camera insertSubview:self.cameraGridView atIndex:1];
+    
+    if ( [camera respondsToSelector:@selector(cameraButton)] ) {
+        [(DBCameraView *)camera cameraButton].enabled = [self.cameraManager hasMultipleCameras];
+        [self.cameraManager hasMultipleCameras];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
