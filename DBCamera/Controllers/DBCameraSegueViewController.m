@@ -61,10 +61,16 @@ static const CGSize kFilterCellSize = { 75, 90 };
         
         _cropArray = @[ @320, @213, @240, @192, @180 ];
         _filtersList = @[ @"normal", @"1977", @"amaro", @"grey", @"hudson", @"mayfair", @"nashville", @"valencia", @"contrastgrey", @"vignette" ];
-        _filterMapping = @{ @0:[[GPUImageFilter alloc] init], @1:[[GPUImageToneCurveFilter alloc] initWithACV:@"1977"],
-                            @2:[[GPUImageToneCurveFilter alloc] initWithACV:@"amaro"], @3:[[GPUImageGrayscaleFilter alloc] init],
-                            @4:[[GPUImageToneCurveFilter alloc] initWithACV:@"Hudson"], @5:[[GPUImageToneCurveFilter alloc] initWithACV:@"mayfair"],
-                            @6:[[GPUImageToneCurveFilter alloc] initWithACV:@"Nashville"], @7:[[GPUImageToneCurveFilter alloc] initWithACV:@"Valencia"], @8: [[GrayscaleContrastFilter alloc] init], @9:vignetteFilterGroup};
+        _filterMapping = @{ @0:[[GPUImageFilter alloc] init],
+                            @1:[[GPUImageToneCurveFilter alloc] initWithACV:@"1977"],
+                            @2:[[GPUImageToneCurveFilter alloc] initWithACV:@"amaro"],
+                            @3:[[GPUImageGrayscaleFilter alloc] init],
+                            @4:[[GPUImageToneCurveFilter alloc] initWithACV:@"Hudson"],
+                            @5:[[GPUImageToneCurveFilter alloc] initWithACV:@"mayfair"],
+                            @6:[[GPUImageToneCurveFilter alloc] initWithACV:@"Nashville"],
+                            @7:[[GPUImageToneCurveFilter alloc] initWithACV:@"Valencia"],
+                            @8:[[GrayscaleContrastFilter alloc] init],
+                            @9:vignetteFilterGroup};
         
         _selectedFilterIndex = 0;
         
@@ -331,7 +337,7 @@ static const CGSize kFilterCellSize = { 75, 90 };
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DBCameraFilterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kFilterCellIdentifier forIndexPath:indexPath];
-    [cell.imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Filter", _filtersList[indexPath.row]]]];
+    [cell.imageView setImage:[_filterMapping[@(indexPath.row)] imageByFilteringImage:self.previewImage]];
     [cell.label setText:[_filtersList[indexPath.row] uppercaseString]];
     [cell.imageView.layer setBorderWidth:(self.selectedFilterIndex.row == indexPath.row) ? 1.0 : 0.0];
     
