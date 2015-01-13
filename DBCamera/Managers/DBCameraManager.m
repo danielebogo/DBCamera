@@ -26,16 +26,21 @@
 
 #pragma Class methods
 
-+ (AVCaptureConnection *)connectionWithMediaType:(NSString *)mediaType fromConnections:(NSArray *)connections
-{
-	for ( AVCaptureConnection *connection in connections ) {
++ (AVCaptureConnection *)connectionWithMediaType:(NSString *)mediaType fromConnections:(NSArray *)connections {
+	AVCaptureConnection *videoConnection = nil;
+    for ( AVCaptureConnection *connection in connections ) {
 		for ( AVCaptureInputPort *port in [connection inputPorts] ) {
-			if ( [port.mediaType isEqual:mediaType] )
-				return connection;
+            if ( [port.mediaType isEqual:mediaType] ) {
+				videoConnection = connection;
+                break;
+            }
 		}
+        if (videoConnection) {
+            break;
+        }
 	}
     
-	return nil;
+	return videoConnection;
 }
 
 #pragma mark - Life cycle
