@@ -160,6 +160,9 @@
 		9AB597C4189BAF9A001BCAD3 /* DBCameraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DBCameraTests-Info.plist"; sourceTree = "<group>"; };
 		9AB597C6189BAF9A001BCAD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBCameraTests.m; sourceTree = "<group>"; };
+		9ABA1DC71A6D09BF000DA480 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DBCamera.strings; sourceTree = "<group>"; };
+		9ABA1DC81A6D09BF000DA480 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9ABA1DC91A6D09BF000DA480 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9ABB69A019587983007E2B9E /* UIImage+Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Asset.h"; sourceTree = "<group>"; };
 		9ABB69A119587983007E2B9E /* UIImage+Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Asset.m"; sourceTree = "<group>"; };
 		9ABDB6E5195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/DBCamera.strings; sourceTree = "<group>"; };
@@ -512,6 +515,7 @@
 				pt,
 				tr,
 				"sv-SE",
+				ru,
 			);
 			mainGroup = 9AB59797189BAF9A001BCAD3;
 			productRefGroup = 9AB597A1189BAF9A001BCAD3 /* Products */;
@@ -648,6 +652,7 @@
 				9A0FAE53193E840D008D5FAD /* pt */,
 				9ABDB6E5195391A500A1539D /* tr */,
 				1809A13D1A3F79560089855F /* sv-SE */,
+				9ABA1DC71A6D09BF000DA480 /* ru */,
 			);
 			name = DBCamera.strings;
 			path = ../../DBCamera/Localizations;
@@ -662,6 +667,7 @@
 				9A0FAE54193E840D008D5FAD /* pt */,
 				9ABDB6E6195391A500A1539D /* tr */,
 				1809A13E1A3F79560089855F /* sv-SE */,
+				9ABA1DC81A6D09BF000DA480 /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 				9A0FAE55193E840D008D5FAD /* pt */,
 				9ABDB6E7195391A500A1539D /* tr */,
 				1809A13F1A3F79560089855F /* sv-SE */,
+				9ABA1DC91A6D09BF000DA480 /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
