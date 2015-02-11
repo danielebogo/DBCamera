@@ -202,6 +202,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     if ( !_cameraGridView ) {
         DBCameraView *camera =_customCamera ?: _cameraView;
         _cameraGridView = [[DBCameraGridView alloc] initWithFrame:camera.previewLayer.frame];
+        [_cameraGridView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
         [_cameraGridView setNumberOfColumns:2];
         [_cameraGridView setNumberOfRows:2];
         [_cameraGridView setAlpha:0];
@@ -231,6 +232,42 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
          orientation != UIDeviceOrientationFaceUp ||
          orientation != UIDeviceOrientationFaceDown ) {
         _deviceOrientation = orientation;
+    }
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    _cameraView.frame = CGRectMake(0, 0, size.width, size.height);
+    _cameraView.previewLayer.frame = CGRectMake(0, 0, size.width, size.height);
+}
+
++ (AVCaptureVideoOrientation)interfaceOrientationToVideoOrientation:(UIInterfaceOrientation)orientation {
+    AVCaptureVideoOrientation videoOrientation = AVCaptureVideoOrientationPortrait;
+    switch (orientation) {
+        case UIInterfaceOrientationPortraitUpsideDown:
+            videoOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
+            break;
+        case UIInterfaceOrientationLandscapeLeft:
+            videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+            break;
+        case UIInterfaceOrientationLandscapeRight:
+            videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+            break;
+        default:
+            break;
+    }
+    return videoOrientation;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    AVCaptureVideoOrientation videoOrientation = [[self class] interfaceOrientationToVideoOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
+    if (_cameraView.previewLayer.connection.supportsVideoOrientation
+        && _cameraView.previewLayer.connection.videoOrientation != videoOrientation) {
+        _cameraView.previewLayer.connection.videoOrientation = videoOrientation;
     }
 }
 
