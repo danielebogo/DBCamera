@@ -238,8 +238,9 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    _cameraView.frame = CGRectMake(0, 0, size.width, size.height);
-    _cameraView.previewLayer.frame = CGRectMake(0, 0, size.width, size.height);
+    DBCameraView *camera = _customCamera ?: _cameraView;
+    camera.frame = CGRectMake(0, 0, size.width, size.height);
+    camera.previewLayer.frame = CGRectMake(0, 0, size.width, size.height);
 }
 
 + (AVCaptureVideoOrientation)interfaceOrientationToVideoOrientation:(UIInterfaceOrientation)orientation {
@@ -265,9 +266,10 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     [super viewDidLayoutSubviews];
     
     AVCaptureVideoOrientation videoOrientation = [[self class] interfaceOrientationToVideoOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
-    if (_cameraView.previewLayer.connection.supportsVideoOrientation
-        && _cameraView.previewLayer.connection.videoOrientation != videoOrientation) {
-        _cameraView.previewLayer.connection.videoOrientation = videoOrientation;
+    DBCameraView *camera = _customCamera ?: _cameraView;
+    if (camera.previewLayer.connection.supportsVideoOrientation
+        && camera.previewLayer.connection.videoOrientation != videoOrientation) {
+        camera.previewLayer.connection.videoOrientation = videoOrientation;
     }
 }
 
