@@ -337,7 +337,10 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
             ALAssetRepresentation *defaultRep = [asset defaultRepresentation];
             NSMutableDictionary *metadata = [NSMutableDictionary dictionaryWithDictionary:[defaultRep metadata]];
             metadata[@"DBCameraSource"] = @"Library";
-            
+            if ([defaultRep url]) {
+                metadata[@"DBCameraAssetURL"] = [[defaultRep url] absoluteString];
+            }
+
             UIImage *image = [UIImage imageForAsset:asset maxPixelSize:_libraryMaxImageSize];
 //            UIImage *image = [self test:asset];
             

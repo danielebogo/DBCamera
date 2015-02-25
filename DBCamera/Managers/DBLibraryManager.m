@@ -80,7 +80,7 @@
     __block NSMutableArray *groups = _assetGroups;
     __block BOOL blockGetAllAssets = _getAllAssets;
     __weak typeof(self) weakSelf = self;
-    __weak GroupsCompletionBlock block = _groupsCompletionBlock;
+    __block GroupsCompletionBlock block = _groupsCompletionBlock;
     
     ALAssetsLibraryGroupsEnumerationResultsBlock groupsEnumerator = ^(ALAssetsGroup *group, BOOL *stop){
         if ( group ) {
