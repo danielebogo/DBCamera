@@ -146,7 +146,7 @@
              UIImage *image = [[UIImage alloc] initWithData:imageData];
              
              CFDictionaryRef metadata = CMCopyDictionaryOfAttachments(NULL, imageDataSampleBuffer, kCMAttachmentMode_ShouldPropagate);
-             NSDictionary *meta = (__bridge NSDictionary *)(metadata);
+             NSDictionary *meta = [[NSDictionary alloc] initWithDictionary:(__bridge NSDictionary *)(metadata)];
              CFRelease(metadata);
              
              if ( [delegateBlock respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] )
