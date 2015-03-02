@@ -148,6 +148,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, CGFloat oval
     CGRect rect = CGRectMake(0, 0, w, h);
     
     if (context == nil) {
+        CGColorSpaceRelease(colorSpace);//leak for unreleased colorSpace
         return nil;
     }
     
