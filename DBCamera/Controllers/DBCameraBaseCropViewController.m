@@ -318,9 +318,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         CGAffineTransform transform =  CGAffineTransformTranslate(self.imageView.transform, deltaX, deltaY);
         transform = CGAffineTransformScale(transform, recognizer.scale, recognizer.scale);
         transform = CGAffineTransformTranslate(transform, -deltaX, -deltaY);
-        self.scale *= recognizer.scale;
-        self.imageView.transform = transform;
-        
+        self.imageView.transform = CGAffineTransformScale(transform, recognizer.scale, recognizer.scale);
         recognizer.scale = 1;
         
         [self checkBoundsWithTransform:transform];
