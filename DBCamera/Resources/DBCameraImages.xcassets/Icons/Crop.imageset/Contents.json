@@ -12,7 +12,8 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "crop@3x.png"
     }
   ],
   "info" : {

@@ -279,7 +279,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 6.0
 
 ###Version
-2.3.13
+2.3.14
 
 ###Created By
 
