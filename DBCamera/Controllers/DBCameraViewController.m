@@ -386,6 +386,25 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
     _processingPhoto = YES;
 
+    if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_7_0) {
+        AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+
+        if (status == AVAuthorizationStatusDenied || status == AVAuthorizationStatusRestricted) {
+            [[[UIAlertView alloc] initWithTitle:DBCameraLocalizedStrings(@"general.error.title")
+                                        message:DBCameraLocalizedStrings(@"cameraimage.nopolicy")
+                                       delegate:nil
+                              cancelButtonTitle:@"Ok"
+                              otherButtonTitles:nil, nil] show];
+
+            return;
+        }
+        else if (status == AVAuthorizationStatusNotDetermined) {
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:nil];
+
+            return;
+        }
+    }
+
     [self.cameraManager captureImageForDeviceOrientation:_deviceOrientation];
 }
 

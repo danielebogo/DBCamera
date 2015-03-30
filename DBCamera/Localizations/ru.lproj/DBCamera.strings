@@ -19,3 +19,5 @@
 
 "cropmode.title" = "Соотношение сторон";
 "cropmode.square" = "Квадрат";
+"cameraimage.nopolicy" = "cameraimage.nopolicy";
+"cameraimage.noconnection" = "cameraimage.noconnection";

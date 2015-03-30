@@ -19,3 +19,5 @@
 
 "cropmode.title" = "Kırpma Oranı";
 "cropmode.square" = "Kare";
+"cameraimage.nopolicy" = "cameraimage.nopolicy";
+"cameraimage.noconnection" = "cameraimage.noconnection";

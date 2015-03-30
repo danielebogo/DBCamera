@@ -20,3 +20,5 @@
 
 "cropmode.title" = "Aspect Ratio";
 "cropmode.square" = "Quadrado";
+"cameraimage.nopolicy" = "cameraimage.nopolicy";
+"cameraimage.noconnection" = "cameraimage.noconnection";

@@ -12,6 +12,9 @@
 "general.error.title" = "Attention";
 "general.button.cancel" = "Cancel";
 
+"cameraimage.nopolicy" = "Please enable the permissions in order to use your Camera. Check your permissions in Settings > Privacy > Camera";
+"cameraimage.noconnection" = "Could not connect to camera. Please check your permissions in Settings > Privacy > Camera";
+
 "pickerimage.nopolicy" = "Please enable the permissions in order to use your Photo Library. Check your permissions in Settings > Privacy > Photos";
 "pickerimage.nophoto" = "There are no images in your Library";
 
