@@ -19,3 +19,5 @@
 
 "cropmode.title" = "Bildförhållande";
 "cropmode.square" = "Kvadrat";
+"cameraimage.nopolicy" = "cameraimage.nopolicy";
+"cameraimage.noconnection" = "cameraimage.noconnection";
