@@ -19,14 +19,11 @@
 #define MAX_PINCH_SCALE_NUM   3.f
 #define MIN_PINCH_SCALE_NUM   1.f
 
-@interface DBCameraView ()
+@implementation DBCameraView{
+    CGFloat preScaleNum;
+    CGFloat scaleNum;
+}
 
-// pinch
-@property (nonatomic, assign) CGFloat preScaleNum;
-@property (nonatomic, assign) CGFloat scaleNum;
-@end
-
-@implementation DBCameraView
 @synthesize tintColor = _tintColor;
 @synthesize selectedTintColor = _selectedTintColor;
 
@@ -418,15 +415,15 @@
     }
 
     if ( allTouchesAreOnThePreviewLayer ) {
-        _scaleNum = _preScaleNum * pinchGestureRecognizer.scale;
+        scaleNum = preScaleNum * pinchGestureRecognizer.scale;
 
-        if ( _scaleNum < MIN_PINCH_SCALE_NUM )
-            _scaleNum = MIN_PINCH_SCALE_NUM;
-        else if ( _scaleNum > MAX_PINCH_SCALE_NUM )
-            _scaleNum = MAX_PINCH_SCALE_NUM;
+        if ( scaleNum < MIN_PINCH_SCALE_NUM )
+            scaleNum = MIN_PINCH_SCALE_NUM;
+        else if ( scaleNum > MAX_PINCH_SCALE_NUM )
+            scaleNum = MAX_PINCH_SCALE_NUM;
 
         if ( [self.delegate respondsToSelector:@selector(cameraCaptureScale:)] )
-            [self.delegate cameraCaptureScale:_scaleNum];
+            [self.delegate cameraCaptureScale:scaleNum];
 
         [self doPinch];
     }
@@ -434,32 +431,32 @@
     if ( [pinchGestureRecognizer state] == UIGestureRecognizerStateEnded ||
         [pinchGestureRecognizer state] == UIGestureRecognizerStateCancelled ||
         [pinchGestureRecognizer state] == UIGestureRecognizerStateFailed) {
-        _preScaleNum = _scaleNum;
+        preScaleNum = scaleNum;
     }
 }
 
 - (void) pinchCameraViewWithScalNum:(CGFloat)scale
 {
-    _scaleNum = scale;
-    if ( _scaleNum < MIN_PINCH_SCALE_NUM )
-        _scaleNum = MIN_PINCH_SCALE_NUM;
-    else if (_scaleNum > MAX_PINCH_SCALE_NUM)
-        _scaleNum = MAX_PINCH_SCALE_NUM;
+    scaleNum = scale;
+    if ( scaleNum < MIN_PINCH_SCALE_NUM )
+        scaleNum = MIN_PINCH_SCALE_NUM;
+    else if (scaleNum > MAX_PINCH_SCALE_NUM)
+        scaleNum = MAX_PINCH_SCALE_NUM;
 
     [self doPinch];
-    _preScaleNum = scale;
+    preScaleNum = scale;
 }
 
 - (void) doPinch
 {
     if ( [self.delegate respondsToSelector:@selector(cameraMaxScale)] ) {
         CGFloat maxScale = [self.delegate cameraMaxScale];
-        if ( _scaleNum > maxScale )
-            _scaleNum = maxScale;
+        if ( scaleNum > maxScale )
+            scaleNum = maxScale;
 
         [CATransaction begin];
         [CATransaction setAnimationDuration:.025];
-        [_previewLayer setAffineTransform:CGAffineTransformMakeScale(_scaleNum, _scaleNum)];
+        [_previewLayer setAffineTransform:CGAffineTransformMakeScale(scaleNum, scaleNum)];
         [CATransaction commit];
     }
 }
