@@ -112,12 +112,6 @@ typedef void (^TableRowBlock)();
 #endif
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Camera Actions
 
 - (void) openCamera
