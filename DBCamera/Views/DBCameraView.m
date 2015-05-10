@@ -19,10 +19,7 @@
 #define MAX_PINCH_SCALE_NUM   3.f
 #define MIN_PINCH_SCALE_NUM   1.f
 
-@interface DBCameraView () <UIGestureRecognizerDelegate>
-@property (nonatomic, strong) CALayer *focusBox, *exposeBox;
-@property (nonatomic, strong) UIView *topContainerBar;
-@property (nonatomic, strong) UIView *bottomContainerBar;
+@interface DBCameraView ()
 
 // pinch
 @property (nonatomic, assign) CGFloat preScaleNum;
@@ -274,12 +271,12 @@
 
 - (void) drawFocusBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove
 {
-    [self draw:_focusBox atPointOfInterest:point andRemove:remove];
+    [self draw:self.focusBox atPointOfInterest:point andRemove:remove];
 }
 
 - (void) drawExposeBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove
 {
-    [self draw:_exposeBox atPointOfInterest:point andRemove:remove];
+    [self draw:self.exposeBox atPointOfInterest:point andRemove:remove];
 }
 
 #pragma mark - Gestures

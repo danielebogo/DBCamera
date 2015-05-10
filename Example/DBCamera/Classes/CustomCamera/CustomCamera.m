@@ -8,14 +8,14 @@
 
 #import "CustomCamera.h"
 
-@interface CustomCamera ()
-@property (nonatomic, strong) UIButton *closeButton;
-@property (nonatomic, strong) CALayer *focusBox, *exposeBox;
-@end
-
 @implementation CustomCamera
-@synthesize closeButton = _closeButton;
-@synthesize triggerButton = _triggerButton;
+{
+    UIButton *closeButton;
+    UIButton *triggerButton;
+    
+    CALayer *focusBox;
+    CALayer *exposeBox;
+}
 
 - (void) buildInterface
 {
@@ -30,30 +30,30 @@
 
 - (UIButton *) closeButton
 {
-    if ( !_closeButton ) {
-        _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_closeButton setBackgroundColor:[UIColor redColor]];
-        [_closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
-        [_closeButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 15, 17.5f, 30, 30 }];
-        [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    if ( !closeButton ) {
+        closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [closeButton setBackgroundColor:[UIColor redColor]];
+        [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+        [closeButton setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 15, 17.5f, 30, 30 }];
+        [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    return _closeButton;
+    return closeButton;
 }
 
 - (UIButton *) triggerButton
 {
-    if ( !_triggerButton ) {
-        _triggerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_triggerButton setBackgroundColor:self.tintColor];
-        [_triggerButton setImage:[UIImage imageNamed:@"trigger"] forState:UIControlStateNormal];
-        [_triggerButton setFrame:(CGRect){ 0, 0, 66, 66 }];
-        [_triggerButton.layer setCornerRadius:33.0f];
-        [_triggerButton setCenter:(CGPoint){ CGRectGetMidX(self.bounds), CGRectGetHeight(self.bounds) - 100 }];
-        [_triggerButton addTarget:self action:@selector(triggerAction:) forControlEvents:UIControlEventTouchUpInside];
+    if ( !triggerButton ) {
+        triggerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [triggerButton setBackgroundColor:self.tintColor];
+        [triggerButton setImage:[UIImage imageNamed:@"trigger"] forState:UIControlStateNormal];
+        [triggerButton setFrame:(CGRect){ 0, 0, 66, 66 }];
+        [triggerButton.layer setCornerRadius:33.0f];
+        [triggerButton setCenter:(CGPoint){ CGRectGetMidX(self.bounds), CGRectGetHeight(self.bounds) - 100 }];
+        [triggerButton addTarget:self action:@selector(triggerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    return _triggerButton;
+    return triggerButton;
 }
 
 - (void) close
@@ -72,40 +72,30 @@
 
 - (CALayer *) focusBox
 {
-    if ( !_focusBox ) {
-        _focusBox = [[CALayer alloc] init];
-        [_focusBox setCornerRadius:45.0f];
-        [_focusBox setBounds:CGRectMake(0.0f, 0.0f, 90, 90)];
-        [_focusBox setBorderWidth:5.f];
-        [_focusBox setBorderColor:[[UIColor whiteColor] CGColor]];
-        [_focusBox setOpacity:0];
+    if ( !focusBox ) {
+        focusBox = [[CALayer alloc] init];
+        [focusBox setCornerRadius:45.0f];
+        [focusBox setBounds:CGRectMake(0.0f, 0.0f, 90, 90)];
+        [focusBox setBorderWidth:5.f];
+        [focusBox setBorderColor:[[UIColor whiteColor] CGColor]];
+        [focusBox setOpacity:0];
     }
     
-    return _focusBox;
+    return focusBox;
 }
 
 - (CALayer *) exposeBox
 {
-    if ( !_exposeBox ) {
-        _exposeBox = [[CALayer alloc] init];
-        [_exposeBox setCornerRadius:55.0f];
-        [_exposeBox setBounds:CGRectMake(0.0f, 0.0f, 110, 110)];
-        [_exposeBox setBorderWidth:5.f];
-        [_exposeBox setBorderColor:[[UIColor redColor] CGColor]];
-        [_exposeBox setOpacity:0];
+    if ( !exposeBox ) {
+        exposeBox = [[CALayer alloc] init];
+        [exposeBox setCornerRadius:55.0f];
+        [exposeBox setBounds:CGRectMake(0.0f, 0.0f, 110, 110)];
+        [exposeBox setBorderWidth:5.f];
+        [exposeBox setBorderColor:[[UIColor redColor] CGColor]];
+        [exposeBox setOpacity:0];
     }
     
-    return _exposeBox;
-}
-
-- (void) drawFocusBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove
-{
-    [super draw:_focusBox atPointOfInterest:point andRemove:remove];
-}
-
-- (void) drawExposeBoxAtPointOfInterest:(CGPoint)point andRemove:(BOOL)remove
-{
-    [super draw:_exposeBox atPointOfInterest:point andRemove:remove];
+    return exposeBox;
 }
 
 #pragma mark - Gestures
