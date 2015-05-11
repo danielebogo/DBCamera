@@ -10,7 +10,12 @@
 
 @implementation DemoNavigationController
 
-- (BOOL) prefersStatusBarHidden
+- (void)viewDidLoad
+{
+    self.navigationBarHidden = YES;
+}
+
+- (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
