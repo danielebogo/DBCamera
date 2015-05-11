@@ -56,7 +56,7 @@
 		9AB597C7189BAF9A001BCAD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AB597C5189BAF9A001BCAD3 /* InfoPlist.strings */; };
 		9AB597C9189BAF9A001BCAD3 /* DBCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */; };
 		9ABB69A219587983007E2B9E /* UIImage+Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB69A119587983007E2B9E /* UIImage+Asset.m */; };
-		9E8E34E51AFFABC600B451B1 /* DemoNavigationControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8E34E41AFFABC600B451B1 /* DemoNavigationControllerViewController.m */; };
+		9E8E34E51AFFABC600B451B1 /* DemoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8E34E41AFFABC600B451B1 /* DemoNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,8 +169,8 @@
 		9ABDB6E5195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/DBCamera.strings; sourceTree = "<group>"; };
 		9ABDB6E6195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9ABDB6E7195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9E8E34E31AFFABC600B451B1 /* DemoNavigationControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoNavigationControllerViewController.h; path = Classes/DemoNavigationControllerViewController.h; sourceTree = "<group>"; };
-		9E8E34E41AFFABC600B451B1 /* DemoNavigationControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoNavigationControllerViewController.m; path = Classes/DemoNavigationControllerViewController.m; sourceTree = "<group>"; };
+		9E8E34E31AFFABC600B451B1 /* DemoNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoNavigationController.h; path = Classes/DemoNavigationController.h; sourceTree = "<group>"; };
+		9E8E34E41AFFABC600B451B1 /* DemoNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoNavigationController.m; path = Classes/DemoNavigationController.m; sourceTree = "<group>"; };
 		F9DFA4FE58E901A1BE1FE253 /* Pods-DBCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,8 +244,8 @@
 				655AA2AF1955FA350017C143 /* CustomCamera.m */,
 				6594EE101955F19600E22EBD /* RootViewController.h */,
 				6594EE111955F19600E22EBD /* RootViewController.m */,
-				9E8E34E31AFFABC600B451B1 /* DemoNavigationControllerViewController.h */,
-				9E8E34E41AFFABC600B451B1 /* DemoNavigationControllerViewController.m */,
+				9E8E34E31AFFABC600B451B1 /* DemoNavigationController.h */,
+				9E8E34E41AFFABC600B451B1 /* DemoNavigationController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -600,7 +600,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E8E34E51AFFABC600B451B1 /* DemoNavigationControllerViewController.m in Sources */,
+				9E8E34E51AFFABC600B451B1 /* DemoNavigationController.m in Sources */,
 				9A1F4A87191C20CB0084C305 /* DBLibraryManager.m in Sources */,
 				189DC46C1A4DD02A005F686B /* GrayscaleContrastFilter.m in Sources */,
 				9A1F4A8B191C20CB0084C305 /* DBCameraGridView.m in Sources */,

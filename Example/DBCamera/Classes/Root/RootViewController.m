@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "DemoNavigationControllerViewController.h"
+#import "DemoNavigationController.h"
 #import "DBCameraViewController.h"
 #import "DBCameraContainerViewController.h"
 #import "DBCameraLibraryViewController.h"
@@ -146,7 +146,7 @@ typedef void (^TableRowBlock)();
     DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     [cameraContainer setFullScreenMode];
     
-    DemoNavigationControllerViewController *nav = [[DemoNavigationControllerViewController alloc] initWithRootViewController:cameraContainer];
+    DemoNavigationController *nav = [[DemoNavigationController alloc] initWithRootViewController:cameraContainer];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -155,7 +155,7 @@ typedef void (^TableRowBlock)();
     CustomCamera *camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
     [camera buildInterface];
     
-    DemoNavigationControllerViewController *nav = [[DemoNavigationControllerViewController alloc] initWithRootViewController:[[DBCameraViewController alloc] initWithDelegate:self cameraView:camera]];
+    DemoNavigationController *nav = [[DemoNavigationController alloc] initWithRootViewController:[[DBCameraViewController alloc] initWithDelegate:self cameraView:camera]];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -169,7 +169,7 @@ typedef void (^TableRowBlock)();
     [container setCameraViewController:cameraController];
     [container setFullScreenMode];
     
-    DemoNavigationControllerViewController *nav = [[DemoNavigationControllerViewController alloc] initWithRootViewController:container];
+    DemoNavigationController *nav = [[DemoNavigationController alloc] initWithRootViewController:container];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -182,13 +182,13 @@ typedef void (^TableRowBlock)();
     [container setCameraViewController:cameraController];
     [container setFullScreenMode];
 
-    DemoNavigationControllerViewController *nav = [[DemoNavigationControllerViewController alloc] initWithRootViewController:container];
+    DemoNavigationController *nav = [[DemoNavigationController alloc] initWithRootViewController:container];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void) openCameraWithoutContainer
 {
-    DemoNavigationControllerViewController *nav = [[DemoNavigationControllerViewController alloc] initWithRootViewController:[DBCameraViewController initWithDelegate:self]];
+    DemoNavigationController *nav = [[DemoNavigationController alloc] initWithRootViewController:[DBCameraViewController initWithDelegate:self]];
     [self presentViewController:nav animated:YES completion:nil];
 }
 

@@ -1,5 +1,5 @@
 //
-//  DemoNavigationControllerViewController.h
+//  DemoNavigationController.h
 //  DBCamera
 //
 //  Created by Sebastian Ludwig on 10.05.15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DemoNavigationControllerViewController : UINavigationController
+@interface DemoNavigationController : UINavigationController
 
 @end

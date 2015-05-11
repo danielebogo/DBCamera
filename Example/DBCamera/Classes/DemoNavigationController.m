@@ -1,14 +1,14 @@
 //
-//  DemoNavigationControllerViewController.m
+//  DemoNavigationController.m
 //  DBCamera
 //
 //  Created by Sebastian Ludwig on 10.05.15.
 //  Copyright (c) 2015 PSSD - Daniele Bogo. All rights reserved.
 //
 
-#import "DemoNavigationControllerViewController.h"
+#import "DemoNavigationController.h"
 
-@implementation DemoNavigationControllerViewController
+@implementation DemoNavigationController
 
 - (BOOL) prefersStatusBarHidden
 {
