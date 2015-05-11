@@ -50,28 +50,12 @@
 		9AB597AE189BAF9A001BCAD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AB597AC189BAF9A001BCAD3 /* InfoPlist.strings */; };
 		9AB597B0189BAF9A001BCAD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597AF189BAF9A001BCAD3 /* main.m */; };
 		9AB597B4189BAF9A001BCAD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */; };
-		9AB597BD189BAF9A001BCAD3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597BC189BAF9A001BCAD3 /* XCTest.framework */; };
-		9AB597BE189BAF9A001BCAD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A3189BAF9A001BCAD3 /* Foundation.framework */; };
-		9AB597BF189BAF9A001BCAD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB597A7189BAF9A001BCAD3 /* UIKit.framework */; };
-		9AB597C7189BAF9A001BCAD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AB597C5189BAF9A001BCAD3 /* InfoPlist.strings */; };
-		9AB597C9189BAF9A001BCAD3 /* DBCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */; };
 		9ABB69A219587983007E2B9E /* UIImage+Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB69A119587983007E2B9E /* UIImage+Asset.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9AB597C0189BAF9A001BCAD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AB59798189BAF9A001BCAD3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9AB5979F189BAF9A001BCAD3;
-			remoteInfo = DBCamera;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1809A13D1A3F79560089855F /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/DBCamera.strings"; sourceTree = "<group>"; };
 		1809A13E1A3F79560089855F /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		1809A13F1A3F79560089855F /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		189DC46A1A4DD02A005F686B /* GrayscaleContrastFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrayscaleContrastFilter.h; sourceTree = "<group>"; };
 		189DC46B1A4DD02A005F686B /* GrayscaleContrastFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrayscaleContrastFilter.m; sourceTree = "<group>"; };
 		189DC46D1A4DD1FD005F686B /* Vignette.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Vignette.acv; sourceTree = "<group>"; };
@@ -100,7 +84,6 @@
 		6594EE111955F19600E22EBD /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Classes/Root/RootViewController.m; sourceTree = "<group>"; };
 		9A0FAE53193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/DBCamera.strings; sourceTree = "<group>"; };
 		9A0FAE54193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A0FAE55193E840D008D5FAD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A1F4A5B191C20CB0084C305 /* DBCameraBaseCropViewController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBCameraBaseCropViewController+Private.h"; sourceTree = "<group>"; };
 		9A1F4A5C191C20CB0084C305 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
 		9A1F4A5D191C20CB0084C305 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
@@ -135,9 +118,7 @@
 		9A2237F519894BAC0084BFD7 /* DBMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMotionManager.h; sourceTree = "<group>"; };
 		9A2237F619894BAC0084BFD7 /* DBMotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMotionManager.m; sourceTree = "<group>"; };
 		9A50C7A918AA42BC00CD2DF3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A50C7AA18AA42BC00CD2DF3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A50C7AC18AA42C300CD2DF3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A50C7AD18AA42C300CD2DF3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A50C7B118AA432200CD2DF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DBCamera.strings; sourceTree = "<group>"; };
 		9A50C7B318AA435500CD2DF3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/DBCamera.strings; sourceTree = "<group>"; };
 		9A50C7B418AA435500CD2DF3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DBCamera.strings; sourceTree = "<group>"; };
@@ -155,19 +136,13 @@
 		9AB597B1189BAF9A001BCAD3 /* DBCamera-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBCamera-Prefix.pch"; sourceTree = "<group>"; };
 		9AB597B2189BAF9A001BCAD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9AB597B3189BAF9A001BCAD3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9AB597BB189BAF9A001BCAD3 /* DBCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DBCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB597BC189BAF9A001BCAD3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		9AB597C4189BAF9A001BCAD3 /* DBCameraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DBCameraTests-Info.plist"; sourceTree = "<group>"; };
-		9AB597C6189BAF9A001BCAD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBCameraTests.m; sourceTree = "<group>"; };
 		9ABA1DC71A6D09BF000DA480 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DBCamera.strings; sourceTree = "<group>"; };
 		9ABA1DC81A6D09BF000DA480 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9ABA1DC91A6D09BF000DA480 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9ABB69A019587983007E2B9E /* UIImage+Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Asset.h"; sourceTree = "<group>"; };
 		9ABB69A119587983007E2B9E /* UIImage+Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Asset.m"; sourceTree = "<group>"; };
 		9ABDB6E5195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/DBCamera.strings; sourceTree = "<group>"; };
 		9ABDB6E6195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9ABDB6E7195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F9DFA4FE58E901A1BE1FE253 /* Pods-DBCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,16 +158,6 @@
 				9AB597A8189BAF9A001BCAD3 /* UIKit.framework in Frameworks */,
 				9AB597A4189BAF9A001BCAD3 /* Foundation.framework in Frameworks */,
 				733E4274497440D09A9F1EE7 /* libPods-DBCamera.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AB597B8189BAF9A001BCAD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AB597BD189BAF9A001BCAD3 /* XCTest.framework in Frameworks */,
-				9AB597BF189BAF9A001BCAD3 /* UIKit.framework in Frameworks */,
-				9AB597BE189BAF9A001BCAD3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				9AB597A9189BAF9A001BCAD3 /* DBCamera */,
-				9AB597C2189BAF9A001BCAD3 /* DBCameraTests */,
 				9AB597A2189BAF9A001BCAD3 /* Frameworks */,
 				9AB597A1189BAF9A001BCAD3 /* Products */,
 				133A9F66B295E54D6A03396E /* Pods */,
@@ -370,7 +334,6 @@
 			isa = PBXGroup;
 			children = (
 				9AB597A0189BAF9A001BCAD3 /* DBCamera.app */,
-				9AB597BB189BAF9A001BCAD3 /* DBCameraTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -413,24 +376,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9AB597C2189BAF9A001BCAD3 /* DBCameraTests */ = {
-			isa = PBXGroup;
-			children = (
-				9AB597C8189BAF9A001BCAD3 /* DBCameraTests.m */,
-				9AB597C3189BAF9A001BCAD3 /* Supporting Files */,
-			);
-			path = DBCameraTests;
-			sourceTree = "<group>";
-		};
-		9AB597C3189BAF9A001BCAD3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9AB597C4189BAF9A001BCAD3 /* DBCameraTests-Info.plist */,
-				9AB597C5189BAF9A001BCAD3 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		9AB597D2189BB04B001BCAD3 /* DBCamera */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,24 +414,6 @@
 			productReference = 9AB597A0189BAF9A001BCAD3 /* DBCamera.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9AB597BA189BAF9A001BCAD3 /* DBCameraTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9AB597CF189BAF9A001BCAD3 /* Build configuration list for PBXNativeTarget "DBCameraTests" */;
-			buildPhases = (
-				9AB597B7189BAF9A001BCAD3 /* Sources */,
-				9AB597B8189BAF9A001BCAD3 /* Frameworks */,
-				9AB597B9189BAF9A001BCAD3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9AB597C1189BAF9A001BCAD3 /* PBXTargetDependency */,
-			);
-			name = DBCameraTests;
-			productName = DBCameraTests;
-			productReference = 9AB597BB189BAF9A001BCAD3 /* DBCameraTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -498,9 +425,6 @@
 				TargetAttributes = {
 					9AB5979F189BAF9A001BCAD3 = {
 						DevelopmentTeam = Q3SKDBM9PM;
-					};
-					9AB597BA189BAF9A001BCAD3 = {
-						TestTargetID = 9AB5979F189BAF9A001BCAD3;
 					};
 				};
 			};
@@ -523,7 +447,6 @@
 			projectRoot = "";
 			targets = (
 				9AB5979F189BAF9A001BCAD3 /* DBCamera */,
-				9AB597BA189BAF9A001BCAD3 /* DBCameraTests */,
 			);
 		};
 /* End PBXProject section */
@@ -544,14 +467,6 @@
 				655AA2CD195602340017C143 /* mayfair.acv in Resources */,
 				655AA2CC195602340017C143 /* Hudson.acv in Resources */,
 				655AA2CF195602340017C143 /* Valencia.acv in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AB597B9189BAF9A001BCAD3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AB597C7189BAF9A001BCAD3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,23 +539,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9AB597B7189BAF9A001BCAD3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AB597C9189BAF9A001BCAD3 /* DBCameraTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9AB597C1189BAF9A001BCAD3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9AB5979F189BAF9A001BCAD3 /* DBCamera */;
-			targetProxy = 9AB597C0189BAF9A001BCAD3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9A50C7B218AA432200CD2DF3 /* DBCamera.strings */ = {
@@ -668,20 +567,6 @@
 				9ABDB6E6195391A500A1539D /* tr */,
 				1809A13E1A3F79560089855F /* sv-SE */,
 				9ABA1DC81A6D09BF000DA480 /* ru */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		9AB597C5189BAF9A001BCAD3 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9AB597C6189BAF9A001BCAD3 /* en */,
-				9A50C7AA18AA42BC00CD2DF3 /* it */,
-				9A50C7AD18AA42C300CD2DF3 /* es */,
-				9A0FAE55193E840D008D5FAD /* pt */,
-				9ABDB6E7195391A500A1539D /* tr */,
-				1809A13F1A3F79560089855F /* sv-SE */,
-				9ABA1DC91A6D09BF000DA480 /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -806,46 +691,6 @@
 			};
 			name = Release;
 		};
-		9AB597D0189BAF9A001BCAD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DBCamera.app/DBCamera";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "DBCameraTests/DBCameraTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		9AB597D1189BAF9A001BCAD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DBCamera.app/DBCamera";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
-				INFOPLIST_FILE = "DBCameraTests/DBCameraTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -863,15 +708,6 @@
 			buildConfigurations = (
 				9AB597CD189BAF9A001BCAD3 /* Debug */,
 				9AB597CE189BAF9A001BCAD3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9AB597CF189BAF9A001BCAD3 /* Build configuration list for PBXNativeTarget "DBCameraTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9AB597D0189BAF9A001BCAD3 /* Debug */,
-				9AB597D1189BAF9A001BCAD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
