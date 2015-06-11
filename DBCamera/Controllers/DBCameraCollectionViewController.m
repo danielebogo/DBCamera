@@ -11,6 +11,9 @@
 #import "DBCollectionViewCell.h"
 #import "DBLibraryManager.h"
 
+#define kDBLibraryColumnsNumber 3
+
+
 @interface DBCameraCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
     NSString *_collectionIdentifier;
 }
@@ -76,6 +79,11 @@
     }
     
     return item;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((_collectionView.frame.size.width / kDBLibraryColumnsNumber) - 1.0f, (_collectionView.frame.size.width / kDBLibraryColumnsNumber) - 1.0f);
 }
 
 #pragma mark - UICollectionViewDelegate
