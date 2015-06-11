@@ -317,8 +317,8 @@
 - (void) addGridToCameraAction:(UIButton *)button
 {
     if ( [_delegate respondsToSelector:@selector(cameraView:showGridView:)] ) {
+        button.selected = !button.selected;
         [_delegate cameraView:self showGridView:button.selected];
-        [button setSelected:!button.isSelected];
     }
 }
 
