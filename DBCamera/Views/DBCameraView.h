@@ -14,11 +14,31 @@
 /**
  *  The view class that contains the UI of the camera. Extend this class if you want to create a custom camera view.
  */
-@interface DBCameraView : UIView <DBCameraViewControllerSettings>
+@interface DBCameraView : UIView <DBCameraViewControllerSettings, UIGestureRecognizerDelegate>
 /**
  *  The DBCameraViewDelegate object
  */
 @property (nonatomic, weak) id <DBCameraViewDelegate> delegate;
+
+/**
+ * Layer that is shown when the focus spot is selected.
+ */
+@property (nonatomic, strong) CALayer *focusBox;
+
+/**
+ * Layer that is shown when the expose spot is selected.
+ */
+@property (nonatomic, strong) CALayer *exposeBox;
+
+/**
+ * Top bar containing the camera button, the grid button and the flash button.
+ */
+@property (nonatomic, strong) UIView *topContainerBar;
+
+/**
+ * Bottom bar containing the close button, the trigger button and the library button.
+ */
+@property (nonatomic, strong) UIView *bottomContainerBar;
 
 /**
  *  The button to open the Library
