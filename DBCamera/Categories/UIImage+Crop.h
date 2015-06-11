@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  *  UIImage Crop category
