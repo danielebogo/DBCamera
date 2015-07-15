@@ -13,6 +13,7 @@
 #import "DBCameraFilterCell.h"
 #import "DBCameraLoadingView.h"
 #import "UIImage+TintColor.h"
+#import "UIImage+Bundle.h"
 #import "GrayscaleContrastFilter.h"
 
 #import <GPUImage/GPUImage.h>
@@ -303,8 +304,8 @@ static const CGSize kFilterCellSize = { 75, 90 };
     if ( !_cropButton) {
         _cropButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_cropButton setBackgroundColor:[UIColor clearColor]];
-        [_cropButton setImage:[[UIImage imageNamed:@"Crop"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
-        [_cropButton setImage:[[UIImage imageNamed:@"Crop"] tintImageWithColor:self.selectedTintColor] forState:UIControlStateSelected];
+        [_cropButton setImage:[[UIImage imageInBundleNamed:@"Crop"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
+        [_cropButton setImage:[[UIImage imageInBundleNamed:@"Crop"] tintImageWithColor:self.selectedTintColor] forState:UIControlStateSelected];
         [_cropButton setFrame:(CGRect){ CGRectGetMidX(self.view.bounds) - 15, 15, 30, 30 }];
         [_cropButton addTarget:self action:@selector(cropModeAction:) forControlEvents:UIControlEventTouchUpInside];
     }
