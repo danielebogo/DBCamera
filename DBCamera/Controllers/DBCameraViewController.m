@@ -24,7 +24,7 @@
 
 #ifndef DBCameraLocalizedStrings
 #define DBCameraLocalizedStrings(key) \
-NSLocalizedStringFromTable(key, @"DBCamera", nil)
+NSLocalizedStringFromTableInBundle(key, @"DBCamera", [NSBundle bundleForClass:self.class], nil)
 #endif
 
 @interface DBCameraViewController () <DBCameraManagerDelegate, DBCameraViewDelegate> {

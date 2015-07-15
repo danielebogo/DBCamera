@@ -22,7 +22,7 @@
 
 #ifndef DBCameraLocalizedStrings
 #define DBCameraLocalizedStrings(key) \
-NSLocalizedStringFromTable(key, @"DBCamera", nil)
+NSLocalizedStringFromTableInBundle(key, @"DBCamera", [NSBundle bundleForClass:self.class], nil)
 #endif
 
 #define kItemIdentifier @"ItemIdentifier"
