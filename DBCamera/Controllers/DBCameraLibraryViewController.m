@@ -18,10 +18,11 @@
 #import "UIImage+Crop.h"
 #import "UIImage+TintColor.h"
 #import "UIImage+Asset.h"
+#import "UIImage+Bundle.h"
 
 #ifndef DBCameraLocalizedStrings
 #define DBCameraLocalizedStrings(key) \
-NSLocalizedStringFromTable(key, @"DBCamera", nil)
+NSLocalizedStringFromTableInBundle(key, @"DBCamera", [NSBundle bundleForClass:self.class], nil)
 #endif
 
 #define kItemIdentifier @"ItemIdentifier"
@@ -268,7 +269,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
         
         UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [closeButton setBackgroundColor:[UIColor clearColor]];
-        [closeButton setImage:[[UIImage imageNamed:@"close"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
+        [closeButton setImage:[[UIImage imageInBundleNamed:@"close"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
         [closeButton setFrame:(CGRect){ 10, 10, 45, 45 }];
         [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
         [_topContainerBar addSubview:closeButton];
