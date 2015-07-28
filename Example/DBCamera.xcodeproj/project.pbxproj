@@ -429,7 +429,7 @@
 				ORGANIZATIONNAME = "PSSD - Daniele Bogo";
 				TargetAttributes = {
 					9AB5979F189BAF9A001BCAD3 = {
-						DevelopmentTeam = L24QVGJG4B;
+						DevelopmentTeam = Q3SKDBM9PM;
 					};
 				};
 			};
@@ -652,7 +652,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
@@ -670,7 +669,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
