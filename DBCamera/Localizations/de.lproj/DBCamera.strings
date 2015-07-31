@@ -1,0 +1,24 @@
+/* 
+  DBCamera.strings
+  DBCamera
+
+  Created by iBo on 11/02/14.
+  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
+*/
+
+"button.use" = "Foto verwenden";
+"button.retake" = "Wiederholen";
+
+"general.error.title" = "Hinweis";
+"general.button.cancel" = "Abbrechen";
+
+"cameraimage.nopolicy" = "Bitte erlaube dieser App den Zugriff auf die Kamera. Überprüfe dazu die Datenschutzeinstellungen unter Einstellungen > Datenschutz > Kamera.";
+"cameraimage.noconnection" = "Verbindung zur Kamera fehlgeschlagen. Bitte überprüfe die Datenschutzeinstellungen unter Einstellungen > Datenschutz > Kamera.";
+
+"pickerimage.nopolicy" = "Bitte erlaube dieser App den Zugriff auf deine Fotobibliothek. Überprüfe dazu die Datenschutzeinstellungen unter Einstellungen > Datenschutz > Fotos.";
+"pickerimage.nophoto" = "Deine Fotobibliothek ist leer.";
+
+"pagecontrol.text" = "%i von %i";
+
+"cropmode.title" = "Seitenverhältnis";
+"cropmode.square" = "Qaudrat";
