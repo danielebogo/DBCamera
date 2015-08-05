@@ -561,7 +561,6 @@
 				9ABDB6E6195391A500A1539D /* tr */,
 				1809A13E1A3F79560089855F /* sv-SE */,
 				9ABA1DC81A6D09BF000DA480 /* ru */,
-				B1D201C41B6B74F00000561E /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
