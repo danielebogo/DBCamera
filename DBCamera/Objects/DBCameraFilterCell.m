@@ -34,6 +34,7 @@ static const NSUInteger kBorderWidth = 1;
         [backgroundCellView addSubview:_label];
         
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kCellPadding, kCellPadding, CGRectGetWidth(self.frame)-kCellPadding*2, CGRectGetHeight(self.frame)-kLabelHeight-kCellPadding*2)];
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
         [_imageView.layer setCornerRadius:4.0];
         [_imageView.layer setBorderWidth:0.0];
         [_imageView.layer setBorderColor:[RGBColor(0xffffff, .3) CGColor]];
