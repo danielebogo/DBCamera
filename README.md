@@ -12,7 +12,7 @@ The recommended approach for installating DBCamera is via the [CocoaPods](http:/
 
 ```ruby
 platform :ios, '6.0'
-pod 'DBCamera', '~> 2.3'
+pod 'DBCamera', '~> 2.4'
 ```
 
 #### via Apache Cordova
@@ -279,7 +279,7 @@ You can also create a custom interface, using a subclass of DBCameraView
 6.0
 
 ###Version
-2.3.16
+2.4
 
 ###Created By
 
@@ -287,8 +287,8 @@ You can also create a custom interface, using a subclass of DBCameraView
 
 ###Credits
 
-Apache Cordova: [mkcode](https://github.com/mkcode)
-
-Grid view & pinch gesture: [Jack](https://github.com/xhzengAIB)
-
-Filters segue and various improvements: [denadai2](https://github.com/denadai2)
+[mkcode](https://github.com/mkcode)
+[Jack](https://github.com/xhzengAIB)
+[denadai2](https://github.com/denadai2)
+[leobarrospereira](https://github.com/leobarrospereira)
+[sebastianludwig](https://github.com/sebastianludwig)
