@@ -287,8 +287,8 @@ You can also create a custom interface, using a subclass of DBCameraView
 
 ###Credits
 
-[mkcode](https://github.com/mkcode)
-[Jack](https://github.com/xhzengAIB)
-[denadai2](https://github.com/denadai2)
-[leobarrospereira](https://github.com/leobarrospereira)
+[mkcode](https://github.com/mkcode),
+[Jack](https://github.com/xhzengAIB),
+[denadai2](https://github.com/denadai2),
+[leobarrospereira](https://github.com/leobarrospereira),
 [sebastianludwig](https://github.com/sebastianludwig)
