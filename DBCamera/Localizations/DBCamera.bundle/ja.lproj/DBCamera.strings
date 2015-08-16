@@ -1,0 +1,24 @@
+/*
+  DBCamera.strings
+  DBCamera
+
+  Created by iBo on 11/02/14.
+  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
+*/
+
+"button.use" = "決定";
+"button.retake" = "再撮影";
+
+"general.error.title" = "注意";
+"general.button.cancel" = "キャンセル";
+
+"cameraimage.nopolicy" = "カメラへのアクセスを許可してください。設定 > プライバシー > カメラ でアクセス許可の設定ができます。";
+"cameraimage.noconnection" = "カメラを利用することができません。設定 > プライバシー > カメラ でアクセス許可の設定ができます。";
+
+"pickerimage.nopolicy" = "写真へのアクセスを許可してください。設定 > プライバシー > 写真 でアクセス許可の設定ができます。";
+"pickerimage.nophoto" = "あなたのライブラリには写真がありません。";
+
+"pagecontrol.text" = "%i / %i";
+
+"cropmode.title" = "アスペクト比";
+"cropmode.square" = "正方形";
