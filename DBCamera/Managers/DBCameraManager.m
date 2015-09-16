@@ -71,7 +71,22 @@
 
 - (BOOL) setupSessionWithPreset:(NSString *)sessionPreset error:(NSError **)error
 {
-    _videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self backCamera] error:error];
+    
+    //fix issue iPod touch without back camera will be black screen
+    NSArray *cameraDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice *defaultDevice;
+    for (AVCaptureDevice *device in cameraDevices) {
+        if ([device hasMediaType:AVMediaTypeVideo]) {
+            if ([device position] == AVCaptureDevicePositionBack) {
+                defaultDevice = [self backCamera];
+            } else {
+                if (defaultDevice.position != AVCaptureDevicePositionBack) {
+                    defaultDevice = [self frontCamera];
+                }
+            }
+        }
+    }
+    _videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:defaultDevice error:error];
     
     _stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
     [_stillImageOutput setOutputSettings:@{ AVVideoCodecKey : AVVideoCodecJPEG }];
