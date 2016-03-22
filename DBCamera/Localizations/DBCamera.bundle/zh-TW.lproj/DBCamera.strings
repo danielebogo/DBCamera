@@ -1,0 +1,23 @@
+/* 
+  DBCamera.strings
+  DBCamera
+
+  Created by iBo on 11/02/14.
+  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
+*/
+"button.use" = "使用照片";
+"button.retake" = "重拍";
+
+"general.error.title" = "注意";
+"general.button.cancel" = "取消";
+
+"cameraimage.nopolicy" = "請允許取用相機，請至 設定>隱私權>相機 中檢查您的隱私設定。";
+"cameraimage.noconnection" = "無法連線至相機，請至 設定>隱私權>相機 中檢查您的隱私設定。";
+
+"pickerimage.nopolicy" = "請允許取用相機教卷，請至 設定>隱私權>照片 中檢查您的隱私設定。";
+"pickerimage.nophoto" = "相機膠卷中無照片";
+
+"pagecontrol.text" = "%i of %i";
+
+"cropmode.title" = "長寬比例";
+"cropmode.square" = "方形";
