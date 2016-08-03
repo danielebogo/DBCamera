@@ -1,0 +1,22 @@
+/* 
+  DBCamera.strings
+  DBCamera
+
+*/
+
+"button.use" = "Gebruik foto";
+"button.retake" = "Neem opnieuw";
+
+"general.error.title" = "Let op";
+"general.button.cancel" = "Annuleer";
+
+"cameraimage.nopolicy" = "Geef de applicatie toegang tot uw foto camera. Ga naar Instellingen > Privacy > Camera om deze te activeren";
+"cameraimage.noconnection" = "Kan geen verbinding maken met de camera. Ga naar Instellingen > Privacy > Camera om deze te activeren ";
+
+"pickerimage.nopolicy" = "Geef de applicatie toegang tot uw foto camera. Ga naar Instellingen > Privacy > Foto’s om deze te activeren ";
+"pickerimage.nophoto" = "Er zijn geen foto’s in uw bibliotheek";
+
+"pagecontrol.text" = "%i of %i";
+
+"cropmode.title" = "Verhouding";
+"cropmode.square" = "Vierkant";
