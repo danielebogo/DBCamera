@@ -149,6 +149,13 @@ typedef void (^TableRowBlock)();
         // controller.filtersBarVisible = NO;
         
     };
+    
+    configuration.configureCameraController = ^(UIViewController < DBCameraControllerProtocol > * _Nonnull controller) {
+        
+        // You can configure initial camera orientation (front/back)
+        // controller.initialCameraPosition = AVCaptureDevicePositionFront;
+        
+    };
 
     DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self cameraConfiguration:configuration];
     [cameraContainer setFullScreenMode];

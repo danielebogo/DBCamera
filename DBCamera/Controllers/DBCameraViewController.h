@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "DBCameraDelegate.h"
 #import "UIViewController+UIViewController_FullScreen.h"
+#import "DBCameraControllerProtocol.h"
 
 @class DBCameraManager, DBCameraView, DBCameraGridView, DBCameraSegueViewController, DBCameraConfiguration;
 
 /**
  *  DBCameraViewController
  */
-@interface DBCameraViewController : UIViewController <DBCameraSegueSettings, DBCameraViewControllerSettings>
+@interface DBCameraViewController : UIViewController < DBCameraControllerProtocol, DBCameraSegueSettings, DBCameraViewControllerSettings >
 /**
  *  An id object compliant with the DBCameraViewControllerDelegate
  */
