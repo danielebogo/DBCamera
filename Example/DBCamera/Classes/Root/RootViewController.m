@@ -145,6 +145,9 @@ typedef void (^TableRowBlock)();
         // You can hide cropButton on filter picking controller
         // controller.cropButton.hidden = YES;
         
+        // You can disable filter bar
+        // controller.filtersBarVisible = NO;
+        
     };
 
     DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self cameraConfiguration:configuration];
