@@ -9,13 +9,14 @@
 #import "DBCameraBaseCropViewController.h"
 #import "DBCameraDelegate.h"
 #import "UIViewController+UIViewController_FullScreen.h"
+#import "DBPhotoProcessingControllerProtocol.h"
 
-@class DBCameraFiltersView;
+@class DBCameraFiltersView, DBCameraConfiguration;
 
 /**
  *  DBCameraSegueViewController
  */
-@interface DBCameraSegueViewController : DBCameraBaseCropViewController <DBCameraCropRect, DBCameraSegueSettings, DBCameraViewControllerSettings>
+@interface DBCameraSegueViewController : DBCameraBaseCropViewController <DBPhotoProcessingControllerProtocol, DBCameraCropRect, DBCameraSegueSettings, DBCameraViewControllerSettings>
 /**
  *  An id object compliant with the DBCameraContainerDelegate
  */
@@ -40,6 +41,11 @@
  *  Filter to be applied to the image
  */
 @property (nonatomic, readonly) NSIndexPath *selectedFilterIndex;
+
+/**
+ *  Contains additional configuration for camera controllers
+ */
+@property (nonatomic, strong) DBCameraConfiguration *cameraConfiguration;
 
 /**
  *  The init method with the captured image and thumb

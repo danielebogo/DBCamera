@@ -326,6 +326,7 @@
         [segue enableGestures:YES];
         [segue setDelegate:self.delegate];
         [segue setCapturedImageMetadata:finalMetadata];
+        [segue setCameraConfiguration:self.cameraConfiguration];
         [segue setCameraSegueConfigureBlock:self.cameraSegueConfigureBlock];
 
         [self.navigationController pushViewController:segue animated:YES];
@@ -365,6 +366,7 @@
             [library setUseCameraSegue:self.useCameraSegue];
             [library setCameraSegueConfigureBlock:self.cameraSegueConfigureBlock];
             [library setLibraryMaxImageSize:self.libraryMaxImageSize];
+            [library setCameraConfiguration:self.cameraConfiguration];
             [self.containerDelegate switchFromController:self toController:library];
         }];
     } else {

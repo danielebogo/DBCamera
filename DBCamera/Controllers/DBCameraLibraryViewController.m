@@ -369,6 +369,7 @@
                 [segue enableGestures:YES];
                 [segue setCapturedImageMetadata:metadata];
                 [segue setDelegate:weakSelf.delegate];
+                [segue setCameraConfiguration:weakSelf.cameraConfiguration];
                 [segue setCameraSegueConfigureBlock:self.cameraSegueConfigureBlock];
                 
                 [weakSelf.navigationController pushViewController:segue animated:YES];

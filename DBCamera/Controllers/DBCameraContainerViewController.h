@@ -10,8 +10,7 @@
 #import "DBCameraDelegate.h"
 #import "UIViewController+UIViewController_FullScreen.h"
 
-@class DBCameraView;
-@class DBCameraViewController;
+@class DBCameraView, DBCameraViewController, DBCameraConfiguration;
 
 /**
  *  The camera settings block
@@ -36,13 +35,18 @@ typedef void(^CameraSettingsBlock)(DBCameraView *cameraView, id container);
 @property (nonatomic, strong) DBCameraViewController *cameraViewController;
 
 /**
+ *  Contains additional configuration for camera controllers
+ */
+@property (nonatomic, strong) DBCameraConfiguration *cameraConfiguration;
+
+/**
  *  The init method with a DBCameraViewControllerDelegate
  *
  *  @param delegate The DBCameraViewControllerDelegate
  *
  *  @return A DBCameraContainerViewController
  */
-- (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
+- (instancetype) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate;
 
 /**
  *  The init method with a DBCameraViewControllerDelegate and a CameraSettingsBlock
@@ -52,5 +56,30 @@ typedef void(^CameraSettingsBlock)(DBCameraView *cameraView, id container);
  *
  *  @return DBCameraContainerViewController
  */
-- (id) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraSettingsBlock:(CameraSettingsBlock)block;
+- (instancetype) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
+              cameraSettingsBlock:(CameraSettingsBlock)block;
+
+/**
+ *  The init method with a DBCameraViewControllerDelegate and a CameraConfiguration
+ *
+ *  @param delegate             The DBCameraViewControllerDelegate
+ *  @param cameraConfiguration  The CameraConfiguration containing customization for controllers
+ *
+ *  @return DBCameraContainerViewController
+ */
+- (instancetype) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
+              cameraConfiguration:(DBCameraConfiguration *)cameraConfiguration;
+
+/**
+ *  The init method with a DBCameraViewControllerDelegate and a CameraConfiguration
+ *
+ *  @param delegate             The DBCameraViewControllerDelegate
+ *  @param cameraConfiguration  The CameraConfiguration containing customization for controllers
+ *  @param block                The CameraSettingsBlock
+ *
+ *  @return DBCameraContainerViewController
+ */
+- (instancetype) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate
+              cameraConfiguration:(DBCameraConfiguration *)cameraConfiguration
+              cameraSettingsBlock:(CameraSettingsBlock)block;
 @end
