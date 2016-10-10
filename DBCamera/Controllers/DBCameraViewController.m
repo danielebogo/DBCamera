@@ -128,8 +128,12 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if ( !self.customCamera )
+    if ( self.customCamera == nil ) {
         [self checkForLibraryImage];
+    } else {
+        DBCameraView *cameraView = (DBCameraView *)self.customCamera;
+        [cameraView updateFrame:self.view.frame];
+    }
 }
 
 - (void) viewWillDisappear:(BOOL)animated
