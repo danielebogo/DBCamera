@@ -462,4 +462,10 @@
     }
 }
 
+- (void) updateFrame:(CGRect)frame {
+    
+    self.frame = frame;
+    self.previewLayer.frame = frame;
+    
+}
 @end
