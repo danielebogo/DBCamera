@@ -13,6 +13,7 @@
 #import "DBCameraLibraryViewController.h"
 #import "CustomCamera.h"
 #import "DBCameraGridView.h"
+#import "DBCameraConfiguration.h"
 
 @interface DetailViewController : UIViewController {
     UIImageView *_imageView;
@@ -136,8 +137,17 @@ typedef void (^TableRowBlock)();
     [cameraContainer setTintColor:[UIColor redColor]];
     [cameraContainer setSelectedTintColor:[UIColor yellowColor]];
 */
+    
+    
+    DBCameraConfiguration *configuration = [[DBCameraConfiguration alloc] init];
+    configuration.configureProcessingController = ^(UIViewController <DBPhotoProcessingControllerProtocol> * _Nonnull controller) {
+      
+        // You can hide cropButton on filter picking controller
+        // controller.cropButton.hidden = YES;
+        
+    };
 
-    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self cameraConfiguration:configuration];
     [cameraContainer setFullScreenMode];
     
     DemoNavigationController *nav = [[DemoNavigationController alloc] initWithRootViewController:cameraContainer];

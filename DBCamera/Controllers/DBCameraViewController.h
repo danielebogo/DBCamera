@@ -10,10 +10,7 @@
 #import "DBCameraDelegate.h"
 #import "UIViewController+UIViewController_FullScreen.h"
 
-@class DBCameraManager;
-@class DBCameraView;
-@class DBCameraGridView;
-@class DBCameraSegueViewController;
+@class DBCameraManager, DBCameraView, DBCameraGridView, DBCameraSegueViewController, DBCameraConfiguration;
 
 /**
  *  DBCameraViewController
@@ -58,6 +55,11 @@
  *  Set the max resolution for the library selected image
  */
 @property (nonatomic, assign) NSUInteger libraryMaxImageSize;
+
+/**
+ *  Contains additional configuration for camera controllers
+ */
+@property (nonatomic, strong) DBCameraConfiguration *cameraConfiguration;
 
 /**
  *  The init class method with a DBCameraViewControllerDelegate

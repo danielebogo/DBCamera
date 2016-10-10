@@ -54,6 +54,7 @@
 		9ABB69A219587983007E2B9E /* UIImage+Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB69A119587983007E2B9E /* UIImage+Asset.m */; };
 		9E8E34E51AFFABC600B451B1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A7CB737F1B68107B0017336F /* DBCamera.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A7CB737E1B68107B0017336F /* DBCamera.bundle */; };
+		ABB9D8F11DAA7D5700B64899 /* DBCameraConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB9D8EE1DAA718D00B64899 /* DBCameraConfiguration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +145,9 @@
 		9ABB69A119587983007E2B9E /* UIImage+Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Asset.m"; sourceTree = "<group>"; };
 		9ABDB6E6195391A500A1539D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A7CB737E1B68107B0017336F /* DBCamera.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DBCamera.bundle; path = ../../DBCamera/Localizations/DBCamera.bundle; sourceTree = "<group>"; };
+		ABB9D8ED1DAA718D00B64899 /* DBCameraConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraConfiguration.h; sourceTree = "<group>"; };
+		ABB9D8EE1DAA718D00B64899 /* DBCameraConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraConfiguration.m; sourceTree = "<group>"; };
+		ABB9D8F01DAA720500B64899 /* DBPhotoProcessingControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBPhotoProcessingControllerProtocol.h; sourceTree = "<group>"; };
 		F9DFA4FE58E901A1BE1FE253 /* Pods-DBCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,6 +279,9 @@
 				9A1F4A77191C20CB0084C305 /* DBCollectionViewFlowLayout.m */,
 				9A2237F519894BAC0084BFD7 /* DBMotionManager.h */,
 				9A2237F619894BAC0084BFD7 /* DBMotionManager.m */,
+				ABB9D8ED1DAA718D00B64899 /* DBCameraConfiguration.h */,
+				ABB9D8EE1DAA718D00B64899 /* DBCameraConfiguration.m */,
+				ABB9D8F01DAA720500B64899 /* DBPhotoProcessingControllerProtocol.h */,
 			);
 			name = Objects;
 			path = ../../DBCamera/Objects;
@@ -429,7 +436,7 @@
 				ORGANIZATIONNAME = "PSSD - Daniele Bogo";
 				TargetAttributes = {
 					9AB5979F189BAF9A001BCAD3 = {
-						DevelopmentTeam = Q3SKDBM9PM;
+						DevelopmentTeam = 5H24V53G7B;
 					};
 				};
 			};
@@ -517,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E8E34E51AFFABC600B451B1 /* (null) in Sources */,
+				ABB9D8F11DAA7D5700B64899 /* DBCameraConfiguration.m in Sources */,
 				9A1F4A87191C20CB0084C305 /* DBLibraryManager.m in Sources */,
 				189DC46C1A4DD02A005F686B /* GrayscaleContrastFilter.m in Sources */,
 				9A1F4A8B191C20CB0084C305 /* DBCameraGridView.m in Sources */,
@@ -653,6 +661,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
@@ -670,6 +680,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
