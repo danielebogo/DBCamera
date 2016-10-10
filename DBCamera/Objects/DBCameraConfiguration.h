@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "DBPhotoProcessingControllerProtocol.h"
+#import "DBCameraControllerProtocol.h"
 
 @interface DBCameraConfiguration : NSObject
 
-@property (nonatomic, nullable, copy) void (^configureProcessingController)(UIViewController <DBPhotoProcessingControllerProtocol> * _Nonnull controller);
+@property (nonatomic, nullable, copy) void (^configureProcessingController)(UIViewController < DBPhotoProcessingControllerProtocol > * _Nonnull controller);
+@property (nonatomic, nullable, copy) void (^configureCameraController)(UIViewController < DBCameraControllerProtocol > * _Nonnull controller);
 
 @end

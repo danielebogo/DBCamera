@@ -145,6 +145,16 @@ typedef void (^TableRowBlock)();
         // You can hide cropButton on filter picking controller
         // controller.cropButton.hidden = YES;
         
+        // You can disable filter bar
+        // controller.filtersBarVisible = NO;
+        
+    };
+    
+    configuration.configureCameraController = ^(UIViewController < DBCameraControllerProtocol > * _Nonnull controller) {
+        
+        // You can configure initial camera orientation (front/back)
+        // controller.initialCameraPosition = AVCaptureDevicePositionFront;
+        
     };
 
     DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self cameraConfiguration:configuration];

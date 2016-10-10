@@ -491,6 +491,10 @@ bail:
     }
 }
 
+- (AVCaptureDevicePosition) cameraPosition {
+    return _videoInput.device.position;
+}
+
 #pragma mark - Private Methods
 
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition)position

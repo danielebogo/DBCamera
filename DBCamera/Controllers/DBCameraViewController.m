@@ -15,6 +15,7 @@
 #import "DBCameraLibraryViewController.h"
 #import "DBLibraryManager.h"
 #import "DBMotionManager.h"
+#import "DBCameraConfiguration.h"
 
 #import "UIImage+Crop.h"
 #import "DBCameraMacros.h"
@@ -110,6 +111,10 @@
     if ( [camera respondsToSelector:@selector(cameraButton)] ) {
         [(DBCameraView *)camera cameraButton].enabled = [self.cameraManager hasMultipleCameras];
         [self.cameraManager hasMultipleCameras];
+    }
+    
+    if ( self.cameraConfiguration.configureCameraController ) {
+        self.cameraConfiguration.configureCameraController(self);
     }
 }
 
@@ -447,6 +452,18 @@
     id modalViewController = self.presentingViewController;
     if ( modalViewController )
         [self dismissCamera];
+}
+
+#pragma mark - DBCameraControllerProtocol
+
+- (void) setInitialCameraPosition:(AVCaptureDevicePosition)initialCameraPosition {
+    
+    if ( initialCameraPosition == self.cameraManager.cameraPosition || initialCameraPosition == AVCaptureDevicePositionUnspecified) {
+        return;
+    }
+    
+    [self switchCamera];
+    
 }
 
 @end

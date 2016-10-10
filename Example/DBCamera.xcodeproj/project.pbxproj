@@ -148,6 +148,7 @@
 		ABB9D8ED1DAA718D00B64899 /* DBCameraConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraConfiguration.h; sourceTree = "<group>"; };
 		ABB9D8EE1DAA718D00B64899 /* DBCameraConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraConfiguration.m; sourceTree = "<group>"; };
 		ABB9D8F01DAA720500B64899 /* DBPhotoProcessingControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBPhotoProcessingControllerProtocol.h; sourceTree = "<group>"; };
+		ABB9D8F21DAA8C5200B64899 /* DBCameraControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBCameraControllerProtocol.h; sourceTree = "<group>"; };
 		F9DFA4FE58E901A1BE1FE253 /* Pods-DBCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,6 +283,7 @@
 				ABB9D8ED1DAA718D00B64899 /* DBCameraConfiguration.h */,
 				ABB9D8EE1DAA718D00B64899 /* DBCameraConfiguration.m */,
 				ABB9D8F01DAA720500B64899 /* DBPhotoProcessingControllerProtocol.h */,
+				ABB9D8F21DAA8C5200B64899 /* DBCameraControllerProtocol.h */,
 			);
 			name = Objects;
 			path = ../../DBCamera/Objects;

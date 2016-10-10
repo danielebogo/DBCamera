@@ -9,5 +9,6 @@
 @protocol DBPhotoProcessingControllerProtocol <NSObject>
 
 @property (nonatomic, nonnull, strong, readonly) UIButton *cropButton;
+@property (nonatomic, assign) BOOL filtersBarVisible;
 
 @end

@@ -396,4 +396,16 @@ static const CGSize kFilterCellSize = { 75, 90 };
     }
 }
 
+#pragma mark - DBPhotoProcessingControllerProtocol
+
+- (void) setFiltersBarVisible:(BOOL)filtersBarVisible {
+    
+    if ( filtersBarVisible == NO ) {
+        
+        [self.filtersView removeFromSuperview];
+        
+    }
+    
+}
+
 @end
