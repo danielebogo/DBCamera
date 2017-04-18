@@ -2,7 +2,7 @@
 
 DBCamera is a simple custom camera with AVFoundation.
 
-##Getting Started
+## Getting Started
 
 ### Installation
 
@@ -159,7 +159,7 @@ For simple customizations, you can customize the built-in camera view by sending
 }
 ```
 
-##Customize the Segue View controller
+## Customize the Segue View controller
 For a simple customization, you can use the block ``` cameraSegueConfigureBlock ```
 ```objective-c
 #import "DBCameraSegueViewController.h"
@@ -275,17 +275,17 @@ You can also create a custom interface, using a subclass of DBCameraView
 }
 ```
 
-###iOS Min Required
+### iOS Min Required
 6.0
 
-###Version
+### Version
 2.4.1
 
-###Created By
+### Created By
 
 [Daniele Bogo](https://github.com/danielebogo)
 
-###Credits
+### Credits
 
 [mkcode](https://github.com/mkcode),
 [Jack](https://github.com/xhzengAIB),
