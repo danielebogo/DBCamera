@@ -188,15 +188,14 @@ static const CGSize kFilterCellSize = { 75, 90 };
 
 - (void) saveImage
 {
-    UIImage *imageToBeSaved = self.sourceImage;
-    UIImageWriteToSavedPhotosAlbum(imageToBeSaved, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-    
     if ( [_delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] ) {
         if ( _cropMode )
             [self cropImage];
         else {
             UIImage *transform = [_filterMapping[@(_selectedFilterIndex.row)] imageByFilteringImage:self.sourceImage];
             [_delegate camera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
+            UIImage *imageToBeSaved = self.sourceImage;
+            UIImageWriteToSavedPhotosAlbum(imageToBeSaved, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
         }
     }
 }
@@ -222,6 +221,8 @@ static const CGSize kFilterCellSize = { 75, 90 };
             UIImage *transform =  [UIImage imageWithCGImage:resultRef scale:1.0 orientation:UIImageOrientationUp];
             CGImageRelease(resultRef);
             transform = [_filterMapping[@(_selectedFilterIndex.row)] imageByFilteringImage:transform];
+            UIImage *imageToBeSaved = transform;
+            UIImageWriteToSavedPhotosAlbum(imageToBeSaved, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
             [_delegate camera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
         });
     });
