@@ -40,7 +40,6 @@ static const CGSize kFilterCellSize = { 75, 90 };
     NSDictionary *_filterMapping;
     CGRect _pFrame, _lFrame;
 }
-
 @property (nonatomic, strong) UIView *navigationBar, *bottomBar;
 @property (nonatomic, strong, readwrite) UIButton *useButton, *retakeButton, *cropButton;
 @property (nonatomic, strong) DBCameraLoadingView *loadingView;
@@ -189,6 +188,9 @@ static const CGSize kFilterCellSize = { 75, 90 };
 
 - (void) saveImage
 {
+    UIImage *imageToBeSaved = self.sourceImage;
+    UIImageWriteToSavedPhotosAlbum(imageToBeSaved, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    
     if ( [_delegate respondsToSelector:@selector(camera:didFinishWithImage:withMetadata:)] ) {
         if ( _cropMode )
             [self cropImage];
@@ -198,7 +200,14 @@ static const CGSize kFilterCellSize = { 75, 90 };
         }
     }
 }
-
+- (void)image:(UIImage *)image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+{
+    if (!error)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"The picture was saved successfully to your Camera Roll." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
+}
 - (void) cropImage
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
