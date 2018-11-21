@@ -157,6 +157,17 @@ static const CGSize kFilterCellSize = { 75, 90 };
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewSafeAreaInsetsDidChange {
+    [super viewSafeAreaInsetsDidChange];
+    
+    CGFloat topInset = self.view.safeAreaInsets.top;
+    CGFloat bottomInset = self.view.safeAreaInsets.bottom;
+    
+    self.filtersView.frame = (CGRect){ 0, CGRectGetHeight(self.view.frame) - kFilterCellSize.height - bottomInset, CGRectGetWidth(self.view.frame), kFilterCellSize.height};
+    self.navigationBar.frame = (CGRect){ 0, topInset, [[UIScreen mainScreen] bounds].size.width, 64 };
+    self.bottomBar.frame = (CGRect){ 0, CGRectGetHeight([[UIScreen mainScreen] bounds]) - 40 - bottomInset, [[UIScreen mainScreen] bounds].size.width, 40 };
+}
+
 - (void) cropModeAction:(UIButton *)button
 {
     [button setSelected:!button.isSelected];

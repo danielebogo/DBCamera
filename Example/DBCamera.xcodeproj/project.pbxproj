@@ -55,6 +55,7 @@
 		9E8E34E51AFFABC600B451B1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A7CB737F1B68107B0017336F /* DBCamera.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A7CB737E1B68107B0017336F /* DBCamera.bundle */; };
 		ABB9D8F11DAA7D5700B64899 /* DBCameraConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB9D8EE1DAA718D00B64899 /* DBCameraConfiguration.m */; };
+		D0F8F7D621A577D500965A30 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0F8F7D521A577D500965A30 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +150,7 @@
 		ABB9D8EE1DAA718D00B64899 /* DBCameraConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraConfiguration.m; sourceTree = "<group>"; };
 		ABB9D8F01DAA720500B64899 /* DBPhotoProcessingControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBPhotoProcessingControllerProtocol.h; sourceTree = "<group>"; };
 		ABB9D8F21DAA8C5200B64899 /* DBCameraControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBCameraControllerProtocol.h; sourceTree = "<group>"; };
+		D0F8F7D521A577D500965A30 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F9DFA4FE58E901A1BE1FE253 /* Pods-DBCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -385,6 +387,7 @@
 				9AB597AB189BAF9A001BCAD3 /* DBCamera-Info.plist */,
 				9AB597AC189BAF9A001BCAD3 /* InfoPlist.strings */,
 				9AB597AF189BAF9A001BCAD3 /* main.m */,
+				D0F8F7D521A577D500965A30 /* Launch Screen.storyboard */,
 				9AB597B1189BAF9A001BCAD3 /* DBCamera-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -413,11 +416,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AB597CC189BAF9A001BCAD3 /* Build configuration list for PBXNativeTarget "DBCamera" */;
 			buildPhases = (
+				3B4A9F88E4599BAF78EC1E54 /* [CP] Check Pods Manifest.lock */,
 				94C7FA8D31CF40F5BA4556C8 /* Check Pods Manifest.lock */,
 				9AB5979C189BAF9A001BCAD3 /* Sources */,
 				9AB5979D189BAF9A001BCAD3 /* Frameworks */,
 				9AB5979E189BAF9A001BCAD3 /* Resources */,
 				E9BB28F5DC0B461A8AA01285 /* Copy Pods Resources */,
+				05C8D01B8F3F450D31F314AC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -477,6 +482,7 @@
 				655AA2D61956DBD90017C143 /* AppResources.xcassets in Resources */,
 				655AA2C21955FB040017C143 /* DBCameraImages.xcassets in Resources */,
 				655AA2CE195602340017C143 /* Nashville.acv in Resources */,
+				D0F8F7D621A577D500965A30 /* Launch Screen.storyboard in Resources */,
 				9AB597AE189BAF9A001BCAD3 /* InfoPlist.strings in Resources */,
 				655AA2CB195602340017C143 /* amaro.acv in Resources */,
 				655AA2CD195602340017C143 /* mayfair.acv in Resources */,
@@ -488,6 +494,58 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		05C8D01B8F3F450D31F314AC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DBCamera/Pods-DBCamera-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B4A9F88E4599BAF78EC1E54 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DBCamera-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		94C7FA8D31CF40F5BA4556C8 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -662,13 +720,12 @@
 			baseConfigurationReference = 4CD22A93BC5AAC7ACFAE4C92 /* Pods-DBCamera.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -681,13 +738,12 @@
 			baseConfigurationReference = F9DFA4FE58E901A1BE1FE253 /* Pods-DBCamera.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

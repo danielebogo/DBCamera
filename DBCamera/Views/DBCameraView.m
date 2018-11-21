@@ -94,6 +94,16 @@
     [self createGesture];
 }
 
+- (void)safeAreaInsetsDidChange {
+    [super safeAreaInsetsDidChange];
+    CGFloat topInset = self.safeAreaInsets.top;
+    CGFloat bottomInset = self.safeAreaInsets.bottom;
+    CGFloat newY = CGRectGetMaxY(previewFrame);
+    
+    self.topContainerBar.frame = (CGRect){ 0, 0 + topInset, CGRectGetWidth(self.bounds), CGRectGetMinY(previewFrame) };
+    self.bottomContainerBar.frame = (CGRect){ 0, newY - bottomInset, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - newY };
+}
+
 #pragma mark - Containers
 
 - (UIView *) topContainerBar
