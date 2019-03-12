@@ -2,7 +2,7 @@
 
 DBCamera is a simple custom camera with AVFoundation.
 
-##Getting Started
+## Getting Started
 
 ### Installation
 
@@ -275,17 +275,17 @@ You can also create a custom interface, using a subclass of DBCameraView
 }
 ```
 
-###iOS Min Required
+### iOS Min Required
 6.0
 
-###Version
+### Version
 2.4.1
 
-###Created By
+### Created By
 
 [Daniele Bogo](https://github.com/danielebogo)
 
-###Credits
+### Credits
 
 [mkcode](https://github.com/mkcode),
 [Jack](https://github.com/xhzengAIB),
