@@ -166,6 +166,12 @@
     __weak AVCaptureSession *captureSessionBlock = _captureSession;
     __weak id<DBCameraManagerDelegate>delegateBlock = _delegate;
     
+   #if TARGET_IPHONE_SIMULATOR
+    UIImage *mockImage = [UIImage imageNamed:@"LaunchImage-700"] ?: [UIImage imageNamed:@"Default"];
+    if ( [delegateBlock respondsToSelector:@selector(captureImageDidFinish:withMetadata:)] ) {
+        [delegateBlock captureImageDidFinish:mockImage withMetadata:nil];
+    }
+   #else
     [_stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection
                                                   completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
          [captureSessionBlock stopRunning];
@@ -185,6 +191,7 @@
                  [delegateBlock captureImageFailedWithError:error];
          }
      }];
+    #endif
 }
 
 #pragma mark - Informations
