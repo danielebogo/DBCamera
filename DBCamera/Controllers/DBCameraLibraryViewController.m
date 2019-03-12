@@ -123,6 +123,20 @@
                                                   object:[UIApplication sharedApplication]];
 }
 
+- (void)viewSafeAreaInsetsDidChange {
+    [super viewSafeAreaInsetsDidChange];
+
+    CGFloat topInset = self.view.safeAreaInsets.top;
+    CGFloat bottomInset = self.view.safeAreaInsets.bottom;
+
+    self.topContainerBar.frame = (CGRect){ 0, topInset, CGRectGetWidth(self.view.bounds), 65 };
+    self.bottomContainerBar.frame = (CGRect){ 0, CGRectGetHeight(self.view.bounds) - 30 - bottomInset, CGRectGetWidth(self.view.bounds), 30 };
+    [_pageViewController.view setFrame:(CGRect){ 0,
+        CGRectGetMaxY(self.topContainerBar.frame),
+        CGRectGetWidth(self.view.bounds),
+        CGRectGetHeight(self.view.bounds) - ( CGRectGetHeight(self.topContainerBar.frame) + CGRectGetHeight(self.bottomContainerBar.frame) + topInset + bottomInset ) }];
+}
+
 - (BOOL) prefersStatusBarHidden
 {
     return YES;
