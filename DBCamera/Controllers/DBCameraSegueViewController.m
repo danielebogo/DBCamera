@@ -40,7 +40,6 @@ static const CGSize kFilterCellSize = { 75, 90 };
     NSDictionary *_filterMapping;
     CGRect _pFrame, _lFrame;
 }
-
 @property (nonatomic, strong) UIView *navigationBar, *bottomBar;
 @property (nonatomic, strong, readwrite) UIButton *useButton, *retakeButton, *cropButton;
 @property (nonatomic, strong) DBCameraLoadingView *loadingView;
@@ -206,10 +205,19 @@ static const CGSize kFilterCellSize = { 75, 90 };
         else {
             UIImage *transform = [_filterMapping[@(_selectedFilterIndex.row)] imageByFilteringImage:self.sourceImage];
             [_delegate camera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
+            UIImage *imageToBeSaved = self.sourceImage;
+            UIImageWriteToSavedPhotosAlbum(imageToBeSaved, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
         }
     }
 }
-
+- (void)image:(UIImage *)image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+{
+    if (!error)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"The picture was saved successfully to your Camera Roll." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
+}
 - (void) cropImage
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -224,6 +232,8 @@ static const CGSize kFilterCellSize = { 75, 90 };
             UIImage *transform =  [UIImage imageWithCGImage:resultRef scale:1.0 orientation:UIImageOrientationUp];
             CGImageRelease(resultRef);
             transform = [_filterMapping[@(_selectedFilterIndex.row)] imageByFilteringImage:transform];
+            UIImage *imageToBeSaved = transform;
+            UIImageWriteToSavedPhotosAlbum(imageToBeSaved, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
             [_delegate camera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
         });
     });
