@@ -19,4 +19,4 @@
  *  @return An UIImage
  */
 + (UIImage *) imageForAsset:(ALAsset *)asset maxPixelSize:(NSUInteger)size;
-@end
+@endm
